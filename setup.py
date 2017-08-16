@@ -71,14 +71,14 @@ setup_args = {
     'test_suite': '',
     'include_package_data': True,
     'platforms': 'Linux, Mac OS, Windows',
-    'classifiers': (
+    'classifiers': [
         'Intended Audience :: Developers',
         'Intended Audience :: Information Technology',
         'Intended Audience :: System Administrators',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2.7',
         'Topic :: System :: Networking',
-    ),
+    ],
     'ext_modules': extensions,
 }
 

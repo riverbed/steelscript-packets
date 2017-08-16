@@ -1,0 +1,8 @@
+include RELEASE-VERSION
+include AUTHORS
+include LICENSE
+include README.md
+recursive-include docs *
+include gitpy_versioning/__init__.py
+global-include *.pxd
+global-include *.pyx

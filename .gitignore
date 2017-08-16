@@ -1,0 +1,15 @@
+build
+dist
+*.egg-info
+RELEASE-VERSION
+steel_bootstrap.*
+
+*~
+*.pyc
+*.swp
+.DS_Store
+.idea/
+.tox/
+*.so
+setup-inplace.py
+*.pcap

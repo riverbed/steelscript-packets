@@ -93,13 +93,13 @@ cdef class PCAPReader:
     cdef:
         public Decode decoder
 
+    cpdef list pkts(self)
+
 cdef class PCAPWriter:
     cdef:
         object _f
         PcapHeader _header
-        PktHeader _p_header_c
-        uint32_t _magic, _n
-        double _ts
+        uint32_t _magic
 
     cpdef writepkt(self, bytes pkt, double ts)
 

@@ -12,18 +12,33 @@ import tzlocal
 import pytz
 import re
 
-from libc.stdint cimport int64_t, uint64_t, int32_t, uint32_t, uint16_t, \
-    intptr_t
-from steelscript.packets.core.inetpkt cimport PKT, Ethernet, IP, TCP, \
-    UDP, ARP, MPLS, NullPkt, PQTYPES
+from libc.stdint cimport uint16_t
+from steelscript.packets.core.inetpkt cimport PKT, Ethernet, IP, TCP, ICMP, \
+    UDP, ARP, MPLS, NullPkt, PQ_FRAME, PQ_TCP, PQ_UDP
 from steelscript.packets.core.pcap cimport PCAPReader, pktypes
 
+# Regex to determine if the field matches a payload offset pattern.
 offset_re = re.compile(r'^(udp|tcp)\.payload\.offset\[(\d*):(\d*)\]$')
 NOT_FOUND = -1
 
-cdef class PcapQuery:
 
+cdef class PcapQuery:
+    """Object that performs pcap_query. Supports adding additional packet classes.
+    Also supports custom layer 7 port mapping.
+    """
     def __init__(self, *args, **kwargs):
+        """Create a PcapQuery object.
+
+        Args:
+            :pkt_classes (list): A list of additional packet classes to be
+                used.  Each class must have a class function query_info() that
+                returns a tuple of packet type and a tuple of supported field
+                names. See the steelsript.packets tutorial for implementation
+                details.
+            :l7_ports (dict): A dictionary containing a map of port numbers
+                (the keys) and packet classes (the values) to be used by layer
+                4 protocols like TCP and UDP to decode payload.
+        """
         cdef:
             list default_classes
             uint16_t ptype, port
@@ -33,7 +48,7 @@ cdef class PcapQuery:
 
         self.fields = dict()
         self.l7_ports = dict()
-        default_classes = [Ethernet, IP, TCP, UDP, ARP, MPLS]
+        default_classes = [Ethernet, IP, ICMP, TCP, UDP, ARP, MPLS]
         if ('pkt_classes' in kwargs and
                 isinstance(kwargs['pkt_classes'], list)):
             default_classes.extend(kwargs['pkt_classes'])
@@ -47,6 +62,20 @@ cdef class PcapQuery:
         self.local_tz = tzlocal.get_localzone()
 
     cpdef unsigned char fields_supported(self, list field_names):
+        """Helper function that checks a list of field names to see if THIS
+        instance of PcapQuery can service all of the fields. Used, for example,
+        by steelscript.wireshark.pcap.PcapFile.query(). Determines if PcapQuery
+        instance will be able to perform a particular query. If 
+        fields_supported returns 0 then 
+        steelscript.wireshark.pcap.PcapFile.query() will fall back on using
+        tshark with its larger set of supported fields.
+
+        Args:
+            :field_names (list): Field names to be used by a follow up query.
+
+        Returns: 
+            :bool: 1 if all fields are supported, 0 otherwise.
+        """
         cdef:
             list fields
             object groups
@@ -85,6 +114,24 @@ cdef class PcapQuery:
                      double endtime,
                      unsigned char rdf=0,
                      unsigned char as_datetime=1):
+        """Perform the actual pcap query. ONLY Ethernet packets are supported
+        at this time.
+
+        Args:
+            :file_handle (object): The open PCAP file object to read data from.
+            :wshark_fields (list): A list of the fields that the query should
+                populate in the output data.
+            :starttime (double): Start time of the query.
+            :endtime (double): End time of the query
+            :rdf (0 or 1): Return data as Pandas Dataframe. Requires pandas 
+                be installed.
+            :as_datetime (0 or 1): Cast all timestamps into datetime.datetime() 
+                objects. Slower that simply returning timestamps.
+
+        Returns:
+            :list or pandas dataframe: contains single entry for each matching 
+                packet in the pcap. 
+        """
         cdef:
             list return_vals, offsets, id_name, name_idx
             list layer_ids, layers
@@ -108,14 +155,14 @@ cdef class PcapQuery:
 
         for fname in wshark_fields:
             if fname == b'frame.time_epoch':
-                id_name.append((PQTYPES.t_frame, fname))
+                id_name.append((PQ_FRAME, fname))
             elif fname.find(b'payload.offset') == NOT_FOUND:
                 id_name.append((self.fields[fname], fname))
             elif fname.find(b'payload.offset') >= 0:
                 if fname[:3] == b'tcp':
-                    id_name.append((PQTYPES.t_tcp, fname))
+                    id_name.append((PQ_TCP, fname))
                 elif fname[:3] == b'udp':
-                    id_name.append((PQTYPES.t_udp, fname))
+                    id_name.append((PQ_UDP, fname))
                 else:
                     print("invalid payload.offset[x:y] field name!! "
                           "Use fields_supported to check fields.")
@@ -142,6 +189,8 @@ cdef class PcapQuery:
                 e = Ethernet(pkt, l7_ports=self.l7_ports)
                 layer_index = 0
                 for pkt_id in layer_ids:
+                    # This will populate the layer with a NullPkt if the
+                    # packet does not have the right layer for the field.
                     layers[layer_index] = e.get_layer_by_type(pkt_id)
                     layer_index += 1
                 return_vals.append(list())
@@ -161,6 +210,7 @@ cdef class PcapQuery:
                             return_vals[-1].append(ts)
 
                     else:
+                        # In the case of NullPkt this will return None.
                         return_vals[-1].append(
                             layers[layer_index].get_field_val(rep_fname)
                         )

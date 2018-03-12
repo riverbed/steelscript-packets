@@ -46,9 +46,14 @@ extensions = [
               ["steelscript/packets/core/inetpkt{0}".format(ext)]),
     Extension("steelscript.packets.query.pcap_query",
               ["steelscript/packets/query/pcap_query{0}".format(ext)]),
+    Extension("steelscript.packets.protos.dns",
+              ["steelscript/packets/protos/dns{0}".format(ext)]),
 ]
 
 if USE_CYTHON:
+    for e in extensions:
+        e.cython_directives = {"embedsignature": True}
+
     extensions = cythonize(extensions)
 
 setup_args = {

@@ -6,31 +6,188 @@
 # accompanying the software ("License").  This software is distributed "AS IS"
 # as set forth in the License.
 
-
-from struct import pack
+from struct import pack, unpack
 from cpython.array cimport array
 import binascii
 import socket
-import struct
 import re
 
-from libc.stdint cimport int64_t, uint64_t, \
-    int32_t, uint32_t, uint16_t, intptr_t
-import ctypes as c
-_get_dict = c.pythonapi._PyObject_GetDictPtr
-_get_dict.restype = c.POINTER(c.py_object)
-_get_dict.argtypes = [c.py_object]
+from libc.stdint cimport uint32_t, uint16_t
 
 offset_re = re.compile(r'^(udp|tcp)\.payload\.offset\[(\d*):(\d*)\]$')
+
+IPV4_LEN = 4
+IPV4_VER = 4
+IPV4_MIN_HDR_LEN = 5
+IPV6_LEN = 8
+IPV6_VER = 6
+MAC_LEN = 6
+ARP_TYPE_ETH = 1
+ARP_OP_REQUEST = 1
+ARP_OP_REPLY = 2
+ARP_OP_RARP_REQUEST = 3
+ARP_OP_RARP_REPLY = 4
+ARP_OP_DYN_RARP_REQUEST = 5
+ARP_OP_DYN_RARP_REPLY = 6
+ARP_OP_DYN_RARP_ERR = 7
+ARP_OP_INV_REQUEST = 8
+ARP_OP_INV_REPLY = 9
+ETH_TYPE_IPV4 = 0x0800
+ETH_TYPE_ARP = 0x0806
+ETH_TYPE_RARP = 0x8035
+ETH_TYPE_8021Q = 0x8100
+ETH_TYPE_IPV6 = 0x86dd
+ETH_TYPE_MPLS_UCAST = 0x8847
+ETH_TYPE_MPLS_MCAST = 0x8848
+ICMP_TYPE_ECHO_REPLY = 0
+ICMP_TYPE_DU = 3
+ICMP_TYPE_SRC_QUENCH = 4
+ICMP_TYPE_REDIR = 5
+ICMP_TYPE_ECHO = 8
+ICMP_TYPE_TIME_EX = 11
+ICMP_TYPE_PER_PROB = 12
+ICMP_TYPE_TS = 13
+ICMP_TYPE_TS_REPLY = 14
+ICMP_TYPE_INFO = 15
+ICMP_TYPE_INFO_REPLY = 16
+ICMP_DU_CODE_NET_UNREACH = 0
+ICMP_DU_CODE_HOST_UNREACH = 1
+ICMP_DU_CODE_PROTO_UNREACH = 2
+ICMP_DU_CODE_PORT_UNREACH = 3
+ICMP_DU_CODE_FRAG_NEEDED = 4
+ICMP_DU_CODE_SRC_RT_FAIL = 5
+ICMP_DU_CODE_DEST_NET_UNKNOWN = 6
+ICMP_DU_CODE_DEST_HOST_UNKNOWN = 7
+ICMP_DU_CODE_SRC_HOST_ISOLATED = 8
+ICMP_DU_CODE_NET_ADMIN_PROHIBIT = 9
+ICMP_DU_CODE_HOST_ADMIN_PROHIBIT = 10
+ICMP_DU_CODE_NET_TOS_UNREACH = 11
+ICMP_DU_CODE_HOST_TOS_UNREACH = 12
+ICMP_DU_CODE_COMMS_ADMIN_PROHIBIT = 13
+ICMP_DU_CODE_HOST_PRECEDENCE = 14
+ICMP_DU_CODE_PRECEDENCE_CUTOFF = 15
+ICMP_REDIR_CODE_NET = 0
+ICMP_REDIR_CODE_HOST = 1
+ICMP_REDIR_CODE_NET_TOS = 2
+ICMP_REDIR_CODE_HOST_TOS = 3
+ICMP_TIME_EX_CODE_TTL_EXCEEDED = 0
+ICMP_TIME_EX_CODE_FRAG_EXCEEDED = 1
+ICMP_PER_PROB_CODE_POINTER = 0
+ICMP_PER_PROB_CODE_OPTION_MISSING = 1
+ICMP_PER_PROB_CODE_LENGTH = 2
+PROTO_ICMP = 1
+PROTO_TCP = 6
+PROTO_UDP = 17
+PQ_PKT = 0
+PQ_ETH = 1
+PQ_FRAME = 2
+PQ_ICMP = 3
+PQ_IP = 0x0800
+PQ_TCP = 6
+PQ_UDP = 17
+PQ_ARP = 0x0806
+PQ_MPLS = 0x8847
+PQ_NETFLOW_SIMPLE = 2005
+PQ_NULLPKT = 0xffff
 PTR_VAL = 0
 NOT_FOUND = -1
 
+cdef class IP_CONST:
+    def __cinit__(self):
+        self.IPV4_LEN = IPV4_LEN
+        self.IPV4_VER = IPV4_VER
+        self.IPV4_MIN_HDR_LEN = IPV4_MIN_HDR_LEN
+        self.IPV6_LEN = IPV6_LEN
+        self.IPV6_VER = IPV6_VER
+        self.MAC_LEN = MAC_LEN
+        self.ARP_TYPE_ETH = ARP_TYPE_ETH
+        self.ARP_OP_REQUEST = ARP_OP_REQUEST
+        self.ARP_OP_REPLY = ARP_OP_REPLY
+        self.ARP_OP_RARP_REQUEST = ARP_OP_RARP_REQUEST
+        self.ARP_OP_RARP_REPLY = ARP_OP_RARP_REPLY
+        self.ARP_OP_DYN_RARP_REQUEST = ARP_OP_DYN_RARP_REQUEST
+        self.ARP_OP_DYN_RARP_REPLY = ARP_OP_DYN_RARP_REPLY
+        self.ARP_OP_DYN_RARP_ERR = ARP_OP_DYN_RARP_ERR
+        self.ARP_OP_INV_REQUEST = ARP_OP_INV_REQUEST
+        self.ARP_OP_INV_REPLY = ARP_OP_INV_REPLY
+        self.ETH_TYPE_IPV4 = ETH_TYPE_IPV4
+        self.ETH_TYPE_ARP = ETH_TYPE_ARP
+        self.ETH_TYPE_RARP = ETH_TYPE_RARP
+        self.ETH_TYPE_8021Q = ETH_TYPE_8021Q
+        self.ETH_TYPE_IPV6 = ETH_TYPE_IPV6
+        self.ETH_TYPE_MPLS_UCAST = ETH_TYPE_MPLS_UCAST
+        self.ETH_TYPE_MPLS_MCAST = ETH_TYPE_MPLS_MCAST
+        self.ICMP_TYPE_ECHO_REPLY = ICMP_TYPE_ECHO_REPLY
+        self.ICMP_TYPE_DU = ICMP_TYPE_DU
+        self.ICMP_TYPE_SRC_QUENCH = ICMP_TYPE_SRC_QUENCH
+        self.ICMP_TYPE_REDIR = ICMP_TYPE_SRC_QUENCH
+        self.ICMP_TYPE_ECHO = ICMP_TYPE_ECHO
+        self.ICMP_TYPE_TIME_EX = ICMP_TYPE_TIME_EX
+        self.ICMP_TYPE_PER_PROB = ICMP_TYPE_PER_PROB
+        self.ICMP_TYPE_TS = ICMP_TYPE_TS
+        self.ICMP_TYPE_TS_REPLY = ICMP_TYPE_TS_REPLY
+        self.ICMP_TYPE_INFO = ICMP_TYPE_INFO
+        self.ICMP_TYPE_INFO_REPLY = ICMP_TYPE_INFO_REPLY
+        self.ICMP_DU_CODE_NET_UNREACH = ICMP_DU_CODE_NET_UNREACH
+        self.ICMP_DU_CODE_HOST_UNREACH = ICMP_DU_CODE_HOST_UNREACH
+        self.ICMP_DU_CODE_PROTO_UNREACH = ICMP_DU_CODE_PROTO_UNREACH
+        self.ICMP_DU_CODE_PORT_UNREACH = ICMP_DU_CODE_PORT_UNREACH
+        self.ICMP_DU_CODE_FRAG_NEEDED = ICMP_DU_CODE_FRAG_NEEDED
+        self.ICMP_DU_CODE_SRC_RT_FAIL = ICMP_DU_CODE_SRC_RT_FAIL
+        self.ICMP_DU_CODE_DEST_NET_UNKNOWN = ICMP_DU_CODE_DEST_NET_UNKNOWN
+        self.ICMP_DU_CODE_DEST_HOST_UNKNOWN = \
+            ICMP_DU_CODE_DEST_HOST_UNKNOWN
+        self.ICMP_DU_CODE_SRC_HOST_ISOLATED = \
+            ICMP_DU_CODE_SRC_HOST_ISOLATED
+        self.ICMP_DU_CODE_NET_ADMIN_PROHIBIT = \
+            ICMP_DU_CODE_NET_ADMIN_PROHIBIT
+        self.ICMP_DU_CODE_HOST_ADMIN_PROHIBIT = \
+            ICMP_DU_CODE_HOST_ADMIN_PROHIBIT
+        self.ICMP_DU_CODE_NET_TOS_UNREACH = ICMP_DU_CODE_NET_TOS_UNREACH
+        self.ICMP_DU_CODE_HOST_TOS_UNREACH = ICMP_DU_CODE_HOST_TOS_UNREACH
+        self.ICMP_DU_CODE_COMMS_ADMIN_PROHIBIT = \
+            ICMP_DU_CODE_COMMS_ADMIN_PROHIBIT
+        self.ICMP_DU_CODE_HOST_PRECEDENCE = ICMP_DU_CODE_HOST_PRECEDENCE
+        self.ICMP_DU_CODE_PRECEDENCE_CUTOFF = \
+            ICMP_DU_CODE_PRECEDENCE_CUTOFF
+        self.ICMP_REDIR_CODE_NET = ICMP_REDIR_CODE_NET
+        self.ICMP_REDIR_CODE_HOST = ICMP_REDIR_CODE_HOST
+        self.ICMP_REDIR_CODE_NET_TOS = ICMP_REDIR_CODE_NET_TOS
+        self.ICMP_REDIR_CODE_HOST_TOS = ICMP_REDIR_CODE_HOST_TOS
+        self.ICMP_TIME_EX_CODE_TTL_EXCEEDED = \
+            ICMP_TIME_EX_CODE_TTL_EXCEEDED
+        self.ICMP_TIME_EX_CODE_FRAG_EXCEEDED = \
+            ICMP_TIME_EX_CODE_FRAG_EXCEEDED
+        self.ICMP_PER_PROB_CODE_POINTER = ICMP_PER_PROB_CODE_POINTER
+        self.ICMP_PER_PROB_CODE_OPTION_MISSING = \
+            ICMP_PER_PROB_CODE_OPTION_MISSING
+        self.ICMP_PER_PROB_CODE_LENGTH = ICMP_PER_PROB_CODE_LENGTH
+        self.PROTO_ICMP = PROTO_ICMP
+        self.PROTO_TCP = PROTO_TCP
+        self.PROTO_UDP = PROTO_UDP
+        self.PQ_PKT = PQ_PKT
+        self.PQ_ETH = PQ_ETH
+        self.PQ_FRAME = PQ_FRAME
+        self.PQ_ICMP = PQ_ICMP
+        self.PQ_IP = PQ_IP
+        self.PQ_TCP = PQ_TCP
+        self.PQ_UDP = PQ_UDP
+        self.PQ_ARP = PQ_ARP
+        self.PQ_MPLS = PQ_MPLS
+        self.PQ_NETFLOW_SIMPLE = PQ_NETFLOW_SIMPLE
+        self.PQ_NULLPKT = PQ_NULLPKT
+
+
 cdef uint16_t checksum(bytes pkt):
-    """
-    16-bit one's complement of the one's complement sum or an arry of bytes
-    padded if necessary to make it an even number of bytes.
-    :param pkt: a byte string representing the packet data to be checksummed.
-    :return: 16 bit checksum value.
+    """16-bit one's complement of the one's complement sum bytes string. The
+    bytes are padded if necessary to make align it to 16 bits.
+
+    Args:
+        :pkt (bytes): a byte string representing the packet data to be 
+            checksummed.
+
+    Returns: 
+        uint16_t: 16 bit checksum value.
     """
     cdef uint32_t s
     cdef uint16_t _s
@@ -57,57 +214,55 @@ cdef unsigned char is_ipv4(bytes ip):
     except socket.error:
         return 0
 
+
 cdef void set_short_nibble(uint16_t* short_word,
                            unsigned char nibble,
-                           unsigned char which):
+                           unsigned char offset):
     """
     Set the value of a 4 bit nibble in a 16 bit short.
     :param short_word: Pointer to the short to set.
     :param nibble: 4 bit value to set.
-    :param which: 1-4 from low to high nibble.
+    :param offset: 0-15 the offset of the nibble in bits
     :return: void
     """
-    cdef:
-        uint16_t shift
-    shift = 4 * which
     short_word[PTR_VAL] = \
-        (short_word[PTR_VAL] & ~(0xf << shift)) | (nibble << shift)
+        (short_word[PTR_VAL] & ~(0xf << offset)) | (nibble << offset)
+
 
 cdef void set_char_nibble(unsigned char* char_word,
                           unsigned char nibble,
-                          unsigned char which):
+                          unsigned char offset):
     """
     Set the value of a 4 bit nibble in a 8 bit char.
     :param short_word: Pointer to the char to set.
     :param nibble: 4 bit value to set.
-    :param which: 1-2 from low to high nibble.
+    :param offset: 0-7 the offset of the nibble in bits
     :return: void
     """
-    cdef:
-        unsigned char shift
-    shift = 4 * which
     char_word[PTR_VAL] =  \
-        (char_word[PTR_VAL] & ~(0xf << shift)) | (nibble << shift)
+        (char_word[PTR_VAL] & ~(0xf << offset)) | (nibble << offset)
 
 
-cdef uint16_t get_short_nibble(uint16_t short_word, unsigned char which):
+cdef uint16_t get_short_nibble(uint16_t short_word, unsigned char offset):
     """
     Get 4 bit value from a 16 bit short.
     :param short_word: unsigned short value to get a nibble from.
-    :param which: 1-4 from low to high nibble.
+    :param offset: 0-15 the offset of the nibble in bits
     :return: unsigned short containing value of nibble.
     """
-    return (short_word >> (4 * which)) & 0xF
+    return (short_word >> offset) & 0xF
+
 
 cdef unsigned char get_char_nibble(unsigned char char_word,
-                                   unsigned char which):
+                                   unsigned char offset):
     """
     Get 4 bit value from a 8 bit char.
-    :param short_word: unsigned char value to get a nibble from.
-    :param which: 1-2 from low to high nibble.
+    :param char_word: unsigned char value to get a nibble from.
+    :param offset: 0-7 the offset of the nibble in bits
     :return: unsigned char containing value of nibble.
     """
-    return (char_word >> (4 * which)) & 0xF
+    return (char_word >> offset) & 0xF
+
 
 cdef void set_bit(uint16_t* flags, unsigned char offset):
     """
@@ -126,6 +281,7 @@ cdef void set_bit(uint16_t* flags, unsigned char offset):
         raise ValueError("inetpkt.set_bit() offset ({0}) value to large "
                          "for short type".format(offset))
 
+
 cdef void set_word_bit(uint32_t* flags, unsigned char offset):
     """
     Set a single bit in a unsigned int
@@ -142,6 +298,7 @@ cdef void set_word_bit(uint32_t* flags, unsigned char offset):
     else:
         raise ValueError("inetpkt.set_bit() offset ({0}) value to large "
                          "for int type".format(offset))
+
 
 cdef void set_cbit(unsigned char* flags, unsigned char offset):
     """
@@ -178,6 +335,7 @@ cdef void unset_bit(uint16_t* flags, unsigned char offset):
         raise ValueError("inetpkt.unset_bit() offset ({0}) value to large "
                          "for short type".format(offset))
 
+
 cdef void unset_word_bit(uint32_t* flags, unsigned char offset):
     """
     Unset a single bit in a unsigned int
@@ -194,6 +352,7 @@ cdef void unset_word_bit(uint32_t* flags, unsigned char offset):
     else:
         raise ValueError("inetpkt.unset_bit() offset ({0}) value to large "
                          "for int type".format(offset))
+
 
 cdef void unset_cbit(unsigned char* flags, unsigned char offset):
     """
@@ -214,18 +373,16 @@ cdef void unset_cbit(unsigned char* flags, unsigned char offset):
 
 
 cdef class PKT:
-    """
-    Base class for all Steelscript Packets packet objects.
-    """
-
     def __init__(self, *args, **kwargs):
-        """
+        """Initialize a PKT object
 
-        :param args: pass through to sub classes.
-        :param kwargs: pass through to sub classes excepting 'l7_ports'.
-        :param l7_ports: A dictionary of <port>: <class>. Used by sub
-               classes like TCP and UDP to determine what class to
-               use in decoding their payload.
+        Args:
+            :args (list): pass through to sub classes.
+            :kwargs (dict): pass through to sub classes excepting 'l7_ports'.
+            :l7_ports (dict): A dictionary of <port>: <class>. Used by
+                sub classes like TCP and UDP to determine what class to use in
+                decoding their payload.
+
         """
         self.pkt_name = b'PKT'
         self.pq_type, self.query_fields = PKT.query_info()
@@ -236,39 +393,44 @@ cdef class PKT:
 
     @classmethod
     def query_info(cls):
+        """ Used by pcap_query to determine what query fields this packet type
+        supports and what its PKT type ID is. The PKT type ID is usually the
+        layer 4 port number for layer 7 PKT types.
+
+        Returns:
+            :tuple: Consisting of PKT type and a tuple of the supported field
+                names.
         """
-        Used by pcap_query to determine what query fields this packet type
-        supports and what its PKT type ID is.
-        The PKT type ID is usually the layer 4 port number for layer 7
-        PKT types.
-        :return: tuple of PKT type and a tuple of the supported field names.
-        """
-        return (PQTYPES.t_pkt,
+        return (PQ_PKT,
                 ())
 
     @classmethod
     def default_ports(cls):
-        """
-        Used by pcap_query to automatically decode layer 7 protocols.
-        :return: list of layer 4 ports for 'this' protocol.
+        """Used by pcap_query to automatically decode layer 7 protocols.
+
+        Returns:
+            :list: list of layer 4 ports for 'this' protocol.
         """
         return []
 
-    # TODO figure out what query_field_map was and if I can get rid of it.
     cpdef object get_field_val(self, bytes field):
-        return getattr(self, self.query_field_map.get(field, b''), None)
+        return None
 
     cpdef PKT get_layer(self, bytes name, int instance=1, int found=0):
-        """
-        Used to get sub 'layers' of a PKT class based on the name of the
+        """Used to get sub 'layers' of a PKT class based on the name of the
         desired layer.
-        :param name: Class ID of the desired layer ('IP', 'UDP', ...)
-        :param instance: The Nth instance of the class you want. Useful for
-               PKT types that can exist multiple times in a single packet.
-               Examples include MPLS or Ethernet.
-        :param found: Used in recursive calls to get_layer when instance is
-               > 1
-        :return: The PKT instance OR an empty NullPkt instance if not found.
+
+        Args:
+            :name (bytes): Class name of the desired layer ('IP', 'UDP', ...)
+            :instance (int): The Nth instance of the class you want. 
+                Useful for PKT types that can exist multiple times in a single 
+                packet. Examples include MPLS or Ethernet.
+            :found (int): Used in recursive calls to get_layer when instance 
+                is > 1
+
+        Returns:
+            PKT: The PKT instance OR an empty NullPkt instance if not found.
+
         """
         cdef:
             int fnd
@@ -290,17 +452,20 @@ cdef class PKT:
                                 uint16_t pq_type,
                                 int instance=1,
                                 int found=0):
-        """
-        Used to get sub 'layers' of a PKT class based on the PKT type ID 
+        """Used to get sub 'layers' of a PKT class based on the PKT type ID 
         of the desired layer.
-        :param pq_type: Class name of the desired layer (PQTYPES.t_ip, 
-               PQTYPES.t_udp, ...)
-        :param instance: The Nth instance of the class you want. Useful for
-               PKT types that can exist multiple times in a single packet.
-               Examples include MPLS or Ethernet.
-        :param found: Used in recursive calls to get_layer when instance is
-               > 1
-        :return: The PKT instance OR an empty NullPkt instance if not found.
+
+        Args:
+            :pq_type (uint16_t): Class type ID of the desired layer. For 
+                example PQTYPES.t_ip, PQTYPES.t_udp, ...
+            :instance (int): The Nth instance of the class you want. Useful for
+                   PKT types that can exist multiple times in a single packet.
+                   Examples include MPLS or Ethernet.
+            :found (int): Used in recursive calls to get_layer when instance 
+                is > 1
+        Returns: 
+            :PKT: The PKT instance OR an empty NullPkt instance if not found.
+
         """
         cdef:
             int fnd
@@ -319,25 +484,33 @@ cdef class PKT:
             return NullPkt()
 
     cpdef bytes pkt2net(self, dict kwargs):
-        """
-        Used to export a PKT based packet class in network order for writing
+        """Used to export a PKT based packet class in network order for writing
         to a socket or into a pcap file.
-        :param kwargs: list of arguments defined by PKT sub classes.
-        :return: network order byte string representation of the PKT instance.
+
+        Args:
+            :kwargs (dict): list of arguments defined by PKT sub classes.
+        Returns: 
+            :bytes: network order byte string representation of the PKT 
+                instance.
         """
+
         return b''
 
     cpdef tuple from_buffer(self, tuple args, dict kwargs):
-        """
-        Used to determine if the instance is being initialized from data or
+        """Used to determine if the instance is being initialized from data or
         from keyword arguments. If args[0] is an array, bytes, or a string OR
         if a 'data' keyword argument is then the PKT instance is initialized
         from an array of Unsigned chars.
-        :param args: array of initialization arguments 
-        :param kwargs: dictionary of keyword arguments
-        :return: tuple of 1/0 specifying if the instance is or is not 
-                 initializing from data, and the data as an array of unsigned
-                 chars.
+
+        Args:
+            :args (list): array of initialization arguments 
+            :kwargs (dict): dictionary of keyword arguments
+
+        Returns: 
+            :tuple: First element contains 1 or 0 specifying if the instance
+                is or is not initializing from data. The second element of the
+                tuple contains the data as an array of unsigned chars if data
+                is present. Otherwise an empty array.
         """
         if len(args) == 1 and isinstance(args[0], array):
             return 1, args[0]
@@ -351,55 +524,36 @@ cdef class PKT:
 
 
 cdef class ARP(PKT):
-    """
-    Implements RFC 826 Address Resolution Protocol. See schematic to
-    follow:
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |          Hardware Type        |         Protocol Type         |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |  Hardware Len  |   Proto Len  |           Operation           |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |           Sender Hardware Addr (Hardware Len Bytes)           |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |            Sender Protocol Addr (Proto Len Bytes)             |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |           Target Hardware Addr (Hardware Len Bytes)           |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |            Target Protocol Addr (Proto Len Bytes)             |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-    """
 
     def __init__(self, *args, **kwargs):
-        """
-        Initialize an ARP object.
-        :param args: Optional one element list containing network order
-               bytes of an ARP packet
-        :param data: Optional keyword argument containing network order
-               bytes of an ARP packet
-        :param hardware_type: Network Protocol Type. For example: Ethernet
-               is hardware_type 1.
-        :param proto_type: Network protocol for this ARP request. For example
-               this field would be set to 0x800 if this is a IPv4 ARP. Valid
-               values for this field are shared with the IEEE 802.3
-               EtherType specification used by Ethernet.
-        :param hardware_len: Length in bytes (octets) for the hardware type
-               specified in hardware_type above.
-        :param proto_len: Length in octets for the proto_type specified above.
-               IPv4 has a lenght of 4 for example.
-        :param operation: 1 for request and 0 for response.
-        :param sender_hw_addr: string representation of the senders hardware
-               address. For example with hardware_type 1 this would be:
-               'xx:xx:xx:xx:xx:xx'
-        :param sender_proto_addr: string representation of the senders
-               hardware address. For example with proto_type 0x800 this would
-               be 'xxx.xxx.xxx.xxx'
-        :param target_hw_addr: string representation of the targets hardware
-               address.
-        :param target_proto_addr: string representation of the targets
-               hardware address.
+        """Initialize an ARP object.
+
+        Args:
+            :args (list): Optional one element list containing network order
+                bytes of an ARP packet
+            :data (bytes or array.arry): Optional keyword argument containing
+                network order bytes of an ARP packet
+            :hardware_type (uint16_t): Network Protocol Type. For example:
+                Ethernet is hardware_type 1.
+            :proto_type (uint16_t): Network protocol for this ARP request. For
+                example this field would be set to 0x800 if this is a IPv4 ARP.
+                Valid values for this field are shared with the IEEE 802.3
+                EtherType specification used by Ethernet.
+            :hardware_len (unsigned char): Length in bytes (octets) for the
+                hardware type specified in hardware_type above.
+            :proto_len (unsigned char): Length in octets for the proto_type
+                specified above. IPv4 has a length of 4 for example.
+            :operation (unsigned char): 1 for request and 2 for response.
+            :sender_hw_addr (bytes): bytes representation of the senders
+                hardware address. For example with hardware_type 1 this would
+                be: 'xx:xx:xx:xx:xx:xx'
+            :sender_proto_addr (bytes): bytes representation of the senders
+                hardware address. For example with proto_type 0x800 this would
+                be 'xxx.xxx.xxx.xxx'
+            :target_hw_addr (bytes): bytes representation of the targets
+                hardware address.
+            :target_proto_addr (bytes): bytes representation of the targets
+                hardware address.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
         self.pkt_name = b'ARP'
@@ -413,15 +567,15 @@ cdef class ARP(PKT):
         if use_buffer:
             (self.hardware_type, self.proto_type, self.hardware_len,
              self.proto_len, self.operation) = \
-                struct.unpack('!HHBBH', self._buffer[:8])
-            if(self.hardware_type == ARP_CONST.hwt_ether and
-                       self.proto_type == ETHERTYPES.ipv4 and
-                       self.proto_len == ARP_CONST.ipv4_len):
+                unpack('!HHBBH', self._buffer[:8])
+            if(self.hardware_type == ARP_TYPE_ETH and
+                       self.proto_type == ETH_TYPE_IPV4 and
+                       self.proto_len == IPV4_LEN):
                 self.sender_hw_addr = bytes(':'.join('%02x'%i for i in
-                                struct.unpack("!6B",self._buffer[8:14])))
+                                unpack("!6B",self._buffer[8:14])))
                 self.sender_proto_addr = socket.inet_ntoa(self._buffer[14:18])
                 self.target_hw_addr = bytes(':'.join('%02x'%i for i in
-                                struct.unpack("!6B",self._buffer[18:24])))
+                                unpack("!6B",self._buffer[18:24])))
                 self.target_proto_addr = socket.inet_ntoa(self._buffer[24:28])
             else:
                 s_proto_start = 8 + self.hardware_len
@@ -431,24 +585,23 @@ cdef class ARP(PKT):
                 h_u = "!{0}B".format(self.hardware_len)
                 p_u = "!{0}B".format(self.proto_len)
                 self.sender_hw_addr = \
-                    bytes(''.join('%02x'%i for i in struct.unpack(h_u,
+                    bytes(''.join('%02x'%i for i in unpack(h_u,
                         self._buffer[8:s_proto_start])))
                 self.sender_proto_addr = \
-                    bytes(''.join('%02x'%i for i in struct.unpack(p_u,
+                    bytes(''.join('%02x'%i for i in unpack(p_u,
                         self._buffer[s_proto_start:t_hw_start])))
                 self.taget_hw_addr = \
-                    bytes(''.join('%02x'%i for i in struct.unpack(h_u,
+                    bytes(''.join('%02x'%i for i in unpack(h_u,
                         self._buffer[t_hw_start:t_proto_start])))
                 self.taget_proto_addr = \
-                    bytes(''.join('%02x'%i for i in struct.unpack(p_u,
+                    bytes(''.join('%02x'%i for i in unpack(p_u,
                         self._buffer[t_proto_start:t_proto_end])))
         else:
             self.hardware_type = kwargs.get('hardware_type',
-                                            ARP_CONST.hwt_ether)
-            self.proto_type = kwargs.get('proto_type', ETHERTYPES.ipv4)
-            self.hardware_len = kwargs.get('hardware_len',
-                                           ARP_CONST.eth_mac_len)
-            self.proto_len = kwargs.get('proto_len', ARP_CONST.ipv4_len)
+                                            ARP_TYPE_ETH)
+            self.proto_type = kwargs.get('proto_type', ETH_TYPE_IPV4)
+            self.hardware_len = kwargs.get('hardware_len',MAC_LEN)
+            self.proto_len = kwargs.get('proto_len', IPV4_LEN)
             self.operation = kwargs.get('operation', 1)
             self.sender_hw_addr = kwargs.get('sender_hw_addr',
                                              b'00:00:00:00:00:00')
@@ -461,25 +614,30 @@ cdef class ARP(PKT):
 
     @classmethod
     def query_info(cls):
+        """classmethod - provides pcap_query with the query fields ARP
+        supports and ARP's PKT type ID.
+
+        Returns:
+            :tuple: 2 elements: PQTYPES.t_arp and a tuple of the supported
+                field names.
         """
-        Provides pcap_query with the query fields ARP supports and ARP's
-        PKT type ID.
-        :return: tuple of PQTYPES.t_arp and a tuple of the supported
-        field names.
-        """
-        return (PQTYPES.t_arp,
+        return (ETH_TYPE_ARP,
                 (b'arp.hw.type', b'arp.proto.type', b'arp.hw.size',
-                 b'arp.proto.size', b'arp.src.hw_mac', b'arp.src.proto_ipv4',
-                 b'arp.dst.hw_mac', b'arp.dst.proto_ipv4'))
+                 b'arp.proto.size', b'arp.opcode', 'arp.src.hw_mac',
+                 b'arp.src.proto_ipv4', b'arp.dst.hw_mac',
+                 b'arp.dst.proto_ipv4'))
 
     cpdef object get_field_val(self, bytes field):
-        """
-        Returns the value of the Wireshark format field name. Implemented as 
+        """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch.
-        :param field: name of the desired field in Wireshark format. For 
-               example: arp.proto.type or tcp.flags.urg
-        :return: Returns the value of the field as a python object.
+
+        Args:
+            :field (bytes): name of the desired field in Wireshark format. For 
+                example: arp.proto.type or tcp.flags.urg
+
+        Returns:
+            :object: the value of the field.
         """
         if field == b'arp.hw.type':
             return self.hardware_type
@@ -489,6 +647,8 @@ cdef class ARP(PKT):
             return self.hardware_len
         elif field == b'arp.proto.size':
             return self.proto_len
+        elif field == b'arp.opcode':
+            return self.operation
         elif field == b'arp.src.hw_mac':
             return self.sender_hw_addr
         elif field == b'arp.src.proto_ipv4':
@@ -507,13 +667,19 @@ cdef class ARP(PKT):
         def __get__(self):
             """
             Get ARP.operation
+
+            Returns:
+                :uint16_t: current operation value.
             """
             return self._operation
-        def __set__(self, unsigned char val):
+        def __set__(self, uint16_t val):
             """
             Set ARP.operation
-            :param val: unsigned char value to set operation to.
-            :return: None
+
+            Args:
+            :val (uint16_t): unsigned char value to set operation to. Supported
+                values are 1 - 9.
+
             """
             if 1 <= val <= 9:
                 self._operation = val
@@ -522,35 +688,39 @@ cdef class ARP(PKT):
                                  "values are 1 for request and 2 for reply.")
 
     cpdef bytes pkt2net(self, dict kwargs):
-        """
-        Used to export a ARP packet class instance in network order for 
+        """Used to export a ARP packet class instance in network order for 
         writing to a socket or into a pcap file. At present this function
         only works Ethernet/IPv4 ARP packets OR if buffer was set. If this is 
         not a self.hardware_type == ARP_CONST.hwt_ether, 
         self.proto_type == ETHERTYPES.ipv4 packet BUT buffer is set then the 
         packet in will simply be repeated from the buffer. Any changes are 
-        lost
-        :param kwargs: list of arguments defined by PKT sub classes. ARP does
-               not have any such options.
-        :return: network order byte string representation of the PKT instance.
+        lost.
+
+        Args:
+            :kwargs (dict): list of arguments defined by PKT sub classes. ARP
+                does not support any key work arguments and does not have a 
+                payload so any args passed will be ignored.
+        Returns: 
+            :bytes: network order byte string representation of the ARP 
+                instance.
         """
         cdef:
             bytes sndr, trgt, pair
         sndr = trgt = b''
 
-        if(self.hardware_type == ARP_CONST.hwt_ether and
-               self.proto_type == ETHERTYPES.ipv4 and
-               self.proto_len == ARP_CONST.ipv4_len):
+        if(self.hardware_type == ARP_TYPE_ETH and
+               self.proto_type == ETH_TYPE_IPV4 and
+               self.proto_len == IPV4_LEN):
             for pair in self.sender_hw_addr.split(':'):
                 sndr += binascii.unhexlify(pair)
             for pair in self.target_hw_addr.split(':'):
                 trgt += binascii.unhexlify(pair)
             return b'{0}{1}{2}{3}{4}'.format(
-                struct.pack('!HHBBH', self.hardware_type,
-                                      self.proto_type,
-                                      self.hardware_len,
-                                      self.proto_len,
-                                      self.operation),
+                pack('!HHBBH', self.hardware_type,
+                               self.proto_type,
+                               self.hardware_len,
+                               self.proto_len,
+                               self.operation),
                 sndr,
                 socket.inet_aton(self.sender_proto_addr),
                 trgt,
@@ -568,12 +738,13 @@ cdef class NullPkt(PKT):
     packet bytes without any decode.
     """
     def __init__(self, *args, **kwargs):
-        """
-        Initialize an NullPkt object.
-        :param args: Optional one element list containing network order
-               bytes of an ARP packet
-        :param data: Optional keyword argument containing network order
-               bytes of an ARP packet
+        """ Initialize an NullPkt object.
+
+        Args:
+        :args (list): Optional one element list containing network order bytes
+            of an ARP packet
+        :data (bytes): Optional keyword argument containing network order bytes
+            of an ARP packet
         """
         super(self.__class__, self).__init__(*args, **kwargs)
         self.pkt_name = b'NullPkt'
@@ -589,12 +760,16 @@ cdef class NullPkt(PKT):
 
     @classmethod
     def query_info(cls):
+        """pseudo pcap_query support for query_info.
+
+        Returns:
+            :tuple: PQTYPES.t_nullpkt and an empty field list
         """
-        pseudo pcap_query support for query_info.
-        :return: returns tuple of PQTYPES.t_nullpkt and an empty field list
-        """
-        return (PQTYPES.t_nullpkt,
+        return (PQ_NULLPKT,
                 ())
+
+    def __repr__(self):
+        return "{0}: {1}".format(self.pkt_name, self.payload)
 
     cpdef object get_field_val(self, bytes field):
         """
@@ -603,11 +778,14 @@ cdef class NullPkt(PKT):
         return None
 
     cpdef bytes pkt2net(self, dict kwargs):
-        """
-        Used to export a NullPkt object for writing to a socket or into 
+        """Used to export a NullPkt object for writing to a socket or into 
         a pcap file. Data is exactly as it came in.
-        :param kwargs: Ignored
-        :return: string
+
+        Args:
+            :kwargs (dict): Ignored
+
+        Returns:
+            :bytes: The NullPkt data exactly as it came into __init__
         """
         return b'{0}'.format(self.payload)
 
@@ -618,15 +796,25 @@ cdef class Ip4Ph:
     for TCP and UDP. Part of checksum calculation. Automatically passed in
     to pkt2net by IP if its payload is TCP or UDP
     """
-    def __cinit__(self, **kwargs):
+
+    def __init__(self, **kwargs):
+        """Initialize a new Ip4Ph object. Actual initialization is done by the
+        classes Cython __cinit__ function. __init__ exists to support
+        documentation generation.
+
+        Args:
+            :src (bytes): IPv4 src address for parent IP Object
+            :dst (bytes ): IPv4 dst address for parent IP Object
+            :reserved (unsigned char): unused 8 bits in pseudo header. Should
+                be 0
+            :proto (unsigned char): Proto of parent IP object.
+            :payload_len (uint16_t): Total length of IP payload in octets.
+
         """
-        C level init function for Ip4Ph.
-        :param src: IPv4 src address for parent IP Object
-        :param dst: IPv4 dst address for parent IP Object
-        :param reserved: unused 8 bits in pseudo header. Should be 0
-        :param proto: Proto of parent IP object.
-        :param payload_len: Total length of IP payload in octets.
-        :return: Ip4Ph object
+
+    def __cinit__(self, **kwargs):
+        """The real C level init function for Ip4Ph. __init__ above is only
+        for documentation.
         """
         self.src = kwargs.get('src', b'0.0.0.0')
         self.dst = kwargs.get('dst', b'0.0.0.0')
@@ -646,21 +834,23 @@ cdef class NetflowSimple(PKT):
     """
 
     def __init__(self, *args, **kwargs):
-        """
-        Initialize a NetflowSimple object.
-        :param args: Optional one element list containing network order
-               bytes of an ARP packet
-        :param data: Optional keyword argument containing network order
-               bytes of an ARP packet
-        :param version: Netflow version (1-9)
-        :param count: Count of records if version is 1-8 or count of flow
-               sets if version is 9
-        :param sys_uptime: Current time in milliseconds since the export
-               device started at the moment the netflow packet was sent.
-        :param unix_secs: Seconds since the start of the epoch
-        :param unix_nano_seconds: nanoseconds remaining from unix_secs. This
-               field will not be correct IF the version is 9
-        :param payload: The rest of the netflow packet as bytes.
+        """Initialize a NetflowSimple object.
+
+        Args:
+            :args (list): Optional one element list containing network order
+                bytes of an ARP packet
+            :data (bytes): Optional keyword argument containing network order
+                bytes of an ARP packet
+            :version (uint16_t): Netflow version (1-9)
+            :count (uint16_t): Count of records if version is 1-8 or count of
+                flow sets if version is 9
+            :sys_uptime (uint32_t): Current time in milliseconds since the
+                export device started at the moment the netflow packet was
+                sent.
+            :unix_secs (uint32_t): Seconds since the start of the epoch
+            :unix_nano_seconds (uint32_t): nanoseconds remaining from
+                unix_secs. This field will not be correct IF the version is 9
+            :payload (bytes): The rest of the netflow packet as bytes.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
         self.pkt_name = b'NetflowSimple'
@@ -675,7 +865,7 @@ cdef class NetflowSimple(PKT):
              self.sys_uptime,
              self.unix_secs,
              self.unix_nano_seconds) = \
-                struct.unpack('!HHIII', self._buffer[:16])
+                unpack('!HHIII', self._buffer[:16])
 
             if len(self._buffer[16:]):
                 self.payload = self._buffer[16:]
@@ -691,13 +881,14 @@ cdef class NetflowSimple(PKT):
 
     @classmethod
     def query_info(cls):
+        """classmethod - provides pcap_query with the query fields
+        NetflowSimple supports and NetflowSimple's PKT type ID.
+
+        Returns:
+            :tuple: PQTYPES.t_netflow_simple and a tuple of the supported
+            field names.
         """
-        Provides pcap_query with the query fields NetflowSimple supports
-        and NetflowSimple's PKT type ID.
-        :return: tuple of PQTYPES.t_netflow_simple and a tuple
-        of the supported field names.
-        """
-        return (PQTYPES.t_netflow_simple,
+        return (PQ_NETFLOW_SIMPLE,
                 (b'netflow.version', b'netflow.count', b'netflow.sys_uptime',
                  b'netflow.unix_secs', b'netflow.unix_nano_seconds'))
 
@@ -705,18 +896,24 @@ cdef class NetflowSimple(PKT):
     def default_ports(cls):
         """
         Used by pcap_query to automatically decode layer 7 protocols.
-        :return: list of layer 4 ports for NetflowSimple.
+        The default Layer 4 ports for netflow are 2005 and 2055.
+
+        Returns:
+            :list: layer 4 ports for NetflowSimple.
         """
         return [2005, 2055]
 
     cpdef object get_field_val(self, bytes field):
-        """
-        Returns the value of the Wireshark format field name. Implemented as 
+        """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch.
-        :param field: Name of the desired field in Wireshark format. For
-               example: arp.proto.type or tcp.flags.urg 
-        :return: The value.
+
+        Args:
+            :field (bytes): name of the desired field in Wireshark format. For 
+                example: arp.proto.type or tcp.flags.urg
+
+        Returns:
+            :object: the value of the field.
         """
         if field == b'netflow.version':
             return self.version
@@ -732,13 +929,17 @@ cdef class NetflowSimple(PKT):
             return None
 
     cpdef bytes pkt2net(self, dict kwargs):
-        """
-        Used to export a NetflowSimple packet class instance in network order 
-        for writing to a socket or into a pcap file. 
-        :param kwargs: list of arguments defined by PKT sub classes. 
-               NetflowSimple does not have any such options.
-        :return: network order byte string representation of this 
-                 NetflowSimple instance.
+        """Used to export a NetflowSimple packet class instance in network 
+        order for writing to a socket or into a pcap file.
+
+        Args:
+            :kwargs (dict): list of arguments defined by PKT sub classes. 
+                NetflowSimple does not support any key work arguments and 
+                does not have a PKT class payload so any args passed will 
+                be ignored.
+        Returns: 
+            :bytes: network order byte string representation of the 
+                NetflowSimple instance.
         """
         return b'{0}{1}'.format(pack("!HHIII", self.version,
                                                self.count,
@@ -749,40 +950,25 @@ cdef class NetflowSimple(PKT):
 
 
 cdef class UDP(PKT):
-    """
-    Implements RFC 768 User Datagram Protocol
-     0      7 8     15 16    23 24    31
-    +--------+--------+--------+--------+
-    |     Source      |   Destination   |
-    |      Port       |      Port       |
-    +--------+--------+--------+--------+
-    |                 |                 |
-    |     Length      |    Checksum     |
-    +--------+--------+--------+--------+
-    |
-    |          data octets ...
-    +---------------- ...
-    """
-
     def __init__(self, *args, **kwargs):
-        """
-        Initialize a UDP object.
-        :param args: Optional one element list containing network order
-               bytes of an UDP packet
-        :param data: Optional keyword argument containing network order
-               bytes of an UDP packet
-        :param sport: Layer 4 source port of this packet
-        :param dport: Layer 4 destination port of this packet
-        :param ulen: UDP Length - Total length of the UDP header plus data
-               in bytes
-        :param checksum: The checksum value for this packet. Optional with
-               IPv4 and must be 0 if not used.
-        :param payload: The payload of this packet. Payload can be a PKT
-               sub class or a byte string.
-        :param l7_ports: A dictionary where the keys are layer 4 port numbers
-               and the values are PKT subclass packet classes. Used by
-               app_layer to determine what class should be used to decode
-               the payload string or byte array.
+        """Initialize a UDP object.
+
+        Args:
+            :args (list): Optional one element list containing network order
+                bytes of an UDP packet
+            :data (bytes): Optional keyword argument containing network order
+                bytes of an UDP packet
+            :sport (uint16_t): Layer 4 source port of this packet
+            :dport (uint16_t): Layer 4 destination port of this packet
+            :ulen (uint16_t): UDP Length - Total length of the UDP header plus
+                data in bytes
+            :checksum (uint16_t): The checksum value for this packet. Optional
+                with IPv4 and must be 0 if not used.
+            :payload (PKT or bytes): The payload of this packet.
+            :l7_ports: A dictionary where the keys are layer 4 port numbers
+                   and the values are PKT subclass packet classes. Used by
+                   UDP.app_layer() to determine what class should be used to
+                   decode the payload string or byte array.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
         self.pkt_name = b'UDP'
@@ -792,7 +978,7 @@ cdef class UDP(PKT):
         use_buffer, self._buffer = self.from_buffer(args, kwargs)
         if use_buffer:
             self.sport, self.dport, self.ulen, self.checksum = \
-                struct.unpack('!HHHH', self._buffer[:8])
+                unpack('!HHHH', self._buffer[:8])
             self.app_layer(self._buffer[8:])
         else:
             self.sport = kwargs.get('sport', 0)
@@ -803,33 +989,36 @@ cdef class UDP(PKT):
                 if isinstance(kwargs['payload'], PKT):
                    self.payload = kwargs['payload']
                 elif isinstance(kwargs['payload'], (bytes, str)):
-                    self.app_layer(kwargs['payload'])
+                    self.app_layer(array('B', kwargs['payload']))
                 else:
-                    self.payload = PKT()
+                    self.payload = NullPkt()
             else:
-                self.payload = PKT()
+                self.payload = NullPkt()
 
     @classmethod
     def query_info(cls):
-        """
-        Provides pcap_query with the query fields UDP supports and UDP's
+        """Provides pcap_query with the query fields UDP supports and UDP's
         PKT type ID.
-        :return: tuple of PQTYPES.t_udp and a tuple of the supported
-        field names.
+
+        Returns:
+            :tuple: PQTYPES.t_udp and a tuple of the supported field names.
         """
-        return (PQTYPES.t_udp,
+        return (PQ_UDP,
                 (b'udp.srcport', b'udp.dstport', b'udp.length',
                  b'udp.checksum', b'udp.payload',b'udp.payload.offset[x:y]'))
 
     cpdef object get_field_val(self, bytes field):
-        """
-        Returns the value of the Wireshark format field name. Implemented as 
+        """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch. Also handles 
-        udp.payload.offset[x:y] field. 
-        :param field: name of the desired field in Wireshark format. For 
-               example: arp.proto.type or tcp.flags.urg
-        :return: Returns the value of the field as a python object.
+        udp.payload.offset[x:y] field.
+
+        Args:
+            :field (bytes): name of the desired field in Wireshark format. For 
+                example: arp.proto.type or tcp.flags.urg
+
+        Returns: 
+            :object: value of the field.
         """
         cdef list offsets
         cdef f = field[:18]
@@ -854,19 +1043,24 @@ cdef class UDP(PKT):
             return None
 
     cpdef bytes pkt2net(self, dict kwargs):
-        """
-        Used to export a UDP packet class instance in network order 
-        for writing to a socket or into a pcap file. 
-        :param kwargs: list of arguments defined by PKT sub classes. UDP
-               supports the following keyword arguments:
-        :param update: Determines if this UDP instance and any sub layers
-               should update size counters. For UDP this means updating the
-               ulen variable.
-        :param csum: Determines if this UDP instance should re-calculate 
-               its checksum.
-        :param ipv4_pheader: IPv4 psuedo header used in checksum calculation.
-        :return: network order byte string representation of this 
-                 UDP instance.
+        """Used to export a UDP packet class instance in network order  for 
+        writing to a socket or into a pcap file. 
+
+        Args:
+            :kwargs (dict): list of arguments defined by PKT sub classes. 
+                Passed along by UDP to payload classes. UDP supports the 
+                following keyword arguments:
+            :csum (0 or 1): Determines if this UDP instance should re-calculate 
+                its checksum.
+            :update (0 or 1): Determines if this UDP instance and any sub 
+                layers should update size counters. For UDP this means updating
+                the ulen variable.
+            :ipv4_pheader (Ip4Ph): IPv4 pseudo header used in checksum 
+                calculation.
+
+        Returns: 
+            :bytes: network order byte string representation of this UDP 
+                instance.
         """
         cdef:
             unsigned char _update, _csum
@@ -891,7 +1085,6 @@ cdef class UDP(PKT):
                                                        self.ulen))
             self.checksum = checksum(b'{0}\000\000{1}'.format(ip_ph,
                                                               _pload_bytes))
-
         return b'{0}{1}'.format(pack('!HHHH', self.sport,
                                               self.dport,
                                               self.ulen,
@@ -899,14 +1092,15 @@ cdef class UDP(PKT):
                                 _pload_bytes)
 
     cdef app_layer(self, array plbuffer):
-        """
-        Attempts to create an instance of the correct layer 7 protocol
-        if the layer 4 ports match. Otherwise returns NullPkt or PKT
+        """Attempts to create an instance of the correct layer 7 protocol
+        if the layer 4 ports match. Otherwise returns NullPkt.
         instance.
-        :param plbuffer: array of bytes that make up the Layer 7 payload.
-        :return: void
+
+        Args:
+            :plbuffer (array.array of bytes): The Layer 7 payload.
         """
         cdef type pkt_cls
+        pkt_cls = NullPkt
         if len(plbuffer):
             if self.dport in self.l7_ports:
                 if issubclass(self.l7_ports[self.dport], PKT):
@@ -923,73 +1117,49 @@ cdef class UDP(PKT):
                     pkt_cls = self.l7_ports[0]
                 else:
                     pkt_cls = globals()[self.l7_ports[0]]
-            else:
-                pkt_cls = NullPkt
-            self.payload = pkt_cls(plbuffer)
-        else:
-            self.payload = PKT()
+        self.payload = pkt_cls(plbuffer)
 
 
 cdef class TCP(PKT):
-    """
-     0                  1                   2                   3
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |          Source Port          |       Destination Port        |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |                        Sequence Number                        |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |                    Acknowledgment Number                      |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |  Data |     |N|C|E|U|A|P|R|S|F|                               |
-    | Offset| Res |S|W|C|R|C|S|S|Y|I|            Window             |
-    |       |     | |R|E|G|K|H|T|N|N|                               |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |           Checksum            |         Urgent Pointer        |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |                    Options                    |    Padding    |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |                             data                              |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-    """
-
     def __init__(self, *args, **kwargs):
-        """
-        Initialize a TCP object.
-        :param args: Optional one element list containing network order
-               bytes of an TCP packet
-        :param data: Optional keyword argument containing network order
-               bytes of an TCP packet
-        :param sport: Layer 4 source port of this packet
-        :param dport: Layer 4 destination port of this packet
-        :param sequence: TCP sequence number.
-        :param acknowledgment: Acknowledgment number.
-        :param data_offset: Size of the TCP header in 32-bit 'words'. Min is
-               5.
-        :param flag_ns: ECN-nonce concealment protection (RFC 3540).
-        :param flag_cwr: Congestion Window Reduced flag (RFC 3168).
-        :param flag_ece: ECN-Echo flag (RFC 3168).
-        :param flag_urg: flag that the Urgent pointer field is significant.
-        :param flag_ack: flag that Acknowledgment field is significant.
-        :param flag_psh: flag requesting buffered data be pushed to the
-               receiving application.
-        :param flag_rst: Reset the connection
-        :param flag_syn: Synchronize sequence numbers. Starts TCP handshake.
-        :param flag_fin: Flag as the last package from src of this packet.
-        :param window: Size of the receive window (default in bytes).
-        :param checksum: The 16-bit checksum field.
-        :param urg_ptr: Offset from the sequence number indicating the
-               last urgent data byte. Use urg flag if set.
-        :param options: Array of bytes to use as the TCP options. The user
-               must update data_offset and make these bytes align to 32bit
-               words. This is not fully implemented in this PKT class.
-        :param payload: The payload of this packet. Payload can be a PKT
-               sub class or a byte string.
-        :param l7_ports: A dictionary where the keys are layer 4 port numbers
-               and the values are PKT subclass packet classes. Used by
-               app_layer to determine what class should be used to decode
-               the payload string or byte array.
+        """Initialize a TCP object.
+
+        Args:
+            :args (list): Optional one element list containing network order
+                bytes of an TCP packet
+            :data (bytes): Optional keyword argument containing network order
+                bytes of an TCP packet
+            :sport (uint16_t): Layer 4 source port of this packet
+            :dport (uint16_t): Layer 4 destination port of this packet
+            :sequence (uint32_t): TCP sequence number.
+            :acknowledgment (uint32_t): Acknowledgment number.
+            :data_offset (uint16_t): Size of the TCP header in 32-bit 'words'.
+                Min is 5.
+            :flag_ns (0 or 1): ECN-nonce concealment protection (RFC 3540).
+            :flag_cwr (0 or 1): Congestion Window Reduced flag (RFC 3168).
+            :flag_ece (0 or 1): ECN-Echo flag (RFC 3168).
+            :flag_urg (0 or 1): flag that the Urgent pointer field is
+                significant.
+            :flag_ack (0 or 1): flag that Acknowledgment field is significant.
+            :flag_psh (0 or 1): flag requesting buffered data be pushed to the
+                receiving application.
+            :flag_rst (0 or 1): Reset the connection
+            :flag_syn (0 or 1): Synchronize sequence numbers. Starts TCP
+                handshake.
+            :flag_fin (0 or 1): Flag as the last package from src of this
+                packet.
+            :window (uint16_t): Size of the receive window (default in bytes).
+            :checksum (uint16_t): The 16-bit checksum field.
+            :urg_ptr (uint16_t): Offset from the sequence number indicating the
+                last urgent data byte. Use urg flag if set.
+            :options (bytes): Array of bytes to use as the TCP options. The
+                user must update data_offset and make these bytes align to
+                32bit words. This is not fully implemented in this PKT class.
+            :payload (PKT or bytes): The payload of this packet.
+            :l7_ports (dict): A dictionary where the keys are layer 4 port
+                numbers and the values are PKT subclass packet classes. Used by
+                TCP.app_layer() to determine what class should be used to
+                decode the payload string or byte array.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
         self.pkt_name = b'TCP'
@@ -997,14 +1167,13 @@ cdef class TCP(PKT):
         cdef:
             unsigned char use_buffer
         use_buffer, self._buffer = self.from_buffer(args, kwargs)
-        self.ws_len = 0
+        self.ws_len = len(self._buffer)
         self._pad = b''
 
-        if use_buffer:
-            self.ws_len = len(self._buffer)
+        if use_buffer and self.ws_len >= 20:
             (self.sport, self.dport, self.sequence, self.acknowledgment,
             self._off_flags, self.window, self.checksum, self.urg_ptr) = \
-                struct.unpack('!HHIIHHHH', self._buffer[:20])
+                unpack('!HHIIHHHH', self._buffer[:20])
             if self.data_offset > 5:
                 self._options = \
                     bytes(self._buffer[20:(self.data_offset * 4)].tostring())
@@ -1012,11 +1181,15 @@ cdef class TCP(PKT):
                 self._options = b''
 
             self.app_layer(self._buffer[(self.data_offset * 4):])
-
         else:
-            self.sport = kwargs.get('sport', 0)
-            self.dport = kwargs.get('dport', 0)
-            self.sequence = kwargs.get('sequence', 0)
+            if use_buffer and self.ws_len == 8:
+                # From ICMP
+                (self.sport, self.dport, self.sequence) = \
+                    unpack('!HHI', self._buffer[:8])
+            else:
+                self.sport = kwargs.get('sport', 0)
+                self.dport = kwargs.get('dport', 0)
+                self.sequence = kwargs.get('sequence', 0)
             self.acknowledgment = kwargs.get('acknowledgment', 0)
             self.data_offset = kwargs.get('data_offset', 5)
             self.flag_ns = kwargs.get('flag_ns', 0)
@@ -1035,24 +1208,22 @@ cdef class TCP(PKT):
             if kwargs.has_key('payload'):
                 if isinstance(kwargs['payload'], PKT):
                    self.payload = kwargs['payload']
-                elif isinstance(kwargs['payload'], (bytes)):
-                    self.app_layer(kwargs['payload'])
-                elif isinstance(kwargs['payload'], (str)):
-                    self.app_layer(bytes(kwargs['payload']))
+                elif isinstance(kwargs['payload'], (bytes, str)):
+                    self.app_layer(array('B', kwargs['payload']))
                 else:
-                    self.payload = PKT()
+                    self.payload = NullPkt()
             else:
-                self.payload = PKT()
+                self.payload = NullPkt()
 
     @classmethod
     def query_info(cls):
-        """
-        Provides pcap_query with the query fields UDP supports and TCP's
+        """Provides pcap_query with the query fields UDP supports and TCP's
         PKT type ID.
-        :return: tuple of PQTYPES.t_tcp and a tuple of the supported
-        field names.
+
+        Returns:
+            :tuple: PQTYPES.t_tcp and a tuple of the supported field names.
         """
-        return (PQTYPES.t_tcp,
+        return (PQ_TCP,
                 (b'tcp.srcport', b'tcp.dstport', b'tcp.seq', b'tcp.ack',
                  b'tcp.hdr_len', b'tcp.len', b'tcp.flags', b'tcp.flags.urg',
                  b'tcp.flags.ack', b'tcp.flags.push', b'tcp.flags.reset',
@@ -1061,14 +1232,16 @@ cdef class TCP(PKT):
                  b'tcp.payload.offset[x:y]'))
 
     cpdef object get_field_val(self, bytes field):
-        """
-        Returns the value of the Wireshark format field name. Implemented as 
+        """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch. Also handles 
         tcp.payload.offset[x:y] field. 
-        :param field: name of the desired field in Wireshark format. For 
-               example: arp.proto.type or tcp.flags.urg
-        :return: Returns the value of the field as a python object.
+
+        Args:
+            :field (bytes): name of the desired field in Wireshark format. For 
+                example: arp.proto.type or tcp.flags.urg
+        Returns: 
+            :object: value of the field.
         """
         cdef list offsets
         cdef f = field[:18]
@@ -1119,10 +1292,10 @@ cdef class TCP(PKT):
     property data_offset:
         # 4 bits
         def __get__(self):
-            return get_short_nibble(self._off_flags, 3)
+            return get_short_nibble(self._off_flags, 12)
         def __set__(self, unsigned char val):
             if 5 <= val <= 15:
-                set_short_nibble(&self._off_flags, val, 3)
+                set_short_nibble(&self._off_flags, val, 12)
             else:
                 raise ValueError("data_offset valid values are 5-15")
 
@@ -1252,20 +1425,24 @@ cdef class TCP(PKT):
             self._options = val
 
     cpdef bytes pkt2net(self, dict kwargs):
-        """
-        Used to export a TCP packet class instance in network order 
-        for writing to a socket or into a pcap file. 
-        :param kwargs: list of arguments defined by PKT sub classes. TCP
-               supports the following keyword arguments:
-        :param csum: Determines if this TCP instance should re-calculate 
-               its checksum.
-        :param ipv4_pheader: IPv4 psuedo header used in checksum calculation.
-        :return: network order byte string representation of this 
-                 TCP instance.
+        """Used to export a TCP packet class instance in network order 
+        for writing to a socket or into a pcap file.
+
+        Args:
+            :kwargs (dict): list of arguments defined by PKT sub classes. TCP
+                supports the following keyword arguments:
+            :csum (0 or 1): Determines if this TCP instance should re-calculate 
+                its checksum.
+            :ipv4_pheader (Ip4Ps): IPv4 psuedo header used in checksum 
+                calculation.
+
+        Returns: 
+            :bytes: network order byte string representation of this 
+                TCP instance.
         """
         cdef:
-            uint16_t _csum, tcp_len
-            unsigned char _update
+            uint16_t tcp_len
+            bint _csum
             Ip4Ph _ipv4_pheader
             bytes _pload_bytes, ip_ph, sport_window
 
@@ -1312,6 +1489,7 @@ cdef class TCP(PKT):
         :return: void
         """
         cdef type pkt_cls
+        pkt_cls = NullPkt
         if len(plbuffer):
             if self.dport in self.l7_ports:
                 if issubclass(self.l7_ports[self.dport], PKT):
@@ -1328,67 +1506,269 @@ cdef class TCP(PKT):
                     pkt_cls = self.l7_ports[0]
                 else:
                     pkt_cls = globals()[self.l7_ports[0]]
+        self.payload = pkt_cls(plbuffer)
+
+
+cdef class ICMP(PKT):
+    """ RFC 792 ICMP with some additions. For example next hop MTU supported
+    for destination unreachable. Not all record types supported.
+    """
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+        self.pkt_name = b'ICMP'
+        self.pq_type, self.query_fields = ICMP.query_info()
+        cdef:
+            unsigned char use_buffer
+        use_buffer, self._buffer = self.from_buffer(args, kwargs)
+        if use_buffer:
+            self.identifier = 0
+            self.sequence = 0
+            self.mtu = 0
+            self.pointer = 0
+            self.orig_ts = 0
+            self.rec_ts = 0
+            self.trans_ts = 0
+            self.hdr_pkt = NullPkt()
+            self.data = array('B')
+            self.echo_data = b''
+            self._address = array('B', (0,0,0,0))
+            self.type, self.code, self.checksum = \
+                unpack('!BBH', self._buffer[:4])
+            if (self.type in (ICMP_TYPE_ECHO_REPLY,
+                              ICMP_TYPE_ECHO,
+                              ICMP_TYPE_INFO,
+                              ICMP_TYPE_INFO_REPLY)):
+                # Echo packet format
+                (self.identifier, self.sequence) = unpack('!HH',
+                                                          self._buffer[4:8])
+                if self._buffer[8:]:
+                    self.echo_data = self._buffer[8:].tostring()
+                else:
+                    self.echo_data = b''
+            elif self.type == ICMP_TYPE_DU:
+                # Destination Unreachable format
+                self.mtu = unpack('!H', self._buffer[6:8])[0]
+                self.hdr_pkt = IP(self._buffer[8:])
+            elif (self.type in (ICMP_TYPE_SRC_QUENCH,
+                                ICMP_TYPE_TIME_EX)):
+                # Source quench format
+                self.hdr_pkt = IP(self._buffer[8:])
+            elif self.type == ICMP_TYPE_REDIR:
+                # redirect format
+                self._address = self._buffer[4:8]
+                self.hdr_pkt = IP(self._buffer[8:])
+            elif self.type == ICMP_TYPE_PER_PROB:
+                # Parameter Problem format
+                self.pointer = self._buffer[4]
+                self.hdr_pkt = IP(self._buffer[8:])
+            elif (self.type in (ICMP_TYPE_TS,
+                                ICMP_TYPE_TS_REPLY)):
+                (self.identifier, self.sequence, self.orig_ts,
+                 self.rec_ts, self.trans_ts) = unpack('!HHIII',
+                                                      self._buffer)
             else:
-                pkt_cls = NullPkt
-            self.payload = pkt_cls(plbuffer)
+                # unknown
+                self.have_data = 1
         else:
-            self.payload = PKT()
+            self.type = kwargs.get('type', 0)
+            self.code = kwargs.get('code', 0)
+            self.checksum = kwargs.get('checksum', 0)
+            self.identifier = kwargs.get('identifier', 0)
+            self.sequence = kwargs.get('sequence', 0)
+            self.mtu = kwargs.get('mtu', 0)
+            self.pointer = kwargs.get('pointer', 0)
+            self.orig_ts = kwargs.get('orig_ts', 0)
+            self.rec_ts = kwargs.get('rec_ts', 0)
+            self.trans_ts = kwargs.get('trans_ts', 0)
+            self.hdr_pkt = kwargs.get('hdr_pkt', NullPkt())
+            self.data = kwargs.get('data', array('B'))
+            self.echo_data = kwargs.get('echo_data', b'')
+            self.address = kwargs.get('address', b'0.0.0.0')
+
+    @classmethod
+    def query_info(cls):
+        """Provides pcap_query with the query fields UDP supports and UDP's
+        PKT type ID.
+
+        Returns:
+            :tuple: PQTYPES.t_udp and a tuple of the supported field names.
+        """
+        return (PQ_ICMP,
+                (b'icmp.checksum', b'icmp.code', b'icmp.seq', b'icmp.mtu',
+                 b'icmp.ident', b'icmp.originate_timestamp', b'icmp.pointer'
+                 b'icmp.receive_timestamp', b'icmp.redir_gw',
+                 b'icmp.transmit_timestamp', b'icmp.type'))
+
+    cpdef object get_field_val(self, bytes field):
+        """Returns the value of the Wireshark format field name. Implemented as 
+        an if, elif, else set because Cython documentation shows that this 
+        form is turned that into an efficient case switch.
+
+        Args:
+            :field (bytes): name of the desired field in Wireshark format. For 
+                example: arp.proto.type or tcp.flags.urg
+
+        Returns:
+            :object: the value of the field.
+        """
+        cdef:
+            uint32_t ts_secs, ts_mills
+        if field == b'icmp.checksum':
+            return self.checksum
+        elif field == b'icmp.code':
+            return self.code
+        elif field == b'icmp.ident':
+            return self.identifier
+        elif field == b'icmp.originate_timestamp':
+            return self.orig_ts
+        elif field == b'icmp.receive_timestamp':
+            return self.rec_ts
+        elif field == b'icmp.redir_gw':
+            return self.address
+        elif field == b'icmp.seq':
+            return self.sequence
+        elif field == b'icmp.transmit_timestamp':
+            return self.trans_ts
+        elif field == b'icmp.type':
+            return self.type
+        elif field == b'icmp.mtu':
+            return self.mtu
+        elif field == b'icmp.pointer':
+            return self.pointer
+        elif field == b'icmp.data_time':
+            if (self.type in (ICMP_TYPE_ECHO_REPLY, ICMP_TYPE_ECHO) and
+                    len(self.echo_data) >= 8):
+                ts_secs, ts_mills = unpack('!II', self.echo_data[:8])
+                return b'{0}.{1}'.format(ts_secs, ts_mills)
+            else:
+                return b'0.0'
+        else:
+            return None
+
+    cpdef bytes pkt2net(self, dict kwargs):
+        """Used to export a IP packet class instance in network order  for 
+        writing to a socket or into a pcap file. 
+
+        Args:
+            :kwargs (dict): list of arguments defined by PKT sub classes. 
+                Passed along by IP to payload classes. IP supports the 
+                following keyword arguments:
+
+        Returns: 
+            :bytes: network order byte string representation of this IP 
+                instance.
+        """
+        cdef:
+            bytes pkt_hdr_bytes = b''
+            bytes before_check = b'{0}{1}'.format(chr(self.type),
+                                                  chr(self.code))
+            bytes after_check = b''
+            bytes nullcheck = b'\000\000'
+            bint for_icmp = 1
+            bint _csum = kwargs.get('csum', 0)
+
+        if self.type in (ICMP_TYPE_DU, ICMP_TYPE_SRC_QUENCH, ICMP_TYPE_TIME_EX,
+                         ICMP_TYPE_REDIR, ICMP_TYPE_PER_PROB):
+            kwargs['for_icmp'] = for_icmp
+
+        if (self.type in (ICMP_TYPE_ECHO_REPLY,
+                          ICMP_TYPE_ECHO,
+                          ICMP_TYPE_INFO,
+                          ICMP_TYPE_INFO_REPLY)):
+            after_check =  b'{0}{1}'.format(pack('!HH', self.identifier,
+                                                        self.sequence),
+                                            self.echo_data)
+        elif self.type == ICMP_TYPE_DU:
+            after_check = (b'\000\000{0}{1}'
+                           b''.format(pack('!H', self.mtu),
+                                      self.hdr_pkt.pkt2net(kwargs)))
+        elif (self.type in (ICMP_TYPE_SRC_QUENCH,
+                            ICMP_TYPE_TIME_EX)):
+            after_check = b'\000\000\000\000{0}'.format(
+                self.hdr_pkt.pkt2net(kwargs))
+        elif self.type == ICMP_TYPE_REDIR:
+            after_check = b'{0}{1}'.format(self.address.tostring(),
+                                           self.hdr_pkt.pkt2net(kwargs))
+        elif self.type == ICMP_TYPE_PER_PROB:
+            after_check = b'{0}\000\000\000{1}'.format(
+                chr(self.pointer),
+                self.hdr_pkt.pkt2net(kwargs)
+            )
+        elif (self.type in (ICMP_TYPE_TS,
+                            ICMP_TYPE_TS_REPLY)):
+            after_check = pack('!HHIII',  self.identifier, self.sequence,
+                                          self.orig_ts, self.rec_ts,
+                                          self.trans_ts)
+        else:
+            # type is not supported yet. Just try to return the bytes we got
+            if self.have_data:
+                return self._buffer.tostring()
+            else:
+                return b''
+
+        if _csum:
+            self.checksum = checksum(b'{0}{1}{2}'.format(before_check,
+                                                         nullcheck,
+                                                         after_check))
+        return b'{0}{1}{2}'.format(before_check,
+                                   pack('!H', self.checksum),
+                                   after_check)
+
+    property address:
+        def __get__(self):
+            return socket.inet_ntoa(self._address)
+        def __set__(self, bytes val):
+            cdef bytes t
+            if is_ipv4(val):
+                t = socket.inet_aton(val)
+                self._address = array('B', t)
+            else:
+                raise ValueError("address must be a dot notation "
+                                 "IPv4 string. (1.1.1.1)")
 
 
 cdef class IP(PKT):
-    """
-     0                   1                   2                   3
-     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |Version|  IHL  |Type of Service|          Total Length         |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |         Identification        |Flags|      Fragment Offset    |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |  Time to Live |    Protocol   |         Header Checksum       |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |                       Source Address                          |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |                    Destination Address                        |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    |                    Options                    |    Padding    |
-    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    """
-
     def __init__(self, *args, **kwargs):
         """
         Initialize a IP object.
-        :param args: Optional one element list containing network order
-               bytes of an IP packet
-        :param data: Optional keyword argument containing network order
-               bytes of an IP packet
-        :param version: IP version of this packet. Only 4 is supported.
-        :param iphl: Internet Protocol Header Length in 32-bit 'words'.
-               Min is 5.
-        :param tos: IP type of service. Now primarily used to store DSCP
-               values and ECN values. ECN is the low 2 bits.
-        :param total_len: The total lenght of the IP packet including the
-               header and data.
-        :param ident: Primarily used for uniquely identifying the group
-               of fragments of a single IP datagram. Used with frag_offset and
-               flag_m.
-        :param flag_x: Flag bit zero implemented as x bit. See RFC 3514 for
-               appropriate use ;-)
-        :param flag_d: Don't fragment flag.
-        :param flag_m: More fragments flag
-        :param frag_offset: This IP packet fragment offset from the
-               beginning of the original unfragmented IP datagram measured
-               in units of eight-byte blocks.
-        :param ttl: The time to live for the IP datagram. Decremented by
-               routers as a method to prevent endless circular routes.
-        :param checksum: The 16-bit checksum field.
-        :param src: IPv4 src address in dot notation (1.1.1.1)
-        :param dst: IPv4 dst address in dot notation (1.1.1.2)
-        :param payload: The payload of this packet. Payload can be a PKT
-               sub class or a byte string.
-        :param l7_ports: A dictionary where the keys are layer 4 port numbers
-               and the values are PKT subclass packet classes. Used by
-               app_layer to determine what class should be used to decode
-               the payload string or byte array.
+
+        Args:
+            :args (list): Optional one element list containing network order
+                bytes of an IP packet
+            :data (bytes): Optional keyword argument containing network order
+                bytes of an IP packet
+            :version (unsigned char): IP version of this packet. Only 4 is
+                supported. Default is 4.
+            :iphl (unsigned char): Internet Protocol Header Length in 32-bit
+                'words'. Minimum valid value is 5. Default is 5.
+            :tos (unsigned char): IP type of service. Now primarily used to
+                store DSCP values and ECN values. ECN is the low 2 bits.
+            :total_len (uint16_t): The total lenght of the IP packet including
+                the header and data.
+            :ident (uint16_t): Primarily used for uniquely identifying the
+                group of fragments of a single IP datagram. Used with
+                frag_offset and flag_m.
+            :flag_x (1 or 0): Flag bit zero implemented as x bit. See RFC 3514
+                for appropriate use ;-)
+            :flag_d (1 or 0): Don't fragment flag.
+            :flag_m (1 or 0): More fragments flag.
+            :frag_offset (uint16_t): This IP packet fragment offset from the
+                beginning of the original un-fragmented IP datagram measured in
+                units of eight-byte blocks.
+            :ttl (unsigned char): The time to live for the IP datagram.
+                Decremented by routers as a method to prevent endless circular
+                routes. Default is 64.
+            :checksum (uint16_t): The 16-bit checksum field.
+            :src (bytes): IPv4 src address in dot notation. Default is
+                '0.0.0.0'.
+            :dst (bytes): IPv4 dst address in dot notation Default is
+                '0.0.0.0'.
+            :payload (bytes or PKT): The payload of this packet. Payload can
+                be a PKT sub class or a byte string.
+            :l7_ports (dict): A dictionary where the keys are layer 4 port
+                numbers and the values are PKT subclass packet classes. Used by
+                app_layer to determine what class should be used to decode
+                the payload string or byte array.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
         self.pkt_name = b'IP'
@@ -1402,27 +1782,29 @@ cdef class IP(PKT):
             self._version_iphl = self._buffer[0]
             self.tos = self._buffer[1]
             (self.total_len, self.ident, self._flags_offset) = \
-                struct.unpack('!HHH', self._buffer[2:8])
+                unpack('!HHH', self._buffer[2:8])
             self.ttl = self._buffer[8]
             self.proto = self._buffer[9]
-            self.checksum = struct.unpack('!H', self._buffer[10:12])[0]
+            self.checksum = unpack('!H', self._buffer[10:12])[0]
             self.src_nochk = self._buffer[12:16]
             self.dst_nochk = self._buffer[16:20]
             if len(self._buffer[(self.iphl * 4):]):
-                if self.proto == PROTO.udp:
+                if self.proto == PROTO_UDP:
                     self.payload = UDP(self._buffer[(self.iphl * 4):],
                                        l7_ports = self.l7_ports)
-                elif self.proto == PROTO.tcp:
+                elif self.proto == PROTO_TCP:
                     self.payload = TCP(self._buffer[(self.iphl * 4):],
                                        l7_ports = self.l7_ports)
+                elif self.proto == PROTO_ICMP:
+                    self.payload = ICMP(self._buffer[(self.iphl * 4):])
                 else:
                     self.payload = NullPkt(self._buffer[(self.iphl * 4):],
                                            l7_ports = self.l7_ports)
             else:
                 self.payload = PKT()
         else:
-            self.version = kwargs.get('version', 4)
-            self.iphl = kwargs.get('iphl', 5)
+            self.version = kwargs.get('version', IPV4_VER)
+            self.iphl = kwargs.get('iphl', IPV4_MIN_HDR_LEN)
             self.tos = kwargs.get('tos', 0)
             self.total_len = kwargs.get('total_len', 0)
             self.ident = kwargs.get('ident', 0)
@@ -1440,12 +1822,14 @@ cdef class IP(PKT):
                 self.payload = kwargs['payload']
             elif (kwargs.has_key('payload') and
                       isinstance(kwargs['payload'], (str, bytes))):
-                if self.proto == PROTO.udp:
+                if self.proto == PROTO_UDP:
                     self.payload = UDP(kwargs['payload'],
                                        l7_ports = self.l7_ports)
-                elif self.proto == PROTO.tcp:
+                elif self.proto == PROTO_TCP:
                     self.payload = TCP(kwargs['payload'],
                                        l7_ports = self.l7_ports)
+                elif self.proto == PROTO_ICMP:
+                    self.payload = ICMP(kwargs['payload'])
                 else:
                     self.payload = NullPkt(kwargs['payload'],
                                            l7_ports = self.l7_ports)
@@ -1454,28 +1838,30 @@ cdef class IP(PKT):
 
     @classmethod
     def query_info(cls):
+        """Provides pcap_query with the query fields IP supports and
+        IP's PKT type ID.
+
+        Returns:
+            :tuple: PQTYPES.t_ip and a tuple of the supported
+                field names.
         """
-        Used by pcap_query to determine what query fields this packet type
-        supports and what its PKT type ID is.
-        The PKT type ID is usually the layer 4 port number for layer 7
-        PKT types.
-        :return: tuple of PQTYPES.t_ip and a tuple of the supported field
-                 names.
-        """
-        return (PQTYPES.t_ip,
+        return (PQ_IP,
                 (b'ip.version', b'ip.hdr_len', b'ip.tos', b'ip.len', b'ip.id',
                  b'ip.flags', b'ip.flags.df', b'ip.flags.mf',
                  b'ip.frag_offset', b'ip.ttl', b'ip.proto', b'ip.src',
                  b'ip.dst', b'ip.checksum'))
 
     cpdef object get_field_val(self, bytes field):
-        """
-        Returns the value of the Wireshark format field name. Implemented as 
+        """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch.
-        :param field: name of the desired field in Wireshark format. For 
-               example: arp.proto.type or tcp.flags.urg
-        :return: Returns the value of the field as a python object.
+
+        Args:
+            :field (bytes): name of the desired field in Wireshark format. For 
+                example: arp.proto.type or tcp.flags.urg
+
+        Returns:
+            :object: the value of the field.
         """
         if field == b'ip.version':
             return self.version
@@ -1509,35 +1895,50 @@ cdef class IP(PKT):
             return None
 
     cpdef bytes pkt2net(self, dict kwargs):
-        """
-        Used to export a TCP packet class instance in network order 
-        for writing to a socket or into a pcap file. 
-        :param kwargs: list of arguments defined by PKT sub classes. TCP
-               supports the following keyword arguments:
-        :param csum: Determines if this IP instance should re-calculate 
-               its checksum.
-        :param update: Determines if this IP instance and any sub layers
-               should update size counters. For IP this means updating the
-               total_len variable.
-        :param ipv4_pheader: IPv4 psuedo header used in checksum calculation.
-        :return: network order byte string representation of this 
-                 IP instance.
+        """Used to export a IP packet class instance in network order  for 
+        writing to a socket or into a pcap file. 
+
+        Args:
+            :kwargs (dict): list of arguments defined by PKT sub classes. 
+                Passed along by IP to payload classes. IP supports the 
+                following keyword arguments:
+            :csum (0 or 1): Determines if this IP instance should re-calculate 
+                its checksum.
+            :update (0 or 1): Determines if this IP instance and any sub layers
+                should update size counters. For IP this means updating the
+                total_len variable.
+            :for_icmp (0 or 1): Return on the 64 bits of the header needed
+                for ICMP packets.
+            :ipv4_pheader (Ip4Ph): IPv4 pseudo header used in checksum 
+                calculation.
+
+        Returns: 
+            :bytes: network order byte string representation of this IP 
+                instance.
         """
         cdef:
-            unsigned char _csum, _update
+            bint_csum, _update, _icmp
             bytes _pload_bytes, ip_ph
+            Ip4Ph _ph
 
-        _csum = 0
-        _update = 0
         _pload_bytes = b''
         ip_ph = b''
 
-        _csum = kwargs.get('csum', 0)
-        _update = kwargs.get('update', 0)
-        if isinstance(self.payload, (TCP, UDP)):
-            kwargs['ipv4_pheader'] = self.ipv4_pheader
+        _icmp = kwargs.get('for_icmp', 0)
+        if _icmp:
+            _csum = 0
+            _update = 0
+        else:
+            _csum = kwargs.get('csum', 0)
+            _update = kwargs.get('update', 0)
+
+        # support a user passing in a pheader of their own for negative testing
+        kwargs['ipv4_pheader'] = kwargs.get('ipv4_pheader', self.ipv4_pheader)
         if isinstance(self.payload, PKT):
-            _pload_bytes = self.payload.pkt2net(kwargs)
+            if _icmp:
+                _pload_bytes = self.payload.pkt2net({})
+            else:
+                _pload_bytes = self.payload.pkt2net(kwargs)
         else:
             _pload_bytes = b''
 
@@ -1558,7 +1959,6 @@ cdef class IP(PKT):
                                                 self.ipv4_pheader.src,
                                                 self.ipv4_pheader.dst)
                                      )
-
         return bytes("{0}{1}{2}{3}{4}".format(ip_ph,
                                               pack('!H', self.checksum),
                                               self.ipv4_pheader.src,
@@ -1569,11 +1969,11 @@ cdef class IP(PKT):
         """ The IP version defined by this packet. """
         def __get__(self):
             """ Return the IP Version. """
-            return get_char_nibble(self._version_iphl, 1)
+            return get_char_nibble(self._version_iphl, 4)
         def __set__(self, unsigned char val):
             """ Set the IP Version. """
-            if val in [4,6]:
-                set_char_nibble(&self._version_iphl, val, 1)
+            if val in (IPV4_VER, IPV6_VER):
+                set_char_nibble(&self._version_iphl, val, 4)
             else:
                 raise ValueError("Only IP versions 4 and 6 supported")
 
@@ -1594,7 +1994,7 @@ cdef class IP(PKT):
         # support for wireshark ip.flags field.
         def __get__ (self):
             # return the last 3 bits of _flags_offset
-            return get_short_nibble(self._flags_offset, 3) >> 1
+            return get_short_nibble(self._flags_offset, 12) >> 1
 
     property flag_x:
         """ Set or get the so called evil bit. See RFC 3514. Implemented
@@ -1693,29 +2093,31 @@ cdef class IP(PKT):
 
 
 cdef class MPLS(PKT):
-    """ 
-    Very limited implementation of MPLS (RFC 3031). Supports only IPv4 and
+    """ Very limited implementation of MPLS (RFC 3031). Supports only IPv4 and
     Ethernet payloads. And only detects the difference by looking at the
     first nibble of the payload bytes.
     """
 
     def __init__(self, *args, **kwargs):
-        """
-        Initialize a MPLS object.
-        :param args: Optional one element list containing network order
-               bytes of an MPLS packet
-        :param data: Optional keyword argument containing network order
-               bytes of an MPLS packet
-        :param label: 20 bit MPLS label value.
-        :param tc: Traffic Class (QoS and ECN).
-        :param s: Bottom of label stack bit.
-        :param ttl: Time to live for this label.
-        :param payload: The payload of this packet. Payload can be a PKT
-               sub class or a byte string.
-        :param l7_ports: A dictionary where the keys are layer 4 port numbers
-               and the values are PKT subclass packet classes. Used by
-               app_layer to determine what class should be used to decode
-               the payload string or byte array.
+        """Initialize a MPLS object. Note on data types for Args. Only the
+        stack bit and the TTL use the full size of the data types specified
+        below. label used only 20 bits and the traffic class uses 3 bits.
+
+        Args:
+            :args (list): Optional one element list containing network order
+                bytes of an MPLS packet
+            :data (bytes): Optional keyword argument containing network order
+                bytes of an MPLS packet
+            :label (uint32_t): 20 bit MPLS label value.
+            :tc (unsigned char): Traffic Class (QoS and ECN). 3 bits used
+            :s (0 or 1): Bottom of label stack bit.
+            :ttl (unsigned char): Time to live for this label.
+            :payload (PKT or bytes): The payload of this packet.
+            :l7_ports (dict): Keys are layer 4 port numbers and the values are
+                PKT subclass packet classes. Used by the app_layer() in layer
+                7 protocols to determine what class should be used to decode
+                the payload string or byte array. MPLS only passes this option
+                on to subsequent packet layers.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
         self.pkt_name = b'MPLS'
@@ -1725,9 +2127,9 @@ cdef class MPLS(PKT):
         use_buffer, self._buffer = self.from_buffer(args, kwargs)
 
         if use_buffer:
-            self._data = struct.unpack('!I', self._buffer[:4])[0]
+            self._data = unpack('!I', self._buffer[:4])[0]
             if self.s and self._buffer[4:]:
-                if self._buffer[4] >> 4 == 4:
+                if self._buffer[4] >> 4 == IPV4_VER:
                     # NEED TO DO BETTER MPLS FIX
                     self.payload = IP(self._buffer[4:],
                                       l7_ports = self.l7_ports)
@@ -1767,26 +2169,31 @@ cdef class MPLS(PKT):
 
     @classmethod
     def query_info(cls):
-        """
-        Provides pcap_query with the query fields UDP supports and UDP's
+        """Provides pcap_query with the query fields MPLS supports and MPLS's
         PKT type ID.
-        :return: tuple of PQTYPES.t_mpls and a tuple of the supported
-        field names.
+
+        Returns:
+            :tuple: PQTYPES.t_mpls and a tuple of the supported field names.
         """
-        return (PQTYPES.t_mpls,
+        return (PQ_MPLS,
                 (b'mpls.bottom.label', b'mpls.bottom.tc',
                  b'mpls.bottom.stack_bit', b'mpls.bottom.ttl',
                  b'mpls.top.label', b'mpls.top.tc',
                  b'mpls.top.stack_bit', b'mpls.top.ttl'))
 
     cpdef get_field_val(self, bytes field):
-        """
-        Returns the value of the Wireshark format field name. Implemented as 
+        """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
-        form is turned that into an efficient case switch.
-        :param field: name of the desired field in Wireshark format. For 
-               example: arp.proto.type or tcp.flags.urg
-        :return: Returns the value of the field as a python object.
+        form is turned that into an efficient case switch. This function is
+        different from other protocols in that it detects if this is or is not
+        the botton of stack MPLS label.
+
+        Args:
+            :field (bytes): name of the desired field in Wireshark format. For 
+                example: arp.proto.type or tcp.flags.urg
+
+        Returns: 
+            :object: value of the field.
         """
         if field.find('.bottom.') >= 0 and self.s:
             if field == b'mpls.bottom.label':
@@ -1862,14 +2269,17 @@ cdef class MPLS(PKT):
 
 
     cpdef bytes pkt2net(self, dict kwargs):
-        """
-        Used to export a MPLS packet class instance in network order 
+        """Used to export a MPLS packet class instance in network order 
         for writing to a socket or into a pcap file. 
-        :param kwargs: list of arguments defined by PKT sub classes. Passed
-               along by MPLS to payload classes. MPLS has no options
-               that it directly supports.
-        :return: network order byte string representation of this 
-                 IP instance.
+
+        Args:
+            :kwargs (dict): list of arguments defined by PKT sub classes. 
+                Passed along by MPLS to payload classes. MPLS has no options
+                that it directly supports.
+
+        Returns: 
+            :bytes: network order byte string representation of this MPLS 
+                instance.
         """
         cdef:
             bytes _pload_bytes
@@ -1886,74 +2296,92 @@ cdef class MPLS(PKT):
 
 
 cdef class Ethernet(PKT):
-    """
-    Implements Ethernet II frame without CRC.
+    """Implements Ethernet II frame without CRC.
     """
     def __init__(self, *args, **kwargs):\
 
-        """
-        Initialize a Ethernet II object.
-        :param args: Optional one element list containing network order
-               bytes of an Ethernet packet
-        :param data: Optional keyword argument containing network order
-               bytes of an Ethernet packet
-        :param src_mac: Layer 2 source address in colon notation. For example
-               the layer 2 broadcast MAC would be 'ff:ff:ff:ff:ff:ff'
-        :param dst_mac: Layer 2 destination address in colon notation.
-        :param type: EtherType of the payload. Common values are 0x0800 for
-               IPv4 and 0x0806 for ARP.
-        :param payload: The payload of this packet. Payload can be a PKT
-               sub class or a byte string.
-        :param l7_ports: A dictionary where the keys are layer 4 port numbers
-               and the values are PKT subclass packet classes. Used by
-               app_layer to determine what class should be used to decode
-               the payload string or byte array.
+        """Initialize a Ethernet II object.
+
+        Args:
+            :args (list): Optional one element list containing network order
+                bytes of an Ethernet packet
+            :data (bytes): Optional keyword argument containing network order
+                bytes of an Ethernet packet
+            :src_mac (bytes): Layer 2 source address in colon notation. For 
+                example the layer 2 broadcast MAC would be 'ff:ff:ff:ff:ff:ff'
+            :dst_mac (bytes): Layer 2 destination address in colon notation.
+            :type (uint16_t): EtherType of the payload. Common values are 
+                0x0800 for IPv4 and 0x0806 for ARP.
+            :payload (PKT or bytes): The payload of this packet. Payload can be 
+                a PKT sub class or a byte string.
+            :l7_ports (dict): A dictionary where the keys are layer 4 port 
+                numbers and the values are PKT subclass packet classes. Used 
+                by app_layer to determine what class should be used to decode
+                the payload string or byte array.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
         self.pkt_name = b'Ethernet'
+        self.tpid = 0
+        self._tci = 0
         self.pq_type, self.query_fields = Ethernet.query_info()
-        cdef unsigned char use_buffer
-        use_buffer, self._buffer = self.from_buffer(args, kwargs)
+        cdef:
+            unsigned char use_buffer
+            uint16_t vlan_hdr_add
 
+        use_buffer, self._buffer = self.from_buffer(args, kwargs)
+        vlan_hdr_add = 0
         if use_buffer:
             self._dst_mac = self._buffer[:6]
             self._src_mac = self._buffer[6:12]
-            self.type = struct.unpack('!H', self._buffer[12:14])[0]
-            if self.type == ETHERTYPES.ipv4:
-                self.payload = IP(self._buffer[14:],
+            self.type = unpack('!H', self._buffer[12:14])[0]
+            if self.type == ETH_TYPE_8021Q:
+                self.tpid = ETH_TYPE_8021Q
+                self._tci, self.type = unpack('!HH', self._buffer[14:18])
+                vlan_hdr_add = 4
+            if self.type == ETH_TYPE_IPV4:
+                self.payload = IP(self._buffer[14 + vlan_hdr_add:],
                                   l7_ports = self.l7_ports)
-            elif self.type == ETHERTYPES.arp:
-                self.payload = ARP(self._buffer[14:])
-            elif self.type in (ETHERTYPES.mpls_unicast,
-                               ETHERTYPES.mpls_multicast):
-                self.payload = MPLS(self._buffer[14:])
+            elif self.type == ETH_TYPE_ARP:
+                self.payload = ARP(self._buffer[14 + vlan_hdr_add:])
+            elif self.type in (ETH_TYPE_MPLS_UCAST,
+                               ETH_TYPE_MPLS_MCAST):
+                self.payload = MPLS(self._buffer[14 + vlan_hdr_add:])
             else:
-                self.payload = NullPkt(self._buffer[14:])
+                self.payload = NullPkt(self._buffer[14 + vlan_hdr_add:])
         else:
             self.src_mac = kwargs.get('src_mac', b'00:00:00:00:00:00')
             self.dst_mac = kwargs.get('dst_mac', b'00:00:00:00:00:00')
-            self.type = kwargs.get('type', ETHERTYPES.ipv4)
+            self.type = kwargs.get('type', ETH_TYPE_IPV4)
+            self.tpid = kwargs.get('tpid', 0)
+            if self.tpid == ETH_TYPE_8021Q:
+                self.priority_code = kwargs.get('priority_code', 0)
+                self.drop_eligible = kwargs.get('drop_eligible', 0)
+                self.vlan_id = kwargs.get('vlan_id', 0)
             self.payload = kwargs.get('payload', PKT())
 
     @classmethod
     def query_info(cls):
+        """Provides pcap_query with the query fields Ethernet supports and
+        Ethernet's PKT type ID.
+
+        Returns:
+            :tuple: PQTYPES.t_eth and a tuple of the supported
+                field names.
         """
-        Provides pcap_query with the query fields UDP supports and UDP's
-        PKT type ID.
-        :return: tuple of PQTYPES.t_eth and a tuple of the supported
-        field names.
-        """
-        return (PQTYPES.t_eth,
-                (b'eth.type', b'eth.src', 'eth.dst'))
+        return (PQ_ETH,
+                (b'eth.type', b'eth.src', b'eth.dst'))
 
     cpdef object get_field_val(self, bytes field):
-        """
-        Returns the value of the Wireshark format field name. Implemented as 
+        """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch.
-        :param field: name of the desired field in Wireshark format. For 
-               example: arp.proto.type or tcp.flags.urg
-        :return: Returns the value of the field as a python object.
+
+        Args:
+            :field (bytes): name of the desired field in Wireshark format. For 
+                example: arp.proto.type or tcp.flags.urg
+
+        Returns:
+            :object: the value of the field.
         """
         if field == b'eth.type':
             return self.type
@@ -1966,27 +2394,66 @@ cdef class Ethernet(PKT):
 
     property src_mac:
         def __get__(self):
-            return ':'.join(format(x, '02x') for x in self._src_mac)
+            return b':'.join(b'%02d' % x for x in self._src_mac)
         def __set__(self, bytes val):
-            self._src_mac = array('B',
-                                  (int(x, 16) for x in val.split(':')))
+            self._src_mac = array('B', (int(x, 16) for x in val.split(b':')))
 
     property dst_mac:
         def __get__(self):
-            return ':'.join(format(x, '02x') for x in self._dst_mac)
+            return b':'.join(b'%02d' % x for x in self._dst_mac)
         def __set__(self, bytes val):
-            self._dst_mac = array('B',
-                                  (int(x, 16) for x in val.split(':')))
+            self._dst_mac = array('B', (int(x, 16) for x in val.split(b':')))
+
+    property priority_code:
+        """ The priority_code. """
+        def __get__(self):
+            """ Return the priority_code value. """
+            return (self._tci >> 13) & 0b111
+        def __set__(self, unsigned char val):
+            """ Set the priority_code value. """
+            if val <= 0b111:
+                self._tci = (self._tci & ~(0b111 << 13)) | (val << 13)
+            else:
+                raise ValueError("priority_code valid values are 0-7")
+
+    property drop_eligible:
+        """ Set or get the drop_eligible bit. """
+        def __get__(self):
+            """ Return the drop_eligible bit. """
+            return (self._tci >> 12) & 1
+        def __set__(self, unsigned char val):
+            """ Set the drop_eligible bit. """
+            if val == 1:
+                set_bit(&self._tci, 12)
+            elif val == 0:
+                unset_bit(&self._tci, 12)
+            else:
+                raise ValueError("drop_eligible bit must be 0 or 1")
+
+    property vlan_id:
+        """ Set or get vlan_id. """
+        def __get__(self):
+            """ Return the vlan_id. """
+            return self._tci & 0xfff
+        def __set__(self, uint16_t val):
+            """ Set the vlan_id. """
+            if val <= 0xfff:
+                self._tci = (self._tci & ~0xfff) | val
+            else:
+                raise ValueError("vlan_id has a max value of: ".format(0xfff))
 
     cpdef bytes pkt2net(self, dict kwargs):
-        """
-        Used to export a Ethernet packet class instance in network order 
+        """Used to export a Ethernet packet class instance in network order 
         for writing to a socket or into a pcap file. 
-        :param kwargs: list of arguments defined by PKT sub classes. Passed
-               along by Ethernet to payload classes. Ethernet has no options
-               that it directly supports.
-        :return: network order byte string representation of this 
-                 IP instance.
+
+        Args:
+            :kwargs (dict): list of arguments defined by PKT sub classes. 
+                Passed along by Ethernet to payload classes. Ethernet has no 
+                options that it directly supports.
+
+        Returns: 
+            :bytes: network order byte string representation of this Ethernet 
+                instance.
         """
         cdef:
             bytes _pload_bytes
@@ -1994,8 +2461,15 @@ cdef class Ethernet(PKT):
 
         if isinstance(self.payload, PKT):
             _pload_bytes = self.payload.pkt2net(kwargs)
-        return b'{0}{1}{2}{3}'.format(self._dst_mac.tostring(),
-                                      self._src_mac.tostring(),
-                                      pack('!H', self.type),
-                                      _pload_bytes)
-
+        if self.tpid == ETH_TYPE_8021Q:
+            return b'{0}{1}{2}{3}'.format(self._dst_mac.tostring(),
+                                          self._src_mac.tostring(),
+                                          pack('!HHH', self.tpid,
+                                                       self._tci,
+                                                       self.type),
+                                          _pload_bytes)
+        else:
+            return b'{0}{1}{2}{3}'.format(self._dst_mac.tostring(),
+                                          self._src_mac.tostring(),
+                                          pack('!H', self.type),
+                                          _pload_bytes)

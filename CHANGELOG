@@ -1,3 +1,14 @@
 CHANGELOG
-----------------------
+---------
+
+[1.1]
+ * Add Tutorial Documents and Additional Protocols
+ * Add pure python version of DNS to accompany tutorial
+ * Add cython DNS version
+ * Add ICMP
+ * Augment Ethernet with VLAN tagging.
+
+[1.0]
+
+ * Initial commit
 

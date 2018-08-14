@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # Copyright (c) 2017 Riverbed Technology, Inc.
 #
 # This software is licensed under the terms and conditions of the MIT License

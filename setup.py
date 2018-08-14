@@ -52,7 +52,8 @@ extensions = [
 
 if USE_CYTHON:
     for e in extensions:
-        e.cython_directives = {"embedsignature": True}
+        e.cython_directives = {"embedsignature": True,
+                               "binding": True}
 
     extensions = cythonize(extensions)
 

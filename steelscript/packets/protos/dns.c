@@ -802,7 +802,7 @@ struct __pyx_opt_args_11steelscript_7packets_6protos_3dns_pack_soa;
 struct __pyx_opt_args_11steelscript_7packets_6protos_3dns_8DNSQuery_pack;
 struct __pyx_opt_args_11steelscript_7packets_6protos_3dns_11DNSResource_pack;
 
-/* "steelscript/packets/protos/dns.pxd":14
+/* "steelscript/packets/protos/dns.pxd":13
  * from steelscript.packets.core.inetpkt cimport PKT
  * 
  * cpdef enum:             # <<<<<<<<<<<<<<
@@ -871,7 +871,7 @@ enum  {
   __pyx_e_11steelscript_7packets_6protos_3dns_SOA_MIN = 14
 };
 
-/* "steelscript/packets/protos/dns.pxd":81
+/* "steelscript/packets/protos/dns.pxd":80
  *                                dict label_store)
  * 
  * cdef bytes write_dns_name_bytes(bytes dns_name,             # <<<<<<<<<<<<<<
@@ -883,7 +883,7 @@ struct __pyx_opt_args_11steelscript_7packets_6protos_3dns_write_dns_name_bytes {
   int compress;
 };
 
-/* "steelscript/packets/protos/dns.pxd":93
+/* "steelscript/packets/protos/dns.pxd":92
  *                      dict labels)
  * 
  * cdef bytes pack_soa(bytes res_data, uint16_t* offset, dict labels,             # <<<<<<<<<<<<<<
@@ -895,7 +895,7 @@ struct __pyx_opt_args_11steelscript_7packets_6protos_3dns_pack_soa {
   int compress;
 };
 
-/* "steelscript/packets/protos/dns.pxd":102
+/* "steelscript/packets/protos/dns.pxd":101
  *         public uint16_t query_type, query_class
  * 
  *     cdef bytes pack(self, uint16_t* offset, dict labels, bint compress=*)             # <<<<<<<<<<<<<<
@@ -907,7 +907,7 @@ struct __pyx_opt_args_11steelscript_7packets_6protos_3dns_8DNSQuery_pack {
   int compress;
 };
 
-/* "steelscript/packets/protos/dns.pxd":112
+/* "steelscript/packets/protos/dns.pxd":111
  *         bytes res_data
  * 
  *     cdef bytes pack(self, uint16_t* offset,             # <<<<<<<<<<<<<<
@@ -1226,7 +1226,7 @@ struct __pyx_obj_11steelscript_7packets_4core_7inetpkt_Ethernet {
 };
 
 
-/* "steelscript/packets/protos/dns.pxd":97
+/* "steelscript/packets/protos/dns.pxd":96
  * 
  * 
  * cdef class DNSQuery:             # <<<<<<<<<<<<<<
@@ -1242,7 +1242,7 @@ struct __pyx_obj_11steelscript_7packets_6protos_3dns_DNSQuery {
 };
 
 
-/* "steelscript/packets/protos/dns.pxd":105
+/* "steelscript/packets/protos/dns.pxd":104
  * 
  * 
  * cdef class DNSResource:             # <<<<<<<<<<<<<<
@@ -1261,7 +1261,7 @@ struct __pyx_obj_11steelscript_7packets_6protos_3dns_DNSResource {
 };
 
 
-/* "steelscript/packets/protos/dns.pxd":118
+/* "steelscript/packets/protos/dns.pxd":117
  * 
  * 
  * cdef class DNS(PKT):             # <<<<<<<<<<<<<<
@@ -1285,7 +1285,7 @@ struct __pyx_obj_11steelscript_7packets_6protos_3dns_DNS {
 };
 
 
-/* "steelscript/packets/protos/dns.pyx":109
+/* "steelscript/packets/protos/dns.pyx":108
  *     return out_array.tostring()
  * 
  * cdef bytes read_dns_name_bytes(array byte_array,             # <<<<<<<<<<<<<<
@@ -1299,7 +1299,7 @@ struct __pyx_obj_11steelscript_7packets_6protos_3dns___pyx_scope_struct____pyx_f
 };
 
 
-/* "steelscript/packets/protos/dns.pyx":180
+/* "steelscript/packets/protos/dns.pyx":179
  *             read_on = 0
  *     for index in range(len(labels)):
  *         cur_label = b'.'.join((x[1] for x in labels[index:]))             # <<<<<<<<<<<<<<
@@ -1462,7 +1462,7 @@ struct __pyx_vtabstruct_11steelscript_7packets_4core_7inetpkt_Ethernet {
 static struct __pyx_vtabstruct_11steelscript_7packets_4core_7inetpkt_Ethernet *__pyx_vtabptr_11steelscript_7packets_4core_7inetpkt_Ethernet;
 
 
-/* "steelscript/packets/protos/dns.pyx":327
+/* "steelscript/packets/protos/dns.pyx":326
  *                          b''.format(res_data))
  * 
  * cdef class DNSQuery:             # <<<<<<<<<<<<<<
@@ -1476,7 +1476,7 @@ struct __pyx_vtabstruct_11steelscript_7packets_6protos_3dns_DNSQuery {
 static struct __pyx_vtabstruct_11steelscript_7packets_6protos_3dns_DNSQuery *__pyx_vtabptr_11steelscript_7packets_6protos_3dns_DNSQuery;
 
 
-/* "steelscript/packets/protos/dns.pyx":375
+/* "steelscript/packets/protos/dns.pyx":374
  * 
  * 
  * cdef class DNSResource:             # <<<<<<<<<<<<<<
@@ -1490,7 +1490,7 @@ struct __pyx_vtabstruct_11steelscript_7packets_6protos_3dns_DNSResource {
 static struct __pyx_vtabstruct_11steelscript_7packets_6protos_3dns_DNSResource *__pyx_vtabptr_11steelscript_7packets_6protos_3dns_DNSResource;
 
 
-/* "steelscript/packets/protos/dns.pyx":465
+/* "steelscript/packets/protos/dns.pyx":464
  * 
  * 
  * cdef class DNS(PKT):             # <<<<<<<<<<<<<<
@@ -2844,7 +2844,7 @@ static PyObject *__pyx_codeobj__33;
 static PyObject *__pyx_codeobj__35;
 static PyObject *__pyx_codeobj__37;
 
-/* "steelscript/packets/protos/dns.pyx":26
+/* "steelscript/packets/protos/dns.pyx":25
  * 
  * 
  * cdef array hostname_to_label_array(bytes hostname):             # <<<<<<<<<<<<<<
@@ -2876,16 +2876,16 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
   long __pyx_t_16;
   __Pyx_RefNannySetupContext("hostname_to_label_array", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":41
+  /* "steelscript/packets/protos/dns.pyx":40
  *         bytes part, ch
  * 
  *     if domainname_re.match(hostname) or hostname_re.match(hostname):             # <<<<<<<<<<<<<<
  *         out = array('B')
  *         for part in hostname.split('.'):
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_domainname_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_domainname_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_match); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_match); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -2899,13 +2899,13 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_hostname); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_hostname); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_hostname};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
@@ -2913,34 +2913,34 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_hostname};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 40, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_hostname);
       __Pyx_GIVEREF(__pyx_v_hostname);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_v_hostname);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (!__pyx_t_6) {
   } else {
     __pyx_t_1 = __pyx_t_6;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_hostname_re); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_hostname_re); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_match); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_match); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -2954,13 +2954,13 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_hostname); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_hostname); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_hostname};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
@@ -2968,61 +2968,61 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_hostname};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_INCREF(__pyx_v_hostname);
       __Pyx_GIVEREF(__pyx_v_hostname);
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_v_hostname);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_1 = __pyx_t_6;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "steelscript/packets/protos/dns.pyx":42
+    /* "steelscript/packets/protos/dns.pyx":41
  * 
  *     if domainname_re.match(hostname) or hostname_re.match(hostname):
  *         out = array('B')             # <<<<<<<<<<<<<<
  *         for part in hostname.split('.'):
  *             out.append(len(part))
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_out = ((arrayobject *)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":43
+    /* "steelscript/packets/protos/dns.pyx":42
  *     if domainname_re.match(hostname) or hostname_re.match(hostname):
  *         out = array('B')
  *         for part in hostname.split('.'):             # <<<<<<<<<<<<<<
  *             out.append(len(part))
  *             for ch in part:
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_hostname, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_hostname, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 42, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (likely(PyList_CheckExact(__pyx_t_5)) || PyTuple_CheckExact(__pyx_t_5)) {
       __pyx_t_2 = __pyx_t_5; __Pyx_INCREF(__pyx_t_2); __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_7 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __pyx_t_7 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 43, __pyx_L1_error)
+      __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 42, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     for (;;) {
@@ -3030,17 +3030,17 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
         if (likely(PyList_CheckExact(__pyx_t_2))) {
           if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 43, __pyx_L1_error)
+          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 42, __pyx_L1_error)
           #else
-          __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
+          __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 42, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
           if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 43, __pyx_L1_error)
+          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 42, __pyx_L1_error)
           #else
-          __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
+          __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 42, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         }
@@ -3050,17 +3050,17 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 43, __pyx_L1_error)
+            else __PYX_ERR(0, 42, __pyx_L1_error)
           }
           break;
         }
         __Pyx_GOTREF(__pyx_t_5);
       }
-      if (!(likely(PyBytes_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 43, __pyx_L1_error)
+      if (!(likely(PyBytes_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 42, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_part, ((PyObject*)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "steelscript/packets/protos/dns.pyx":44
+      /* "steelscript/packets/protos/dns.pyx":43
  *         out = array('B')
  *         for part in hostname.split('.'):
  *             out.append(len(part))             # <<<<<<<<<<<<<<
@@ -3069,15 +3069,15 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
  */
       if (unlikely(__pyx_v_part == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-        __PYX_ERR(0, 44, __pyx_L1_error)
+        __PYX_ERR(0, 43, __pyx_L1_error)
       }
-      __pyx_t_9 = PyBytes_GET_SIZE(__pyx_v_part); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 44, __pyx_L1_error)
-      __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
+      __pyx_t_9 = PyBytes_GET_SIZE(__pyx_v_part); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 43, __pyx_L1_error)
+      __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_10 = __Pyx_PyObject_Append(((PyObject *)__pyx_v_out), __pyx_t_5); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 44, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_Append(((PyObject *)__pyx_v_out), __pyx_t_5); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 43, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "steelscript/packets/protos/dns.pyx":45
+      /* "steelscript/packets/protos/dns.pyx":44
  *         for part in hostname.split('.'):
  *             out.append(len(part))
  *             for ch in part:             # <<<<<<<<<<<<<<
@@ -3086,7 +3086,7 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
  */
       if (unlikely(__pyx_v_part == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' is not iterable");
-        __PYX_ERR(0, 45, __pyx_L1_error)
+        __PYX_ERR(0, 44, __pyx_L1_error)
       }
       __Pyx_INCREF(__pyx_v_part);
       __pyx_t_11 = __pyx_v_part;
@@ -3094,27 +3094,27 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
       __pyx_t_14 = (__pyx_t_13 + PyBytes_GET_SIZE(__pyx_t_11));
       for (__pyx_t_15 = __pyx_t_13; __pyx_t_15 < __pyx_t_14; __pyx_t_15++) {
         __pyx_t_12 = __pyx_t_15;
-        __pyx_t_5 = __Pyx_PyBytes_FromStringAndSize(__pyx_t_12 + 0, 1 - 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyBytes_FromStringAndSize(__pyx_t_12 + 0, 1 - 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_XDECREF_SET(__pyx_v_ch, ((PyObject*)__pyx_t_5));
         __pyx_t_5 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":46
+        /* "steelscript/packets/protos/dns.pyx":45
  *             out.append(len(part))
  *             for ch in part:
  *                 out.append(ord(ch))             # <<<<<<<<<<<<<<
  *         out.append(0)
  *         return out
  */
-        __pyx_t_16 = __Pyx_PyObject_Ord(__pyx_v_ch); if (unlikely(__pyx_t_16 == ((long)(long)(Py_UCS4)-1))) __PYX_ERR(0, 46, __pyx_L1_error)
-        __pyx_t_5 = __Pyx_PyInt_From_long(__pyx_t_16); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 46, __pyx_L1_error)
+        __pyx_t_16 = __Pyx_PyObject_Ord(__pyx_v_ch); if (unlikely(__pyx_t_16 == ((long)(long)(Py_UCS4)-1))) __PYX_ERR(0, 45, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyInt_From_long(__pyx_t_16); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_10 = __Pyx_PyObject_Append(((PyObject *)__pyx_v_out), __pyx_t_5); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 46, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Append(((PyObject *)__pyx_v_out), __pyx_t_5); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 45, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-      /* "steelscript/packets/protos/dns.pyx":43
+      /* "steelscript/packets/protos/dns.pyx":42
  *     if domainname_re.match(hostname) or hostname_re.match(hostname):
  *         out = array('B')
  *         for part in hostname.split('.'):             # <<<<<<<<<<<<<<
@@ -3124,16 +3124,16 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":47
+    /* "steelscript/packets/protos/dns.pyx":46
  *             for ch in part:
  *                 out.append(ord(ch))
  *         out.append(0)             # <<<<<<<<<<<<<<
  *         return out
  *     else:
  */
-    __pyx_t_10 = __Pyx_PyObject_Append(((PyObject *)__pyx_v_out), __pyx_int_0); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_Append(((PyObject *)__pyx_v_out), __pyx_int_0); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 46, __pyx_L1_error)
 
-    /* "steelscript/packets/protos/dns.pyx":48
+    /* "steelscript/packets/protos/dns.pyx":47
  *                 out.append(ord(ch))
  *         out.append(0)
  *         return out             # <<<<<<<<<<<<<<
@@ -3145,7 +3145,7 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
     __pyx_r = __pyx_v_out;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":41
+    /* "steelscript/packets/protos/dns.pyx":40
  *         bytes part, ch
  * 
  *     if domainname_re.match(hostname) or hostname_re.match(hostname):             # <<<<<<<<<<<<<<
@@ -3154,7 +3154,7 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":50
+  /* "steelscript/packets/protos/dns.pyx":49
  *         return out
  *     else:
  *         raise ValueError("hostname_to_label_array(hostname): hostname "             # <<<<<<<<<<<<<<
@@ -3163,14 +3163,14 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
  */
   /*else*/ {
 
-    /* "steelscript/packets/protos/dns.pyx":52
+    /* "steelscript/packets/protos/dns.pyx":51
  *         raise ValueError("hostname_to_label_array(hostname): hostname "
  *                          "argument must be valid RFC 1123 FQDN. Argument "
  *                          "was: {0}".format(hostname))             # <<<<<<<<<<<<<<
  * 
  * cdef bytes write_dns_name_bytes(bytes dns_name,
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_hostname_to_label_array_hostname, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_hostname_to_label_array_hostname, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 51, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_3 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -3183,13 +3183,13 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
       }
     }
     if (!__pyx_t_3) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_hostname); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_hostname); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_hostname};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else
@@ -3197,46 +3197,46 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_hostname};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else
       #endif
       {
-        __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_v_hostname);
         __Pyx_GIVEREF(__pyx_v_hostname);
         PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_hostname);
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":50
+    /* "steelscript/packets/protos/dns.pyx":49
  *         return out
  *     else:
  *         raise ValueError("hostname_to_label_array(hostname): hostname "             # <<<<<<<<<<<<<<
  *                          "argument must be valid RFC 1123 FQDN. Argument "
  *                          "was: {0}".format(hostname))
  */
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 50, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 49, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 50, __pyx_L1_error)
+    __PYX_ERR(0, 49, __pyx_L1_error)
   }
 
-  /* "steelscript/packets/protos/dns.pyx":26
+  /* "steelscript/packets/protos/dns.pyx":25
  * 
  * 
  * cdef array hostname_to_label_array(bytes hostname):             # <<<<<<<<<<<<<<
@@ -3262,7 +3262,7 @@ static arrayobject *__pyx_f_11steelscript_7packets_6protos_3dns_hostname_to_labe
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":54
+/* "steelscript/packets/protos/dns.pyx":53
  *                          "was: {0}".format(hostname))
  * 
  * cdef bytes write_dns_name_bytes(bytes dns_name,             # <<<<<<<<<<<<<<
@@ -3298,18 +3298,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
     }
   }
 
-  /* "steelscript/packets/protos/dns.pyx":76
+  /* "steelscript/packets/protos/dns.pyx":75
  *         array out_array
  * 
  *     if dns_name == b'':             # <<<<<<<<<<<<<<
  *         offset[PNTR] += 1
  *         out_array = array('B', [0])
  */
-  __pyx_t_1 = (__Pyx_PyBytes_Equals(__pyx_v_dns_name, __pyx_kp_b__4, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyBytes_Equals(__pyx_v_dns_name, __pyx_kp_b__4, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 75, __pyx_L1_error)
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "steelscript/packets/protos/dns.pyx":77
+    /* "steelscript/packets/protos/dns.pyx":76
  * 
  *     if dns_name == b'':
  *         offset[PNTR] += 1             # <<<<<<<<<<<<<<
@@ -3319,19 +3319,19 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
     __pyx_t_3 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
     (__pyx_v_offset[__pyx_t_3]) = ((__pyx_v_offset[__pyx_t_3]) + 1);
 
-    /* "steelscript/packets/protos/dns.pyx":78
+    /* "steelscript/packets/protos/dns.pyx":77
  *     if dns_name == b'':
  *         offset[PNTR] += 1
  *         out_array = array('B', [0])             # <<<<<<<<<<<<<<
  *     else:
  *         parts = dns_name.encode('UTF-8').split('.')
  */
-    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_GIVEREF(__pyx_int_0);
     PyList_SET_ITEM(__pyx_t_4, 0, __pyx_int_0);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_n_s_B);
     __Pyx_GIVEREF(__pyx_n_s_B);
@@ -3339,13 +3339,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_out_array = ((arrayobject *)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":76
+    /* "steelscript/packets/protos/dns.pyx":75
  *         array out_array
  * 
  *     if dns_name == b'':             # <<<<<<<<<<<<<<
@@ -3355,7 +3355,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
     goto __pyx_L3;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":80
+  /* "steelscript/packets/protos/dns.pyx":79
  *         out_array = array('B', [0])
  *     else:
  *         parts = dns_name.encode('UTF-8').split('.')             # <<<<<<<<<<<<<<
@@ -3363,22 +3363,22 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
  *         if compress:
  */
   /*else*/ {
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_dns_name, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_dns_name, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 79, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_split); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_split); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 79, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (!(likely(PyList_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 80, __pyx_L1_error)
+    if (!(likely(PyList_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 79, __pyx_L1_error)
     __pyx_v_parts = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":81
+    /* "steelscript/packets/protos/dns.pyx":80
  *     else:
  *         parts = dns_name.encode('UTF-8').split('.')
  *         parts.append(b'')             # <<<<<<<<<<<<<<
@@ -3387,11 +3387,11 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
  */
     if (unlikely(__pyx_v_parts == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-      __PYX_ERR(0, 81, __pyx_L1_error)
+      __PYX_ERR(0, 80, __pyx_L1_error)
     }
-    __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_parts, __pyx_kp_b__4); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 81, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_parts, __pyx_kp_b__4); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 80, __pyx_L1_error)
 
-    /* "steelscript/packets/protos/dns.pyx":82
+    /* "steelscript/packets/protos/dns.pyx":81
  *         parts = dns_name.encode('UTF-8').split('.')
  *         parts.append(b'')
  *         if compress:             # <<<<<<<<<<<<<<
@@ -3401,7 +3401,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
     __pyx_t_2 = (__pyx_v_compress != 0);
     if (__pyx_t_2) {
 
-      /* "steelscript/packets/protos/dns.pyx":84
+      /* "steelscript/packets/protos/dns.pyx":83
  *         if compress:
  *             # see if this label is present already. Write it an update bytes.
  *             if dns_name in labels:             # <<<<<<<<<<<<<<
@@ -3410,13 +3410,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
  */
       if (unlikely(__pyx_v_labels == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-        __PYX_ERR(0, 84, __pyx_L1_error)
+        __PYX_ERR(0, 83, __pyx_L1_error)
       }
-      __pyx_t_2 = (__Pyx_PyDict_ContainsTF(__pyx_v_dns_name, __pyx_v_labels, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __pyx_t_2 = (__Pyx_PyDict_ContainsTF(__pyx_v_dns_name, __pyx_v_labels, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 83, __pyx_L1_error)
       __pyx_t_1 = (__pyx_t_2 != 0);
       if (__pyx_t_1) {
 
-        /* "steelscript/packets/protos/dns.pyx":85
+        /* "steelscript/packets/protos/dns.pyx":84
  *             # see if this label is present already. Write it an update bytes.
  *             if dns_name in labels:
  *                 offset[PNTR] += 2             # <<<<<<<<<<<<<<
@@ -3426,35 +3426,35 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
         __pyx_t_3 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
         (__pyx_v_offset[__pyx_t_3]) = ((__pyx_v_offset[__pyx_t_3]) + 2);
 
-        /* "steelscript/packets/protos/dns.pyx":87
+        /* "steelscript/packets/protos/dns.pyx":86
  *                 offset[PNTR] += 2
  *                 out_array = array('B',
  *                                   struct.pack("!H",             # <<<<<<<<<<<<<<
  *                                               LABEL + labels[dns_name]))
  *             else:
  */
-        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 87, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_pack); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 87, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_pack); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 86, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":88
+        /* "steelscript/packets/protos/dns.pyx":87
  *                 out_array = array('B',
  *                                   struct.pack("!H",
  *                                               LABEL + labels[dns_name]))             # <<<<<<<<<<<<<<
  *             else:
  *                 labels[dns_name] = offset[PNTR]
  */
-        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_LABEL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 88, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_LABEL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 87, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         if (unlikely(__pyx_v_labels == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 88, __pyx_L1_error)
+          __PYX_ERR(0, 87, __pyx_L1_error)
         }
-        __pyx_t_8 = __Pyx_PyDict_GetItem(__pyx_v_labels, __pyx_v_dns_name); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 88, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyDict_GetItem(__pyx_v_labels, __pyx_v_dns_name); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 87, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = PyNumber_Add(__pyx_t_4, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 88, __pyx_L1_error)
+        __pyx_t_9 = PyNumber_Add(__pyx_t_4, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 87, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -3473,7 +3473,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_kp_s_H, __pyx_t_9};
-          __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 86, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -3482,14 +3482,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_kp_s_H, __pyx_t_9};
-          __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 86, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         } else
         #endif
         {
-          __pyx_t_4 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 87, __pyx_L1_error)
+          __pyx_t_4 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           if (__pyx_t_8) {
             __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -3500,20 +3500,20 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
           __Pyx_GIVEREF(__pyx_t_9);
           PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_10, __pyx_t_9);
           __pyx_t_9 = 0;
-          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 86, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         }
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":86
+        /* "steelscript/packets/protos/dns.pyx":85
  *             if dns_name in labels:
  *                 offset[PNTR] += 2
  *                 out_array = array('B',             # <<<<<<<<<<<<<<
  *                                   struct.pack("!H",
  *                                               LABEL + labels[dns_name]))
  */
-        __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 86, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 85, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_INCREF(__pyx_n_s_B);
         __Pyx_GIVEREF(__pyx_n_s_B);
@@ -3521,13 +3521,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
         __Pyx_GIVEREF(__pyx_t_5);
         PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_5);
         __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 86, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 85, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_v_out_array = ((arrayobject *)__pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":84
+        /* "steelscript/packets/protos/dns.pyx":83
  *         if compress:
  *             # see if this label is present already. Write it an update bytes.
  *             if dns_name in labels:             # <<<<<<<<<<<<<<
@@ -3537,7 +3537,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
         goto __pyx_L5;
       }
 
-      /* "steelscript/packets/protos/dns.pyx":90
+      /* "steelscript/packets/protos/dns.pyx":89
  *                                               LABEL + labels[dns_name]))
  *             else:
  *                 labels[dns_name] = offset[PNTR]             # <<<<<<<<<<<<<<
@@ -3545,16 +3545,16 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
  *                 out_array.extend(array('B', parts[0]))
  */
       /*else*/ {
-        __pyx_t_5 = __Pyx_PyInt_From_uint16_t((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 90, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyInt_From_uint16_t((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         if (unlikely(__pyx_v_labels == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 90, __pyx_L1_error)
+          __PYX_ERR(0, 89, __pyx_L1_error)
         }
-        if (unlikely(PyDict_SetItem(__pyx_v_labels, __pyx_v_dns_name, __pyx_t_5) < 0)) __PYX_ERR(0, 90, __pyx_L1_error)
+        if (unlikely(PyDict_SetItem(__pyx_v_labels, __pyx_v_dns_name, __pyx_t_5) < 0)) __PYX_ERR(0, 89, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":91
+        /* "steelscript/packets/protos/dns.pyx":90
  *             else:
  *                 labels[dns_name] = offset[PNTR]
  *                 out_array = array('B', [len(parts[0])])             # <<<<<<<<<<<<<<
@@ -3563,20 +3563,20 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
  */
         if (unlikely(__pyx_v_parts == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 91, __pyx_L1_error)
+          __PYX_ERR(0, 90, __pyx_L1_error)
         }
-        __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_parts, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_parts, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 90, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_11 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 91, __pyx_L1_error)
+        __pyx_t_11 = PyObject_Length(__pyx_t_5); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 90, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_11); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+        __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_11); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 90, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 91, __pyx_L1_error)
+        __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_GIVEREF(__pyx_t_5);
         PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_5);
         __pyx_t_5 = 0;
-        __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 90, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_INCREF(__pyx_n_s_B);
         __Pyx_GIVEREF(__pyx_n_s_B);
@@ -3584,28 +3584,28 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
         __Pyx_GIVEREF(__pyx_t_7);
         PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_7);
         __pyx_t_7 = 0;
-        __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_5, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 91, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_5, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __pyx_v_out_array = ((arrayobject *)__pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":92
+        /* "steelscript/packets/protos/dns.pyx":91
  *                 labels[dns_name] = offset[PNTR]
  *                 out_array = array('B', [len(parts[0])])
  *                 out_array.extend(array('B', parts[0]))             # <<<<<<<<<<<<<<
  *                 offset[PNTR] += len(out_array)
  *                 out_array.extend(array('B',
  */
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_out_array), __pyx_n_s_extend); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 92, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_out_array), __pyx_n_s_extend); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         if (unlikely(__pyx_v_parts == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 92, __pyx_L1_error)
+          __PYX_ERR(0, 91, __pyx_L1_error)
         }
-        __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_parts, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_parts, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 92, __pyx_L1_error)
+        __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 91, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_INCREF(__pyx_n_s_B);
         __Pyx_GIVEREF(__pyx_n_s_B);
@@ -3613,7 +3613,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
         __Pyx_GIVEREF(__pyx_t_4);
         PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_4);
         __pyx_t_4 = 0;
-        __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_9, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_9, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_9 = NULL;
@@ -3627,14 +3627,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
           }
         }
         if (!__pyx_t_9) {
-          __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 91, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_7);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_5)) {
             PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_t_4};
-            __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 91, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3643,20 +3643,20 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
             PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_t_4};
-            __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 91, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           } else
           #endif
           {
-            __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 92, __pyx_L1_error)
+            __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 91, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_8);
             __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_9); __pyx_t_9 = NULL;
             __Pyx_GIVEREF(__pyx_t_4);
             PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_4);
             __pyx_t_4 = 0;
-            __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 91, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           }
@@ -3664,7 +3664,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":93
+        /* "steelscript/packets/protos/dns.pyx":92
  *                 out_array = array('B', [len(parts[0])])
  *                 out_array.extend(array('B', parts[0]))
  *                 offset[PNTR] += len(out_array)             # <<<<<<<<<<<<<<
@@ -3672,20 +3672,20 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
  *                                        write_dns_name_bytes(
  */
         __pyx_t_3 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
-        __pyx_t_11 = Py_SIZE(((PyObject *)__pyx_v_out_array)); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 93, __pyx_L1_error)
+        __pyx_t_11 = Py_SIZE(((PyObject *)__pyx_v_out_array)); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 92, __pyx_L1_error)
         (__pyx_v_offset[__pyx_t_3]) = ((__pyx_v_offset[__pyx_t_3]) + __pyx_t_11);
 
-        /* "steelscript/packets/protos/dns.pyx":94
+        /* "steelscript/packets/protos/dns.pyx":93
  *                 out_array.extend(array('B', parts[0]))
  *                 offset[PNTR] += len(out_array)
  *                 out_array.extend(array('B',             # <<<<<<<<<<<<<<
  *                                        write_dns_name_bytes(
  *                                            b'.'.join(parts[1:-1]),
  */
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_out_array), __pyx_n_s_extend); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 94, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_out_array), __pyx_n_s_extend); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 93, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
 
-        /* "steelscript/packets/protos/dns.pyx":96
+        /* "steelscript/packets/protos/dns.pyx":95
  *                 out_array.extend(array('B',
  *                                        write_dns_name_bytes(
  *                                            b'.'.join(parts[1:-1]),             # <<<<<<<<<<<<<<
@@ -3694,16 +3694,16 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
  */
         if (unlikely(__pyx_v_parts == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 96, __pyx_L1_error)
+          __PYX_ERR(0, 95, __pyx_L1_error)
         }
-        __pyx_t_8 = __Pyx_PyList_GetSlice(__pyx_v_parts, 1, -1L); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 96, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyList_GetSlice(__pyx_v_parts, 1, -1L); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 95, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_4 = __Pyx_PyBytes_Join(__pyx_kp_b__2, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyBytes_Join(__pyx_kp_b__2, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (!(likely(PyBytes_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 96, __pyx_L1_error)
+        if (!(likely(PyBytes_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 95, __pyx_L1_error)
 
-        /* "steelscript/packets/protos/dns.pyx":95
+        /* "steelscript/packets/protos/dns.pyx":94
  *                 offset[PNTR] += len(out_array)
  *                 out_array.extend(array('B',
  *                                        write_dns_name_bytes(             # <<<<<<<<<<<<<<
@@ -3712,18 +3712,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
  */
         __pyx_t_12.__pyx_n = 1;
         __pyx_t_12.compress = __pyx_v_compress;
-        __pyx_t_8 = __pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_bytes(((PyObject*)__pyx_t_4), __pyx_v_offset, __pyx_v_labels, &__pyx_t_12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __pyx_t_8 = __pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_bytes(((PyObject*)__pyx_t_4), __pyx_v_offset, __pyx_v_labels, &__pyx_t_12); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 94, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":94
+        /* "steelscript/packets/protos/dns.pyx":93
  *                 out_array.extend(array('B', parts[0]))
  *                 offset[PNTR] += len(out_array)
  *                 out_array.extend(array('B',             # <<<<<<<<<<<<<<
  *                                        write_dns_name_bytes(
  *                                            b'.'.join(parts[1:-1]),
  */
-        __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 93, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_INCREF(__pyx_n_s_B);
         __Pyx_GIVEREF(__pyx_n_s_B);
@@ -3731,7 +3731,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
         __Pyx_GIVEREF(__pyx_t_8);
         PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 94, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 93, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_4 = NULL;
@@ -3745,14 +3745,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
           }
         }
         if (!__pyx_t_4) {
-          __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 94, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 93, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_7);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_5)) {
             PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_8};
-            __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 94, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 93, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -3761,20 +3761,20 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
             PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_8};
-            __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 94, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 93, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           } else
           #endif
           {
-            __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 94, __pyx_L1_error)
+            __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 93, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_4); __pyx_t_4 = NULL;
             __Pyx_GIVEREF(__pyx_t_8);
             PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_t_8);
             __pyx_t_8 = 0;
-            __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_9, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 94, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_9, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 93, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           }
@@ -3784,7 +3784,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
       }
       __pyx_L5:;
 
-      /* "steelscript/packets/protos/dns.pyx":82
+      /* "steelscript/packets/protos/dns.pyx":81
  *         parts = dns_name.encode('UTF-8').split('.')
  *         parts.append(b'')
  *         if compress:             # <<<<<<<<<<<<<<
@@ -3794,7 +3794,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
       goto __pyx_L4;
     }
 
-    /* "steelscript/packets/protos/dns.pyx":101
+    /* "steelscript/packets/protos/dns.pyx":100
  *                                            compress)))
  *         else:
  *             for part in parts:             # <<<<<<<<<<<<<<
@@ -3804,55 +3804,55 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
     /*else*/ {
       if (unlikely(__pyx_v_parts == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-        __PYX_ERR(0, 101, __pyx_L1_error)
+        __PYX_ERR(0, 100, __pyx_L1_error)
       }
       __pyx_t_7 = __pyx_v_parts; __Pyx_INCREF(__pyx_t_7); __pyx_t_11 = 0;
       for (;;) {
         if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_7)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_11); __Pyx_INCREF(__pyx_t_5); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 101, __pyx_L1_error)
+        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_11); __Pyx_INCREF(__pyx_t_5); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 100, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_7, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_7, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
         __Pyx_XDECREF_SET(__pyx_v_part, __pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":102
+        /* "steelscript/packets/protos/dns.pyx":101
  *         else:
  *             for part in parts:
  *                 out_array = array('B')             # <<<<<<<<<<<<<<
  *                 out_array.append(len(part))
  *                 out_array.extend(array('B', part))
  */
-        __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_XDECREF_SET(__pyx_v_out_array, ((arrayobject *)__pyx_t_5));
         __pyx_t_5 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":103
+        /* "steelscript/packets/protos/dns.pyx":102
  *             for part in parts:
  *                 out_array = array('B')
  *                 out_array.append(len(part))             # <<<<<<<<<<<<<<
  *                 out_array.extend(array('B', part))
  *             offset[PNTR] += len(out_array)
  */
-        __pyx_t_13 = PyObject_Length(__pyx_v_part); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 103, __pyx_L1_error)
-        __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_13); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
+        __pyx_t_13 = PyObject_Length(__pyx_v_part); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 102, __pyx_L1_error)
+        __pyx_t_5 = PyInt_FromSsize_t(__pyx_t_13); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = __Pyx_PyObject_Append(((PyObject *)__pyx_v_out_array), __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 103, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_Append(((PyObject *)__pyx_v_out_array), __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 102, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":104
+        /* "steelscript/packets/protos/dns.pyx":103
  *                 out_array = array('B')
  *                 out_array.append(len(part))
  *                 out_array.extend(array('B', part))             # <<<<<<<<<<<<<<
  *             offset[PNTR] += len(out_array)
  * 
  */
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_out_array), __pyx_n_s_extend); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 104, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_out_array), __pyx_n_s_extend); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 103, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 104, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 103, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_n_s_B);
         __Pyx_GIVEREF(__pyx_n_s_B);
@@ -3860,7 +3860,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
         __Pyx_INCREF(__pyx_v_part);
         __Pyx_GIVEREF(__pyx_v_part);
         PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_v_part);
-        __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_t_8 = NULL;
@@ -3874,14 +3874,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
           }
         }
         if (!__pyx_t_8) {
-          __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_5);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_9)) {
             PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_4};
-            __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3890,20 +3890,20 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
             PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_4};
-            __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           } else
           #endif
           {
-            __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 104, __pyx_L1_error)
+            __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 103, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_14);
             __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_8); __pyx_t_8 = NULL;
             __Pyx_GIVEREF(__pyx_t_4);
             PyTuple_SET_ITEM(__pyx_t_14, 0+1, __pyx_t_4);
             __pyx_t_4 = 0;
-            __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_14, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_14, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           }
@@ -3911,7 +3911,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":101
+        /* "steelscript/packets/protos/dns.pyx":100
  *                                            compress)))
  *         else:
  *             for part in parts:             # <<<<<<<<<<<<<<
@@ -3921,7 +3921,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "steelscript/packets/protos/dns.pyx":105
+      /* "steelscript/packets/protos/dns.pyx":104
  *                 out_array.append(len(part))
  *                 out_array.extend(array('B', part))
  *             offset[PNTR] += len(out_array)             # <<<<<<<<<<<<<<
@@ -3929,15 +3929,15 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
  *     return out_array.tostring()
  */
       __pyx_t_3 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
-      if (unlikely(!__pyx_v_out_array)) { __Pyx_RaiseUnboundLocalError("out_array"); __PYX_ERR(0, 105, __pyx_L1_error) }
-      __pyx_t_11 = Py_SIZE(((PyObject *)__pyx_v_out_array)); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 105, __pyx_L1_error)
+      if (unlikely(!__pyx_v_out_array)) { __Pyx_RaiseUnboundLocalError("out_array"); __PYX_ERR(0, 104, __pyx_L1_error) }
+      __pyx_t_11 = Py_SIZE(((PyObject *)__pyx_v_out_array)); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 104, __pyx_L1_error)
       (__pyx_v_offset[__pyx_t_3]) = ((__pyx_v_offset[__pyx_t_3]) + __pyx_t_11);
     }
     __pyx_L4:;
   }
   __pyx_L3:;
 
-  /* "steelscript/packets/protos/dns.pyx":107
+  /* "steelscript/packets/protos/dns.pyx":106
  *             offset[PNTR] += len(out_array)
  * 
  *     return out_array.tostring()             # <<<<<<<<<<<<<<
@@ -3945,8 +3945,8 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
  * cdef bytes read_dns_name_bytes(array byte_array,
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_out_array)) { __Pyx_RaiseUnboundLocalError("out_array"); __PYX_ERR(0, 107, __pyx_L1_error) }
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_out_array), __pyx_n_s_tostring); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+  if (unlikely(!__pyx_v_out_array)) { __Pyx_RaiseUnboundLocalError("out_array"); __PYX_ERR(0, 106, __pyx_L1_error) }
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_out_array), __pyx_n_s_tostring); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_9 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -3959,19 +3959,19 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
     }
   }
   if (__pyx_t_9) {
-    __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 107, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   } else {
-    __pyx_t_7 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 107, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 106, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 107, __pyx_L1_error)
+  if (!(likely(PyBytes_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 106, __pyx_L1_error)
   __pyx_r = ((PyObject*)__pyx_t_7);
   __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":54
+  /* "steelscript/packets/protos/dns.pyx":53
  *                          "was: {0}".format(hostname))
  * 
  * cdef bytes write_dns_name_bytes(bytes dns_name,             # <<<<<<<<<<<<<<
@@ -3999,7 +3999,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_byte
 }
 static PyObject *__pyx_gb_11steelscript_7packets_6protos_3dns_19read_dns_name_bytes_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "steelscript/packets/protos/dns.pyx":180
+/* "steelscript/packets/protos/dns.pyx":179
  *             read_on = 0
  *     for index in range(len(labels)):
  *         cur_label = b'.'.join((x[1] for x in labels[index:]))             # <<<<<<<<<<<<<<
@@ -4016,7 +4016,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_19read_dns_name_by
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_11steelscript_7packets_6protos_3dns___pyx_scope_struct_1_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 180, __pyx_L1_error)
+    __PYX_ERR(0, 179, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -4024,7 +4024,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_19read_dns_name_by
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11steelscript_7packets_6protos_3dns_19read_dns_name_bytes_2generator, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_read_dns_name_bytes_locals_genex, __pyx_n_s_steelscript_packets_protos_dns); if (unlikely(!gen)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_11steelscript_7packets_6protos_3dns_19read_dns_name_bytes_2generator, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_read_dns_name_bytes_locals_genex, __pyx_n_s_steelscript_packets_protos_dns); if (unlikely(!gen)) __PYX_ERR(0, 179, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -4057,29 +4057,29 @@ static PyObject *__pyx_gb_11steelscript_7packets_6protos_3dns_19read_dns_name_by
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 180, __pyx_L1_error)
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_labels)) { __Pyx_RaiseClosureNameError("labels"); __PYX_ERR(0, 180, __pyx_L1_error) }
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 179, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_labels)) { __Pyx_RaiseClosureNameError("labels"); __PYX_ERR(0, 179, __pyx_L1_error) }
   if (unlikely(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_labels == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 180, __pyx_L1_error)
+    __PYX_ERR(0, 179, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyList_GetSlice(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_labels, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_index, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyList_GetSlice(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_labels, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_index, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
     if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 179, __pyx_L1_error)
     #else
-    __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     #endif
     __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_x);
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_x, __pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_x, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_cur_scope->__pyx_v_x, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
@@ -4097,7 +4097,7 @@ static PyObject *__pyx_gb_11steelscript_7packets_6protos_3dns_19read_dns_name_by
     __pyx_cur_scope->__pyx_t_0 = 0;
     __Pyx_XGOTREF(__pyx_t_2);
     __pyx_t_3 = __pyx_cur_scope->__pyx_t_1;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 180, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 179, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
@@ -4118,7 +4118,7 @@ static PyObject *__pyx_gb_11steelscript_7packets_6protos_3dns_19read_dns_name_by
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":109
+/* "steelscript/packets/protos/dns.pyx":108
  *     return out_array.tostring()
  * 
  * cdef bytes read_dns_name_bytes(array byte_array,             # <<<<<<<<<<<<<<
@@ -4154,12 +4154,12 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_11steelscript_7packets_6protos_3dns___pyx_scope_struct____pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 109, __pyx_L1_error)
+    __PYX_ERR(0, 108, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
 
-  /* "steelscript/packets/protos/dns.pyx":144
+  /* "steelscript/packets/protos/dns.pyx":143
  *         list return_parts
  * 
  *     read_on = 1             # <<<<<<<<<<<<<<
@@ -4168,32 +4168,32 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
  */
   __pyx_v_read_on = 1;
 
-  /* "steelscript/packets/protos/dns.pyx":145
+  /* "steelscript/packets/protos/dns.pyx":144
  * 
  *     read_on = 1
  *     labels = list()             # <<<<<<<<<<<<<<
  *     return_parts = list()
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_labels = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":146
+  /* "steelscript/packets/protos/dns.pyx":145
  *     read_on = 1
  *     labels = list()
  *     return_parts = list()             # <<<<<<<<<<<<<<
  * 
  *     while read_on:
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_return_parts = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":148
+  /* "steelscript/packets/protos/dns.pyx":147
  *     return_parts = list()
  * 
  *     while read_on:             # <<<<<<<<<<<<<<
@@ -4204,20 +4204,20 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
     __pyx_t_2 = (__pyx_v_read_on != 0);
     if (!__pyx_t_2) break;
 
-    /* "steelscript/packets/protos/dns.pyx":149
+    /* "steelscript/packets/protos/dns.pyx":148
  * 
  *     while read_on:
  *         b1 = byte_array[offset[PNTR]]             # <<<<<<<<<<<<<<
  *         if 1 <= b1 <= 63:
  *             # This is the first time we have seen this label OR this packet
  */
-    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_byte_array), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), uint16_t, 0, __Pyx_PyInt_From_uint16_t, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_byte_array), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), uint16_t, 0, __Pyx_PyInt_From_uint16_t, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyInt_As_unsigned_char(__pyx_t_1); if (unlikely((__pyx_t_3 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_As_unsigned_char(__pyx_t_1); if (unlikely((__pyx_t_3 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_b1 = __pyx_t_3;
 
-    /* "steelscript/packets/protos/dns.pyx":150
+    /* "steelscript/packets/protos/dns.pyx":149
  *     while read_on:
  *         b1 = byte_array[offset[PNTR]]
  *         if 1 <= b1 <= 63:             # <<<<<<<<<<<<<<
@@ -4231,16 +4231,16 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
     __pyx_t_4 = (__pyx_t_2 != 0);
     if (__pyx_t_4) {
 
-      /* "steelscript/packets/protos/dns.pyx":154
+      /* "steelscript/packets/protos/dns.pyx":153
  *             # is not using compression.
  *             c_label = \
  *                 byte_array[offset[PNTR] + 1: offset[PNTR] + 1 + b1].tostring()             # <<<<<<<<<<<<<<
  *             labels.append((offset[PNTR], c_label, ))
  *             return_parts.append(c_label)
  */
-      __pyx_t_5 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 1), (((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 1) + __pyx_v_b1), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 1), (((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 1) + __pyx_v_b1), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 153, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_tostring); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_tostring); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 153, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_5 = NULL;
@@ -4254,27 +4254,27 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
         }
       }
       if (__pyx_t_5) {
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       } else {
-        __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 154, __pyx_L1_error)
+      if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 153, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_c_label, ((PyObject*)__pyx_t_1));
       __pyx_t_1 = 0;
 
-      /* "steelscript/packets/protos/dns.pyx":155
+      /* "steelscript/packets/protos/dns.pyx":154
  *             c_label = \
  *                 byte_array[offset[PNTR] + 1: offset[PNTR] + 1 + b1].tostring()
  *             labels.append((offset[PNTR], c_label, ))             # <<<<<<<<<<<<<<
  *             return_parts.append(c_label)
  *             offset[PNTR] += b1 + 1
  */
-      __pyx_t_1 = __Pyx_PyInt_From_uint16_t((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_uint16_t((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 155, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 154, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1);
@@ -4282,19 +4282,19 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
       __Pyx_GIVEREF(__pyx_v_c_label);
       PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_v_c_label);
       __pyx_t_1 = 0;
-      __pyx_t_7 = __Pyx_PyList_Append(__pyx_cur_scope->__pyx_v_labels, __pyx_t_6); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 155, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyList_Append(__pyx_cur_scope->__pyx_v_labels, __pyx_t_6); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 154, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "steelscript/packets/protos/dns.pyx":156
+      /* "steelscript/packets/protos/dns.pyx":155
  *                 byte_array[offset[PNTR] + 1: offset[PNTR] + 1 + b1].tostring()
  *             labels.append((offset[PNTR], c_label, ))
  *             return_parts.append(c_label)             # <<<<<<<<<<<<<<
  *             offset[PNTR] += b1 + 1
  *         elif b1 == 0:
  */
-      __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_return_parts, __pyx_v_c_label); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_return_parts, __pyx_v_c_label); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 155, __pyx_L1_error)
 
-      /* "steelscript/packets/protos/dns.pyx":157
+      /* "steelscript/packets/protos/dns.pyx":156
  *             labels.append((offset[PNTR], c_label, ))
  *             return_parts.append(c_label)
  *             offset[PNTR] += b1 + 1             # <<<<<<<<<<<<<<
@@ -4304,7 +4304,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
       __pyx_t_8 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
       (__pyx_v_offset[__pyx_t_8]) = ((__pyx_v_offset[__pyx_t_8]) + (__pyx_v_b1 + 1));
 
-      /* "steelscript/packets/protos/dns.pyx":150
+      /* "steelscript/packets/protos/dns.pyx":149
  *     while read_on:
  *         b1 = byte_array[offset[PNTR]]
  *         if 1 <= b1 <= 63:             # <<<<<<<<<<<<<<
@@ -4314,7 +4314,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
       goto __pyx_L5;
     }
 
-    /* "steelscript/packets/protos/dns.pyx":158
+    /* "steelscript/packets/protos/dns.pyx":157
  *             return_parts.append(c_label)
  *             offset[PNTR] += b1 + 1
  *         elif b1 == 0:             # <<<<<<<<<<<<<<
@@ -4324,7 +4324,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
     __pyx_t_4 = ((__pyx_v_b1 == 0) != 0);
     if (__pyx_t_4) {
 
-      /* "steelscript/packets/protos/dns.pyx":160
+      /* "steelscript/packets/protos/dns.pyx":159
  *         elif b1 == 0:
  *             # DNS name is done
  *             read_on = 0             # <<<<<<<<<<<<<<
@@ -4333,7 +4333,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
  */
       __pyx_v_read_on = 0;
 
-      /* "steelscript/packets/protos/dns.pyx":161
+      /* "steelscript/packets/protos/dns.pyx":160
  *             # DNS name is done
  *             read_on = 0
  *             offset[PNTR] += 1             # <<<<<<<<<<<<<<
@@ -4343,7 +4343,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
       __pyx_t_8 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
       (__pyx_v_offset[__pyx_t_8]) = ((__pyx_v_offset[__pyx_t_8]) + 1);
 
-      /* "steelscript/packets/protos/dns.pyx":158
+      /* "steelscript/packets/protos/dns.pyx":157
  *             return_parts.append(c_label)
  *             offset[PNTR] += b1 + 1
  *         elif b1 == 0:             # <<<<<<<<<<<<<<
@@ -4353,7 +4353,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
       goto __pyx_L5;
     }
 
-    /* "steelscript/packets/protos/dns.pyx":163
+    /* "steelscript/packets/protos/dns.pyx":162
  *             offset[PNTR] += 1
  *         else:
  *             location = struct.unpack(             # <<<<<<<<<<<<<<
@@ -4362,35 +4362,35 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
  */
     /*else*/ {
 
-      /* "steelscript/packets/protos/dns.pyx":165
+      /* "steelscript/packets/protos/dns.pyx":164
  *             location = struct.unpack(
  *                 "!H",
  *                 byte_array[offset[PNTR]: offset[PNTR] + 2])[0]             # <<<<<<<<<<<<<<
  *             offset[PNTR] += 2
  *             # Strip off the top two bits
  */
-      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
 
-      /* "steelscript/packets/protos/dns.pyx":163
+      /* "steelscript/packets/protos/dns.pyx":162
  *             offset[PNTR] += 1
  *         else:
  *             location = struct.unpack(             # <<<<<<<<<<<<<<
  *                 "!H",
  *                 byte_array[offset[PNTR]: offset[PNTR] + 2])[0]
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_unpack); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 163, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_unpack); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 162, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "steelscript/packets/protos/dns.pyx":165
+      /* "steelscript/packets/protos/dns.pyx":164
  *             location = struct.unpack(
  *                 "!H",
  *                 byte_array[offset[PNTR]: offset[PNTR] + 2])[0]             # <<<<<<<<<<<<<<
  *             offset[PNTR] += 2
  *             # Strip off the top two bits
  */
-      __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 2), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 2), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_9 = NULL;
       __pyx_t_10 = 0;
@@ -4407,7 +4407,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_kp_s_H, __pyx_t_1};
-        __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 163, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 162, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4416,14 +4416,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_kp_s_H, __pyx_t_1};
-        __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 163, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 162, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else
       #endif
       {
-        __pyx_t_11 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 163, __pyx_L1_error)
+        __pyx_t_11 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 162, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         if (__pyx_t_9) {
           __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -4434,19 +4434,19 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
         __Pyx_GIVEREF(__pyx_t_1);
         PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_10, __pyx_t_1);
         __pyx_t_1 = 0;
-        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_11, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 163, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_11, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 162, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_6, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_6, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_12 = __Pyx_PyInt_As_uint16_t(__pyx_t_5); if (unlikely((__pyx_t_12 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyInt_As_uint16_t(__pyx_t_5); if (unlikely((__pyx_t_12 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_v_location = __pyx_t_12;
 
-      /* "steelscript/packets/protos/dns.pyx":166
+      /* "steelscript/packets/protos/dns.pyx":165
  *                 "!H",
  *                 byte_array[offset[PNTR]: offset[PNTR] + 2])[0]
  *             offset[PNTR] += 2             # <<<<<<<<<<<<<<
@@ -4456,7 +4456,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
       __pyx_t_8 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
       (__pyx_v_offset[__pyx_t_8]) = ((__pyx_v_offset[__pyx_t_8]) + 2);
 
-      /* "steelscript/packets/protos/dns.pyx":168
+      /* "steelscript/packets/protos/dns.pyx":167
  *             offset[PNTR] += 2
  *             # Strip off the top two bits
  *             location = location & 0x3fff             # <<<<<<<<<<<<<<
@@ -4465,25 +4465,25 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
  */
       __pyx_v_location = (__pyx_v_location & 0x3fff);
 
-      /* "steelscript/packets/protos/dns.pyx":169
+      /* "steelscript/packets/protos/dns.pyx":168
  *             # Strip off the top two bits
  *             location = location & 0x3fff
  *             if location in label_store:             # <<<<<<<<<<<<<<
  *                 return_parts.append(label_store[location])
  *                 labels.append((location, label_store[location], ))
  */
-      __pyx_t_5 = __Pyx_PyInt_From_uint16_t(__pyx_v_location); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_uint16_t(__pyx_v_location); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       if (unlikely(__pyx_v_label_store == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-        __PYX_ERR(0, 169, __pyx_L1_error)
+        __PYX_ERR(0, 168, __pyx_L1_error)
       }
-      __pyx_t_4 = (__Pyx_PyDict_ContainsTF(__pyx_t_5, __pyx_v_label_store, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 169, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyDict_ContainsTF(__pyx_t_5, __pyx_v_label_store, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_2 = (__pyx_t_4 != 0);
       if (__pyx_t_2) {
 
-        /* "steelscript/packets/protos/dns.pyx":170
+        /* "steelscript/packets/protos/dns.pyx":169
  *             location = location & 0x3fff
  *             if location in label_store:
  *                 return_parts.append(label_store[location])             # <<<<<<<<<<<<<<
@@ -4492,35 +4492,35 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
  */
         if (unlikely(__pyx_v_label_store == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 170, __pyx_L1_error)
+          __PYX_ERR(0, 169, __pyx_L1_error)
         }
-        __pyx_t_5 = __Pyx_PyInt_From_uint16_t(__pyx_v_location); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyInt_From_uint16_t(__pyx_v_location); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = __Pyx_PyDict_GetItem(__pyx_v_label_store, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyDict_GetItem(__pyx_v_label_store, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_return_parts, __pyx_t_6); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_return_parts, __pyx_t_6); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":171
+        /* "steelscript/packets/protos/dns.pyx":170
  *             if location in label_store:
  *                 return_parts.append(label_store[location])
  *                 labels.append((location, label_store[location], ))             # <<<<<<<<<<<<<<
  *             else:
  *                 raise ValueError("read_dns_name_bytes encountered unexpected "
  */
-        __pyx_t_6 = __Pyx_PyInt_From_uint16_t(__pyx_v_location); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 171, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyInt_From_uint16_t(__pyx_v_location); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 170, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         if (unlikely(__pyx_v_label_store == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 171, __pyx_L1_error)
+          __PYX_ERR(0, 170, __pyx_L1_error)
         }
-        __pyx_t_5 = __Pyx_PyInt_From_uint16_t(__pyx_v_location); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 171, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyInt_From_uint16_t(__pyx_v_location); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 170, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_label_store, __pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 171, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_label_store, __pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 170, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 171, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 170, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_GIVEREF(__pyx_t_6);
         PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_6);
@@ -4528,10 +4528,10 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
         PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_11);
         __pyx_t_6 = 0;
         __pyx_t_11 = 0;
-        __pyx_t_7 = __Pyx_PyList_Append(__pyx_cur_scope->__pyx_v_labels, __pyx_t_5); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 171, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyList_Append(__pyx_cur_scope->__pyx_v_labels, __pyx_t_5); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 170, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":169
+        /* "steelscript/packets/protos/dns.pyx":168
  *             # Strip off the top two bits
  *             location = location & 0x3fff
  *             if location in label_store:             # <<<<<<<<<<<<<<
@@ -4541,7 +4541,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
         goto __pyx_L6;
       }
 
-      /* "steelscript/packets/protos/dns.pyx":173
+      /* "steelscript/packets/protos/dns.pyx":172
  *                 labels.append((location, label_store[location], ))
  *             else:
  *                 raise ValueError("read_dns_name_bytes encountered unexpected "             # <<<<<<<<<<<<<<
@@ -4550,16 +4550,16 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
  */
       /*else*/ {
 
-        /* "steelscript/packets/protos/dns.pyx":176
+        /* "steelscript/packets/protos/dns.pyx":175
  *                                  "compressed data in byte_array. Array bytes "
  *                                  "are: {0}"
  *                                  "".format(byte_array[offset[PNTR] - 2:]))             # <<<<<<<<<<<<<<
  *             # Compressed labels come at the end. We break now
  *             read_on = 0
  */
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_read_dns_name_bytes_encountered, __pyx_n_s_format); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 176, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_read_dns_name_bytes_encountered, __pyx_n_s_format); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 175, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) - 2), 0, NULL, NULL, NULL, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 176, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) - 2), 0, NULL, NULL, NULL, 1, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 175, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_1 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_11))) {
@@ -4572,14 +4572,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
           }
         }
         if (!__pyx_t_1) {
-          __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 175, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_GOTREF(__pyx_t_5);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_11)) {
             PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_6};
-            __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 175, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -4588,48 +4588,48 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
             PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_6};
-            __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 175, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           } else
           #endif
           {
-            __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 176, __pyx_L1_error)
+            __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 175, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_1); __pyx_t_1 = NULL;
             __Pyx_GIVEREF(__pyx_t_6);
             PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_t_6);
             __pyx_t_6 = 0;
-            __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 175, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           }
         }
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":173
+        /* "steelscript/packets/protos/dns.pyx":172
  *                 labels.append((location, label_store[location], ))
  *             else:
  *                 raise ValueError("read_dns_name_bytes encountered unexpected "             # <<<<<<<<<<<<<<
  *                                  "compressed data in byte_array. Array bytes "
  *                                  "are: {0}"
  */
-        __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 173, __pyx_L1_error)
+        __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 172, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_GIVEREF(__pyx_t_5);
         PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_5);
         __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_11, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 173, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_11, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_Raise(__pyx_t_5, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __PYX_ERR(0, 173, __pyx_L1_error)
+        __PYX_ERR(0, 172, __pyx_L1_error)
       }
       __pyx_L6:;
 
-      /* "steelscript/packets/protos/dns.pyx":178
+      /* "steelscript/packets/protos/dns.pyx":177
  *                                  "".format(byte_array[offset[PNTR] - 2:]))
  *             # Compressed labels come at the end. We break now
  *             read_on = 0             # <<<<<<<<<<<<<<
@@ -4641,7 +4641,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
     __pyx_L5:;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":179
+  /* "steelscript/packets/protos/dns.pyx":178
  *             # Compressed labels come at the end. We break now
  *             read_on = 0
  *     for index in range(len(labels)):             # <<<<<<<<<<<<<<
@@ -4652,30 +4652,30 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
   __Pyx_INCREF(__pyx_t_5);
   if (unlikely(__pyx_t_5 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 179, __pyx_L1_error)
+    __PYX_ERR(0, 178, __pyx_L1_error)
   }
-  __pyx_t_13 = PyList_GET_SIZE(__pyx_t_5); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_13 = PyList_GET_SIZE(__pyx_t_5); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_13; __pyx_t_12+=1) {
     __pyx_cur_scope->__pyx_v_index = __pyx_t_12;
 
-    /* "steelscript/packets/protos/dns.pyx":180
+    /* "steelscript/packets/protos/dns.pyx":179
  *             read_on = 0
  *     for index in range(len(labels)):
  *         cur_label = b'.'.join((x[1] for x in labels[index:]))             # <<<<<<<<<<<<<<
  *         if cur_label not in label_store:
  *             label_store[cur_label] = labels[index][0]
  */
-    __pyx_t_5 = __pyx_pf_11steelscript_7packets_6protos_3dns_19read_dns_name_bytes_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __pyx_t_5 = __pyx_pf_11steelscript_7packets_6protos_3dns_19read_dns_name_bytes_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 179, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_11 = __Pyx_PyBytes_Join(__pyx_kp_b__2, __pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyBytes_Join(__pyx_kp_b__2, __pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 179, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 180, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 179, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_cur_label, ((PyObject*)__pyx_t_11));
     __pyx_t_11 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":181
+    /* "steelscript/packets/protos/dns.pyx":180
  *     for index in range(len(labels)):
  *         cur_label = b'.'.join((x[1] for x in labels[index:]))
  *         if cur_label not in label_store:             # <<<<<<<<<<<<<<
@@ -4684,32 +4684,32 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
  */
     if (unlikely(__pyx_v_label_store == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      __PYX_ERR(0, 181, __pyx_L1_error)
+      __PYX_ERR(0, 180, __pyx_L1_error)
     }
-    __pyx_t_2 = (__Pyx_PyDict_ContainsTF(__pyx_v_cur_label, __pyx_v_label_store, Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyDict_ContainsTF(__pyx_v_cur_label, __pyx_v_label_store, Py_NE)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 180, __pyx_L1_error)
     __pyx_t_4 = (__pyx_t_2 != 0);
     if (__pyx_t_4) {
 
-      /* "steelscript/packets/protos/dns.pyx":182
+      /* "steelscript/packets/protos/dns.pyx":181
  *         cur_label = b'.'.join((x[1] for x in labels[index:]))
  *         if cur_label not in label_store:
  *             label_store[cur_label] = labels[index][0]             # <<<<<<<<<<<<<<
  *             label_store[labels[index][0]] = cur_label
  *         else:
  */
-      __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_cur_scope->__pyx_v_labels, __pyx_cur_scope->__pyx_v_index, uint16_t, 0, __Pyx_PyInt_From_uint16_t, 1, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 182, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_cur_scope->__pyx_v_labels, __pyx_cur_scope->__pyx_v_index, uint16_t, 0, __Pyx_PyInt_From_uint16_t, 1, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_11, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 182, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_11, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       if (unlikely(__pyx_v_label_store == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 182, __pyx_L1_error)
+        __PYX_ERR(0, 181, __pyx_L1_error)
       }
-      if (unlikely(PyDict_SetItem(__pyx_v_label_store, __pyx_v_cur_label, __pyx_t_5) < 0)) __PYX_ERR(0, 182, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_label_store, __pyx_v_cur_label, __pyx_t_5) < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "steelscript/packets/protos/dns.pyx":183
+      /* "steelscript/packets/protos/dns.pyx":182
  *         if cur_label not in label_store:
  *             label_store[cur_label] = labels[index][0]
  *             label_store[labels[index][0]] = cur_label             # <<<<<<<<<<<<<<
@@ -4718,17 +4718,17 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
  */
       if (unlikely(__pyx_v_label_store == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 183, __pyx_L1_error)
+        __PYX_ERR(0, 182, __pyx_L1_error)
       }
-      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_cur_scope->__pyx_v_labels, __pyx_cur_scope->__pyx_v_index, uint16_t, 0, __Pyx_PyInt_From_uint16_t, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_cur_scope->__pyx_v_labels, __pyx_cur_scope->__pyx_v_index, uint16_t, 0, __Pyx_PyInt_From_uint16_t, 1, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 182, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_5, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_5, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 182, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(PyDict_SetItem(__pyx_v_label_store, __pyx_t_11, __pyx_v_cur_label) < 0)) __PYX_ERR(0, 183, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_label_store, __pyx_t_11, __pyx_v_cur_label) < 0)) __PYX_ERR(0, 182, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-      /* "steelscript/packets/protos/dns.pyx":181
+      /* "steelscript/packets/protos/dns.pyx":180
  *     for index in range(len(labels)):
  *         cur_label = b'.'.join((x[1] for x in labels[index:]))
  *         if cur_label not in label_store:             # <<<<<<<<<<<<<<
@@ -4738,7 +4738,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
       goto __pyx_L9;
     }
 
-    /* "steelscript/packets/protos/dns.pyx":187
+    /* "steelscript/packets/protos/dns.pyx":186
  *             # Suppose this packet is not using compression? But this
  *             # is not the first time we have seen this label so move on.
  *             pass             # <<<<<<<<<<<<<<
@@ -4750,7 +4750,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
     __pyx_L9:;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":188
+  /* "steelscript/packets/protos/dns.pyx":187
  *             # is not the first time we have seen this label so move on.
  *             pass
  *     return b'.'.join(return_parts)             # <<<<<<<<<<<<<<
@@ -4758,14 +4758,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_11 = __Pyx_PyBytes_Join(__pyx_kp_b__2, __pyx_v_return_parts); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyBytes_Join(__pyx_kp_b__2, __pyx_v_return_parts); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  if (!(likely(PyBytes_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 188, __pyx_L1_error)
+  if (!(likely(PyBytes_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_11)->tp_name), 0))) __PYX_ERR(0, 187, __pyx_L1_error)
   __pyx_r = ((PyObject*)__pyx_t_11);
   __pyx_t_11 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":109
+  /* "steelscript/packets/protos/dns.pyx":108
  *     return out_array.tostring()
  * 
  * cdef bytes read_dns_name_bytes(array byte_array,             # <<<<<<<<<<<<<<
@@ -4792,7 +4792,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":191
+/* "steelscript/packets/protos/dns.pyx":190
  * 
  * 
  * cdef tuple parse_resource(array byte_array,             # <<<<<<<<<<<<<<
@@ -4824,39 +4824,39 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
   int __pyx_t_13;
   __Pyx_RefNannySetupContext("parse_resource", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":213
+  /* "steelscript/packets/protos/dns.pyx":212
  *         bytes d_name, r_data
  * 
  *     d_name = read_dns_name_bytes(byte_array, offset, label_store)             # <<<<<<<<<<<<<<
  *     r_type, r_class, r_ttl, r_d_len = struct.unpack(
  *         "!HHIH",
  */
-  __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes(__pyx_v_byte_array, __pyx_v_offset, __pyx_v_label_store); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes(__pyx_v_byte_array, __pyx_v_offset, __pyx_v_label_store); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_d_name = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":214
+  /* "steelscript/packets/protos/dns.pyx":213
  * 
  *     d_name = read_dns_name_bytes(byte_array, offset, label_store)
  *     r_type, r_class, r_ttl, r_d_len = struct.unpack(             # <<<<<<<<<<<<<<
  *         "!HHIH",
  *         byte_array[offset[PNTR]:offset[PNTR] + 10])
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_unpack); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_unpack); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":216
+  /* "steelscript/packets/protos/dns.pyx":215
  *     r_type, r_class, r_ttl, r_d_len = struct.unpack(
  *         "!HHIH",
  *         byte_array[offset[PNTR]:offset[PNTR] + 10])             # <<<<<<<<<<<<<<
  *     offset[PNTR] += 10
  *     if r_type in (DNSTYPE_NS, DNSTYPE_CNAME, DNSTYPE_PTR):
  */
-  __pyx_t_2 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 10), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 10), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -4873,7 +4873,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_kp_s_HHIH, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4882,14 +4882,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_kp_s_HHIH, __pyx_t_2};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 214, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -4900,7 +4900,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
@@ -4915,7 +4915,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     if (unlikely(size != 4)) {
       if (size > 4) __Pyx_RaiseTooManyValuesError(4);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 214, __pyx_L1_error)
+      __PYX_ERR(0, 213, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -4938,7 +4938,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
       Py_ssize_t i;
       PyObject** temps[4] = {&__pyx_t_3,&__pyx_t_6,&__pyx_t_2,&__pyx_t_4};
       for (i=0; i < 4; i++) {
-        PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) __PYX_ERR(0, 214, __pyx_L1_error)
+        PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) __PYX_ERR(0, 213, __pyx_L1_error)
         __Pyx_GOTREF(item);
         *(temps[i]) = item;
       }
@@ -4948,7 +4948,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
   } else {
     Py_ssize_t index = -1;
     PyObject** temps[4] = {&__pyx_t_3,&__pyx_t_6,&__pyx_t_2,&__pyx_t_4};
-    __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 214, __pyx_L1_error)
+    __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -4957,7 +4957,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
       __Pyx_GOTREF(item);
       *(temps[index]) = item;
     }
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 4) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 4) < 0) __PYX_ERR(0, 213, __pyx_L1_error)
     __pyx_t_8 = NULL;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     goto __pyx_L4_unpacking_done;
@@ -4965,31 +4965,31 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_8 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 214, __pyx_L1_error)
+    __PYX_ERR(0, 213, __pyx_L1_error)
     __pyx_L4_unpacking_done:;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":214
+  /* "steelscript/packets/protos/dns.pyx":213
  * 
  *     d_name = read_dns_name_bytes(byte_array, offset, label_store)
  *     r_type, r_class, r_ttl, r_d_len = struct.unpack(             # <<<<<<<<<<<<<<
  *         "!HHIH",
  *         byte_array[offset[PNTR]:offset[PNTR] + 10])
  */
-  __pyx_t_9 = __Pyx_PyInt_As_uint16_t(__pyx_t_3); if (unlikely((__pyx_t_9 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyInt_As_uint16_t(__pyx_t_3); if (unlikely((__pyx_t_9 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_10 = __Pyx_PyInt_As_uint16_t(__pyx_t_6); if (unlikely((__pyx_t_10 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyInt_As_uint16_t(__pyx_t_6); if (unlikely((__pyx_t_10 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_11 = __Pyx_PyInt_As_uint32_t(__pyx_t_2); if (unlikely((__pyx_t_11 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyInt_As_uint32_t(__pyx_t_2); if (unlikely((__pyx_t_11 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_12 = __Pyx_PyInt_As_uint16_t(__pyx_t_4); if (unlikely((__pyx_t_12 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyInt_As_uint16_t(__pyx_t_4); if (unlikely((__pyx_t_12 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_r_type = __pyx_t_9;
   __pyx_v_r_class = __pyx_t_10;
   __pyx_v_r_ttl = __pyx_t_11;
   __pyx_v_r_d_len = __pyx_t_12;
 
-  /* "steelscript/packets/protos/dns.pyx":217
+  /* "steelscript/packets/protos/dns.pyx":216
  *         "!HHIH",
  *         byte_array[offset[PNTR]:offset[PNTR] + 10])
  *     offset[PNTR] += 10             # <<<<<<<<<<<<<<
@@ -4999,7 +4999,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
   __pyx_t_13 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
   (__pyx_v_offset[__pyx_t_13]) = ((__pyx_v_offset[__pyx_t_13]) + 10);
 
-  /* "steelscript/packets/protos/dns.pyx":218
+  /* "steelscript/packets/protos/dns.pyx":217
  *         byte_array[offset[PNTR]:offset[PNTR] + 10])
  *     offset[PNTR] += 10
  *     if r_type in (DNSTYPE_NS, DNSTYPE_CNAME, DNSTYPE_PTR):             # <<<<<<<<<<<<<<
@@ -5011,19 +5011,19 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_CNAME:
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_PTR:
 
-    /* "steelscript/packets/protos/dns.pyx":219
+    /* "steelscript/packets/protos/dns.pyx":218
  *     offset[PNTR] += 10
  *     if r_type in (DNSTYPE_NS, DNSTYPE_CNAME, DNSTYPE_PTR):
  *         r_data = read_dns_name_bytes(byte_array,             # <<<<<<<<<<<<<<
  *                                      offset,
  *                                      label_store)
  */
-    __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes(__pyx_v_byte_array, __pyx_v_offset, __pyx_v_label_store); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes(__pyx_v_byte_array, __pyx_v_offset, __pyx_v_label_store); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_r_data = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":218
+    /* "steelscript/packets/protos/dns.pyx":217
  *         byte_array[offset[PNTR]:offset[PNTR] + 10])
  *     offset[PNTR] += 10
  *     if r_type in (DNSTYPE_NS, DNSTYPE_CNAME, DNSTYPE_PTR):             # <<<<<<<<<<<<<<
@@ -5032,7 +5032,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":222
+    /* "steelscript/packets/protos/dns.pyx":221
  *                                      offset,
  *                                      label_store)
  *     elif r_type == DNSTYPE_A:             # <<<<<<<<<<<<<<
@@ -5041,32 +5041,32 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
  */
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_A:
 
-    /* "steelscript/packets/protos/dns.pyx":223
+    /* "steelscript/packets/protos/dns.pyx":222
  *                                      label_store)
  *     elif r_type == DNSTYPE_A:
  *         r_data = socket.inet_ntop(socket.AF_INET,             # <<<<<<<<<<<<<<
  *                                   byte_array[offset[PNTR]:offset[PNTR] + 4])
  *         offset[PNTR] += 4
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_inet_ntop); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_inet_ntop); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_AF_INET); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_AF_INET); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":224
+    /* "steelscript/packets/protos/dns.pyx":223
  *     elif r_type == DNSTYPE_A:
  *         r_data = socket.inet_ntop(socket.AF_INET,
  *                                   byte_array[offset[PNTR]:offset[PNTR] + 4])             # <<<<<<<<<<<<<<
  *         offset[PNTR] += 4
  *     elif r_type == DNSTYPE_AAAA:
  */
-    __pyx_t_4 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 4), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 224, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 4), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = NULL;
     __pyx_t_5 = 0;
@@ -5083,7 +5083,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_6, __pyx_t_4};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -5093,7 +5093,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_6, __pyx_t_4};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -5101,7 +5101,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 222, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_3) {
         __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -5112,24 +5112,24 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_5, __pyx_t_4);
       __pyx_t_6 = 0;
       __pyx_t_4 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":223
+    /* "steelscript/packets/protos/dns.pyx":222
  *                                      label_store)
  *     elif r_type == DNSTYPE_A:
  *         r_data = socket.inet_ntop(socket.AF_INET,             # <<<<<<<<<<<<<<
  *                                   byte_array[offset[PNTR]:offset[PNTR] + 4])
  *         offset[PNTR] += 4
  */
-    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 223, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 222, __pyx_L1_error)
     __pyx_v_r_data = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":225
+    /* "steelscript/packets/protos/dns.pyx":224
  *         r_data = socket.inet_ntop(socket.AF_INET,
  *                                   byte_array[offset[PNTR]:offset[PNTR] + 4])
  *         offset[PNTR] += 4             # <<<<<<<<<<<<<<
@@ -5139,7 +5139,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     __pyx_t_13 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
     (__pyx_v_offset[__pyx_t_13]) = ((__pyx_v_offset[__pyx_t_13]) + 4);
 
-    /* "steelscript/packets/protos/dns.pyx":222
+    /* "steelscript/packets/protos/dns.pyx":221
  *                                      offset,
  *                                      label_store)
  *     elif r_type == DNSTYPE_A:             # <<<<<<<<<<<<<<
@@ -5148,7 +5148,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":226
+    /* "steelscript/packets/protos/dns.pyx":225
  *                                   byte_array[offset[PNTR]:offset[PNTR] + 4])
  *         offset[PNTR] += 4
  *     elif r_type == DNSTYPE_AAAA:             # <<<<<<<<<<<<<<
@@ -5157,32 +5157,32 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
  */
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_AAAA:
 
-    /* "steelscript/packets/protos/dns.pyx":227
+    /* "steelscript/packets/protos/dns.pyx":226
  *         offset[PNTR] += 4
  *     elif r_type == DNSTYPE_AAAA:
  *         r_data = socket.inet_ntop(socket.AF_INET6,             # <<<<<<<<<<<<<<
  *                                   byte_array[offset[PNTR]:offset[PNTR] + 16])
  *         offset[PNTR] += 16
  */
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_inet_ntop); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 227, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_inet_ntop); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 226, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_AF_INET6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 227, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_AF_INET6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 226, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":228
+    /* "steelscript/packets/protos/dns.pyx":227
  *     elif r_type == DNSTYPE_AAAA:
  *         r_data = socket.inet_ntop(socket.AF_INET6,
  *                                   byte_array[offset[PNTR]:offset[PNTR] + 16])             # <<<<<<<<<<<<<<
  *         offset[PNTR] += 16
  *     elif r_type == DNSTYPE_SOA:
  */
-    __pyx_t_2 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 16), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 16), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_6 = NULL;
     __pyx_t_5 = 0;
@@ -5199,7 +5199,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -5209,7 +5209,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -5217,7 +5217,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -5228,24 +5228,24 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
       PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_5, __pyx_t_2);
       __pyx_t_4 = 0;
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":227
+    /* "steelscript/packets/protos/dns.pyx":226
  *         offset[PNTR] += 4
  *     elif r_type == DNSTYPE_AAAA:
  *         r_data = socket.inet_ntop(socket.AF_INET6,             # <<<<<<<<<<<<<<
  *                                   byte_array[offset[PNTR]:offset[PNTR] + 16])
  *         offset[PNTR] += 16
  */
-    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 227, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 226, __pyx_L1_error)
     __pyx_v_r_data = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":229
+    /* "steelscript/packets/protos/dns.pyx":228
  *         r_data = socket.inet_ntop(socket.AF_INET6,
  *                                   byte_array[offset[PNTR]:offset[PNTR] + 16])
  *         offset[PNTR] += 16             # <<<<<<<<<<<<<<
@@ -5255,7 +5255,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     __pyx_t_13 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
     (__pyx_v_offset[__pyx_t_13]) = ((__pyx_v_offset[__pyx_t_13]) + 16);
 
-    /* "steelscript/packets/protos/dns.pyx":226
+    /* "steelscript/packets/protos/dns.pyx":225
  *                                   byte_array[offset[PNTR]:offset[PNTR] + 4])
  *         offset[PNTR] += 4
  *     elif r_type == DNSTYPE_AAAA:             # <<<<<<<<<<<<<<
@@ -5264,7 +5264,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":230
+    /* "steelscript/packets/protos/dns.pyx":229
  *                                   byte_array[offset[PNTR]:offset[PNTR] + 16])
  *         offset[PNTR] += 16
  *     elif r_type == DNSTYPE_SOA:             # <<<<<<<<<<<<<<
@@ -5273,19 +5273,19 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
  */
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_SOA:
 
-    /* "steelscript/packets/protos/dns.pyx":231
+    /* "steelscript/packets/protos/dns.pyx":230
  *         offset[PNTR] += 16
  *     elif r_type == DNSTYPE_SOA:
  *         r_data = parse_soa(byte_array, offset, &r_d_len, label_store)             # <<<<<<<<<<<<<<
  *     else:
  *         r_data = byte_array[offset[PNTR]:offset[PNTR] + r_d_len].tostring()
  */
-    __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(__pyx_v_byte_array, __pyx_v_offset, (&__pyx_v_r_d_len), __pyx_v_label_store); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(__pyx_v_byte_array, __pyx_v_offset, (&__pyx_v_r_d_len), __pyx_v_label_store); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_r_data = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":230
+    /* "steelscript/packets/protos/dns.pyx":229
  *                                   byte_array[offset[PNTR]:offset[PNTR] + 16])
  *         offset[PNTR] += 16
  *     elif r_type == DNSTYPE_SOA:             # <<<<<<<<<<<<<<
@@ -5295,16 +5295,16 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     break;
     default:
 
-    /* "steelscript/packets/protos/dns.pyx":233
+    /* "steelscript/packets/protos/dns.pyx":232
  *         r_data = parse_soa(byte_array, offset, &r_d_len, label_store)
  *     else:
  *         r_data = byte_array[offset[PNTR]:offset[PNTR] + r_d_len].tostring()             # <<<<<<<<<<<<<<
  *         offset[PNTR] += r_d_len
  *     return d_name, r_type, r_class, r_ttl, r_d_len, r_data
  */
-    __pyx_t_7 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + __pyx_v_r_d_len), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 233, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_byte_array), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + __pyx_v_r_d_len), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 232, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_tostring); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_tostring); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 232, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
@@ -5318,18 +5318,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
       }
     }
     if (__pyx_t_7) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     } else {
-      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
     }
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 233, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 232, __pyx_L1_error)
     __pyx_v_r_data = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":234
+    /* "steelscript/packets/protos/dns.pyx":233
  *     else:
  *         r_data = byte_array[offset[PNTR]:offset[PNTR] + r_d_len].tostring()
  *         offset[PNTR] += r_d_len             # <<<<<<<<<<<<<<
@@ -5341,7 +5341,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
     break;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":235
+  /* "steelscript/packets/protos/dns.pyx":234
  *         r_data = byte_array[offset[PNTR]:offset[PNTR] + r_d_len].tostring()
  *         offset[PNTR] += r_d_len
  *     return d_name, r_type, r_class, r_ttl, r_d_len, r_data             # <<<<<<<<<<<<<<
@@ -5349,15 +5349,15 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_r_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_r_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_uint16_t(__pyx_v_r_class); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_uint16_t(__pyx_v_r_class); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyInt_From_uint32_t(__pyx_v_r_ttl); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_From_uint32_t(__pyx_v_r_ttl); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_2 = __Pyx_PyInt_From_uint16_t(__pyx_v_r_d_len); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_uint16_t(__pyx_v_r_d_len); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyTuple_New(6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_d_name);
   __Pyx_GIVEREF(__pyx_v_d_name);
@@ -5381,7 +5381,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":191
+  /* "steelscript/packets/protos/dns.pyx":190
  * 
  * 
  * cdef tuple parse_resource(array byte_array,             # <<<<<<<<<<<<<<
@@ -5407,7 +5407,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(arra
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":238
+/* "steelscript/packets/protos/dns.pyx":237
  * 
  * 
  * cdef bytes parse_soa(array data, uint16_t* offset, uint16_t* rlen,             # <<<<<<<<<<<<<<
@@ -5450,7 +5450,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
   PyObject *__pyx_t_21 = NULL;
   __Pyx_RefNannySetupContext("parse_soa", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":263
+  /* "steelscript/packets/protos/dns.pyx":262
  *         uint32_t serial, refresh, retry, expire, minimum
  * 
  *     original_offset = offset[PNTR]             # <<<<<<<<<<<<<<
@@ -5459,26 +5459,26 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
  */
   __pyx_v_original_offset = (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]);
 
-  /* "steelscript/packets/protos/dns.pyx":264
+  /* "steelscript/packets/protos/dns.pyx":263
  * 
  *     original_offset = offset[PNTR]
  *     count = data[offset[PNTR]:offset[PNTR] + rlen[PNTR]].count(ord(b' '))             # <<<<<<<<<<<<<<
  * 
  *     if (count <= 7 and
  */
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_data), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + (__pyx_v_rlen[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR])), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_data), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + (__pyx_v_rlen[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR])), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_count); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_count); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = __Pyx_PyInt_As_uint16_t(__pyx_t_1); if (unlikely((__pyx_t_3 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_uint16_t(__pyx_t_1); if (unlikely((__pyx_t_3 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_count = __pyx_t_3;
 
-  /* "steelscript/packets/protos/dns.pyx":266
+  /* "steelscript/packets/protos/dns.pyx":265
  *     count = data[offset[PNTR]:offset[PNTR] + rlen[PNTR]].count(ord(b' '))
  * 
  *     if (count <= 7 and             # <<<<<<<<<<<<<<
@@ -5492,22 +5492,22 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":267
+  /* "steelscript/packets/protos/dns.pyx":266
  * 
  *     if (count <= 7 and
  *             len(data[offset[PNTR]:offset[PNTR] + rlen[PNTR]]) == rlen[PNTR]):             # <<<<<<<<<<<<<<
  *         # its in binary format
  *         mname = read_dns_name_bytes(data, offset, label_store)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_data), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + (__pyx_v_rlen[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR])), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_data), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + (__pyx_v_rlen[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR])), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 267, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_5 = ((__pyx_t_6 == (__pyx_v_rlen[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR])) != 0);
   __pyx_t_4 = __pyx_t_5;
   __pyx_L4_bool_binop_done:;
 
-  /* "steelscript/packets/protos/dns.pyx":266
+  /* "steelscript/packets/protos/dns.pyx":265
  *     count = data[offset[PNTR]:offset[PNTR] + rlen[PNTR]].count(ord(b' '))
  * 
  *     if (count <= 7 and             # <<<<<<<<<<<<<<
@@ -5516,67 +5516,67 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
  */
   if (__pyx_t_4) {
 
-    /* "steelscript/packets/protos/dns.pyx":269
+    /* "steelscript/packets/protos/dns.pyx":268
  *             len(data[offset[PNTR]:offset[PNTR] + rlen[PNTR]]) == rlen[PNTR]):
  *         # its in binary format
  *         mname = read_dns_name_bytes(data, offset, label_store)             # <<<<<<<<<<<<<<
  *         rname = read_dns_name_bytes(data, offset, label_store)
  *         rname = rname.replace(b'.', b'@', 1)
  */
-    __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes(__pyx_v_data, __pyx_v_offset, __pyx_v_label_store); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes(__pyx_v_data, __pyx_v_offset, __pyx_v_label_store); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_mname = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":270
+    /* "steelscript/packets/protos/dns.pyx":269
  *         # its in binary format
  *         mname = read_dns_name_bytes(data, offset, label_store)
  *         rname = read_dns_name_bytes(data, offset, label_store)             # <<<<<<<<<<<<<<
  *         rname = rname.replace(b'.', b'@', 1)
  *         serial, refresh, retry, expire, minimum = struct.unpack('!IIIII',
  */
-    __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes(__pyx_v_data, __pyx_v_offset, __pyx_v_label_store); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes(__pyx_v_data, __pyx_v_offset, __pyx_v_label_store); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_rname = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":271
+    /* "steelscript/packets/protos/dns.pyx":270
  *         mname = read_dns_name_bytes(data, offset, label_store)
  *         rname = read_dns_name_bytes(data, offset, label_store)
  *         rname = rname.replace(b'.', b'@', 1)             # <<<<<<<<<<<<<<
  *         serial, refresh, retry, expire, minimum = struct.unpack('!IIIII',
  *                                           data[offset[PNTR]:offset[PNTR] + 20])
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_rname, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_rname, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 271, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 270, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 271, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 270, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_rname, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":272
+    /* "steelscript/packets/protos/dns.pyx":271
  *         rname = read_dns_name_bytes(data, offset, label_store)
  *         rname = rname.replace(b'.', b'@', 1)
  *         serial, refresh, retry, expire, minimum = struct.unpack('!IIIII',             # <<<<<<<<<<<<<<
  *                                           data[offset[PNTR]:offset[PNTR] + 20])
  *         offset[PNTR] += 20
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_unpack); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_unpack); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 271, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":273
+    /* "steelscript/packets/protos/dns.pyx":272
  *         rname = rname.replace(b'.', b'@', 1)
  *         serial, refresh, retry, expire, minimum = struct.unpack('!IIIII',
  *                                           data[offset[PNTR]:offset[PNTR] + 20])             # <<<<<<<<<<<<<<
  *         offset[PNTR] += 20
  *         return (b'SOA mname: {0}, rname: {1}, serial: {2}, refresh: {3}, '
  */
-    __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_data), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 20), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_data), (__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]), ((__pyx_v_offset[__pyx_e_11steelscript_7packets_6protos_3dns_PNTR]) + 20), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_8 = NULL;
     __pyx_t_9 = 0;
@@ -5593,7 +5593,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_kp_s_IIIII, __pyx_t_1};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 272, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 271, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5602,14 +5602,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_kp_s_IIIII, __pyx_t_1};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 272, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 271, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     {
-      __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 272, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 271, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       if (__pyx_t_8) {
         __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -5620,7 +5620,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_9, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 272, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 271, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
@@ -5635,7 +5635,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
       if (unlikely(size != 5)) {
         if (size > 5) __Pyx_RaiseTooManyValuesError(5);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 272, __pyx_L1_error)
+        __PYX_ERR(0, 271, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -5661,7 +5661,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
         Py_ssize_t i;
         PyObject** temps[5] = {&__pyx_t_7,&__pyx_t_10,&__pyx_t_1,&__pyx_t_8,&__pyx_t_11};
         for (i=0; i < 5; i++) {
-          PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) __PYX_ERR(0, 272, __pyx_L1_error)
+          PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) __PYX_ERR(0, 271, __pyx_L1_error)
           __Pyx_GOTREF(item);
           *(temps[i]) = item;
         }
@@ -5671,7 +5671,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
     } else {
       Py_ssize_t index = -1;
       PyObject** temps[5] = {&__pyx_t_7,&__pyx_t_10,&__pyx_t_1,&__pyx_t_8,&__pyx_t_11};
-      __pyx_t_12 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 272, __pyx_L1_error)
+      __pyx_t_12 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 271, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_13 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -5680,7 +5680,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
         __Pyx_GOTREF(item);
         *(temps[index]) = item;
       }
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 5) < 0) __PYX_ERR(0, 272, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 5) < 0) __PYX_ERR(0, 271, __pyx_L1_error)
       __pyx_t_13 = NULL;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       goto __pyx_L7_unpacking_done;
@@ -5688,26 +5688,26 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_13 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 272, __pyx_L1_error)
+      __PYX_ERR(0, 271, __pyx_L1_error)
       __pyx_L7_unpacking_done:;
     }
 
-    /* "steelscript/packets/protos/dns.pyx":272
+    /* "steelscript/packets/protos/dns.pyx":271
  *         rname = read_dns_name_bytes(data, offset, label_store)
  *         rname = rname.replace(b'.', b'@', 1)
  *         serial, refresh, retry, expire, minimum = struct.unpack('!IIIII',             # <<<<<<<<<<<<<<
  *                                           data[offset[PNTR]:offset[PNTR] + 20])
  *         offset[PNTR] += 20
  */
-    __pyx_t_14 = __Pyx_PyInt_As_uint32_t(__pyx_t_7); if (unlikely((__pyx_t_14 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyInt_As_uint32_t(__pyx_t_7); if (unlikely((__pyx_t_14 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_15 = __Pyx_PyInt_As_uint32_t(__pyx_t_10); if (unlikely((__pyx_t_15 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyInt_As_uint32_t(__pyx_t_10); if (unlikely((__pyx_t_15 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_16 = __Pyx_PyInt_As_uint32_t(__pyx_t_1); if (unlikely((__pyx_t_16 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyInt_As_uint32_t(__pyx_t_1); if (unlikely((__pyx_t_16 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_17 = __Pyx_PyInt_As_uint32_t(__pyx_t_8); if (unlikely((__pyx_t_17 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyInt_As_uint32_t(__pyx_t_8); if (unlikely((__pyx_t_17 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_18 = __Pyx_PyInt_As_uint32_t(__pyx_t_11); if (unlikely((__pyx_t_18 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_18 = __Pyx_PyInt_As_uint32_t(__pyx_t_11); if (unlikely((__pyx_t_18 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 271, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __pyx_v_serial = __pyx_t_14;
     __pyx_v_refresh = __pyx_t_15;
@@ -5715,7 +5715,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
     __pyx_v_expire = __pyx_t_17;
     __pyx_v_minimum = __pyx_t_18;
 
-    /* "steelscript/packets/protos/dns.pyx":274
+    /* "steelscript/packets/protos/dns.pyx":273
  *         serial, refresh, retry, expire, minimum = struct.unpack('!IIIII',
  *                                           data[offset[PNTR]:offset[PNTR] + 20])
  *         offset[PNTR] += 20             # <<<<<<<<<<<<<<
@@ -5725,7 +5725,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
     __pyx_t_19 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
     (__pyx_v_offset[__pyx_t_19]) = ((__pyx_v_offset[__pyx_t_19]) + 20);
 
-    /* "steelscript/packets/protos/dns.pyx":275
+    /* "steelscript/packets/protos/dns.pyx":274
  *                                           data[offset[PNTR]:offset[PNTR] + 20])
  *         offset[PNTR] += 20
  *         return (b'SOA mname: {0}, rname: {1}, serial: {2}, refresh: {3}, '             # <<<<<<<<<<<<<<
@@ -5734,32 +5734,32 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
  */
     __Pyx_XDECREF(__pyx_r);
 
-    /* "steelscript/packets/protos/dns.pyx":277
+    /* "steelscript/packets/protos/dns.pyx":276
  *         return (b'SOA mname: {0}, rname: {1}, serial: {2}, refresh: {3}, '
  *                 b'retry: {4}, expire: {5}, minimum: {6}'
  *                 b''.format(mname, rname, serial, refresh, retry, expire,             # <<<<<<<<<<<<<<
  *                            minimum))
  *     elif count == 15:
  */
-    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_kp_b_SOA_mname_0_rname_1_serial_2_ref, __pyx_n_s_format); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 277, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_kp_b_SOA_mname_0_rname_1_serial_2_ref, __pyx_n_s_format); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 276, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_8 = __Pyx_PyInt_From_uint32_t(__pyx_v_serial); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 277, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_From_uint32_t(__pyx_v_serial); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 276, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_refresh); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 277, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_refresh); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 276, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_10 = __Pyx_PyInt_From_uint32_t(__pyx_v_retry); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 277, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyInt_From_uint32_t(__pyx_v_retry); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 276, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_7 = __Pyx_PyInt_From_uint32_t(__pyx_v_expire); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 277, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_From_uint32_t(__pyx_v_expire); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 276, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
 
-    /* "steelscript/packets/protos/dns.pyx":278
+    /* "steelscript/packets/protos/dns.pyx":277
  *                 b'retry: {4}, expire: {5}, minimum: {6}'
  *                 b''.format(mname, rname, serial, refresh, retry, expire,
  *                            minimum))             # <<<<<<<<<<<<<<
  *     elif count == 15:
  *         # its already in printable format and being manually added. No need to
  */
-    __pyx_t_12 = __Pyx_PyInt_From_uint32_t(__pyx_v_minimum); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 278, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyInt_From_uint32_t(__pyx_v_minimum); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 277, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __pyx_t_20 = NULL;
     __pyx_t_9 = 0;
@@ -5776,7 +5776,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_11)) {
       PyObject *__pyx_temp[8] = {__pyx_t_20, __pyx_v_mname, __pyx_v_rname, __pyx_t_8, __pyx_t_1, __pyx_t_10, __pyx_t_7, __pyx_t_12};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_9, 7+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 277, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_9, 7+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 276, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -5789,7 +5789,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
       PyObject *__pyx_temp[8] = {__pyx_t_20, __pyx_v_mname, __pyx_v_rname, __pyx_t_8, __pyx_t_1, __pyx_t_10, __pyx_t_7, __pyx_t_12};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_9, 7+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 277, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_9, 7+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 276, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -5800,7 +5800,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
     } else
     #endif
     {
-      __pyx_t_21 = PyTuple_New(7+__pyx_t_9); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 277, __pyx_L1_error)
+      __pyx_t_21 = PyTuple_New(7+__pyx_t_9); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 276, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_21);
       if (__pyx_t_20) {
         __Pyx_GIVEREF(__pyx_t_20); PyTuple_SET_ITEM(__pyx_t_21, 0, __pyx_t_20); __pyx_t_20 = NULL;
@@ -5826,25 +5826,25 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
       __pyx_t_10 = 0;
       __pyx_t_7 = 0;
       __pyx_t_12 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_21, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 277, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_21, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 276, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
     }
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":277
+    /* "steelscript/packets/protos/dns.pyx":276
  *         return (b'SOA mname: {0}, rname: {1}, serial: {2}, refresh: {3}, '
  *                 b'retry: {4}, expire: {5}, minimum: {6}'
  *                 b''.format(mname, rname, serial, refresh, retry, expire,             # <<<<<<<<<<<<<<
  *                            minimum))
  *     elif count == 15:
  */
-    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 277, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 276, __pyx_L1_error)
     __pyx_r = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":266
+    /* "steelscript/packets/protos/dns.pyx":265
  *     count = data[offset[PNTR]:offset[PNTR] + rlen[PNTR]].count(ord(b' '))
  * 
  *     if (count <= 7 and             # <<<<<<<<<<<<<<
@@ -5853,7 +5853,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":279
+  /* "steelscript/packets/protos/dns.pyx":278
  *                 b''.format(mname, rname, serial, refresh, retry, expire,
  *                            minimum))
  *     elif count == 15:             # <<<<<<<<<<<<<<
@@ -5863,7 +5863,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
   __pyx_t_4 = ((__pyx_v_count == 15) != 0);
   if (__pyx_t_4) {
 
-    /* "steelscript/packets/protos/dns.pyx":282
+    /* "steelscript/packets/protos/dns.pyx":281
  *         # its already in printable format and being manually added. No need to
  *         # alter the offset values.
  *         return data.tostring()             # <<<<<<<<<<<<<<
@@ -5871,7 +5871,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
  *         raise ValueError(b'parse_soa called on invalid soa data. Count was:{1}'
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_data), __pyx_n_s_tostring); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 282, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_data), __pyx_n_s_tostring); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 281, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __pyx_t_21 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_11))) {
@@ -5884,19 +5884,19 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
       }
     }
     if (__pyx_t_21) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_21); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 282, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_21); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
     } else {
-      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 282, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 281, __pyx_L1_error)
     }
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 282, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 281, __pyx_L1_error)
     __pyx_r = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":279
+    /* "steelscript/packets/protos/dns.pyx":278
  *                 b''.format(mname, rname, serial, refresh, retry, expire,
  *                            minimum))
  *     elif count == 15:             # <<<<<<<<<<<<<<
@@ -5905,7 +5905,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":284
+  /* "steelscript/packets/protos/dns.pyx":283
  *         return data.tostring()
  *     else:
  *         raise ValueError(b'parse_soa called on invalid soa data. Count was:{1}'             # <<<<<<<<<<<<<<
@@ -5914,16 +5914,16 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
  */
   /*else*/ {
 
-    /* "steelscript/packets/protos/dns.pyx":285
+    /* "steelscript/packets/protos/dns.pyx":284
  *     else:
  *         raise ValueError(b'parse_soa called on invalid soa data. Count was:{1}'
  *                          b', Data was: {0}'.format(data, count))             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_kp_b_parse_soa_called_on_invalid_soa, __pyx_n_s_format); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 285, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_kp_b_parse_soa_called_on_invalid_soa, __pyx_n_s_format); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 284, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_21 = __Pyx_PyInt_From_uint16_t(__pyx_v_count); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 285, __pyx_L1_error)
+    __pyx_t_21 = __Pyx_PyInt_From_uint16_t(__pyx_v_count); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 284, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_21);
     __pyx_t_12 = NULL;
     __pyx_t_9 = 0;
@@ -5940,7 +5940,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_11)) {
       PyObject *__pyx_temp[3] = {__pyx_t_12, ((PyObject *)__pyx_v_data), __pyx_t_21};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 285, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
@@ -5949,14 +5949,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
       PyObject *__pyx_temp[3] = {__pyx_t_12, ((PyObject *)__pyx_v_data), __pyx_t_21};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 285, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 285, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 284, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_12) {
         __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_12); __pyx_t_12 = NULL;
@@ -5967,33 +5967,33 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
       __Pyx_GIVEREF(__pyx_t_21);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_9, __pyx_t_21);
       __pyx_t_21 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 285, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":284
+    /* "steelscript/packets/protos/dns.pyx":283
  *         return data.tostring()
  *     else:
  *         raise ValueError(b'parse_soa called on invalid soa data. Count was:{1}'             # <<<<<<<<<<<<<<
  *                          b', Data was: {0}'.format(data, count))
  * 
  */
-    __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 284, __pyx_L1_error)
+    __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 283, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 283, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 284, __pyx_L1_error)
+    __PYX_ERR(0, 283, __pyx_L1_error)
   }
 
-  /* "steelscript/packets/protos/dns.pyx":238
+  /* "steelscript/packets/protos/dns.pyx":237
  * 
  * 
  * cdef bytes parse_soa(array data, uint16_t* offset, uint16_t* rlen,             # <<<<<<<<<<<<<<
@@ -6022,7 +6022,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_parse_soa(arrayobje
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":288
+/* "steelscript/packets/protos/dns.pyx":287
  * 
  * 
  * cdef bytes pack_soa(bytes res_data, uint16_t* offset, dict labels,             # <<<<<<<<<<<<<<
@@ -6059,7 +6059,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
     }
   }
 
-  /* "steelscript/packets/protos/dns.pyx":306
+  /* "steelscript/packets/protos/dns.pyx":305
  *         uint32_t serial, refresh, retry, expire, minimum
  * 
  *     p_bytes = b''             # <<<<<<<<<<<<<<
@@ -6069,14 +6069,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
   __Pyx_INCREF(__pyx_kp_b__4);
   __pyx_v_p_bytes = __pyx_kp_b__4;
 
-  /* "steelscript/packets/protos/dns.pyx":307
+  /* "steelscript/packets/protos/dns.pyx":306
  * 
  *     p_bytes = b''
  *     parts = res_data.split()             # <<<<<<<<<<<<<<
  *     if len(parts) == 15:
  *         p_bytes += write_dns_name_bytes(parts[SOA_MNAME][:-1], offset, labels,
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_res_data, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 307, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_res_data, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -6089,18 +6089,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 307, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 307, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 306, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 307, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 306, __pyx_L1_error)
   __pyx_v_parts = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":308
+  /* "steelscript/packets/protos/dns.pyx":307
  *     p_bytes = b''
  *     parts = res_data.split()
  *     if len(parts) == 15:             # <<<<<<<<<<<<<<
@@ -6109,13 +6109,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
   if (unlikely(__pyx_v_parts == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 308, __pyx_L1_error)
+    __PYX_ERR(0, 307, __pyx_L1_error)
   }
-  __pyx_t_4 = PyList_GET_SIZE(__pyx_v_parts); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 308, __pyx_L1_error)
+  __pyx_t_4 = PyList_GET_SIZE(__pyx_v_parts); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 307, __pyx_L1_error)
   __pyx_t_5 = ((__pyx_t_4 == 15) != 0);
   if (__pyx_t_5) {
 
-    /* "steelscript/packets/protos/dns.pyx":309
+    /* "steelscript/packets/protos/dns.pyx":308
  *     parts = res_data.split()
  *     if len(parts) == 15:
  *         p_bytes += write_dns_name_bytes(parts[SOA_MNAME][:-1], offset, labels,             # <<<<<<<<<<<<<<
@@ -6124,16 +6124,16 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
     if (unlikely(__pyx_v_parts == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 309, __pyx_L1_error)
+      __PYX_ERR(0, 308, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_MNAME, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_MNAME, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0, -1L, NULL, NULL, &__pyx_slice__11, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0, -1L, NULL, NULL, &__pyx_slice__11, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 308, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 309, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 308, __pyx_L1_error)
 
-    /* "steelscript/packets/protos/dns.pyx":310
+    /* "steelscript/packets/protos/dns.pyx":309
  *     if len(parts) == 15:
  *         p_bytes += write_dns_name_bytes(parts[SOA_MNAME][:-1], offset, labels,
  *                                         compress)             # <<<<<<<<<<<<<<
@@ -6142,24 +6142,24 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
     __pyx_t_6.__pyx_n = 1;
     __pyx_t_6.compress = __pyx_v_compress;
-    __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_bytes(((PyObject*)__pyx_t_2), __pyx_v_offset, __pyx_v_labels, &__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_bytes(((PyObject*)__pyx_t_2), __pyx_v_offset, __pyx_v_labels, &__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":309
+    /* "steelscript/packets/protos/dns.pyx":308
  *     parts = res_data.split()
  *     if len(parts) == 15:
  *         p_bytes += write_dns_name_bytes(parts[SOA_MNAME][:-1], offset, labels,             # <<<<<<<<<<<<<<
  *                                         compress)
  *         parts[SOA_RNAME] = parts[SOA_RNAME].replace(b'@', b'.')
  */
-    __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_p_bytes, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_p_bytes, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 308, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF_SET(__pyx_v_p_bytes, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":311
+    /* "steelscript/packets/protos/dns.pyx":310
  *         p_bytes += write_dns_name_bytes(parts[SOA_MNAME][:-1], offset, labels,
  *                                         compress)
  *         parts[SOA_RNAME] = parts[SOA_RNAME].replace(b'@', b'.')             # <<<<<<<<<<<<<<
@@ -6168,24 +6168,24 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
     if (unlikely(__pyx_v_parts == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 311, __pyx_L1_error)
+      __PYX_ERR(0, 310, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_RNAME, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_RNAME, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_replace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(__pyx_v_parts == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 311, __pyx_L1_error)
+      __PYX_ERR(0, 310, __pyx_L1_error)
     }
-    if (unlikely(__Pyx_SetItemInt(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_RNAME, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 311, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_RNAME, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 310, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":312
+    /* "steelscript/packets/protos/dns.pyx":311
  *                                         compress)
  *         parts[SOA_RNAME] = parts[SOA_RNAME].replace(b'@', b'.')
  *         p_bytes += write_dns_name_bytes(parts[SOA_RNAME][:-1], offset, labels,             # <<<<<<<<<<<<<<
@@ -6194,16 +6194,16 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
     if (unlikely(__pyx_v_parts == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 312, __pyx_L1_error)
+      __PYX_ERR(0, 311, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_RNAME, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 312, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_RNAME, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_2, 0, -1L, NULL, NULL, &__pyx_slice__13, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_2, 0, -1L, NULL, NULL, &__pyx_slice__13, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 312, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 311, __pyx_L1_error)
 
-    /* "steelscript/packets/protos/dns.pyx":313
+    /* "steelscript/packets/protos/dns.pyx":312
  *         parts[SOA_RNAME] = parts[SOA_RNAME].replace(b'@', b'.')
  *         p_bytes += write_dns_name_bytes(parts[SOA_RNAME][:-1], offset, labels,
  *                                         compress)             # <<<<<<<<<<<<<<
@@ -6212,24 +6212,24 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
     __pyx_t_6.__pyx_n = 1;
     __pyx_t_6.compress = __pyx_v_compress;
-    __pyx_t_2 = __pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_bytes(((PyObject*)__pyx_t_1), __pyx_v_offset, __pyx_v_labels, &__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 312, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_bytes(((PyObject*)__pyx_t_1), __pyx_v_offset, __pyx_v_labels, &__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":312
+    /* "steelscript/packets/protos/dns.pyx":311
  *                                         compress)
  *         parts[SOA_RNAME] = parts[SOA_RNAME].replace(b'@', b'.')
  *         p_bytes += write_dns_name_bytes(parts[SOA_RNAME][:-1], offset, labels,             # <<<<<<<<<<<<<<
  *                                         compress)
  *         offset[PNTR] += 20
  */
-    __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_p_bytes, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_p_bytes, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF_SET(__pyx_v_p_bytes, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":314
+    /* "steelscript/packets/protos/dns.pyx":313
  *         p_bytes += write_dns_name_bytes(parts[SOA_RNAME][:-1], offset, labels,
  *                                         compress)
  *         offset[PNTR] += 20             # <<<<<<<<<<<<<<
@@ -6239,7 +6239,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
     __pyx_t_7 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
     (__pyx_v_offset[__pyx_t_7]) = ((__pyx_v_offset[__pyx_t_7]) + 20);
 
-    /* "steelscript/packets/protos/dns.pyx":316
+    /* "steelscript/packets/protos/dns.pyx":315
  *         offset[PNTR] += 20
  * 
  *         return b'{0}{1}'.format(p_bytes,             # <<<<<<<<<<<<<<
@@ -6247,23 +6247,23 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  *                                             int(parts[SOA_SER][:-1]),
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_b_0_1, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 316, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_b_0_1, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 315, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
 
-    /* "steelscript/packets/protos/dns.pyx":317
+    /* "steelscript/packets/protos/dns.pyx":316
  * 
  *         return b'{0}{1}'.format(p_bytes,
  *                                 struct.pack("!IIIII",             # <<<<<<<<<<<<<<
  *                                             int(parts[SOA_SER][:-1]),
  *                                             int(parts[SOA_REF][:-1]),
  */
-    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 317, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 316, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_pack); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 317, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_pack); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 316, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":318
+    /* "steelscript/packets/protos/dns.pyx":317
  *         return b'{0}{1}'.format(p_bytes,
  *                                 struct.pack("!IIIII",
  *                                             int(parts[SOA_SER][:-1]),             # <<<<<<<<<<<<<<
@@ -6272,18 +6272,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
     if (unlikely(__pyx_v_parts == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 318, __pyx_L1_error)
+      __PYX_ERR(0, 317, __pyx_L1_error)
     }
-    __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_SER, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 318, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_SER, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_t_8, 0, -1L, NULL, NULL, &__pyx_slice__14, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 318, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_t_8, 0, -1L, NULL, NULL, &__pyx_slice__14, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyNumber_Int(__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 318, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyNumber_Int(__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":319
+    /* "steelscript/packets/protos/dns.pyx":318
  *                                 struct.pack("!IIIII",
  *                                             int(parts[SOA_SER][:-1]),
  *                                             int(parts[SOA_REF][:-1]),             # <<<<<<<<<<<<<<
@@ -6292,18 +6292,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
     if (unlikely(__pyx_v_parts == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 319, __pyx_L1_error)
+      __PYX_ERR(0, 318, __pyx_L1_error)
     }
-    __pyx_t_10 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_REF, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 319, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_REF, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 318, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_11 = __Pyx_PyObject_GetSlice(__pyx_t_10, 0, -1L, NULL, NULL, &__pyx_slice__15, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 319, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_GetSlice(__pyx_t_10, 0, -1L, NULL, NULL, &__pyx_slice__15, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 318, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyNumber_Int(__pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 319, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyNumber_Int(__pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 318, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":320
+    /* "steelscript/packets/protos/dns.pyx":319
  *                                             int(parts[SOA_SER][:-1]),
  *                                             int(parts[SOA_REF][:-1]),
  *                                             int(parts[SOA_RET][:-1]),             # <<<<<<<<<<<<<<
@@ -6312,18 +6312,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
     if (unlikely(__pyx_v_parts == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 320, __pyx_L1_error)
+      __PYX_ERR(0, 319, __pyx_L1_error)
     }
-    __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_RET, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_RET, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 319, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_12 = __Pyx_PyObject_GetSlice(__pyx_t_11, 0, -1L, NULL, NULL, &__pyx_slice__16, 0, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyObject_GetSlice(__pyx_t_11, 0, -1L, NULL, NULL, &__pyx_slice__16, 0, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 319, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    __pyx_t_11 = __Pyx_PyNumber_Int(__pyx_t_12); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 320, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyNumber_Int(__pyx_t_12); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 319, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":321
+    /* "steelscript/packets/protos/dns.pyx":320
  *                                             int(parts[SOA_REF][:-1]),
  *                                             int(parts[SOA_RET][:-1]),
  *                                             int(parts[SOA_EXP][:-1]),             # <<<<<<<<<<<<<<
@@ -6332,18 +6332,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
     if (unlikely(__pyx_v_parts == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 321, __pyx_L1_error)
+      __PYX_ERR(0, 320, __pyx_L1_error)
     }
-    __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_EXP, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_EXP, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 320, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
-    __pyx_t_13 = __Pyx_PyObject_GetSlice(__pyx_t_12, 0, -1L, NULL, NULL, &__pyx_slice__17, 0, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_GetSlice(__pyx_t_12, 0, -1L, NULL, NULL, &__pyx_slice__17, 0, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 320, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    __pyx_t_12 = __Pyx_PyNumber_Int(__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 321, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyNumber_Int(__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 320, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":322
+    /* "steelscript/packets/protos/dns.pyx":321
  *                                             int(parts[SOA_RET][:-1]),
  *                                             int(parts[SOA_EXP][:-1]),
  *                                             int(parts[SOA_MIN])))             # <<<<<<<<<<<<<<
@@ -6352,11 +6352,11 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
     if (unlikely(__pyx_v_parts == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 322, __pyx_L1_error)
+      __PYX_ERR(0, 321, __pyx_L1_error)
     }
-    __pyx_t_13 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_MIN, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 322, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_GetItemInt_List(__pyx_v_parts, __pyx_e_11steelscript_7packets_6protos_3dns_SOA_MIN, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 321, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_14 = __Pyx_PyNumber_Int(__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 322, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyNumber_Int(__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 321, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     __pyx_t_13 = NULL;
@@ -6374,7 +6374,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_9)) {
       PyObject *__pyx_temp[7] = {__pyx_t_13, __pyx_kp_s_IIIII, __pyx_t_8, __pyx_t_10, __pyx_t_11, __pyx_t_12, __pyx_t_14};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_15, 6+__pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 317, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_15, 6+__pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 316, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -6387,7 +6387,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
       PyObject *__pyx_temp[7] = {__pyx_t_13, __pyx_kp_s_IIIII, __pyx_t_8, __pyx_t_10, __pyx_t_11, __pyx_t_12, __pyx_t_14};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_15, 6+__pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 317, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_15, 6+__pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 316, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -6398,7 +6398,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
     } else
     #endif
     {
-      __pyx_t_16 = PyTuple_New(6+__pyx_t_15); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 317, __pyx_L1_error)
+      __pyx_t_16 = PyTuple_New(6+__pyx_t_15); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 316, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       if (__pyx_t_13) {
         __Pyx_GIVEREF(__pyx_t_13); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_13); __pyx_t_13 = NULL;
@@ -6421,7 +6421,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
       __pyx_t_11 = 0;
       __pyx_t_12 = 0;
       __pyx_t_14 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 317, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 316, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     }
@@ -6441,7 +6441,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_v_p_bytes, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 316, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6450,14 +6450,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[3] = {__pyx_t_9, __pyx_v_p_bytes, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 316, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_15, 2+__pyx_t_15); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_16 = PyTuple_New(2+__pyx_t_15); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 316, __pyx_L1_error)
+      __pyx_t_16 = PyTuple_New(2+__pyx_t_15); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 315, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       if (__pyx_t_9) {
         __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -6468,25 +6468,25 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_16, 1+__pyx_t_15, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_16, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 316, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_16, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":316
+    /* "steelscript/packets/protos/dns.pyx":315
  *         offset[PNTR] += 20
  * 
  *         return b'{0}{1}'.format(p_bytes,             # <<<<<<<<<<<<<<
  *                                 struct.pack("!IIIII",
  *                                             int(parts[SOA_SER][:-1]),
  */
-    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 316, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 315, __pyx_L1_error)
     __pyx_r = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":308
+    /* "steelscript/packets/protos/dns.pyx":307
  *     p_bytes = b''
  *     parts = res_data.split()
  *     if len(parts) == 15:             # <<<<<<<<<<<<<<
@@ -6495,7 +6495,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":324
+  /* "steelscript/packets/protos/dns.pyx":323
  *                                             int(parts[SOA_MIN])))
  *     else:
  *         raise ValueError(b'pack_soa called on invalid soa data. Data was: {0}'             # <<<<<<<<<<<<<<
@@ -6504,14 +6504,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
  */
   /*else*/ {
 
-    /* "steelscript/packets/protos/dns.pyx":325
+    /* "steelscript/packets/protos/dns.pyx":324
  *     else:
  *         raise ValueError(b'pack_soa called on invalid soa data. Data was: {0}'
  *                          b''.format(res_data))             # <<<<<<<<<<<<<<
  * 
  * cdef class DNSQuery:
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_b_pack_soa_called_on_invalid_soa_d, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 325, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_b_pack_soa_called_on_invalid_soa_d, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 324, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_16 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -6524,13 +6524,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
       }
     }
     if (!__pyx_t_16) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_res_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_res_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 324, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_res_data};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 324, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else
@@ -6538,46 +6538,46 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_res_data};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 324, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else
       #endif
       {
-        __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 325, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 324, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GIVEREF(__pyx_t_16); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_16); __pyx_t_16 = NULL;
         __Pyx_INCREF(__pyx_v_res_data);
         __Pyx_GIVEREF(__pyx_v_res_data);
         PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_v_res_data);
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 324, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":324
+    /* "steelscript/packets/protos/dns.pyx":323
  *                                             int(parts[SOA_MIN])))
  *     else:
  *         raise ValueError(b'pack_soa called on invalid soa data. Data was: {0}'             # <<<<<<<<<<<<<<
  *                          b''.format(res_data))
  * 
  */
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 324, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 323, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 324, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 323, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 324, __pyx_L1_error)
+    __PYX_ERR(0, 323, __pyx_L1_error)
   }
 
-  /* "steelscript/packets/protos/dns.pyx":288
+  /* "steelscript/packets/protos/dns.pyx":287
  * 
  * 
  * cdef bytes pack_soa(bytes res_data, uint16_t* offset, dict labels,             # <<<<<<<<<<<<<<
@@ -6608,7 +6608,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(PyObject *
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":329
+/* "steelscript/packets/protos/dns.pyx":328
  * cdef class DNSQuery:
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -6654,17 +6654,17 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_8DNSQuery_1__init__(PyOb
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_query_type)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 1); __PYX_ERR(0, 329, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 1); __PYX_ERR(0, 328, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_query_class)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 2); __PYX_ERR(0, 329, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 2); __PYX_ERR(0, 328, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 329, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 328, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -6674,18 +6674,18 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_8DNSQuery_1__init__(PyOb
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
     __pyx_v_query_name = ((PyObject*)values[0]);
-    __pyx_v_query_type = __Pyx_PyInt_As_uint16_t(values[1]); if (unlikely((__pyx_v_query_type == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 331, __pyx_L3_error)
-    __pyx_v_query_class = __Pyx_PyInt_As_uint16_t(values[2]); if (unlikely((__pyx_v_query_class == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 332, __pyx_L3_error)
+    __pyx_v_query_type = __Pyx_PyInt_As_uint16_t(values[1]); if (unlikely((__pyx_v_query_type == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 330, __pyx_L3_error)
+    __pyx_v_query_class = __Pyx_PyInt_As_uint16_t(values[2]); if (unlikely((__pyx_v_query_class == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 331, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 329, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 328, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("steelscript.packets.protos.dns.DNSQuery.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_query_name), (&PyBytes_Type), 1, "query_name", 1))) __PYX_ERR(0, 330, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_query_name), (&PyBytes_Type), 1, "query_name", 1))) __PYX_ERR(0, 329, __pyx_L1_error)
   __pyx_r = __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery___init__(((struct __pyx_obj_11steelscript_7packets_6protos_3dns_DNSQuery *)__pyx_v_self), __pyx_v_query_name, __pyx_v_query_type, __pyx_v_query_class);
 
   /* function exit code */
@@ -6702,7 +6702,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery___init__(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":342
+  /* "steelscript/packets/protos/dns.pyx":341
  *         """
  * 
  *         self.query_type = query_type             # <<<<<<<<<<<<<<
@@ -6711,7 +6711,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery___init__(struc
  */
   __pyx_v_self->query_type = __pyx_v_query_type;
 
-  /* "steelscript/packets/protos/dns.pyx":343
+  /* "steelscript/packets/protos/dns.pyx":342
  * 
  *         self.query_type = query_type
  *         self.query_class = query_class             # <<<<<<<<<<<<<<
@@ -6720,16 +6720,16 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery___init__(struc
  */
   __pyx_v_self->query_class = __pyx_v_query_class;
 
-  /* "steelscript/packets/protos/dns.pyx":344
+  /* "steelscript/packets/protos/dns.pyx":343
  *         self.query_type = query_type
  *         self.query_class = query_class
  *         self.query_name = query_name             # <<<<<<<<<<<<<<
  * 
  *     def __repr__(self):
  */
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_query_name, __pyx_v_query_name) < 0) __PYX_ERR(0, 344, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_query_name, __pyx_v_query_name) < 0) __PYX_ERR(0, 343, __pyx_L1_error)
 
-  /* "steelscript/packets/protos/dns.pyx":329
+  /* "steelscript/packets/protos/dns.pyx":328
  * cdef class DNSQuery:
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -6748,7 +6748,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery___init__(struc
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":346
+/* "steelscript/packets/protos/dns.pyx":345
  *         self.query_name = query_name
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -6781,7 +6781,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_2__repr_
   PyObject *__pyx_t_7 = NULL;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":347
+  /* "steelscript/packets/protos/dns.pyx":346
  * 
  *     def __repr__(self):
  *         return ("DNSQuery(query_name={0}, query_type={1}, query_class={2})"             # <<<<<<<<<<<<<<
@@ -6790,26 +6790,26 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_2__repr_
  */
   __Pyx_XDECREF(__pyx_r);
 
-  /* "steelscript/packets/protos/dns.pyx":348
+  /* "steelscript/packets/protos/dns.pyx":347
  *     def __repr__(self):
  *         return ("DNSQuery(query_name={0}, query_type={1}, query_class={2})"
  *                 "".format(self._query_name, self.query_type,             # <<<<<<<<<<<<<<
  *                           self.query_class))
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_DNSQuery_query_name_0_query_type, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 348, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_DNSQuery_query_name_0_query_type, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 347, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_type); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 348, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_type); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "steelscript/packets/protos/dns.pyx":349
+  /* "steelscript/packets/protos/dns.pyx":348
  *         return ("DNSQuery(query_name={0}, query_type={1}, query_class={2})"
  *                 "".format(self._query_name, self.query_type,
  *                           self.query_class))             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  __pyx_t_4 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_class); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 349, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_class); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 348, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -6826,7 +6826,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_2__repr_
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_v_self->_query_name, __pyx_t_3, __pyx_t_4};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6836,7 +6836,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_2__repr_
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_v_self->_query_name, __pyx_t_3, __pyx_t_4};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6844,7 +6844,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_2__repr_
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 348, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 347, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_5) {
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -6858,7 +6858,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_2__repr_
     PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_6, __pyx_t_4);
     __pyx_t_3 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
@@ -6867,7 +6867,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_2__repr_
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":346
+  /* "steelscript/packets/protos/dns.pyx":345
  *         self.query_name = query_name
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -6891,7 +6891,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_2__repr_
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":352
+/* "steelscript/packets/protos/dns.pyx":351
  * 
  *     @property
  *     def query_name(self):             # <<<<<<<<<<<<<<
@@ -6917,7 +6917,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":353
+  /* "steelscript/packets/protos/dns.pyx":352
  *     @property
  *     def query_name(self):
  *         return self._query_name             # <<<<<<<<<<<<<<
@@ -6929,7 +6929,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_
   __pyx_r = __pyx_v_self->_query_name;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":352
+  /* "steelscript/packets/protos/dns.pyx":351
  * 
  *     @property
  *     def query_name(self):             # <<<<<<<<<<<<<<
@@ -6944,7 +6944,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":356
+/* "steelscript/packets/protos/dns.pyx":355
  * 
  *     @query_name.setter
  *     def query_name(self, val):             # <<<<<<<<<<<<<<
@@ -6977,16 +6977,16 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
   int __pyx_t_7;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":357
+  /* "steelscript/packets/protos/dns.pyx":356
  *     @query_name.setter
  *     def query_name(self, val):
  *         if (domainname_re.match(val) or             # <<<<<<<<<<<<<<
  *                 hostname_re.match(val) or
  *                 self.query_type in (DNSTYPE_TXT,
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_domainname_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 357, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_domainname_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_match); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 357, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_match); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -7000,13 +7000,13 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 357, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_val};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 357, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 356, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
@@ -7014,25 +7014,25 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_val};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 357, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 356, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 357, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 356, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_val);
       __Pyx_GIVEREF(__pyx_v_val);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_v_val);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 357, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 356, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 357, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (!__pyx_t_6) {
   } else {
@@ -7040,16 +7040,16 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":358
+  /* "steelscript/packets/protos/dns.pyx":357
  *     def query_name(self, val):
  *         if (domainname_re.match(val) or
  *                 hostname_re.match(val) or             # <<<<<<<<<<<<<<
  *                 self.query_type in (DNSTYPE_TXT,
  *                                     DNSTYPE_OPT)):
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_hostname_re); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_hostname_re); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_match); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_match); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -7063,13 +7063,13 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 358, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 357, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_val};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 358, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 357, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
@@ -7077,25 +7077,25 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_val};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 358, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 357, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 358, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 357, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_INCREF(__pyx_v_val);
       __Pyx_GIVEREF(__pyx_v_val);
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_v_val);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 358, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 357, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 358, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (!__pyx_t_6) {
   } else {
@@ -7103,7 +7103,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":359
+  /* "steelscript/packets/protos/dns.pyx":358
  *         if (domainname_re.match(val) or
  *                 hostname_re.match(val) or
  *                 self.query_type in (DNSTYPE_TXT,             # <<<<<<<<<<<<<<
@@ -7113,7 +7113,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
   switch (__pyx_v_self->query_type) {
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_TXT:
 
-    /* "steelscript/packets/protos/dns.pyx":360
+    /* "steelscript/packets/protos/dns.pyx":359
  *                 hostname_re.match(val) or
  *                 self.query_type in (DNSTYPE_TXT,
  *                                     DNSTYPE_OPT)):             # <<<<<<<<<<<<<<
@@ -7122,7 +7122,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
  */
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_OPT:
 
-    /* "steelscript/packets/protos/dns.pyx":359
+    /* "steelscript/packets/protos/dns.pyx":358
  *         if (domainname_re.match(val) or
  *                 hostname_re.match(val) or
  *                 self.query_type in (DNSTYPE_TXT,             # <<<<<<<<<<<<<<
@@ -7139,7 +7139,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
   __pyx_t_1 = __pyx_t_7;
   __pyx_L4_bool_binop_done:;
 
-  /* "steelscript/packets/protos/dns.pyx":357
+  /* "steelscript/packets/protos/dns.pyx":356
  *     @query_name.setter
  *     def query_name(self, val):
  *         if (domainname_re.match(val) or             # <<<<<<<<<<<<<<
@@ -7148,14 +7148,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
  */
   if (__pyx_t_1) {
 
-    /* "steelscript/packets/protos/dns.pyx":361
+    /* "steelscript/packets/protos/dns.pyx":360
  *                 self.query_type in (DNSTYPE_TXT,
  *                                     DNSTYPE_OPT)):
  *             self._query_name = val             # <<<<<<<<<<<<<<
  *         else:
  *             raise ValueError(
  */
-    if (!(likely(PyBytes_CheckExact(__pyx_v_val))||((__pyx_v_val) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_v_val)->tp_name), 0))) __PYX_ERR(0, 361, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_v_val))||((__pyx_v_val) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_v_val)->tp_name), 0))) __PYX_ERR(0, 360, __pyx_L1_error)
     __pyx_t_2 = __pyx_v_val;
     __Pyx_INCREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_2);
@@ -7164,7 +7164,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
     __pyx_v_self->_query_name = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":357
+    /* "steelscript/packets/protos/dns.pyx":356
  *     @query_name.setter
  *     def query_name(self, val):
  *         if (domainname_re.match(val) or             # <<<<<<<<<<<<<<
@@ -7174,7 +7174,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
     goto __pyx_L3;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":363
+  /* "steelscript/packets/protos/dns.pyx":362
  *             self._query_name = val
  *         else:
  *             raise ValueError(             # <<<<<<<<<<<<<<
@@ -7183,14 +7183,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
  */
   /*else*/ {
 
-    /* "steelscript/packets/protos/dns.pyx":365
+    /* "steelscript/packets/protos/dns.pyx":364
  *             raise ValueError(
  *                 "DNSQuery.query_name must be either a valid host name. "
  *                 "Value was {0}".format(val))             # <<<<<<<<<<<<<<
  * 
  *     cdef bytes pack(self, uint16_t* offset, dict labels, bint compress=1):
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_DNSQuery_query_name_must_be_eith, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 365, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_DNSQuery_query_name_must_be_eith, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 364, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_3 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -7203,13 +7203,13 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
       }
     }
     if (!__pyx_t_3) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 364, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_val};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 365, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 364, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else
@@ -7217,47 +7217,47 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_val};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 365, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 364, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else
       #endif
       {
-        __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 365, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 364, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_v_val);
         __Pyx_GIVEREF(__pyx_v_val);
         PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_val);
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 365, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 364, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":363
+    /* "steelscript/packets/protos/dns.pyx":362
  *             self._query_name = val
  *         else:
  *             raise ValueError(             # <<<<<<<<<<<<<<
  *                 "DNSQuery.query_name must be either a valid host name. "
  *                 "Value was {0}".format(val))
  */
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 363, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 362, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 363, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 362, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 363, __pyx_L1_error)
+    __PYX_ERR(0, 362, __pyx_L1_error)
   }
   __pyx_L3:;
 
-  /* "steelscript/packets/protos/dns.pyx":356
+  /* "steelscript/packets/protos/dns.pyx":355
  * 
  *     @query_name.setter
  *     def query_name(self, val):             # <<<<<<<<<<<<<<
@@ -7280,7 +7280,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_name_2
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":367
+/* "steelscript/packets/protos/dns.pyx":366
  *                 "Value was {0}".format(val))
  * 
  *     cdef bytes pack(self, uint16_t* offset, dict labels, bint compress=1):             # <<<<<<<<<<<<<<
@@ -7309,7 +7309,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_8DNSQuery_pack(stru
     }
   }
 
-  /* "steelscript/packets/protos/dns.pyx":370
+  /* "steelscript/packets/protos/dns.pyx":369
  *         cdef:
  *             bytes out
  *         out = write_dns_name_bytes(self._query_name, offset, labels, compress)             # <<<<<<<<<<<<<<
@@ -7320,13 +7320,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_8DNSQuery_pack(stru
   __Pyx_INCREF(__pyx_t_1);
   __pyx_t_3.__pyx_n = 1;
   __pyx_t_3.compress = __pyx_v_compress;
-  __pyx_t_2 = __pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_bytes(((PyObject*)__pyx_t_1), __pyx_v_offset, __pyx_v_labels, &__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 370, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_bytes(((PyObject*)__pyx_t_1), __pyx_v_offset, __pyx_v_labels, &__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_out = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":371
+  /* "steelscript/packets/protos/dns.pyx":370
  *             bytes out
  *         out = write_dns_name_bytes(self._query_name, offset, labels, compress)
  *         offset[PNTR] += 4             # <<<<<<<<<<<<<<
@@ -7336,7 +7336,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_8DNSQuery_pack(stru
   __pyx_t_4 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
   (__pyx_v_offset[__pyx_t_4]) = ((__pyx_v_offset[__pyx_t_4]) + 4);
 
-  /* "steelscript/packets/protos/dns.pyx":372
+  /* "steelscript/packets/protos/dns.pyx":371
  *         out = write_dns_name_bytes(self._query_name, offset, labels, compress)
  *         offset[PNTR] += 4
  *         return out + struct.pack('!HH', self.query_type, self.query_class)             # <<<<<<<<<<<<<<
@@ -7344,14 +7344,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_8DNSQuery_pack(stru
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_pack); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_pack); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_class); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_class); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = NULL;
   __pyx_t_8 = 0;
@@ -7368,7 +7368,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_8DNSQuery_pack(stru
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_kp_s_HH, __pyx_t_1, __pyx_t_6};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 372, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7378,7 +7378,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_8DNSQuery_pack(stru
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_kp_s_HH, __pyx_t_1, __pyx_t_6};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 372, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7386,7 +7386,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_8DNSQuery_pack(stru
   } else
   #endif
   {
-    __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 372, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -7400,20 +7400,20 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_8DNSQuery_pack(stru
     PyTuple_SET_ITEM(__pyx_t_9, 2+__pyx_t_8, __pyx_t_6);
     __pyx_t_1 = 0;
     __pyx_t_6 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 372, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyNumber_Add(__pyx_v_out, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Add(__pyx_v_out, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 372, __pyx_L1_error)
+  if (!(likely(PyBytes_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 371, __pyx_L1_error)
   __pyx_r = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":367
+  /* "steelscript/packets/protos/dns.pyx":366
  *                 "Value was {0}".format(val))
  * 
  *     cdef bytes pack(self, uint16_t* offset, dict labels, bint compress=1):             # <<<<<<<<<<<<<<
@@ -7438,7 +7438,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_8DNSQuery_pack(stru
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pxd":100
+/* "steelscript/packets/protos/dns.pxd":99
  *     cdef:
  *         bytes _query_name
  *         public uint16_t query_type, query_class             # <<<<<<<<<<<<<<
@@ -7465,7 +7465,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 100, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7500,7 +7500,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_10query_type_2
   __Pyx_RefNannyDeclarations
   uint16_t __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 100, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 99, __pyx_L1_error)
   __pyx_v_self->query_type = __pyx_t_1;
 
   /* function exit code */
@@ -7533,7 +7533,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_11query_
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 100, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7568,7 +7568,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_11query_class_
   __Pyx_RefNannyDeclarations
   uint16_t __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 100, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 99, __pyx_L1_error)
   __pyx_v_self->query_class = __pyx_t_1;
 
   /* function exit code */
@@ -7879,7 +7879,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_8DNSQuery_6__setst
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":390
+/* "steelscript/packets/protos/dns.pyx":389
  *     """
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -7930,35 +7930,35 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_11DNSResource_1__init__(
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_res_type)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, 1); __PYX_ERR(0, 390, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, 1); __PYX_ERR(0, 389, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_res_class)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, 2); __PYX_ERR(0, 390, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, 2); __PYX_ERR(0, 389, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_res_ttl)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, 3); __PYX_ERR(0, 390, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, 3); __PYX_ERR(0, 389, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_res_len)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, 4); __PYX_ERR(0, 390, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, 4); __PYX_ERR(0, 389, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_res_data)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, 5); __PYX_ERR(0, 390, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, 5); __PYX_ERR(0, 389, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 390, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 389, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 6) {
       goto __pyx_L5_argtuple_error;
@@ -7971,22 +7971,22 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_11DNSResource_1__init__(
       values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
     }
     __pyx_v_domain_name = ((PyObject*)values[0]);
-    __pyx_v_res_type = __Pyx_PyInt_As_uint16_t(values[1]); if (unlikely((__pyx_v_res_type == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 392, __pyx_L3_error)
-    __pyx_v_res_class = __Pyx_PyInt_As_uint16_t(values[2]); if (unlikely((__pyx_v_res_class == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 393, __pyx_L3_error)
-    __pyx_v_res_ttl = __Pyx_PyInt_As_uint32_t(values[3]); if (unlikely((__pyx_v_res_ttl == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 394, __pyx_L3_error)
-    __pyx_v_res_len = __Pyx_PyInt_As_uint16_t(values[4]); if (unlikely((__pyx_v_res_len == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 395, __pyx_L3_error)
+    __pyx_v_res_type = __Pyx_PyInt_As_uint16_t(values[1]); if (unlikely((__pyx_v_res_type == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 391, __pyx_L3_error)
+    __pyx_v_res_class = __Pyx_PyInt_As_uint16_t(values[2]); if (unlikely((__pyx_v_res_class == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 392, __pyx_L3_error)
+    __pyx_v_res_ttl = __Pyx_PyInt_As_uint32_t(values[3]); if (unlikely((__pyx_v_res_ttl == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 393, __pyx_L3_error)
+    __pyx_v_res_len = __Pyx_PyInt_As_uint16_t(values[4]); if (unlikely((__pyx_v_res_len == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 394, __pyx_L3_error)
     __pyx_v_res_data = ((PyObject*)values[5]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 390, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 389, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("steelscript.packets.protos.dns.DNSResource.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_domain_name), (&PyBytes_Type), 1, "domain_name", 1))) __PYX_ERR(0, 391, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_res_data), (&PyBytes_Type), 1, "res_data", 1))) __PYX_ERR(0, 396, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_domain_name), (&PyBytes_Type), 1, "domain_name", 1))) __PYX_ERR(0, 390, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_res_data), (&PyBytes_Type), 1, "res_data", 1))) __PYX_ERR(0, 395, __pyx_L1_error)
   __pyx_r = __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource___init__(((struct __pyx_obj_11steelscript_7packets_6protos_3dns_DNSResource *)__pyx_v_self), __pyx_v_domain_name, __pyx_v_res_type, __pyx_v_res_class, __pyx_v_res_ttl, __pyx_v_res_len, __pyx_v_res_data);
 
   /* function exit code */
@@ -8003,7 +8003,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource___init__(s
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":397
+  /* "steelscript/packets/protos/dns.pyx":396
  *                  uint16_t res_len,
  *                  bytes res_data):
  *         self.res_type = res_type             # <<<<<<<<<<<<<<
@@ -8012,7 +8012,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource___init__(s
  */
   __pyx_v_self->res_type = __pyx_v_res_type;
 
-  /* "steelscript/packets/protos/dns.pyx":398
+  /* "steelscript/packets/protos/dns.pyx":397
  *                  bytes res_data):
  *         self.res_type = res_type
  *         self.res_class = res_class             # <<<<<<<<<<<<<<
@@ -8021,7 +8021,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource___init__(s
  */
   __pyx_v_self->res_class = __pyx_v_res_class;
 
-  /* "steelscript/packets/protos/dns.pyx":399
+  /* "steelscript/packets/protos/dns.pyx":398
  *         self.res_type = res_type
  *         self.res_class = res_class
  *         self.res_ttl = res_ttl             # <<<<<<<<<<<<<<
@@ -8030,7 +8030,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource___init__(s
  */
   __pyx_v_self->res_ttl = __pyx_v_res_ttl;
 
-  /* "steelscript/packets/protos/dns.pyx":400
+  /* "steelscript/packets/protos/dns.pyx":399
  *         self.res_class = res_class
  *         self.res_ttl = res_ttl
  *         self.res_len = res_len             # <<<<<<<<<<<<<<
@@ -8039,16 +8039,16 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource___init__(s
  */
   __pyx_v_self->res_len = __pyx_v_res_len;
 
-  /* "steelscript/packets/protos/dns.pyx":401
+  /* "steelscript/packets/protos/dns.pyx":400
  *         self.res_ttl = res_ttl
  *         self.res_len = res_len
  *         self.domain_name = domain_name             # <<<<<<<<<<<<<<
  *         self.res_data = res_data
  * 
  */
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_domain_name, __pyx_v_domain_name) < 0) __PYX_ERR(0, 401, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_domain_name, __pyx_v_domain_name) < 0) __PYX_ERR(0, 400, __pyx_L1_error)
 
-  /* "steelscript/packets/protos/dns.pyx":402
+  /* "steelscript/packets/protos/dns.pyx":401
  *         self.res_len = res_len
  *         self.domain_name = domain_name
  *         self.res_data = res_data             # <<<<<<<<<<<<<<
@@ -8061,7 +8061,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource___init__(s
   __Pyx_DECREF(__pyx_v_self->res_data);
   __pyx_v_self->res_data = __pyx_v_res_data;
 
-  /* "steelscript/packets/protos/dns.pyx":390
+  /* "steelscript/packets/protos/dns.pyx":389
  *     """
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -8080,7 +8080,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource___init__(s
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":404
+/* "steelscript/packets/protos/dns.pyx":403
  *         self.res_data = res_data
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -8115,7 +8115,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_2__r
   PyObject *__pyx_t_9 = NULL;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":405
+  /* "steelscript/packets/protos/dns.pyx":404
  * 
  *     def __repr__(self):
  *         return ("DNSResource(domain_name={0}, res_type={1}, res_class={2}, "             # <<<<<<<<<<<<<<
@@ -8124,57 +8124,57 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_2__r
  */
   __Pyx_XDECREF(__pyx_r);
 
-  /* "steelscript/packets/protos/dns.pyx":407
+  /* "steelscript/packets/protos/dns.pyx":406
  *         return ("DNSResource(domain_name={0}, res_type={1}, res_class={2}, "
  *                 "res_ttl={3}, res_len={4}, res_data={5})"
  *                 "".format(self._domain_name,             # <<<<<<<<<<<<<<
  *                           self.res_type,
  *                           self.res_class,
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_DNSResource_domain_name_0_res_ty, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 407, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_DNSResource_domain_name_0_res_ty, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 406, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "steelscript/packets/protos/dns.pyx":408
+  /* "steelscript/packets/protos/dns.pyx":407
  *                 "res_ttl={3}, res_len={4}, res_data={5})"
  *                 "".format(self._domain_name,
  *                           self.res_type,             # <<<<<<<<<<<<<<
  *                           self.res_class,
  *                           self.res_ttl,
  */
-  __pyx_t_3 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_type); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 408, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_type); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 407, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "steelscript/packets/protos/dns.pyx":409
+  /* "steelscript/packets/protos/dns.pyx":408
  *                 "".format(self._domain_name,
  *                           self.res_type,
  *                           self.res_class,             # <<<<<<<<<<<<<<
  *                           self.res_ttl,
  *                           self.res_len,
  */
-  __pyx_t_4 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_class); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 409, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_class); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 408, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "steelscript/packets/protos/dns.pyx":410
+  /* "steelscript/packets/protos/dns.pyx":409
  *                           self.res_type,
  *                           self.res_class,
  *                           self.res_ttl,             # <<<<<<<<<<<<<<
  *                           self.res_len,
  *                           self.res_data))
  */
-  __pyx_t_5 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->res_ttl); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 410, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->res_ttl); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 409, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
 
-  /* "steelscript/packets/protos/dns.pyx":411
+  /* "steelscript/packets/protos/dns.pyx":410
  *                           self.res_class,
  *                           self.res_ttl,
  *                           self.res_len,             # <<<<<<<<<<<<<<
  *                           self.res_data))
  * 
  */
-  __pyx_t_6 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_len); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 411, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_len); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 410, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
 
-  /* "steelscript/packets/protos/dns.pyx":412
+  /* "steelscript/packets/protos/dns.pyx":411
  *                           self.res_ttl,
  *                           self.res_len,
  *                           self.res_data))             # <<<<<<<<<<<<<<
@@ -8196,7 +8196,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_2__r
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[7] = {__pyx_t_7, __pyx_v_self->_domain_name, __pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_t_6, __pyx_v_self->res_data};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 6+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 407, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 6+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 406, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8208,7 +8208,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_2__r
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[7] = {__pyx_t_7, __pyx_v_self->_domain_name, __pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_t_6, __pyx_v_self->res_data};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 6+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 407, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 6+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 406, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8218,7 +8218,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_2__r
   } else
   #endif
   {
-    __pyx_t_9 = PyTuple_New(6+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 407, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(6+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 406, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -8241,7 +8241,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_2__r
     __pyx_t_4 = 0;
     __pyx_t_5 = 0;
     __pyx_t_6 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 407, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 406, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
@@ -8250,7 +8250,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_2__r
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":404
+  /* "steelscript/packets/protos/dns.pyx":403
  *         self.res_data = res_data
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -8276,7 +8276,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_2__r
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":415
+/* "steelscript/packets/protos/dns.pyx":414
  * 
  *     property domain_name:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -8302,7 +8302,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11do
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":416
+  /* "steelscript/packets/protos/dns.pyx":415
  *     property domain_name:
  *         def __get__(self):
  *             return self._domain_name             # <<<<<<<<<<<<<<
@@ -8314,7 +8314,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11do
   __pyx_r = __pyx_v_self->_domain_name;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":415
+  /* "steelscript/packets/protos/dns.pyx":414
  * 
  *     property domain_name:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -8329,7 +8329,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11do
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":418
+/* "steelscript/packets/protos/dns.pyx":417
  *             return self._domain_name
  * 
  *         def __set__(self, bytes val):             # <<<<<<<<<<<<<<
@@ -8343,7 +8343,7 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_val), (&PyBytes_Type), 1, "val", 1))) __PYX_ERR(0, 418, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_val), (&PyBytes_Type), 1, "val", 1))) __PYX_ERR(0, 417, __pyx_L1_error)
   __pyx_r = __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_name_2__set__(((struct __pyx_obj_11steelscript_7packets_6protos_3dns_DNSResource *)__pyx_v_self), ((PyObject*)__pyx_v_val));
 
   /* function exit code */
@@ -8369,16 +8369,16 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
   PyObject *__pyx_t_9 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":419
+  /* "steelscript/packets/protos/dns.pyx":418
  * 
  *         def __set__(self, bytes val):
  *             if (domainname_re.match(val) or             # <<<<<<<<<<<<<<
  *                     hostname_re.match(val) or
  *                     val == b'' or
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_domainname_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_domainname_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 418, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_match); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_match); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 418, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -8392,13 +8392,13 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 419, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 418, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_val};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 419, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 418, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
@@ -8406,25 +8406,25 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_v_val};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 419, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 418, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 419, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 418, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(__pyx_v_val);
       __Pyx_GIVEREF(__pyx_v_val);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_v_val);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 419, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 418, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 418, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (!__pyx_t_6) {
   } else {
@@ -8432,16 +8432,16 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":420
+  /* "steelscript/packets/protos/dns.pyx":419
  *         def __set__(self, bytes val):
  *             if (domainname_re.match(val) or
  *                     hostname_re.match(val) or             # <<<<<<<<<<<<<<
  *                     val == b'' or
  *                     self.res_type in (DNSTYPE_TXT,
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_hostname_re); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 420, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_hostname_re); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 419, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_match); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 420, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_match); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 419, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -8455,13 +8455,13 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 420, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_val); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 419, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_val};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 420, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 419, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
@@ -8469,25 +8469,25 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_val};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 420, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 419, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 420, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 419, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_INCREF(__pyx_v_val);
       __Pyx_GIVEREF(__pyx_v_val);
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_v_val);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 420, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 419, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 420, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 419, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (!__pyx_t_6) {
   } else {
@@ -8495,14 +8495,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":421
+  /* "steelscript/packets/protos/dns.pyx":420
  *             if (domainname_re.match(val) or
  *                     hostname_re.match(val) or
  *                     val == b'' or             # <<<<<<<<<<<<<<
  *                     self.res_type in (DNSTYPE_TXT,
  *                                       DNSTYPE_OPT)):
  */
-  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_val, __pyx_kp_b__4, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_val, __pyx_kp_b__4, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 420, __pyx_L1_error)
   __pyx_t_7 = (__pyx_t_6 != 0);
   if (!__pyx_t_7) {
   } else {
@@ -8510,7 +8510,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":422
+  /* "steelscript/packets/protos/dns.pyx":421
  *                     hostname_re.match(val) or
  *                     val == b'' or
  *                     self.res_type in (DNSTYPE_TXT,             # <<<<<<<<<<<<<<
@@ -8520,7 +8520,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
   switch (__pyx_v_self->res_type) {
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_TXT:
 
-    /* "steelscript/packets/protos/dns.pyx":423
+    /* "steelscript/packets/protos/dns.pyx":422
  *                     val == b'' or
  *                     self.res_type in (DNSTYPE_TXT,
  *                                       DNSTYPE_OPT)):             # <<<<<<<<<<<<<<
@@ -8529,7 +8529,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
  */
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_OPT:
 
-    /* "steelscript/packets/protos/dns.pyx":422
+    /* "steelscript/packets/protos/dns.pyx":421
  *                     hostname_re.match(val) or
  *                     val == b'' or
  *                     self.res_type in (DNSTYPE_TXT,             # <<<<<<<<<<<<<<
@@ -8546,7 +8546,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
   __pyx_t_1 = __pyx_t_6;
   __pyx_L4_bool_binop_done:;
 
-  /* "steelscript/packets/protos/dns.pyx":419
+  /* "steelscript/packets/protos/dns.pyx":418
  * 
  *         def __set__(self, bytes val):
  *             if (domainname_re.match(val) or             # <<<<<<<<<<<<<<
@@ -8555,7 +8555,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
  */
   if (__pyx_t_1) {
 
-    /* "steelscript/packets/protos/dns.pyx":424
+    /* "steelscript/packets/protos/dns.pyx":423
  *                     self.res_type in (DNSTYPE_TXT,
  *                                       DNSTYPE_OPT)):
  *                 self._domain_name = val             # <<<<<<<<<<<<<<
@@ -8568,7 +8568,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
     __Pyx_DECREF(__pyx_v_self->_domain_name);
     __pyx_v_self->_domain_name = __pyx_v_val;
 
-    /* "steelscript/packets/protos/dns.pyx":419
+    /* "steelscript/packets/protos/dns.pyx":418
  * 
  *         def __set__(self, bytes val):
  *             if (domainname_re.match(val) or             # <<<<<<<<<<<<<<
@@ -8578,7 +8578,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
     goto __pyx_L3;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":426
+  /* "steelscript/packets/protos/dns.pyx":425
  *                 self._domain_name = val
  *             else:
  *                 raise ValueError(             # <<<<<<<<<<<<<<
@@ -8587,17 +8587,17 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
  */
   /*else*/ {
 
-    /* "steelscript/packets/protos/dns.pyx":428
+    /* "steelscript/packets/protos/dns.pyx":427
  *                 raise ValueError(
  *                     "DNSResource.domain_name must be either a valid host "
  *                     "name. Value was {0}".format(ord(val)))             # <<<<<<<<<<<<<<
  * 
  *     cdef bytes pack(self, uint16_t* offset,
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_DNSResource_domain_name_must_be, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 428, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_DNSResource_domain_name_must_be, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 427, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_8 = __Pyx_PyObject_Ord(__pyx_v_val); if (unlikely(__pyx_t_8 == ((long)(long)(Py_UCS4)-1))) __PYX_ERR(0, 428, __pyx_L1_error)
-    __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 428, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Ord(__pyx_v_val); if (unlikely(__pyx_t_8 == ((long)(long)(Py_UCS4)-1))) __PYX_ERR(0, 427, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 427, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -8610,14 +8610,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
       }
     }
     if (!__pyx_t_4) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 428, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_3};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 428, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8626,48 +8626,48 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_3};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 428, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 428, __pyx_L1_error)
+        __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 427, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_4); __pyx_t_4 = NULL;
         __Pyx_GIVEREF(__pyx_t_3);
         PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_t_3);
         __pyx_t_3 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 428, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":426
+    /* "steelscript/packets/protos/dns.pyx":425
  *                 self._domain_name = val
  *             else:
  *                 raise ValueError(             # <<<<<<<<<<<<<<
  *                     "DNSResource.domain_name must be either a valid host "
  *                     "name. Value was {0}".format(ord(val)))
  */
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 426, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 425, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 426, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 425, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 426, __pyx_L1_error)
+    __PYX_ERR(0, 425, __pyx_L1_error)
   }
   __pyx_L3:;
 
-  /* "steelscript/packets/protos/dns.pyx":418
+  /* "steelscript/packets/protos/dns.pyx":417
  *             return self._domain_name
  * 
  *         def __set__(self, bytes val):             # <<<<<<<<<<<<<<
@@ -8691,7 +8691,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_11domain_n
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":430
+/* "steelscript/packets/protos/dns.pyx":429
  *                     "name. Value was {0}".format(ord(val)))
  * 
  *     cdef bytes pack(self, uint16_t* offset,             # <<<<<<<<<<<<<<
@@ -8732,7 +8732,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     }
   }
 
-  /* "steelscript/packets/protos/dns.pyx":437
+  /* "steelscript/packets/protos/dns.pyx":436
  *             bytes name
  *             bytes r_data
  *         name = write_dns_name_bytes(self._domain_name, offset,             # <<<<<<<<<<<<<<
@@ -8742,7 +8742,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
   __pyx_t_1 = __pyx_v_self->_domain_name;
   __Pyx_INCREF(__pyx_t_1);
 
-  /* "steelscript/packets/protos/dns.pyx":438
+  /* "steelscript/packets/protos/dns.pyx":437
  *             bytes r_data
  *         name = write_dns_name_bytes(self._domain_name, offset,
  *                                     labels, compress)             # <<<<<<<<<<<<<<
@@ -8751,13 +8751,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
  */
   __pyx_t_3.__pyx_n = 1;
   __pyx_t_3.compress = __pyx_v_compress;
-  __pyx_t_2 = __pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_bytes(((PyObject*)__pyx_t_1), __pyx_v_offset, __pyx_v_labels, &__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_bytes(((PyObject*)__pyx_t_1), __pyx_v_offset, __pyx_v_labels, &__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 436, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_name = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":439
+  /* "steelscript/packets/protos/dns.pyx":438
  *         name = write_dns_name_bytes(self._domain_name, offset,
  *                                     labels, compress)
  *         offset[PNTR] += 10             # <<<<<<<<<<<<<<
@@ -8767,7 +8767,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
   __pyx_t_4 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
   (__pyx_v_offset[__pyx_t_4]) = ((__pyx_v_offset[__pyx_t_4]) + 10);
 
-  /* "steelscript/packets/protos/dns.pyx":440
+  /* "steelscript/packets/protos/dns.pyx":439
  *                                     labels, compress)
  *         offset[PNTR] += 10
  *         if self.res_type in (DNSTYPE_NS, DNSTYPE_CNAME, DNSTYPE_PTR):             # <<<<<<<<<<<<<<
@@ -8779,7 +8779,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_CNAME:
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_PTR:
 
-    /* "steelscript/packets/protos/dns.pyx":441
+    /* "steelscript/packets/protos/dns.pyx":440
  *         offset[PNTR] += 10
  *         if self.res_type in (DNSTYPE_NS, DNSTYPE_CNAME, DNSTYPE_PTR):
  *             r_data = write_dns_name_bytes(self.res_data, offset,             # <<<<<<<<<<<<<<
@@ -8789,7 +8789,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     __pyx_t_2 = __pyx_v_self->res_data;
     __Pyx_INCREF(__pyx_t_2);
 
-    /* "steelscript/packets/protos/dns.pyx":442
+    /* "steelscript/packets/protos/dns.pyx":441
  *         if self.res_type in (DNSTYPE_NS, DNSTYPE_CNAME, DNSTYPE_PTR):
  *             r_data = write_dns_name_bytes(self.res_data, offset,
  *                                           labels, compress)             # <<<<<<<<<<<<<<
@@ -8798,13 +8798,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
  */
     __pyx_t_3.__pyx_n = 1;
     __pyx_t_3.compress = __pyx_v_compress;
-    __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_bytes(((PyObject*)__pyx_t_2), __pyx_v_offset, __pyx_v_labels, &__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_write_dns_name_bytes(((PyObject*)__pyx_t_2), __pyx_v_offset, __pyx_v_labels, &__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 440, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_r_data = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":440
+    /* "steelscript/packets/protos/dns.pyx":439
  *                                     labels, compress)
  *         offset[PNTR] += 10
  *         if self.res_type in (DNSTYPE_NS, DNSTYPE_CNAME, DNSTYPE_PTR):             # <<<<<<<<<<<<<<
@@ -8813,7 +8813,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":443
+    /* "steelscript/packets/protos/dns.pyx":442
  *             r_data = write_dns_name_bytes(self.res_data, offset,
  *                                           labels, compress)
  *         elif self.res_type == DNSTYPE_A:             # <<<<<<<<<<<<<<
@@ -8822,21 +8822,21 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
  */
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_A:
 
-    /* "steelscript/packets/protos/dns.pyx":444
+    /* "steelscript/packets/protos/dns.pyx":443
  *                                           labels, compress)
  *         elif self.res_type == DNSTYPE_A:
  *             r_data = socket.inet_pton(socket.AF_INET, self.res_data)             # <<<<<<<<<<<<<<
  *             offset[PNTR] += 4
  *         elif self.res_type == DNSTYPE_AAAA:
  */
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 443, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_inet_pton); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_inet_pton); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 443, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 443, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_AF_INET); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_AF_INET); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 443, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -8854,7 +8854,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_6, __pyx_v_self->res_data};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 443, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -8863,14 +8863,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_6, __pyx_v_self->res_data};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 443, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 444, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 443, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       if (__pyx_t_2) {
         __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -8881,16 +8881,16 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
       __Pyx_GIVEREF(__pyx_v_self->res_data);
       PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_v_self->res_data);
       __pyx_t_6 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 443, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 444, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 443, __pyx_L1_error)
     __pyx_v_r_data = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":445
+    /* "steelscript/packets/protos/dns.pyx":444
  *         elif self.res_type == DNSTYPE_A:
  *             r_data = socket.inet_pton(socket.AF_INET, self.res_data)
  *             offset[PNTR] += 4             # <<<<<<<<<<<<<<
@@ -8900,7 +8900,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     __pyx_t_4 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
     (__pyx_v_offset[__pyx_t_4]) = ((__pyx_v_offset[__pyx_t_4]) + 4);
 
-    /* "steelscript/packets/protos/dns.pyx":443
+    /* "steelscript/packets/protos/dns.pyx":442
  *             r_data = write_dns_name_bytes(self.res_data, offset,
  *                                           labels, compress)
  *         elif self.res_type == DNSTYPE_A:             # <<<<<<<<<<<<<<
@@ -8909,7 +8909,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":446
+    /* "steelscript/packets/protos/dns.pyx":445
  *             r_data = socket.inet_pton(socket.AF_INET, self.res_data)
  *             offset[PNTR] += 4
  *         elif self.res_type == DNSTYPE_AAAA:             # <<<<<<<<<<<<<<
@@ -8918,21 +8918,21 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
  */
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_AAAA:
 
-    /* "steelscript/packets/protos/dns.pyx":447
+    /* "steelscript/packets/protos/dns.pyx":446
  *             offset[PNTR] += 4
  *         elif self.res_type == DNSTYPE_AAAA:
  *             r_data = socket.inet_pton(socket.AF_INET6, self.res_data)             # <<<<<<<<<<<<<<
  *             offset[PNTR] += 16
  *         elif self.res_type == DNSTYPE_SOA:
  */
-    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 447, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_inet_pton); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 447, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_inet_pton); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 447, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_socket); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_AF_INET6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 447, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_AF_INET6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -8950,7 +8950,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_6, __pyx_v_self->res_data};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -8959,14 +8959,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_t_6, __pyx_v_self->res_data};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else
     #endif
     {
-      __pyx_t_2 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 447, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 446, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -8977,16 +8977,16 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
       __Pyx_GIVEREF(__pyx_v_self->res_data);
       PyTuple_SET_ITEM(__pyx_t_2, 1+__pyx_t_7, __pyx_v_self->res_data);
       __pyx_t_6 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 447, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 446, __pyx_L1_error)
     __pyx_v_r_data = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":448
+    /* "steelscript/packets/protos/dns.pyx":447
  *         elif self.res_type == DNSTYPE_AAAA:
  *             r_data = socket.inet_pton(socket.AF_INET6, self.res_data)
  *             offset[PNTR] += 16             # <<<<<<<<<<<<<<
@@ -8996,7 +8996,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     __pyx_t_4 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
     (__pyx_v_offset[__pyx_t_4]) = ((__pyx_v_offset[__pyx_t_4]) + 16);
 
-    /* "steelscript/packets/protos/dns.pyx":446
+    /* "steelscript/packets/protos/dns.pyx":445
  *             r_data = socket.inet_pton(socket.AF_INET, self.res_data)
  *             offset[PNTR] += 4
  *         elif self.res_type == DNSTYPE_AAAA:             # <<<<<<<<<<<<<<
@@ -9005,7 +9005,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":449
+    /* "steelscript/packets/protos/dns.pyx":448
  *             r_data = socket.inet_pton(socket.AF_INET6, self.res_data)
  *             offset[PNTR] += 16
  *         elif self.res_type == DNSTYPE_SOA:             # <<<<<<<<<<<<<<
@@ -9014,7 +9014,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
  */
     case __pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_SOA:
 
-    /* "steelscript/packets/protos/dns.pyx":450
+    /* "steelscript/packets/protos/dns.pyx":449
  *             offset[PNTR] += 16
  *         elif self.res_type == DNSTYPE_SOA:
  *             r_data = pack_soa(self.res_data, offset, labels, compress)             # <<<<<<<<<<<<<<
@@ -9025,13 +9025,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     __Pyx_INCREF(__pyx_t_1);
     __pyx_t_9.__pyx_n = 1;
     __pyx_t_9.compress = __pyx_v_compress;
-    __pyx_t_8 = __pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(((PyObject*)__pyx_t_1), __pyx_v_offset, __pyx_v_labels, &__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 450, __pyx_L1_error)
+    __pyx_t_8 = __pyx_f_11steelscript_7packets_6protos_3dns_pack_soa(((PyObject*)__pyx_t_1), __pyx_v_offset, __pyx_v_labels, &__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 449, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_r_data = ((PyObject*)__pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":449
+    /* "steelscript/packets/protos/dns.pyx":448
  *             r_data = socket.inet_pton(socket.AF_INET6, self.res_data)
  *             offset[PNTR] += 16
  *         elif self.res_type == DNSTYPE_SOA:             # <<<<<<<<<<<<<<
@@ -9041,7 +9041,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     break;
     default:
 
-    /* "steelscript/packets/protos/dns.pyx":452
+    /* "steelscript/packets/protos/dns.pyx":451
  *             r_data = pack_soa(self.res_data, offset, labels, compress)
  *         else:
  *             r_data = self.res_data             # <<<<<<<<<<<<<<
@@ -9053,7 +9053,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     __pyx_v_r_data = ((PyObject*)__pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":453
+    /* "steelscript/packets/protos/dns.pyx":452
  *         else:
  *             r_data = self.res_data
  *             offset[PNTR] += len(r_data)             # <<<<<<<<<<<<<<
@@ -9063,14 +9063,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     __pyx_t_4 = __pyx_e_11steelscript_7packets_6protos_3dns_PNTR;
     if (unlikely(__pyx_v_r_data == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 453, __pyx_L1_error)
+      __PYX_ERR(0, 452, __pyx_L1_error)
     }
-    __pyx_t_10 = PyBytes_GET_SIZE(__pyx_v_r_data); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 453, __pyx_L1_error)
+    __pyx_t_10 = PyBytes_GET_SIZE(__pyx_v_r_data); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 452, __pyx_L1_error)
     (__pyx_v_offset[__pyx_t_4]) = ((__pyx_v_offset[__pyx_t_4]) + __pyx_t_10);
     break;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":454
+  /* "steelscript/packets/protos/dns.pyx":453
  *             r_data = self.res_data
  *             offset[PNTR] += len(r_data)
  *         if update:             # <<<<<<<<<<<<<<
@@ -9080,7 +9080,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
   __pyx_t_11 = (__pyx_v_update != 0);
   if (__pyx_t_11) {
 
-    /* "steelscript/packets/protos/dns.pyx":455
+    /* "steelscript/packets/protos/dns.pyx":454
  *             offset[PNTR] += len(r_data)
  *         if update:
  *             self.res_len = len(r_data)             # <<<<<<<<<<<<<<
@@ -9089,12 +9089,12 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
  */
     if (unlikely(__pyx_v_r_data == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 455, __pyx_L1_error)
+      __PYX_ERR(0, 454, __pyx_L1_error)
     }
-    __pyx_t_10 = PyBytes_GET_SIZE(__pyx_v_r_data); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 455, __pyx_L1_error)
+    __pyx_t_10 = PyBytes_GET_SIZE(__pyx_v_r_data); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 454, __pyx_L1_error)
     __pyx_v_self->res_len = __pyx_t_10;
 
-    /* "steelscript/packets/protos/dns.pyx":454
+    /* "steelscript/packets/protos/dns.pyx":453
  *             r_data = self.res_data
  *             offset[PNTR] += len(r_data)
  *         if update:             # <<<<<<<<<<<<<<
@@ -9103,7 +9103,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":456
+  /* "steelscript/packets/protos/dns.pyx":455
  *         if update:
  *             self.res_len = len(r_data)
  *         return b'{0}{1}{2}'.format(name,             # <<<<<<<<<<<<<<
@@ -9111,60 +9111,60 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
  *                                                self.res_type,
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_b_0_1_2, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 456, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_b_0_1_2, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 455, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "steelscript/packets/protos/dns.pyx":457
+  /* "steelscript/packets/protos/dns.pyx":456
  *             self.res_len = len(r_data)
  *         return b'{0}{1}{2}'.format(name,
  *                                    struct.pack("!HHIH",             # <<<<<<<<<<<<<<
  *                                                self.res_type,
  *                                                self.res_class,
  */
-  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 457, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 456, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_pack); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 457, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_pack); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 456, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":458
+  /* "steelscript/packets/protos/dns.pyx":457
  *         return b'{0}{1}{2}'.format(name,
  *                                    struct.pack("!HHIH",
  *                                                self.res_type,             # <<<<<<<<<<<<<<
  *                                                self.res_class,
  *                                                self.res_ttl,
  */
-  __pyx_t_6 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_type); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 458, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_type); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 457, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
 
-  /* "steelscript/packets/protos/dns.pyx":459
+  /* "steelscript/packets/protos/dns.pyx":458
  *                                    struct.pack("!HHIH",
  *                                                self.res_type,
  *                                                self.res_class,             # <<<<<<<<<<<<<<
  *                                                self.res_ttl,
  *                                                self.res_len),
  */
-  __pyx_t_12 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_class); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 459, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_class); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 458, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
 
-  /* "steelscript/packets/protos/dns.pyx":460
+  /* "steelscript/packets/protos/dns.pyx":459
  *                                                self.res_type,
  *                                                self.res_class,
  *                                                self.res_ttl,             # <<<<<<<<<<<<<<
  *                                                self.res_len),
  *                                    r_data)
  */
-  __pyx_t_13 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->res_ttl); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 460, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->res_ttl); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 459, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
 
-  /* "steelscript/packets/protos/dns.pyx":461
+  /* "steelscript/packets/protos/dns.pyx":460
  *                                                self.res_class,
  *                                                self.res_ttl,
  *                                                self.res_len),             # <<<<<<<<<<<<<<
  *                                    r_data)
  * 
  */
-  __pyx_t_14 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_len); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 461, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_len); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 460, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __pyx_t_15 = NULL;
   __pyx_t_7 = 0;
@@ -9181,7 +9181,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[6] = {__pyx_t_15, __pyx_kp_s_HHIH, __pyx_t_6, __pyx_t_12, __pyx_t_13, __pyx_t_14};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 5+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 457, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 5+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 456, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -9193,7 +9193,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[6] = {__pyx_t_15, __pyx_kp_s_HHIH, __pyx_t_6, __pyx_t_12, __pyx_t_13, __pyx_t_14};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 5+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 457, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 5+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 456, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -9203,7 +9203,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
   } else
   #endif
   {
-    __pyx_t_16 = PyTuple_New(5+__pyx_t_7); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 457, __pyx_L1_error)
+    __pyx_t_16 = PyTuple_New(5+__pyx_t_7); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 456, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     if (__pyx_t_15) {
       __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_15); __pyx_t_15 = NULL;
@@ -9223,13 +9223,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     __pyx_t_12 = 0;
     __pyx_t_13 = 0;
     __pyx_t_14 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_16, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 457, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_16, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 456, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":462
+  /* "steelscript/packets/protos/dns.pyx":461
  *                                                self.res_ttl,
  *                                                self.res_len),
  *                                    r_data)             # <<<<<<<<<<<<<<
@@ -9251,7 +9251,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_v_name, __pyx_t_2, __pyx_v_r_data};
-    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 456, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 455, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9260,14 +9260,14 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_v_name, __pyx_t_2, __pyx_v_r_data};
-    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 456, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 455, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else
   #endif
   {
-    __pyx_t_16 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 456, __pyx_L1_error)
+    __pyx_t_16 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 455, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     if (__pyx_t_5) {
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -9281,25 +9281,25 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
     __Pyx_GIVEREF(__pyx_v_r_data);
     PyTuple_SET_ITEM(__pyx_t_16, 2+__pyx_t_7, __pyx_v_r_data);
     __pyx_t_2 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_16, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 456, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_16, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 455, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":456
+  /* "steelscript/packets/protos/dns.pyx":455
  *         if update:
  *             self.res_len = len(r_data)
  *         return b'{0}{1}{2}'.format(name,             # <<<<<<<<<<<<<<
  *                                    struct.pack("!HHIH",
  *                                                self.res_type,
  */
-  if (!(likely(PyBytes_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_8)->tp_name), 0))) __PYX_ERR(0, 456, __pyx_L1_error)
+  if (!(likely(PyBytes_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_8)->tp_name), 0))) __PYX_ERR(0, 455, __pyx_L1_error)
   __pyx_r = ((PyObject*)__pyx_t_8);
   __pyx_t_8 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":430
+  /* "steelscript/packets/protos/dns.pyx":429
  *                     "name. Value was {0}".format(ord(val)))
  * 
  *     cdef bytes pack(self, uint16_t* offset,             # <<<<<<<<<<<<<<
@@ -9329,7 +9329,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack(
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pxd":108
+/* "steelscript/packets/protos/dns.pxd":107
  *     cdef:
  *         bytes _domain_name
  *         public uint16_t res_type, res_class, res_len             # <<<<<<<<<<<<<<
@@ -9356,7 +9356,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_8res
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 108, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_type); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9391,7 +9391,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_8res_type_
   __Pyx_RefNannyDeclarations
   uint16_t __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 108, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 107, __pyx_L1_error)
   __pyx_v_self->res_type = __pyx_t_1;
 
   /* function exit code */
@@ -9424,7 +9424,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_9res
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 108, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9459,7 +9459,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_9res_class
   __Pyx_RefNannyDeclarations
   uint16_t __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 108, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 107, __pyx_L1_error)
   __pyx_v_self->res_class = __pyx_t_1;
 
   /* function exit code */
@@ -9492,7 +9492,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_7res
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_len); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 108, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->res_len); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9527,7 +9527,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_7res_len_2
   __Pyx_RefNannyDeclarations
   uint16_t __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 108, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 107, __pyx_L1_error)
   __pyx_v_self->res_len = __pyx_t_1;
 
   /* function exit code */
@@ -9541,7 +9541,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_7res_len_2
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pxd":109
+/* "steelscript/packets/protos/dns.pxd":108
  *         bytes _domain_name
  *         public uint16_t res_type, res_class, res_len
  *         public uint32_t res_ttl             # <<<<<<<<<<<<<<
@@ -9568,7 +9568,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_7res
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->res_ttl); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 109, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->res_ttl); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9603,7 +9603,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_7res_ttl_2
   __Pyx_RefNannyDeclarations
   uint32_t __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_uint32_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 109, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_uint32_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint32_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 108, __pyx_L1_error)
   __pyx_v_self->res_ttl = __pyx_t_1;
 
   /* function exit code */
@@ -9942,7 +9942,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_11DNSResource_6__s
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":469
+/* "steelscript/packets/protos/dns.pyx":468
  * 
  *     """
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -10004,14 +10004,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
   int __pyx_t_19;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":470
+  /* "steelscript/packets/protos/dns.pyx":469
  *     """
  *     def __init__(self, *args, **kwargs):
  *         super(DNS, self).__init__(*args, **kwargs)             # <<<<<<<<<<<<<<
  *         self.pkt_name = b'DNS'
  *         self.pq_type, self.query_fields = DNS.query_info()
  */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 469, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS));
   __Pyx_GIVEREF(((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS));
@@ -10019,18 +10019,18 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_1, 1, ((PyObject *)__pyx_v_self));
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 469, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 469, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_v_args, __pyx_v_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_v_args, __pyx_v_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 469, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":471
+  /* "steelscript/packets/protos/dns.pyx":470
  *     def __init__(self, *args, **kwargs):
  *         super(DNS, self).__init__(*args, **kwargs)
  *         self.pkt_name = b'DNS'             # <<<<<<<<<<<<<<
@@ -10043,14 +10043,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
   __Pyx_DECREF(__pyx_v_self->__pyx_base.pkt_name);
   __pyx_v_self->__pyx_base.pkt_name = __pyx_n_b_DNS;
 
-  /* "steelscript/packets/protos/dns.pyx":472
+  /* "steelscript/packets/protos/dns.pyx":471
  *         super(DNS, self).__init__(*args, **kwargs)
  *         self.pkt_name = b'DNS'
  *         self.pq_type, self.query_fields = DNS.query_info()             # <<<<<<<<<<<<<<
  *         cdef:
  *             bint use_buffer
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS), __pyx_n_s_query_info); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 472, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS), __pyx_n_s_query_info); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 471, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -10063,10 +10063,10 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 472, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 471, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 472, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 471, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -10080,7 +10080,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 472, __pyx_L1_error)
+      __PYX_ERR(0, 471, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -10093,15 +10093,15 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     __Pyx_INCREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_t_3);
     #else
-    __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 472, __pyx_L1_error)
+    __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 471, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 472, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 471, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 472, __pyx_L1_error)
+    __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 471, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_5 = Py_TYPE(__pyx_t_4)->tp_iternext;
@@ -10109,7 +10109,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     __Pyx_GOTREF(__pyx_t_1);
     index = 1; __pyx_t_3 = __pyx_t_5(__pyx_t_4); if (unlikely(!__pyx_t_3)) goto __pyx_L3_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_3);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_5(__pyx_t_4), 2) < 0) __PYX_ERR(0, 472, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_5(__pyx_t_4), 2) < 0) __PYX_ERR(0, 471, __pyx_L1_error)
     __pyx_t_5 = NULL;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     goto __pyx_L4_unpacking_done;
@@ -10117,12 +10117,12 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 472, __pyx_L1_error)
+    __PYX_ERR(0, 471, __pyx_L1_error)
     __pyx_L4_unpacking_done:;
   }
-  __pyx_t_6 = __Pyx_PyInt_As_uint16_t(__pyx_t_1); if (unlikely((__pyx_t_6 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 472, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_As_uint16_t(__pyx_t_1); if (unlikely((__pyx_t_6 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 471, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyTuple_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 472, __pyx_L1_error)
+  if (!(likely(PyTuple_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 471, __pyx_L1_error)
   __pyx_v_self->__pyx_base.pq_type = __pyx_t_6;
   __Pyx_GIVEREF(__pyx_t_3);
   __Pyx_GOTREF(__pyx_v_self->__pyx_base.query_fields);
@@ -10130,14 +10130,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
   __pyx_v_self->__pyx_base.query_fields = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":481
+  /* "steelscript/packets/protos/dns.pyx":480
  *             tuple resource_args
  * 
  *         use_buffer, self._buffer = self.from_buffer(args, kwargs)             # <<<<<<<<<<<<<<
  * 
  *         self._flags = 0
  */
-  __pyx_t_2 = ((struct __pyx_vtabstruct_11steelscript_7packets_6protos_3dns_DNS *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.from_buffer(((struct __pyx_obj_11steelscript_7packets_4core_7inetpkt_PKT *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 481, __pyx_L1_error)
+  __pyx_t_2 = ((struct __pyx_vtabstruct_11steelscript_7packets_6protos_3dns_DNS *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.from_buffer(((struct __pyx_obj_11steelscript_7packets_4core_7inetpkt_PKT *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 480, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (likely(__pyx_t_2 != Py_None)) {
     PyObject* sequence = __pyx_t_2;
@@ -10149,7 +10149,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 481, __pyx_L1_error)
+      __PYX_ERR(0, 480, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     __pyx_t_3 = PyTuple_GET_ITEM(sequence, 0); 
@@ -10157,18 +10157,18 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_1);
     #else
-    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 481, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 480, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 481, __pyx_L1_error)
+    __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 480, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     #endif
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
-    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 481, __pyx_L1_error)
+    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 480, __pyx_L1_error)
   }
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 481, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 480, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_7cpython_5array_array))))) __PYX_ERR(0, 481, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_7cpython_5array_array))))) __PYX_ERR(0, 480, __pyx_L1_error)
   __pyx_v_use_buffer = __pyx_t_7;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->_buffer);
@@ -10176,7 +10176,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
   __pyx_v_self->_buffer = ((arrayobject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":483
+  /* "steelscript/packets/protos/dns.pyx":482
  *         use_buffer, self._buffer = self.from_buffer(args, kwargs)
  * 
  *         self._flags = 0             # <<<<<<<<<<<<<<
@@ -10185,14 +10185,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
   __pyx_v_self->_flags = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":484
+  /* "steelscript/packets/protos/dns.pyx":483
  * 
  *         self._flags = 0
  *         self.queries = list()             # <<<<<<<<<<<<<<
  *         self.answers = list()
  *         self.authority = list()
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 484, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 483, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->queries);
@@ -10200,14 +10200,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
   __pyx_v_self->queries = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":485
+  /* "steelscript/packets/protos/dns.pyx":484
  *         self._flags = 0
  *         self.queries = list()
  *         self.answers = list()             # <<<<<<<<<<<<<<
  *         self.authority = list()
  *         self.ad = list()
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 485, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 484, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->answers);
@@ -10215,14 +10215,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
   __pyx_v_self->answers = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":486
+  /* "steelscript/packets/protos/dns.pyx":485
  *         self.queries = list()
  *         self.answers = list()
  *         self.authority = list()             # <<<<<<<<<<<<<<
  *         self.ad = list()
  *         self.labels = dict()
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 486, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 485, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->authority);
@@ -10230,14 +10230,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
   __pyx_v_self->authority = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":487
+  /* "steelscript/packets/protos/dns.pyx":486
  *         self.answers = list()
  *         self.authority = list()
  *         self.ad = list()             # <<<<<<<<<<<<<<
  *         self.labels = dict()
  *         offset = 0
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 487, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 486, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->ad);
@@ -10245,14 +10245,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
   __pyx_v_self->ad = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":488
+  /* "steelscript/packets/protos/dns.pyx":487
  *         self.authority = list()
  *         self.ad = list()
  *         self.labels = dict()             # <<<<<<<<<<<<<<
  *         offset = 0
  * 
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 488, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 487, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->labels);
@@ -10260,7 +10260,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
   __pyx_v_self->labels = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":489
+  /* "steelscript/packets/protos/dns.pyx":488
  *         self.ad = list()
  *         self.labels = dict()
  *         offset = 0             # <<<<<<<<<<<<<<
@@ -10269,7 +10269,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
   __pyx_v_offset = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":491
+  /* "steelscript/packets/protos/dns.pyx":490
  *         offset = 0
  * 
  *         if use_buffer:             # <<<<<<<<<<<<<<
@@ -10279,19 +10279,19 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
   __pyx_t_7 = (__pyx_v_use_buffer != 0);
   if (__pyx_t_7) {
 
-    /* "steelscript/packets/protos/dns.pyx":498
+    /* "steelscript/packets/protos/dns.pyx":497
  *              self.answer_count,
  *              self.auth_count,
  *              self.ad_count) = struct.unpack('!6H', self._buffer[:12])             # <<<<<<<<<<<<<<
  *             # add those 12 bytes to the offset index.
  *             offset = 12
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 498, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 497, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_unpack); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 498, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_unpack); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 497, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_self->_buffer), 0, 12, NULL, NULL, &__pyx_slice__18, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 498, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_self->_buffer), 0, 12, NULL, NULL, &__pyx_slice__18, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 497, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_4 = NULL;
     __pyx_t_8 = 0;
@@ -10308,7 +10308,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_kp_s_6H, __pyx_t_1};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 498, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 497, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -10317,14 +10317,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_kp_s_6H, __pyx_t_1};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 498, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 497, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     {
-      __pyx_t_9 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 498, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 497, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       if (__pyx_t_4) {
         __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -10335,7 +10335,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 498, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 497, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
@@ -10350,7 +10350,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
       if (unlikely(size != 6)) {
         if (size > 6) __Pyx_RaiseTooManyValuesError(6);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 493, __pyx_L1_error)
+        __PYX_ERR(0, 492, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -10379,7 +10379,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         Py_ssize_t i;
         PyObject** temps[6] = {&__pyx_t_3,&__pyx_t_9,&__pyx_t_1,&__pyx_t_4,&__pyx_t_10,&__pyx_t_11};
         for (i=0; i < 6; i++) {
-          PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) __PYX_ERR(0, 493, __pyx_L1_error)
+          PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) __PYX_ERR(0, 492, __pyx_L1_error)
           __Pyx_GOTREF(item);
           *(temps[i]) = item;
         }
@@ -10389,7 +10389,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     } else {
       Py_ssize_t index = -1;
       PyObject** temps[6] = {&__pyx_t_3,&__pyx_t_9,&__pyx_t_1,&__pyx_t_4,&__pyx_t_10,&__pyx_t_11};
-      __pyx_t_12 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 493, __pyx_L1_error)
+      __pyx_t_12 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 492, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_5 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -10398,7 +10398,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         __Pyx_GOTREF(item);
         *(temps[index]) = item;
       }
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_5(__pyx_t_12), 6) < 0) __PYX_ERR(0, 493, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_5(__pyx_t_12), 6) < 0) __PYX_ERR(0, 492, __pyx_L1_error)
       __pyx_t_5 = NULL;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       goto __pyx_L7_unpacking_done;
@@ -10406,32 +10406,32 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_5 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 493, __pyx_L1_error)
+      __PYX_ERR(0, 492, __pyx_L1_error)
       __pyx_L7_unpacking_done:;
     }
 
-    /* "steelscript/packets/protos/dns.pyx":493
+    /* "steelscript/packets/protos/dns.pyx":492
  *         if use_buffer:
  *             # read the first 12 bytes into six unsigned shorts.
  *             (self.ident,             # <<<<<<<<<<<<<<
  *              self._flags,
  *              self.query_count,
  */
-    __pyx_t_6 = __Pyx_PyInt_As_uint16_t(__pyx_t_3); if (unlikely((__pyx_t_6 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 493, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_As_uint16_t(__pyx_t_3); if (unlikely((__pyx_t_6 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 492, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_13 = __Pyx_PyInt_As_uint16_t(__pyx_t_9); if (unlikely((__pyx_t_13 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 493, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyInt_As_uint16_t(__pyx_t_9); if (unlikely((__pyx_t_13 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 492, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_14 = __Pyx_PyInt_As_uint16_t(__pyx_t_1); if (unlikely((__pyx_t_14 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 493, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyInt_As_uint16_t(__pyx_t_1); if (unlikely((__pyx_t_14 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 492, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_15 = __Pyx_PyInt_As_uint16_t(__pyx_t_4); if (unlikely((__pyx_t_15 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 493, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyInt_As_uint16_t(__pyx_t_4); if (unlikely((__pyx_t_15 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 492, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_16 = __Pyx_PyInt_As_uint16_t(__pyx_t_10); if (unlikely((__pyx_t_16 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 493, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyInt_As_uint16_t(__pyx_t_10); if (unlikely((__pyx_t_16 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 492, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_17 = __Pyx_PyInt_As_uint16_t(__pyx_t_11); if (unlikely((__pyx_t_17 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 493, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyInt_As_uint16_t(__pyx_t_11); if (unlikely((__pyx_t_17 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 492, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __pyx_v_self->ident = __pyx_t_6;
 
-    /* "steelscript/packets/protos/dns.pyx":494
+    /* "steelscript/packets/protos/dns.pyx":493
  *             # read the first 12 bytes into six unsigned shorts.
  *             (self.ident,
  *              self._flags,             # <<<<<<<<<<<<<<
@@ -10440,7 +10440,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
     __pyx_v_self->_flags = __pyx_t_13;
 
-    /* "steelscript/packets/protos/dns.pyx":495
+    /* "steelscript/packets/protos/dns.pyx":494
  *             (self.ident,
  *              self._flags,
  *              self.query_count,             # <<<<<<<<<<<<<<
@@ -10449,7 +10449,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
     __pyx_v_self->query_count = __pyx_t_14;
 
-    /* "steelscript/packets/protos/dns.pyx":496
+    /* "steelscript/packets/protos/dns.pyx":495
  *              self._flags,
  *              self.query_count,
  *              self.answer_count,             # <<<<<<<<<<<<<<
@@ -10458,7 +10458,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
     __pyx_v_self->answer_count = __pyx_t_15;
 
-    /* "steelscript/packets/protos/dns.pyx":497
+    /* "steelscript/packets/protos/dns.pyx":496
  *              self.query_count,
  *              self.answer_count,
  *              self.auth_count,             # <<<<<<<<<<<<<<
@@ -10467,7 +10467,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
     __pyx_v_self->auth_count = __pyx_t_16;
 
-    /* "steelscript/packets/protos/dns.pyx":498
+    /* "steelscript/packets/protos/dns.pyx":497
  *              self.answer_count,
  *              self.auth_count,
  *              self.ad_count) = struct.unpack('!6H', self._buffer[:12])             # <<<<<<<<<<<<<<
@@ -10476,7 +10476,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
     __pyx_v_self->ad_count = __pyx_t_17;
 
-    /* "steelscript/packets/protos/dns.pyx":500
+    /* "steelscript/packets/protos/dns.pyx":499
  *              self.ad_count) = struct.unpack('!6H', self._buffer[:12])
  *             # add those 12 bytes to the offset index.
  *             offset = 12             # <<<<<<<<<<<<<<
@@ -10485,7 +10485,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
     __pyx_v_offset = 12;
 
-    /* "steelscript/packets/protos/dns.pyx":502
+    /* "steelscript/packets/protos/dns.pyx":501
  *             offset = 12
  *             # for each query and or resource record we have parse the data.
  *             if self.query_count:             # <<<<<<<<<<<<<<
@@ -10495,7 +10495,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     __pyx_t_7 = (__pyx_v_self->query_count != 0);
     if (__pyx_t_7) {
 
-      /* "steelscript/packets/protos/dns.pyx":503
+      /* "steelscript/packets/protos/dns.pyx":502
  *             # for each query and or resource record we have parse the data.
  *             if self.query_count:
  *                 for i in range(self.query_count):             # <<<<<<<<<<<<<<
@@ -10506,7 +10506,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
       for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
         __pyx_v_i = __pyx_t_18;
 
-        /* "steelscript/packets/protos/dns.pyx":505
+        /* "steelscript/packets/protos/dns.pyx":504
  *                 for i in range(self.query_count):
  *                     # read and or update our labels
  *                     query_name = read_dns_name_bytes(self._buffer,             # <<<<<<<<<<<<<<
@@ -10516,7 +10516,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         __pyx_t_2 = ((PyObject *)__pyx_v_self->_buffer);
         __Pyx_INCREF(__pyx_t_2);
 
-        /* "steelscript/packets/protos/dns.pyx":507
+        /* "steelscript/packets/protos/dns.pyx":506
  *                     query_name = read_dns_name_bytes(self._buffer,
  *                                                      &offset,
  *                                                      self.labels             # <<<<<<<<<<<<<<
@@ -10526,41 +10526,41 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         __pyx_t_11 = __pyx_v_self->labels;
         __Pyx_INCREF(__pyx_t_11);
 
-        /* "steelscript/packets/protos/dns.pyx":505
+        /* "steelscript/packets/protos/dns.pyx":504
  *                 for i in range(self.query_count):
  *                     # read and or update our labels
  *                     query_name = read_dns_name_bytes(self._buffer,             # <<<<<<<<<<<<<<
  *                                                      &offset,
  *                                                      self.labels
  */
-        __pyx_t_10 = __pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes(((arrayobject *)__pyx_t_2), (&__pyx_v_offset), ((PyObject*)__pyx_t_11)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 505, __pyx_L1_error)
+        __pyx_t_10 = __pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes(((arrayobject *)__pyx_t_2), (&__pyx_v_offset), ((PyObject*)__pyx_t_11)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 504, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_XDECREF_SET(__pyx_v_query_name, ((PyObject*)__pyx_t_10));
         __pyx_t_10 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":510
+        /* "steelscript/packets/protos/dns.pyx":509
  *                     )
  *                     # unpack the remainder of the query.
  *                     query_type, query_class = struct.unpack(             # <<<<<<<<<<<<<<
  *                         '!HH',
  *                         self._buffer[offset:offset + 4]
  */
-        __pyx_t_11 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 510, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 509, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_unpack); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 510, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_unpack); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 509, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":512
+        /* "steelscript/packets/protos/dns.pyx":511
  *                     query_type, query_class = struct.unpack(
  *                         '!HH',
  *                         self._buffer[offset:offset + 4]             # <<<<<<<<<<<<<<
  *                     )
  *                     self.queries.append(DNSQuery(query_name,
  */
-        __pyx_t_11 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_self->_buffer), __pyx_v_offset, (__pyx_v_offset + 4), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 512, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_self->_buffer), __pyx_v_offset, (__pyx_v_offset + 4), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 511, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __pyx_t_4 = NULL;
         __pyx_t_8 = 0;
@@ -10577,7 +10577,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_kp_s_HH, __pyx_t_11};
-          __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 510, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 509, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -10586,14 +10586,14 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_kp_s_HH, __pyx_t_11};
-          __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 510, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 509, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         } else
         #endif
         {
-          __pyx_t_1 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 510, __pyx_L1_error)
+          __pyx_t_1 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 509, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           if (__pyx_t_4) {
             __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -10604,7 +10604,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
           __Pyx_GIVEREF(__pyx_t_11);
           PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_8, __pyx_t_11);
           __pyx_t_11 = 0;
-          __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 510, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 509, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
@@ -10619,7 +10619,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 510, __pyx_L1_error)
+            __PYX_ERR(0, 509, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -10632,15 +10632,15 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
           __Pyx_INCREF(__pyx_t_2);
           __Pyx_INCREF(__pyx_t_1);
           #else
-          __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 510, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 509, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 510, __pyx_L1_error)
+          __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 509, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           #endif
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_11 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 510, __pyx_L1_error)
+          __pyx_t_11 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 509, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __pyx_t_5 = Py_TYPE(__pyx_t_11)->tp_iternext;
@@ -10648,7 +10648,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
           __Pyx_GOTREF(__pyx_t_2);
           index = 1; __pyx_t_1 = __pyx_t_5(__pyx_t_11); if (unlikely(!__pyx_t_1)) goto __pyx_L11_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_1);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_5(__pyx_t_11), 2) < 0) __PYX_ERR(0, 510, __pyx_L1_error)
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_5(__pyx_t_11), 2) < 0) __PYX_ERR(0, 509, __pyx_L1_error)
           __pyx_t_5 = NULL;
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           goto __pyx_L12_unpacking_done;
@@ -10656,25 +10656,25 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           __pyx_t_5 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 510, __pyx_L1_error)
+          __PYX_ERR(0, 509, __pyx_L1_error)
           __pyx_L12_unpacking_done:;
         }
 
-        /* "steelscript/packets/protos/dns.pyx":510
+        /* "steelscript/packets/protos/dns.pyx":509
  *                     )
  *                     # unpack the remainder of the query.
  *                     query_type, query_class = struct.unpack(             # <<<<<<<<<<<<<<
  *                         '!HH',
  *                         self._buffer[offset:offset + 4]
  */
-        __pyx_t_16 = __Pyx_PyInt_As_uint16_t(__pyx_t_2); if (unlikely((__pyx_t_16 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 510, __pyx_L1_error)
+        __pyx_t_16 = __Pyx_PyInt_As_uint16_t(__pyx_t_2); if (unlikely((__pyx_t_16 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 509, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_15 = __Pyx_PyInt_As_uint16_t(__pyx_t_1); if (unlikely((__pyx_t_15 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 510, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyInt_As_uint16_t(__pyx_t_1); if (unlikely((__pyx_t_15 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 509, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_v_query_type = __pyx_t_16;
         __pyx_v_query_class = __pyx_t_15;
 
-        /* "steelscript/packets/protos/dns.pyx":514
+        /* "steelscript/packets/protos/dns.pyx":513
  *                         self._buffer[offset:offset + 4]
  *                     )
  *                     self.queries.append(DNSQuery(query_name,             # <<<<<<<<<<<<<<
@@ -10683,37 +10683,37 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
         if (unlikely(__pyx_v_self->queries == Py_None)) {
           PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-          __PYX_ERR(0, 514, __pyx_L1_error)
+          __PYX_ERR(0, 513, __pyx_L1_error)
         }
 
-        /* "steelscript/packets/protos/dns.pyx":515
+        /* "steelscript/packets/protos/dns.pyx":514
  *                     )
  *                     self.queries.append(DNSQuery(query_name,
  *                                                    query_type,             # <<<<<<<<<<<<<<
  *                                                    query_class))
  *                     offset += 4
  */
-        __pyx_t_10 = __Pyx_PyInt_From_uint16_t(__pyx_v_query_type); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 515, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyInt_From_uint16_t(__pyx_v_query_type); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 514, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
 
-        /* "steelscript/packets/protos/dns.pyx":516
+        /* "steelscript/packets/protos/dns.pyx":515
  *                     self.queries.append(DNSQuery(query_name,
  *                                                    query_type,
  *                                                    query_class))             # <<<<<<<<<<<<<<
  *                     offset += 4
  *             # Now unpack the resources by the 3 remaining types.
  */
-        __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_query_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 516, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_query_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 515, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
 
-        /* "steelscript/packets/protos/dns.pyx":514
+        /* "steelscript/packets/protos/dns.pyx":513
  *                         self._buffer[offset:offset + 4]
  *                     )
  *                     self.queries.append(DNSQuery(query_name,             # <<<<<<<<<<<<<<
  *                                                    query_type,
  *                                                    query_class))
  */
-        __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 514, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 513, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_INCREF(__pyx_v_query_name);
         __Pyx_GIVEREF(__pyx_v_query_name);
@@ -10724,13 +10724,13 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_t_1);
         __pyx_t_10 = 0;
         __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNSQuery), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 514, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNSQuery), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 513, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_self->queries, __pyx_t_1); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 514, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_self->queries, __pyx_t_1); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 513, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":517
+        /* "steelscript/packets/protos/dns.pyx":516
  *                                                    query_type,
  *                                                    query_class))
  *                     offset += 4             # <<<<<<<<<<<<<<
@@ -10740,7 +10740,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         __pyx_v_offset = (__pyx_v_offset + 4);
       }
 
-      /* "steelscript/packets/protos/dns.pyx":502
+      /* "steelscript/packets/protos/dns.pyx":501
  *             offset = 12
  *             # for each query and or resource record we have parse the data.
  *             if self.query_count:             # <<<<<<<<<<<<<<
@@ -10749,7 +10749,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
     }
 
-    /* "steelscript/packets/protos/dns.pyx":519
+    /* "steelscript/packets/protos/dns.pyx":518
  *                     offset += 4
  *             # Now unpack the resources by the 3 remaining types.
  *             if self.answer_count:             # <<<<<<<<<<<<<<
@@ -10759,7 +10759,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     __pyx_t_7 = (__pyx_v_self->answer_count != 0);
     if (__pyx_t_7) {
 
-      /* "steelscript/packets/protos/dns.pyx":520
+      /* "steelscript/packets/protos/dns.pyx":519
  *             # Now unpack the resources by the 3 remaining types.
  *             if self.answer_count:
  *                 for _ in range(self.answer_count):             # <<<<<<<<<<<<<<
@@ -10770,7 +10770,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
       for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_17; __pyx_t_15+=1) {
         __pyx_v__ = __pyx_t_15;
 
-        /* "steelscript/packets/protos/dns.pyx":521
+        /* "steelscript/packets/protos/dns.pyx":520
  *             if self.answer_count:
  *                 for _ in range(self.answer_count):
  *                     resource_args = parse_resource(self._buffer,             # <<<<<<<<<<<<<<
@@ -10780,7 +10780,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         __pyx_t_1 = ((PyObject *)__pyx_v_self->_buffer);
         __Pyx_INCREF(__pyx_t_1);
 
-        /* "steelscript/packets/protos/dns.pyx":523
+        /* "steelscript/packets/protos/dns.pyx":522
  *                     resource_args = parse_resource(self._buffer,
  *                                                    &offset,
  *                                                    self.labels             # <<<<<<<<<<<<<<
@@ -10790,21 +10790,21 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         __pyx_t_2 = __pyx_v_self->labels;
         __Pyx_INCREF(__pyx_t_2);
 
-        /* "steelscript/packets/protos/dns.pyx":521
+        /* "steelscript/packets/protos/dns.pyx":520
  *             if self.answer_count:
  *                 for _ in range(self.answer_count):
  *                     resource_args = parse_resource(self._buffer,             # <<<<<<<<<<<<<<
  *                                                    &offset,
  *                                                    self.labels
  */
-        __pyx_t_10 = __pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(((arrayobject *)__pyx_t_1), (&__pyx_v_offset), ((PyObject*)__pyx_t_2)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 521, __pyx_L1_error)
+        __pyx_t_10 = __pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(((arrayobject *)__pyx_t_1), (&__pyx_v_offset), ((PyObject*)__pyx_t_2)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 520, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_XDECREF_SET(__pyx_v_resource_args, ((PyObject*)__pyx_t_10));
         __pyx_t_10 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":525
+        /* "steelscript/packets/protos/dns.pyx":524
  *                                                    self.labels
  *                     )
  *                     self.answers.append(DNSResource(*resource_args))             # <<<<<<<<<<<<<<
@@ -10813,19 +10813,19 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
         if (unlikely(__pyx_v_self->answers == Py_None)) {
           PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-          __PYX_ERR(0, 525, __pyx_L1_error)
+          __PYX_ERR(0, 524, __pyx_L1_error)
         }
         if (unlikely(__pyx_v_resource_args == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-          __PYX_ERR(0, 525, __pyx_L1_error)
+          __PYX_ERR(0, 524, __pyx_L1_error)
         }
-        __pyx_t_10 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNSResource), __pyx_v_resource_args, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 525, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNSResource), __pyx_v_resource_args, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 524, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_self->answers, __pyx_t_10); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 525, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_self->answers, __pyx_t_10); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 524, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
 
-      /* "steelscript/packets/protos/dns.pyx":519
+      /* "steelscript/packets/protos/dns.pyx":518
  *                     offset += 4
  *             # Now unpack the resources by the 3 remaining types.
  *             if self.answer_count:             # <<<<<<<<<<<<<<
@@ -10834,7 +10834,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
     }
 
-    /* "steelscript/packets/protos/dns.pyx":526
+    /* "steelscript/packets/protos/dns.pyx":525
  *                     )
  *                     self.answers.append(DNSResource(*resource_args))
  *             if self.auth_count:             # <<<<<<<<<<<<<<
@@ -10844,7 +10844,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     __pyx_t_7 = (__pyx_v_self->auth_count != 0);
     if (__pyx_t_7) {
 
-      /* "steelscript/packets/protos/dns.pyx":527
+      /* "steelscript/packets/protos/dns.pyx":526
  *                     self.answers.append(DNSResource(*resource_args))
  *             if self.auth_count:
  *                 for _ in range(self.auth_count):             # <<<<<<<<<<<<<<
@@ -10855,7 +10855,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
       for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_17; __pyx_t_15+=1) {
         __pyx_v__ = __pyx_t_15;
 
-        /* "steelscript/packets/protos/dns.pyx":528
+        /* "steelscript/packets/protos/dns.pyx":527
  *             if self.auth_count:
  *                 for _ in range(self.auth_count):
  *                     resource_args = parse_resource(self._buffer,             # <<<<<<<<<<<<<<
@@ -10865,7 +10865,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         __pyx_t_10 = ((PyObject *)__pyx_v_self->_buffer);
         __Pyx_INCREF(__pyx_t_10);
 
-        /* "steelscript/packets/protos/dns.pyx":530
+        /* "steelscript/packets/protos/dns.pyx":529
  *                     resource_args = parse_resource(self._buffer,
  *                                                    &offset,
  *                                                    self.labels             # <<<<<<<<<<<<<<
@@ -10875,21 +10875,21 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         __pyx_t_2 = __pyx_v_self->labels;
         __Pyx_INCREF(__pyx_t_2);
 
-        /* "steelscript/packets/protos/dns.pyx":528
+        /* "steelscript/packets/protos/dns.pyx":527
  *             if self.auth_count:
  *                 for _ in range(self.auth_count):
  *                     resource_args = parse_resource(self._buffer,             # <<<<<<<<<<<<<<
  *                                                    &offset,
  *                                                    self.labels
  */
-        __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(((arrayobject *)__pyx_t_10), (&__pyx_v_offset), ((PyObject*)__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 528, __pyx_L1_error)
+        __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(((arrayobject *)__pyx_t_10), (&__pyx_v_offset), ((PyObject*)__pyx_t_2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 527, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_XDECREF_SET(__pyx_v_resource_args, ((PyObject*)__pyx_t_1));
         __pyx_t_1 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":532
+        /* "steelscript/packets/protos/dns.pyx":531
  *                                                    self.labels
  *                     )
  *                     self.authority.append(DNSResource(*resource_args))             # <<<<<<<<<<<<<<
@@ -10898,19 +10898,19 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
         if (unlikely(__pyx_v_self->authority == Py_None)) {
           PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-          __PYX_ERR(0, 532, __pyx_L1_error)
+          __PYX_ERR(0, 531, __pyx_L1_error)
         }
         if (unlikely(__pyx_v_resource_args == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-          __PYX_ERR(0, 532, __pyx_L1_error)
+          __PYX_ERR(0, 531, __pyx_L1_error)
         }
-        __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNSResource), __pyx_v_resource_args, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 532, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNSResource), __pyx_v_resource_args, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 531, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_self->authority, __pyx_t_1); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 532, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_self->authority, __pyx_t_1); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 531, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
 
-      /* "steelscript/packets/protos/dns.pyx":526
+      /* "steelscript/packets/protos/dns.pyx":525
  *                     )
  *                     self.answers.append(DNSResource(*resource_args))
  *             if self.auth_count:             # <<<<<<<<<<<<<<
@@ -10919,7 +10919,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
     }
 
-    /* "steelscript/packets/protos/dns.pyx":533
+    /* "steelscript/packets/protos/dns.pyx":532
  *                     )
  *                     self.authority.append(DNSResource(*resource_args))
  *             if self.ad_count:             # <<<<<<<<<<<<<<
@@ -10929,7 +10929,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     __pyx_t_7 = (__pyx_v_self->ad_count != 0);
     if (__pyx_t_7) {
 
-      /* "steelscript/packets/protos/dns.pyx":534
+      /* "steelscript/packets/protos/dns.pyx":533
  *                     self.authority.append(DNSResource(*resource_args))
  *             if self.ad_count:
  *                 for _ in range(self.ad_count):             # <<<<<<<<<<<<<<
@@ -10940,7 +10940,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
       for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_17; __pyx_t_15+=1) {
         __pyx_v__ = __pyx_t_15;
 
-        /* "steelscript/packets/protos/dns.pyx":535
+        /* "steelscript/packets/protos/dns.pyx":534
  *             if self.ad_count:
  *                 for _ in range(self.ad_count):
  *                     resource_args = parse_resource(self._buffer,             # <<<<<<<<<<<<<<
@@ -10950,7 +10950,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         __pyx_t_1 = ((PyObject *)__pyx_v_self->_buffer);
         __Pyx_INCREF(__pyx_t_1);
 
-        /* "steelscript/packets/protos/dns.pyx":537
+        /* "steelscript/packets/protos/dns.pyx":536
  *                     resource_args = parse_resource(self._buffer,
  *                                                    &offset,
  *                                                    self.labels             # <<<<<<<<<<<<<<
@@ -10960,21 +10960,21 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
         __pyx_t_2 = __pyx_v_self->labels;
         __Pyx_INCREF(__pyx_t_2);
 
-        /* "steelscript/packets/protos/dns.pyx":535
+        /* "steelscript/packets/protos/dns.pyx":534
  *             if self.ad_count:
  *                 for _ in range(self.ad_count):
  *                     resource_args = parse_resource(self._buffer,             # <<<<<<<<<<<<<<
  *                                                    &offset,
  *                                                    self.labels
  */
-        __pyx_t_10 = __pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(((arrayobject *)__pyx_t_1), (&__pyx_v_offset), ((PyObject*)__pyx_t_2)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 535, __pyx_L1_error)
+        __pyx_t_10 = __pyx_f_11steelscript_7packets_6protos_3dns_parse_resource(((arrayobject *)__pyx_t_1), (&__pyx_v_offset), ((PyObject*)__pyx_t_2)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 534, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_XDECREF_SET(__pyx_v_resource_args, ((PyObject*)__pyx_t_10));
         __pyx_t_10 = 0;
 
-        /* "steelscript/packets/protos/dns.pyx":539
+        /* "steelscript/packets/protos/dns.pyx":538
  *                                                    self.labels
  *                     )
  *                     self.ad.append(DNSResource(*resource_args))             # <<<<<<<<<<<<<<
@@ -10983,19 +10983,19 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
         if (unlikely(__pyx_v_self->ad == Py_None)) {
           PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-          __PYX_ERR(0, 539, __pyx_L1_error)
+          __PYX_ERR(0, 538, __pyx_L1_error)
         }
         if (unlikely(__pyx_v_resource_args == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-          __PYX_ERR(0, 539, __pyx_L1_error)
+          __PYX_ERR(0, 538, __pyx_L1_error)
         }
-        __pyx_t_10 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNSResource), __pyx_v_resource_args, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 539, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNSResource), __pyx_v_resource_args, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 538, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_self->ad, __pyx_t_10); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 539, __pyx_L1_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_self->ad, __pyx_t_10); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 538, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
 
-      /* "steelscript/packets/protos/dns.pyx":533
+      /* "steelscript/packets/protos/dns.pyx":532
  *                     )
  *                     self.authority.append(DNSResource(*resource_args))
  *             if self.ad_count:             # <<<<<<<<<<<<<<
@@ -11004,7 +11004,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  */
     }
 
-    /* "steelscript/packets/protos/dns.pyx":491
+    /* "steelscript/packets/protos/dns.pyx":490
  *         offset = 0
  * 
  *         if use_buffer:             # <<<<<<<<<<<<<<
@@ -11014,7 +11014,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
     goto __pyx_L5;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":542
+  /* "steelscript/packets/protos/dns.pyx":541
  * 
  *         else:
  *             self.ident = kwargs.get('ident', 0)             # <<<<<<<<<<<<<<
@@ -11022,175 +11022,175 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
  *             self.op_code = kwargs.get('op_code', 0)
  */
   /*else*/ {
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_ident, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 542, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_ident, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 541, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_17 = __Pyx_PyInt_As_uint16_t(__pyx_t_10); if (unlikely((__pyx_t_17 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 542, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyInt_As_uint16_t(__pyx_t_10); if (unlikely((__pyx_t_17 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 541, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_v_self->ident = __pyx_t_17;
 
-    /* "steelscript/packets/protos/dns.pyx":543
+    /* "steelscript/packets/protos/dns.pyx":542
  *         else:
  *             self.ident = kwargs.get('ident', 0)
  *             self.query_resp = kwargs.get('query_resp', 0)             # <<<<<<<<<<<<<<
  *             self.op_code = kwargs.get('op_code', 0)
  *             self.authoritative = kwargs.get('authoritative', 0)
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_query_resp, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 543, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_query_resp, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 542, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_query_resp, __pyx_t_10) < 0) __PYX_ERR(0, 543, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_query_resp, __pyx_t_10) < 0) __PYX_ERR(0, 542, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":544
+    /* "steelscript/packets/protos/dns.pyx":543
  *             self.ident = kwargs.get('ident', 0)
  *             self.query_resp = kwargs.get('query_resp', 0)
  *             self.op_code = kwargs.get('op_code', 0)             # <<<<<<<<<<<<<<
  *             self.authoritative = kwargs.get('authoritative', 0)
  *             self.truncated = kwargs.get('truncated', 0)
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_op_code, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 544, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_op_code, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 543, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_op_code, __pyx_t_10) < 0) __PYX_ERR(0, 544, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_op_code, __pyx_t_10) < 0) __PYX_ERR(0, 543, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":545
+    /* "steelscript/packets/protos/dns.pyx":544
  *             self.query_resp = kwargs.get('query_resp', 0)
  *             self.op_code = kwargs.get('op_code', 0)
  *             self.authoritative = kwargs.get('authoritative', 0)             # <<<<<<<<<<<<<<
  *             self.truncated = kwargs.get('truncated', 0)
  *             self.recursion_requested = kwargs.get('recursion_requested', 0)
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_authoritative, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 545, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_authoritative, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 544, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_authoritative, __pyx_t_10) < 0) __PYX_ERR(0, 545, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_authoritative, __pyx_t_10) < 0) __PYX_ERR(0, 544, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":546
+    /* "steelscript/packets/protos/dns.pyx":545
  *             self.op_code = kwargs.get('op_code', 0)
  *             self.authoritative = kwargs.get('authoritative', 0)
  *             self.truncated = kwargs.get('truncated', 0)             # <<<<<<<<<<<<<<
  *             self.recursion_requested = kwargs.get('recursion_requested', 0)
  *             self.recursion_available = kwargs.get('recursion_available', 0)
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_truncated, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 546, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_truncated, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 545, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_truncated, __pyx_t_10) < 0) __PYX_ERR(0, 546, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_truncated, __pyx_t_10) < 0) __PYX_ERR(0, 545, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":547
+    /* "steelscript/packets/protos/dns.pyx":546
  *             self.authoritative = kwargs.get('authoritative', 0)
  *             self.truncated = kwargs.get('truncated', 0)
  *             self.recursion_requested = kwargs.get('recursion_requested', 0)             # <<<<<<<<<<<<<<
  *             self.recursion_available = kwargs.get('recursion_available', 0)
  *             self.authentic_data = kwargs.get('authentic_data', 0)
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_recursion_requested, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 547, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_recursion_requested, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 546, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_recursion_requested, __pyx_t_10) < 0) __PYX_ERR(0, 547, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_recursion_requested, __pyx_t_10) < 0) __PYX_ERR(0, 546, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":548
+    /* "steelscript/packets/protos/dns.pyx":547
  *             self.truncated = kwargs.get('truncated', 0)
  *             self.recursion_requested = kwargs.get('recursion_requested', 0)
  *             self.recursion_available = kwargs.get('recursion_available', 0)             # <<<<<<<<<<<<<<
  *             self.authentic_data = kwargs.get('authentic_data', 0)
  *             self.check_disabled = kwargs.get('check_disabled', 0)
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_recursion_available, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 548, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_recursion_available, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 547, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_recursion_available, __pyx_t_10) < 0) __PYX_ERR(0, 548, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_recursion_available, __pyx_t_10) < 0) __PYX_ERR(0, 547, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":549
+    /* "steelscript/packets/protos/dns.pyx":548
  *             self.recursion_requested = kwargs.get('recursion_requested', 0)
  *             self.recursion_available = kwargs.get('recursion_available', 0)
  *             self.authentic_data = kwargs.get('authentic_data', 0)             # <<<<<<<<<<<<<<
  *             self.check_disabled = kwargs.get('check_disabled', 0)
  *             self.resp_code = kwargs.get('resp_code', 0)
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_authentic_data, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 549, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_authentic_data, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 548, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_authentic_data, __pyx_t_10) < 0) __PYX_ERR(0, 549, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_authentic_data, __pyx_t_10) < 0) __PYX_ERR(0, 548, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":550
+    /* "steelscript/packets/protos/dns.pyx":549
  *             self.recursion_available = kwargs.get('recursion_available', 0)
  *             self.authentic_data = kwargs.get('authentic_data', 0)
  *             self.check_disabled = kwargs.get('check_disabled', 0)             # <<<<<<<<<<<<<<
  *             self.resp_code = kwargs.get('resp_code', 0)
  *             self.query_count = kwargs.get('query_count', 0)
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_check_disabled, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 550, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_check_disabled, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 549, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_check_disabled, __pyx_t_10) < 0) __PYX_ERR(0, 550, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_check_disabled, __pyx_t_10) < 0) __PYX_ERR(0, 549, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":551
+    /* "steelscript/packets/protos/dns.pyx":550
  *             self.authentic_data = kwargs.get('authentic_data', 0)
  *             self.check_disabled = kwargs.get('check_disabled', 0)
  *             self.resp_code = kwargs.get('resp_code', 0)             # <<<<<<<<<<<<<<
  *             self.query_count = kwargs.get('query_count', 0)
  *             self.answer_count = kwargs.get('answer_count', 0)
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_resp_code, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 551, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_resp_code, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 550, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_resp_code, __pyx_t_10) < 0) __PYX_ERR(0, 551, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_resp_code, __pyx_t_10) < 0) __PYX_ERR(0, 550, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":552
+    /* "steelscript/packets/protos/dns.pyx":551
  *             self.check_disabled = kwargs.get('check_disabled', 0)
  *             self.resp_code = kwargs.get('resp_code', 0)
  *             self.query_count = kwargs.get('query_count', 0)             # <<<<<<<<<<<<<<
  *             self.answer_count = kwargs.get('answer_count', 0)
  *             self.auth_count = kwargs.get('auth_count', 0)
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_query_count, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 552, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_query_count, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 551, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_17 = __Pyx_PyInt_As_uint16_t(__pyx_t_10); if (unlikely((__pyx_t_17 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 552, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyInt_As_uint16_t(__pyx_t_10); if (unlikely((__pyx_t_17 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 551, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_v_self->query_count = __pyx_t_17;
 
-    /* "steelscript/packets/protos/dns.pyx":553
+    /* "steelscript/packets/protos/dns.pyx":552
  *             self.resp_code = kwargs.get('resp_code', 0)
  *             self.query_count = kwargs.get('query_count', 0)
  *             self.answer_count = kwargs.get('answer_count', 0)             # <<<<<<<<<<<<<<
  *             self.auth_count = kwargs.get('auth_count', 0)
  *             self.ad_count = kwargs.get('ad_count', 0)
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_answer_count, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 553, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_answer_count, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 552, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_17 = __Pyx_PyInt_As_uint16_t(__pyx_t_10); if (unlikely((__pyx_t_17 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 553, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyInt_As_uint16_t(__pyx_t_10); if (unlikely((__pyx_t_17 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 552, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_v_self->answer_count = __pyx_t_17;
 
-    /* "steelscript/packets/protos/dns.pyx":554
+    /* "steelscript/packets/protos/dns.pyx":553
  *             self.query_count = kwargs.get('query_count', 0)
  *             self.answer_count = kwargs.get('answer_count', 0)
  *             self.auth_count = kwargs.get('auth_count', 0)             # <<<<<<<<<<<<<<
  *             self.ad_count = kwargs.get('ad_count', 0)
  * 
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_auth_count, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 554, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_auth_count, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 553, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_17 = __Pyx_PyInt_As_uint16_t(__pyx_t_10); if (unlikely((__pyx_t_17 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 554, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyInt_As_uint16_t(__pyx_t_10); if (unlikely((__pyx_t_17 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 553, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_v_self->auth_count = __pyx_t_17;
 
-    /* "steelscript/packets/protos/dns.pyx":555
+    /* "steelscript/packets/protos/dns.pyx":554
  *             self.answer_count = kwargs.get('answer_count', 0)
  *             self.auth_count = kwargs.get('auth_count', 0)
  *             self.ad_count = kwargs.get('ad_count', 0)             # <<<<<<<<<<<<<<
  * 
  *     @classmethod
  */
-    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_ad_count, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 555, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_ad_count, __pyx_int_0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 554, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_17 = __Pyx_PyInt_As_uint16_t(__pyx_t_10); if (unlikely((__pyx_t_17 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 555, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyInt_As_uint16_t(__pyx_t_10); if (unlikely((__pyx_t_17 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 554, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_v_self->ad_count = __pyx_t_17;
   }
   __pyx_L5:;
 
-  /* "steelscript/packets/protos/dns.pyx":469
+  /* "steelscript/packets/protos/dns.pyx":468
  * 
  *     """
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -11219,7 +11219,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS___init__(struct __p
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":558
+/* "steelscript/packets/protos/dns.pyx":557
  * 
  *     @classmethod
  *     def query_info(cls):             # <<<<<<<<<<<<<<
@@ -11248,7 +11248,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_2query_info(C
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("query_info", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":566
+  /* "steelscript/packets/protos/dns.pyx":565
  *         get_field_val(<field_name>) function as well.
  *         return: uint16_t pq_type, tuple_of_string query_fields"""
  *         return (DNS_PACKET_TYPE,             # <<<<<<<<<<<<<<
@@ -11256,17 +11256,17 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_2query_info(C
  *                  b'dns.authoritative',
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNS_PACKET_TYPE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 566, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNS_PACKET_TYPE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 565, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "steelscript/packets/protos/dns.pyx":567
+  /* "steelscript/packets/protos/dns.pyx":566
  *         return: uint16_t pq_type, tuple_of_string query_fields"""
  *         return (DNS_PACKET_TYPE,
  *                 (b'dns.ident', b'dns.query_resp', b'dns.op_code',             # <<<<<<<<<<<<<<
  *                  b'dns.authoritative',
  *                  b'dns.truncated', b'dns.recursion_requested',
  */
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 566, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 565, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -11278,7 +11278,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_2query_info(C
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":558
+  /* "steelscript/packets/protos/dns.pyx":557
  * 
  *     @classmethod
  *     def query_info(cls):             # <<<<<<<<<<<<<<
@@ -11298,7 +11298,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_2query_info(C
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":578
+/* "steelscript/packets/protos/dns.pyx":577
  * 
  *     @classmethod
  *     def default_ports(cls):             # <<<<<<<<<<<<<<
@@ -11327,7 +11327,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_4default_port
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("default_ports", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":582
+  /* "steelscript/packets/protos/dns.pyx":581
  *         Used by pcap_query to deterimine what layer 4 ports should be parsed
  *         by the layer 4 protocols (TCP, UDP) as THIS packet type."""
  *         return [DNS_PACKET_PORT]             # <<<<<<<<<<<<<<
@@ -11335,9 +11335,9 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_4default_port
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNS_PACKET_PORT); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 582, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNS_PACKET_PORT); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 581, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 582, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 581, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -11346,7 +11346,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_4default_port
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":578
+  /* "steelscript/packets/protos/dns.pyx":577
  * 
  *     @classmethod
  *     def default_ports(cls):             # <<<<<<<<<<<<<<
@@ -11366,7 +11366,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_4default_port
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":585
+/* "steelscript/packets/protos/dns.pyx":584
  * 
  * 
  *     cpdef object get_field_val(self, bytes field):             # <<<<<<<<<<<<<<
@@ -11390,7 +11390,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_field_val); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 585, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_field_val); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 584, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_7get_field_val)) {
       __Pyx_XDECREF(__pyx_r);
@@ -11406,13 +11406,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
         }
       }
       if (!__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_field); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 585, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_field); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 584, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_field};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 585, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 584, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
@@ -11420,19 +11420,19 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_field};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 585, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 584, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
         #endif
         {
-          __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 585, __pyx_L1_error)
+          __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 584, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
           __Pyx_INCREF(__pyx_v_field);
           __Pyx_GIVEREF(__pyx_v_field);
           PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_v_field);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 585, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 584, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
@@ -11446,18 +11446,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":593
+  /* "steelscript/packets/protos/dns.pyx":592
  *                 :object: the value of the field in this packet.
  *         """
  *         if field == b'dns.ident':             # <<<<<<<<<<<<<<
  *             return self.ident
  *         elif field == b'dns.query_resp':
  */
-  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_ident, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 593, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_ident, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 592, __pyx_L1_error)
   __pyx_t_7 = (__pyx_t_6 != 0);
   if (__pyx_t_7) {
 
-    /* "steelscript/packets/protos/dns.pyx":594
+    /* "steelscript/packets/protos/dns.pyx":593
  *         """
  *         if field == b'dns.ident':
  *             return self.ident             # <<<<<<<<<<<<<<
@@ -11465,13 +11465,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.query_resp
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->ident); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 594, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->ident); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 593, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":593
+    /* "steelscript/packets/protos/dns.pyx":592
  *                 :object: the value of the field in this packet.
  *         """
  *         if field == b'dns.ident':             # <<<<<<<<<<<<<<
@@ -11480,18 +11480,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":595
+  /* "steelscript/packets/protos/dns.pyx":594
  *         if field == b'dns.ident':
  *             return self.ident
  *         elif field == b'dns.query_resp':             # <<<<<<<<<<<<<<
  *             return self.query_resp
  *         elif field == b'dns.op_code':
  */
-  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_query_resp, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 595, __pyx_L1_error)
+  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_query_resp, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 594, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_7 != 0);
   if (__pyx_t_6) {
 
-    /* "steelscript/packets/protos/dns.pyx":596
+    /* "steelscript/packets/protos/dns.pyx":595
  *             return self.ident
  *         elif field == b'dns.query_resp':
  *             return self.query_resp             # <<<<<<<<<<<<<<
@@ -11499,13 +11499,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.op_code
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_query_resp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 596, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_query_resp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 595, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":595
+    /* "steelscript/packets/protos/dns.pyx":594
  *         if field == b'dns.ident':
  *             return self.ident
  *         elif field == b'dns.query_resp':             # <<<<<<<<<<<<<<
@@ -11514,18 +11514,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":597
+  /* "steelscript/packets/protos/dns.pyx":596
  *         elif field == b'dns.query_resp':
  *             return self.query_resp
  *         elif field == b'dns.op_code':             # <<<<<<<<<<<<<<
  *             return self.op_code
  *         elif field == b'dns.authoritative':
  */
-  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_op_code, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 597, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_op_code, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 596, __pyx_L1_error)
   __pyx_t_7 = (__pyx_t_6 != 0);
   if (__pyx_t_7) {
 
-    /* "steelscript/packets/protos/dns.pyx":598
+    /* "steelscript/packets/protos/dns.pyx":597
  *             return self.query_resp
  *         elif field == b'dns.op_code':
  *             return self.op_code             # <<<<<<<<<<<<<<
@@ -11533,13 +11533,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.authoritative
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_op_code); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 598, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_op_code); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 597, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":597
+    /* "steelscript/packets/protos/dns.pyx":596
  *         elif field == b'dns.query_resp':
  *             return self.query_resp
  *         elif field == b'dns.op_code':             # <<<<<<<<<<<<<<
@@ -11548,18 +11548,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":599
+  /* "steelscript/packets/protos/dns.pyx":598
  *         elif field == b'dns.op_code':
  *             return self.op_code
  *         elif field == b'dns.authoritative':             # <<<<<<<<<<<<<<
  *             return self.authoritative
  *         elif field == b'dns.truncated':
  */
-  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_authoritative, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 599, __pyx_L1_error)
+  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_authoritative, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 598, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_7 != 0);
   if (__pyx_t_6) {
 
-    /* "steelscript/packets/protos/dns.pyx":600
+    /* "steelscript/packets/protos/dns.pyx":599
  *             return self.op_code
  *         elif field == b'dns.authoritative':
  *             return self.authoritative             # <<<<<<<<<<<<<<
@@ -11567,13 +11567,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.truncated
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_authoritative); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 600, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_authoritative); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 599, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":599
+    /* "steelscript/packets/protos/dns.pyx":598
  *         elif field == b'dns.op_code':
  *             return self.op_code
  *         elif field == b'dns.authoritative':             # <<<<<<<<<<<<<<
@@ -11582,18 +11582,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":601
+  /* "steelscript/packets/protos/dns.pyx":600
  *         elif field == b'dns.authoritative':
  *             return self.authoritative
  *         elif field == b'dns.truncated':             # <<<<<<<<<<<<<<
  *             return self.truncated
  *         elif field == b'dns.recursion_requested':
  */
-  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_truncated, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 601, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_truncated, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 600, __pyx_L1_error)
   __pyx_t_7 = (__pyx_t_6 != 0);
   if (__pyx_t_7) {
 
-    /* "steelscript/packets/protos/dns.pyx":602
+    /* "steelscript/packets/protos/dns.pyx":601
  *             return self.authoritative
  *         elif field == b'dns.truncated':
  *             return self.truncated             # <<<<<<<<<<<<<<
@@ -11601,13 +11601,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.recursion_requested
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_truncated); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 602, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_truncated); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 601, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":601
+    /* "steelscript/packets/protos/dns.pyx":600
  *         elif field == b'dns.authoritative':
  *             return self.authoritative
  *         elif field == b'dns.truncated':             # <<<<<<<<<<<<<<
@@ -11616,18 +11616,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":603
+  /* "steelscript/packets/protos/dns.pyx":602
  *         elif field == b'dns.truncated':
  *             return self.truncated
  *         elif field == b'dns.recursion_requested':             # <<<<<<<<<<<<<<
  *             return self.recursion_requested
  *         elif field == b'dns.recursion_available':
  */
-  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_recursion_requested, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 603, __pyx_L1_error)
+  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_recursion_requested, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 602, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_7 != 0);
   if (__pyx_t_6) {
 
-    /* "steelscript/packets/protos/dns.pyx":604
+    /* "steelscript/packets/protos/dns.pyx":603
  *             return self.truncated
  *         elif field == b'dns.recursion_requested':
  *             return self.recursion_requested             # <<<<<<<<<<<<<<
@@ -11635,13 +11635,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.recursion_available
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_recursion_requested); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 604, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_recursion_requested); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 603, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":603
+    /* "steelscript/packets/protos/dns.pyx":602
  *         elif field == b'dns.truncated':
  *             return self.truncated
  *         elif field == b'dns.recursion_requested':             # <<<<<<<<<<<<<<
@@ -11650,18 +11650,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":605
+  /* "steelscript/packets/protos/dns.pyx":604
  *         elif field == b'dns.recursion_requested':
  *             return self.recursion_requested
  *         elif field == b'dns.recursion_available':             # <<<<<<<<<<<<<<
  *             return self.recursion_available
  *         elif field == b'dns.authentic_data':
  */
-  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_recursion_available, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_recursion_available, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 604, __pyx_L1_error)
   __pyx_t_7 = (__pyx_t_6 != 0);
   if (__pyx_t_7) {
 
-    /* "steelscript/packets/protos/dns.pyx":606
+    /* "steelscript/packets/protos/dns.pyx":605
  *             return self.recursion_requested
  *         elif field == b'dns.recursion_available':
  *             return self.recursion_available             # <<<<<<<<<<<<<<
@@ -11669,13 +11669,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.authentic_data
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_recursion_available); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 606, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_recursion_available); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 605, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":605
+    /* "steelscript/packets/protos/dns.pyx":604
  *         elif field == b'dns.recursion_requested':
  *             return self.recursion_requested
  *         elif field == b'dns.recursion_available':             # <<<<<<<<<<<<<<
@@ -11684,18 +11684,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":607
+  /* "steelscript/packets/protos/dns.pyx":606
  *         elif field == b'dns.recursion_available':
  *             return self.recursion_available
  *         elif field == b'dns.authentic_data':             # <<<<<<<<<<<<<<
  *             return self.authentic_data
  *         elif field == b'dns.check_disabled':
  */
-  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_authentic_data, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 607, __pyx_L1_error)
+  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_authentic_data, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 606, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_7 != 0);
   if (__pyx_t_6) {
 
-    /* "steelscript/packets/protos/dns.pyx":608
+    /* "steelscript/packets/protos/dns.pyx":607
  *             return self.recursion_available
  *         elif field == b'dns.authentic_data':
  *             return self.authentic_data             # <<<<<<<<<<<<<<
@@ -11703,13 +11703,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.check_disabled
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_authentic_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 608, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_authentic_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 607, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":607
+    /* "steelscript/packets/protos/dns.pyx":606
  *         elif field == b'dns.recursion_available':
  *             return self.recursion_available
  *         elif field == b'dns.authentic_data':             # <<<<<<<<<<<<<<
@@ -11718,18 +11718,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":609
+  /* "steelscript/packets/protos/dns.pyx":608
  *         elif field == b'dns.authentic_data':
  *             return self.authentic_data
  *         elif field == b'dns.check_disabled':             # <<<<<<<<<<<<<<
  *             return self.check_disabled
  *         elif field == b'dns.resp_code':
  */
-  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_check_disabled, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 609, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_check_disabled, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 608, __pyx_L1_error)
   __pyx_t_7 = (__pyx_t_6 != 0);
   if (__pyx_t_7) {
 
-    /* "steelscript/packets/protos/dns.pyx":610
+    /* "steelscript/packets/protos/dns.pyx":609
  *             return self.authentic_data
  *         elif field == b'dns.check_disabled':
  *             return self.check_disabled             # <<<<<<<<<<<<<<
@@ -11737,13 +11737,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.resp_code
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_check_disabled); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_check_disabled); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":609
+    /* "steelscript/packets/protos/dns.pyx":608
  *         elif field == b'dns.authentic_data':
  *             return self.authentic_data
  *         elif field == b'dns.check_disabled':             # <<<<<<<<<<<<<<
@@ -11752,18 +11752,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":611
+  /* "steelscript/packets/protos/dns.pyx":610
  *         elif field == b'dns.check_disabled':
  *             return self.check_disabled
  *         elif field == b'dns.resp_code':             # <<<<<<<<<<<<<<
  *             return self.resp_code
  *         elif field == b'dns.query_count':
  */
-  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_resp_code, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 611, __pyx_L1_error)
+  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_resp_code, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 610, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_7 != 0);
   if (__pyx_t_6) {
 
-    /* "steelscript/packets/protos/dns.pyx":612
+    /* "steelscript/packets/protos/dns.pyx":611
  *             return self.check_disabled
  *         elif field == b'dns.resp_code':
  *             return self.resp_code             # <<<<<<<<<<<<<<
@@ -11771,13 +11771,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.query_count
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_resp_code); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 612, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_resp_code); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 611, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":611
+    /* "steelscript/packets/protos/dns.pyx":610
  *         elif field == b'dns.check_disabled':
  *             return self.check_disabled
  *         elif field == b'dns.resp_code':             # <<<<<<<<<<<<<<
@@ -11786,18 +11786,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":613
+  /* "steelscript/packets/protos/dns.pyx":612
  *         elif field == b'dns.resp_code':
  *             return self.resp_code
  *         elif field == b'dns.query_count':             # <<<<<<<<<<<<<<
  *             return self.query_count
  *         elif field == b'dns.answer_count':
  */
-  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_query_count, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 613, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_query_count, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 612, __pyx_L1_error)
   __pyx_t_7 = (__pyx_t_6 != 0);
   if (__pyx_t_7) {
 
-    /* "steelscript/packets/protos/dns.pyx":614
+    /* "steelscript/packets/protos/dns.pyx":613
  *             return self.resp_code
  *         elif field == b'dns.query_count':
  *             return self.query_count             # <<<<<<<<<<<<<<
@@ -11805,13 +11805,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.answer_count
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 614, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 613, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":613
+    /* "steelscript/packets/protos/dns.pyx":612
  *         elif field == b'dns.resp_code':
  *             return self.resp_code
  *         elif field == b'dns.query_count':             # <<<<<<<<<<<<<<
@@ -11820,18 +11820,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":615
+  /* "steelscript/packets/protos/dns.pyx":614
  *         elif field == b'dns.query_count':
  *             return self.query_count
  *         elif field == b'dns.answer_count':             # <<<<<<<<<<<<<<
  *             return self.answer_count
  *         elif field == b'dns.auth_count':
  */
-  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_answer_count, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 615, __pyx_L1_error)
+  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_answer_count, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 614, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_7 != 0);
   if (__pyx_t_6) {
 
-    /* "steelscript/packets/protos/dns.pyx":616
+    /* "steelscript/packets/protos/dns.pyx":615
  *             return self.query_count
  *         elif field == b'dns.answer_count':
  *             return self.answer_count             # <<<<<<<<<<<<<<
@@ -11839,13 +11839,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.auth_count
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->answer_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 616, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->answer_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":615
+    /* "steelscript/packets/protos/dns.pyx":614
  *         elif field == b'dns.query_count':
  *             return self.query_count
  *         elif field == b'dns.answer_count':             # <<<<<<<<<<<<<<
@@ -11854,18 +11854,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":617
+  /* "steelscript/packets/protos/dns.pyx":616
  *         elif field == b'dns.answer_count':
  *             return self.answer_count
  *         elif field == b'dns.auth_count':             # <<<<<<<<<<<<<<
  *             return self.auth_count
  *         elif field == b'dns.ad_count':
  */
-  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_auth_count, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 617, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_auth_count, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 616, __pyx_L1_error)
   __pyx_t_7 = (__pyx_t_6 != 0);
   if (__pyx_t_7) {
 
-    /* "steelscript/packets/protos/dns.pyx":618
+    /* "steelscript/packets/protos/dns.pyx":617
  *             return self.answer_count
  *         elif field == b'dns.auth_count':
  *             return self.auth_count             # <<<<<<<<<<<<<<
@@ -11873,13 +11873,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return self.ad_count
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->auth_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 618, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->auth_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 617, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":617
+    /* "steelscript/packets/protos/dns.pyx":616
  *         elif field == b'dns.answer_count':
  *             return self.answer_count
  *         elif field == b'dns.auth_count':             # <<<<<<<<<<<<<<
@@ -11888,18 +11888,18 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":619
+  /* "steelscript/packets/protos/dns.pyx":618
  *         elif field == b'dns.auth_count':
  *             return self.auth_count
  *         elif field == b'dns.ad_count':             # <<<<<<<<<<<<<<
  *             return self.ad_count
  *         else:
  */
-  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_ad_count, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 619, __pyx_L1_error)
+  __pyx_t_7 = (__Pyx_PyBytes_Equals(__pyx_v_field, __pyx_kp_b_dns_ad_count, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 618, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_7 != 0);
   if (__pyx_t_6) {
 
-    /* "steelscript/packets/protos/dns.pyx":620
+    /* "steelscript/packets/protos/dns.pyx":619
  *             return self.auth_count
  *         elif field == b'dns.ad_count':
  *             return self.ad_count             # <<<<<<<<<<<<<<
@@ -11907,13 +11907,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  *             return None
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->ad_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->ad_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 619, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/protos/dns.pyx":619
+    /* "steelscript/packets/protos/dns.pyx":618
  *         elif field == b'dns.auth_count':
  *             return self.auth_count
  *         elif field == b'dns.ad_count':             # <<<<<<<<<<<<<<
@@ -11922,7 +11922,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":622
+  /* "steelscript/packets/protos/dns.pyx":621
  *             return self.ad_count
  *         else:
  *             return None             # <<<<<<<<<<<<<<
@@ -11936,7 +11936,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(
     goto __pyx_L0;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":585
+  /* "steelscript/packets/protos/dns.pyx":584
  * 
  * 
  *     cpdef object get_field_val(self, bytes field):             # <<<<<<<<<<<<<<
@@ -11966,7 +11966,7 @@ static PyObject *__pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_7get_field_va
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_field_val (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_field), (&PyBytes_Type), 1, "field", 1))) __PYX_ERR(0, 585, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_field), (&PyBytes_Type), 1, "field", 1))) __PYX_ERR(0, 584, __pyx_L1_error)
   __pyx_r = __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_6get_field_val(((struct __pyx_obj_11steelscript_7packets_6protos_3dns_DNS *)__pyx_v_self), ((PyObject*)__pyx_v_field));
 
   /* function exit code */
@@ -11984,7 +11984,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_6get_field_va
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("get_field_val", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(__pyx_v_self, __pyx_v_field, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 585, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val(__pyx_v_self, __pyx_v_field, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 584, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -12001,7 +12001,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_6get_field_va
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":625
+/* "steelscript/packets/protos/dns.pyx":624
  * 
  *     property query_resp:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12028,7 +12028,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10query_resp_
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":626
+  /* "steelscript/packets/protos/dns.pyx":625
  *     property query_resp:
  *         def __get__(self):
  *             return (self._flags >> 15) & 1             # <<<<<<<<<<<<<<
@@ -12036,13 +12036,13 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10query_resp_
  *         def __set__(self, unsigned char val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 15) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 626, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 15) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 625, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":625
+  /* "steelscript/packets/protos/dns.pyx":624
  * 
  *     property query_resp:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12061,7 +12061,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10query_resp_
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":628
+/* "steelscript/packets/protos/dns.pyx":627
  *             return (self._flags >> 15) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -12077,7 +12077,7 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_10query_resp_3__set
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 628, __pyx_L3_error)
+    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 627, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12098,7 +12098,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10query_resp_2__set
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":629
+  /* "steelscript/packets/protos/dns.pyx":628
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -12108,7 +12108,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10query_resp_2__set
   switch (__pyx_v_val) {
     case 0:
 
-    /* "steelscript/packets/protos/dns.pyx":630
+    /* "steelscript/packets/protos/dns.pyx":629
  *         def __set__(self, unsigned char val):
  *             if val == 0:
  *                 unset_bit(&self._flags, 15)             # <<<<<<<<<<<<<<
@@ -12117,7 +12117,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10query_resp_2__set
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_unset_bit((&__pyx_v_self->_flags), 15);
 
-    /* "steelscript/packets/protos/dns.pyx":629
+    /* "steelscript/packets/protos/dns.pyx":628
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -12126,7 +12126,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10query_resp_2__set
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":631
+    /* "steelscript/packets/protos/dns.pyx":630
  *             if val == 0:
  *                 unset_bit(&self._flags, 15)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -12135,7 +12135,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10query_resp_2__set
  */
     case 1:
 
-    /* "steelscript/packets/protos/dns.pyx":632
+    /* "steelscript/packets/protos/dns.pyx":631
  *                 unset_bit(&self._flags, 15)
  *             elif val == 1:
  *                 set_bit(&self._flags, 15)             # <<<<<<<<<<<<<<
@@ -12144,7 +12144,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10query_resp_2__set
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_set_bit((&__pyx_v_self->_flags), 15);
 
-    /* "steelscript/packets/protos/dns.pyx":631
+    /* "steelscript/packets/protos/dns.pyx":630
  *             if val == 0:
  *                 unset_bit(&self._flags, 15)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -12154,22 +12154,22 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10query_resp_2__set
     break;
     default:
 
-    /* "steelscript/packets/protos/dns.pyx":634
+    /* "steelscript/packets/protos/dns.pyx":633
  *                 set_bit(&self._flags, 15)
  *             else:
  *                 raise ValueError("DNS query_resp bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property op_code:
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 634, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 633, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 634, __pyx_L1_error)
+    __PYX_ERR(0, 633, __pyx_L1_error)
     break;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":628
+  /* "steelscript/packets/protos/dns.pyx":627
  *             return (self._flags >> 15) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -12189,7 +12189,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10query_resp_2__set
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":637
+/* "steelscript/packets/protos/dns.pyx":636
  * 
  *     property op_code:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12216,7 +12216,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_7op_code___ge
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":638
+  /* "steelscript/packets/protos/dns.pyx":637
  *     property op_code:
  *         def __get__(self):
  *             return get_short_nibble(self._flags, 11)             # <<<<<<<<<<<<<<
@@ -12224,13 +12224,13 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_7op_code___ge
  *         def __set__(self, unsigned char val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_f_11steelscript_7packets_4core_7inetpkt_get_short_nibble(__pyx_v_self->_flags, 11)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 638, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_f_11steelscript_7packets_4core_7inetpkt_get_short_nibble(__pyx_v_self->_flags, 11)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 637, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":637
+  /* "steelscript/packets/protos/dns.pyx":636
  * 
  *     property op_code:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12249,7 +12249,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_7op_code___ge
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":640
+/* "steelscript/packets/protos/dns.pyx":639
  *             return get_short_nibble(self._flags, 11)
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -12265,7 +12265,7 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_7op_code_3__set__(P
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 640, __pyx_L3_error)
+    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 639, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12288,7 +12288,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_7op_code_2__set__(s
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":641
+  /* "steelscript/packets/protos/dns.pyx":640
  * 
  *         def __set__(self, unsigned char val):
  *             if 0 <= val <= 15:             # <<<<<<<<<<<<<<
@@ -12302,7 +12302,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_7op_code_2__set__(s
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "steelscript/packets/protos/dns.pyx":642
+    /* "steelscript/packets/protos/dns.pyx":641
  *         def __set__(self, unsigned char val):
  *             if 0 <= val <= 15:
  *                 set_short_nibble(&self._flags, val, 11)             # <<<<<<<<<<<<<<
@@ -12311,7 +12311,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_7op_code_2__set__(s
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_set_short_nibble((&__pyx_v_self->_flags), __pyx_v_val, 11);
 
-    /* "steelscript/packets/protos/dns.pyx":641
+    /* "steelscript/packets/protos/dns.pyx":640
  * 
  *         def __set__(self, unsigned char val):
  *             if 0 <= val <= 15:             # <<<<<<<<<<<<<<
@@ -12321,7 +12321,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_7op_code_2__set__(s
     goto __pyx_L3;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":644
+  /* "steelscript/packets/protos/dns.pyx":643
  *                 set_short_nibble(&self._flags, val, 11)
  *             else:
  *                 raise ValueError("DNS op_code must be between 0 and 15.")             # <<<<<<<<<<<<<<
@@ -12329,15 +12329,15 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_7op_code_2__set__(s
  *     property authoritative:
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 644, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 643, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 644, __pyx_L1_error)
+    __PYX_ERR(0, 643, __pyx_L1_error)
   }
   __pyx_L3:;
 
-  /* "steelscript/packets/protos/dns.pyx":640
+  /* "steelscript/packets/protos/dns.pyx":639
  *             return get_short_nibble(self._flags, 11)
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -12357,7 +12357,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_7op_code_2__set__(s
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":647
+/* "steelscript/packets/protos/dns.pyx":646
  * 
  *     property authoritative:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12384,7 +12384,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_13authoritati
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":648
+  /* "steelscript/packets/protos/dns.pyx":647
  *     property authoritative:
  *         def __get__(self):
  *             return (self._flags >> 10) & 1             # <<<<<<<<<<<<<<
@@ -12392,13 +12392,13 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_13authoritati
  *         def __set__(self, unsigned char val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 10) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 648, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 10) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 647, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":647
+  /* "steelscript/packets/protos/dns.pyx":646
  * 
  *     property authoritative:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12417,7 +12417,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_13authoritati
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":650
+/* "steelscript/packets/protos/dns.pyx":649
  *             return (self._flags >> 10) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -12433,7 +12433,7 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_13authoritative_3__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 650, __pyx_L3_error)
+    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 649, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12454,7 +12454,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_13authoritative_2__
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":651
+  /* "steelscript/packets/protos/dns.pyx":650
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -12464,7 +12464,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_13authoritative_2__
   switch (__pyx_v_val) {
     case 0:
 
-    /* "steelscript/packets/protos/dns.pyx":652
+    /* "steelscript/packets/protos/dns.pyx":651
  *         def __set__(self, unsigned char val):
  *             if val == 0:
  *                 unset_bit(&self._flags, 10)             # <<<<<<<<<<<<<<
@@ -12473,7 +12473,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_13authoritative_2__
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_unset_bit((&__pyx_v_self->_flags), 10);
 
-    /* "steelscript/packets/protos/dns.pyx":651
+    /* "steelscript/packets/protos/dns.pyx":650
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -12482,7 +12482,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_13authoritative_2__
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":653
+    /* "steelscript/packets/protos/dns.pyx":652
  *             if val == 0:
  *                 unset_bit(&self._flags, 10)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -12491,7 +12491,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_13authoritative_2__
  */
     case 1:
 
-    /* "steelscript/packets/protos/dns.pyx":654
+    /* "steelscript/packets/protos/dns.pyx":653
  *                 unset_bit(&self._flags, 10)
  *             elif val == 1:
  *                 set_bit(&self._flags, 10)             # <<<<<<<<<<<<<<
@@ -12500,7 +12500,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_13authoritative_2__
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_set_bit((&__pyx_v_self->_flags), 10);
 
-    /* "steelscript/packets/protos/dns.pyx":653
+    /* "steelscript/packets/protos/dns.pyx":652
  *             if val == 0:
  *                 unset_bit(&self._flags, 10)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -12510,22 +12510,22 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_13authoritative_2__
     break;
     default:
 
-    /* "steelscript/packets/protos/dns.pyx":656
+    /* "steelscript/packets/protos/dns.pyx":655
  *                 set_bit(&self._flags, 10)
  *             else:
  *                 raise ValueError("DNS authoritative bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property truncated:
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 656, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 655, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 656, __pyx_L1_error)
+    __PYX_ERR(0, 655, __pyx_L1_error)
     break;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":650
+  /* "steelscript/packets/protos/dns.pyx":649
  *             return (self._flags >> 10) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -12545,7 +12545,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_13authoritative_2__
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":659
+/* "steelscript/packets/protos/dns.pyx":658
  * 
  *     property truncated:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12572,7 +12572,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9truncated___
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":660
+  /* "steelscript/packets/protos/dns.pyx":659
  *     property truncated:
  *         def __get__(self):
  *             return (self._flags >> 9) & 1             # <<<<<<<<<<<<<<
@@ -12580,13 +12580,13 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9truncated___
  *         def __set__(self, unsigned char val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 9) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 660, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 9) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 659, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":659
+  /* "steelscript/packets/protos/dns.pyx":658
  * 
  *     property truncated:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12605,7 +12605,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9truncated___
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":662
+/* "steelscript/packets/protos/dns.pyx":661
  *             return (self._flags >> 9) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -12621,7 +12621,7 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_9truncated_3__set__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 662, __pyx_L3_error)
+    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 661, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12642,7 +12642,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9truncated_2__set__
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":663
+  /* "steelscript/packets/protos/dns.pyx":662
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -12652,7 +12652,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9truncated_2__set__
   switch (__pyx_v_val) {
     case 0:
 
-    /* "steelscript/packets/protos/dns.pyx":664
+    /* "steelscript/packets/protos/dns.pyx":663
  *         def __set__(self, unsigned char val):
  *             if val == 0:
  *                 unset_bit(&self._flags, 9)             # <<<<<<<<<<<<<<
@@ -12661,7 +12661,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9truncated_2__set__
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_unset_bit((&__pyx_v_self->_flags), 9);
 
-    /* "steelscript/packets/protos/dns.pyx":663
+    /* "steelscript/packets/protos/dns.pyx":662
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -12670,7 +12670,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9truncated_2__set__
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":665
+    /* "steelscript/packets/protos/dns.pyx":664
  *             if val == 0:
  *                 unset_bit(&self._flags, 9)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -12679,7 +12679,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9truncated_2__set__
  */
     case 1:
 
-    /* "steelscript/packets/protos/dns.pyx":666
+    /* "steelscript/packets/protos/dns.pyx":665
  *                 unset_bit(&self._flags, 9)
  *             elif val == 1:
  *                 set_bit(&self._flags, 9)             # <<<<<<<<<<<<<<
@@ -12688,7 +12688,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9truncated_2__set__
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_set_bit((&__pyx_v_self->_flags), 9);
 
-    /* "steelscript/packets/protos/dns.pyx":665
+    /* "steelscript/packets/protos/dns.pyx":664
  *             if val == 0:
  *                 unset_bit(&self._flags, 9)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -12698,22 +12698,22 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9truncated_2__set__
     break;
     default:
 
-    /* "steelscript/packets/protos/dns.pyx":668
+    /* "steelscript/packets/protos/dns.pyx":667
  *                 set_bit(&self._flags, 9)
  *             else:
  *                 raise ValueError("DNS truncated bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property recursion_requested:
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 668, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 667, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 668, __pyx_L1_error)
+    __PYX_ERR(0, 667, __pyx_L1_error)
     break;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":662
+  /* "steelscript/packets/protos/dns.pyx":661
  *             return (self._flags >> 9) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -12733,7 +12733,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9truncated_2__set__
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":671
+/* "steelscript/packets/protos/dns.pyx":670
  * 
  *     property recursion_requested:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12760,7 +12760,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_r
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":672
+  /* "steelscript/packets/protos/dns.pyx":671
  *     property recursion_requested:
  *         def __get__(self):
  *             return (self._flags >> 8) & 1             # <<<<<<<<<<<<<<
@@ -12768,13 +12768,13 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_r
  *         def __set__(self, unsigned char val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 8) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 672, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 8) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 671, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":671
+  /* "steelscript/packets/protos/dns.pyx":670
  * 
  *     property recursion_requested:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12793,7 +12793,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_r
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":674
+/* "steelscript/packets/protos/dns.pyx":673
  *             return (self._flags >> 8) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -12809,7 +12809,7 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_19recursion_request
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 674, __pyx_L3_error)
+    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 673, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12830,7 +12830,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_request
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":675
+  /* "steelscript/packets/protos/dns.pyx":674
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -12840,7 +12840,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_request
   switch (__pyx_v_val) {
     case 0:
 
-    /* "steelscript/packets/protos/dns.pyx":676
+    /* "steelscript/packets/protos/dns.pyx":675
  *         def __set__(self, unsigned char val):
  *             if val == 0:
  *                 unset_bit(&self._flags, 8)             # <<<<<<<<<<<<<<
@@ -12849,7 +12849,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_request
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_unset_bit((&__pyx_v_self->_flags), 8);
 
-    /* "steelscript/packets/protos/dns.pyx":675
+    /* "steelscript/packets/protos/dns.pyx":674
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -12858,7 +12858,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_request
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":677
+    /* "steelscript/packets/protos/dns.pyx":676
  *             if val == 0:
  *                 unset_bit(&self._flags, 8)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -12867,7 +12867,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_request
  */
     case 1:
 
-    /* "steelscript/packets/protos/dns.pyx":678
+    /* "steelscript/packets/protos/dns.pyx":677
  *                 unset_bit(&self._flags, 8)
  *             elif val == 1:
  *                 set_bit(&self._flags, 8)             # <<<<<<<<<<<<<<
@@ -12876,7 +12876,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_request
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_set_bit((&__pyx_v_self->_flags), 8);
 
-    /* "steelscript/packets/protos/dns.pyx":677
+    /* "steelscript/packets/protos/dns.pyx":676
  *             if val == 0:
  *                 unset_bit(&self._flags, 8)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -12886,22 +12886,22 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_request
     break;
     default:
 
-    /* "steelscript/packets/protos/dns.pyx":680
+    /* "steelscript/packets/protos/dns.pyx":679
  *                 set_bit(&self._flags, 8)
  *             else:
  *                 raise ValueError("DNS recursion_requested bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property recursion_available:
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 680, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 679, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 680, __pyx_L1_error)
+    __PYX_ERR(0, 679, __pyx_L1_error)
     break;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":674
+  /* "steelscript/packets/protos/dns.pyx":673
  *             return (self._flags >> 8) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -12921,7 +12921,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_request
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":683
+/* "steelscript/packets/protos/dns.pyx":682
  * 
  *     property recursion_available:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12948,7 +12948,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_a
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":684
+  /* "steelscript/packets/protos/dns.pyx":683
  *     property recursion_available:
  *         def __get__(self):
  *             return (self._flags >> 7) & 1             # <<<<<<<<<<<<<<
@@ -12956,13 +12956,13 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_a
  *         def __set__(self, unsigned char val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 7) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 684, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 7) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 683, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":683
+  /* "steelscript/packets/protos/dns.pyx":682
  * 
  *     property recursion_available:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12981,7 +12981,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_a
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":686
+/* "steelscript/packets/protos/dns.pyx":685
  *             return (self._flags >> 7) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -12997,7 +12997,7 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_19recursion_availab
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 686, __pyx_L3_error)
+    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 685, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -13018,7 +13018,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_availab
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":687
+  /* "steelscript/packets/protos/dns.pyx":686
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -13028,7 +13028,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_availab
   switch (__pyx_v_val) {
     case 0:
 
-    /* "steelscript/packets/protos/dns.pyx":688
+    /* "steelscript/packets/protos/dns.pyx":687
  *         def __set__(self, unsigned char val):
  *             if val == 0:
  *                 unset_bit(&self._flags, 7)             # <<<<<<<<<<<<<<
@@ -13037,7 +13037,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_availab
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_unset_bit((&__pyx_v_self->_flags), 7);
 
-    /* "steelscript/packets/protos/dns.pyx":687
+    /* "steelscript/packets/protos/dns.pyx":686
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -13046,7 +13046,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_availab
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":689
+    /* "steelscript/packets/protos/dns.pyx":688
  *             if val == 0:
  *                 unset_bit(&self._flags, 7)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -13055,7 +13055,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_availab
  */
     case 1:
 
-    /* "steelscript/packets/protos/dns.pyx":690
+    /* "steelscript/packets/protos/dns.pyx":689
  *                 unset_bit(&self._flags, 7)
  *             elif val == 1:
  *                 set_bit(&self._flags, 7)             # <<<<<<<<<<<<<<
@@ -13064,7 +13064,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_availab
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_set_bit((&__pyx_v_self->_flags), 7);
 
-    /* "steelscript/packets/protos/dns.pyx":689
+    /* "steelscript/packets/protos/dns.pyx":688
  *             if val == 0:
  *                 unset_bit(&self._flags, 7)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -13074,22 +13074,22 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_availab
     break;
     default:
 
-    /* "steelscript/packets/protos/dns.pyx":692
+    /* "steelscript/packets/protos/dns.pyx":691
  *                 set_bit(&self._flags, 7)
  *             else:
  *                 raise ValueError("DNS recursion_available bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property authentic_data:
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__25, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 692, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__25, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 691, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 692, __pyx_L1_error)
+    __PYX_ERR(0, 691, __pyx_L1_error)
     break;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":686
+  /* "steelscript/packets/protos/dns.pyx":685
  *             return (self._flags >> 7) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -13109,7 +13109,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_19recursion_availab
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":695
+/* "steelscript/packets/protos/dns.pyx":694
  * 
  *     property authentic_data:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13136,7 +13136,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14authentic_d
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":696
+  /* "steelscript/packets/protos/dns.pyx":695
  *     property authentic_data:
  *         def __get__(self):
  *             return (self._flags >> 5) & 1             # <<<<<<<<<<<<<<
@@ -13144,13 +13144,13 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14authentic_d
  *         def __set__(self, unsigned char val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 5) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 696, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 5) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 695, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":695
+  /* "steelscript/packets/protos/dns.pyx":694
  * 
  *     property authentic_data:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13169,7 +13169,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14authentic_d
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":698
+/* "steelscript/packets/protos/dns.pyx":697
  *             return (self._flags >> 5) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -13185,7 +13185,7 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_14authentic_data_3_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 698, __pyx_L3_error)
+    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 697, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -13206,7 +13206,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14authentic_data_2_
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":699
+  /* "steelscript/packets/protos/dns.pyx":698
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -13216,7 +13216,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14authentic_data_2_
   switch (__pyx_v_val) {
     case 0:
 
-    /* "steelscript/packets/protos/dns.pyx":700
+    /* "steelscript/packets/protos/dns.pyx":699
  *         def __set__(self, unsigned char val):
  *             if val == 0:
  *                 unset_bit(&self._flags, 5)             # <<<<<<<<<<<<<<
@@ -13225,7 +13225,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14authentic_data_2_
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_unset_bit((&__pyx_v_self->_flags), 5);
 
-    /* "steelscript/packets/protos/dns.pyx":699
+    /* "steelscript/packets/protos/dns.pyx":698
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -13234,7 +13234,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14authentic_data_2_
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":701
+    /* "steelscript/packets/protos/dns.pyx":700
  *             if val == 0:
  *                 unset_bit(&self._flags, 5)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -13243,7 +13243,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14authentic_data_2_
  */
     case 1:
 
-    /* "steelscript/packets/protos/dns.pyx":702
+    /* "steelscript/packets/protos/dns.pyx":701
  *                 unset_bit(&self._flags, 5)
  *             elif val == 1:
  *                 set_bit(&self._flags, 5)             # <<<<<<<<<<<<<<
@@ -13252,7 +13252,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14authentic_data_2_
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_set_bit((&__pyx_v_self->_flags), 5);
 
-    /* "steelscript/packets/protos/dns.pyx":701
+    /* "steelscript/packets/protos/dns.pyx":700
  *             if val == 0:
  *                 unset_bit(&self._flags, 5)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -13262,22 +13262,22 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14authentic_data_2_
     break;
     default:
 
-    /* "steelscript/packets/protos/dns.pyx":704
+    /* "steelscript/packets/protos/dns.pyx":703
  *                 set_bit(&self._flags, 5)
  *             else:
  *                 raise ValueError("DNS authentic_data bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property check_disabled:
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__26, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__26, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 703, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 704, __pyx_L1_error)
+    __PYX_ERR(0, 703, __pyx_L1_error)
     break;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":698
+  /* "steelscript/packets/protos/dns.pyx":697
  *             return (self._flags >> 5) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -13297,7 +13297,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14authentic_data_2_
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":707
+/* "steelscript/packets/protos/dns.pyx":706
  * 
  *     property check_disabled:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13324,7 +13324,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14check_disab
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":708
+  /* "steelscript/packets/protos/dns.pyx":707
  *     property check_disabled:
  *         def __get__(self):
  *             return (self._flags >> 4) & 1             # <<<<<<<<<<<<<<
@@ -13332,13 +13332,13 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14check_disab
  *         def __set__(self, unsigned char val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 4) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 708, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_long(((__pyx_v_self->_flags >> 4) & 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 707, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":707
+  /* "steelscript/packets/protos/dns.pyx":706
  * 
  *     property check_disabled:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13357,7 +13357,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14check_disab
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":710
+/* "steelscript/packets/protos/dns.pyx":709
  *             return (self._flags >> 4) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -13373,7 +13373,7 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_14check_disabled_3_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 710, __pyx_L3_error)
+    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 709, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -13394,7 +13394,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14check_disabled_2_
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":711
+  /* "steelscript/packets/protos/dns.pyx":710
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -13404,7 +13404,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14check_disabled_2_
   switch (__pyx_v_val) {
     case 0:
 
-    /* "steelscript/packets/protos/dns.pyx":712
+    /* "steelscript/packets/protos/dns.pyx":711
  *         def __set__(self, unsigned char val):
  *             if val == 0:
  *                 unset_bit(&self._flags, 4)             # <<<<<<<<<<<<<<
@@ -13413,7 +13413,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14check_disabled_2_
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_unset_bit((&__pyx_v_self->_flags), 4);
 
-    /* "steelscript/packets/protos/dns.pyx":711
+    /* "steelscript/packets/protos/dns.pyx":710
  * 
  *         def __set__(self, unsigned char val):
  *             if val == 0:             # <<<<<<<<<<<<<<
@@ -13422,7 +13422,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14check_disabled_2_
  */
     break;
 
-    /* "steelscript/packets/protos/dns.pyx":713
+    /* "steelscript/packets/protos/dns.pyx":712
  *             if val == 0:
  *                 unset_bit(&self._flags, 4)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -13431,7 +13431,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14check_disabled_2_
  */
     case 1:
 
-    /* "steelscript/packets/protos/dns.pyx":714
+    /* "steelscript/packets/protos/dns.pyx":713
  *                 unset_bit(&self._flags, 4)
  *             elif val == 1:
  *                 set_bit(&self._flags, 4)             # <<<<<<<<<<<<<<
@@ -13440,7 +13440,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14check_disabled_2_
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_set_bit((&__pyx_v_self->_flags), 4);
 
-    /* "steelscript/packets/protos/dns.pyx":713
+    /* "steelscript/packets/protos/dns.pyx":712
  *             if val == 0:
  *                 unset_bit(&self._flags, 4)
  *             elif val == 1:             # <<<<<<<<<<<<<<
@@ -13450,22 +13450,22 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14check_disabled_2_
     break;
     default:
 
-    /* "steelscript/packets/protos/dns.pyx":716
+    /* "steelscript/packets/protos/dns.pyx":715
  *                 set_bit(&self._flags, 4)
  *             else:
  *                 raise ValueError("DNS check_disabled bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property resp_code:
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 716, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 715, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 716, __pyx_L1_error)
+    __PYX_ERR(0, 715, __pyx_L1_error)
     break;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":710
+  /* "steelscript/packets/protos/dns.pyx":709
  *             return (self._flags >> 4) & 1
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -13485,7 +13485,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_14check_disabled_2_
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":719
+/* "steelscript/packets/protos/dns.pyx":718
  * 
  *     property resp_code:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13512,7 +13512,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9resp_code___
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":720
+  /* "steelscript/packets/protos/dns.pyx":719
  *     property resp_code:
  *         def __get__(self):
  *             return get_short_nibble(self._flags, 0)             # <<<<<<<<<<<<<<
@@ -13520,13 +13520,13 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9resp_code___
  *         def __set__(self, unsigned char val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_f_11steelscript_7packets_4core_7inetpkt_get_short_nibble(__pyx_v_self->_flags, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 720, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_f_11steelscript_7packets_4core_7inetpkt_get_short_nibble(__pyx_v_self->_flags, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 719, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":719
+  /* "steelscript/packets/protos/dns.pyx":718
  * 
  *     property resp_code:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13545,7 +13545,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9resp_code___
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":722
+/* "steelscript/packets/protos/dns.pyx":721
  *             return get_short_nibble(self._flags, 0)
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -13561,7 +13561,7 @@ static int __pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_9resp_code_3__set__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 722, __pyx_L3_error)
+    __pyx_v_val = __Pyx_PyInt_As_unsigned_char(__pyx_arg_val); if (unlikely((__pyx_v_val == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 721, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -13584,7 +13584,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9resp_code_2__set__
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":723
+  /* "steelscript/packets/protos/dns.pyx":722
  * 
  *         def __set__(self, unsigned char val):
  *             if 0 <= val <= 15:             # <<<<<<<<<<<<<<
@@ -13598,7 +13598,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9resp_code_2__set__
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "steelscript/packets/protos/dns.pyx":724
+    /* "steelscript/packets/protos/dns.pyx":723
  *         def __set__(self, unsigned char val):
  *             if 0 <= val <= 15:
  *                 set_short_nibble(&self._flags, val, 0)             # <<<<<<<<<<<<<<
@@ -13607,7 +13607,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9resp_code_2__set__
  */
     __pyx_f_11steelscript_7packets_4core_7inetpkt_set_short_nibble((&__pyx_v_self->_flags), __pyx_v_val, 0);
 
-    /* "steelscript/packets/protos/dns.pyx":723
+    /* "steelscript/packets/protos/dns.pyx":722
  * 
  *         def __set__(self, unsigned char val):
  *             if 0 <= val <= 15:             # <<<<<<<<<<<<<<
@@ -13617,7 +13617,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9resp_code_2__set__
     goto __pyx_L3;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":726
+  /* "steelscript/packets/protos/dns.pyx":725
  *                 set_short_nibble(&self._flags, val, 0)
  *             else:
  *                 raise ValueError("DNS resp_code must be between 0 and 15.")             # <<<<<<<<<<<<<<
@@ -13625,15 +13625,15 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9resp_code_2__set__
  *     cpdef bytes pkt2net(self, dict kwargs):
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 726, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 725, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 726, __pyx_L1_error)
+    __PYX_ERR(0, 725, __pyx_L1_error)
   }
   __pyx_L3:;
 
-  /* "steelscript/packets/protos/dns.pyx":722
+  /* "steelscript/packets/protos/dns.pyx":721
  *             return get_short_nibble(self._flags, 0)
  * 
  *         def __set__(self, unsigned char val):             # <<<<<<<<<<<<<<
@@ -13653,7 +13653,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9resp_code_2__set__
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pyx":728
+/* "steelscript/packets/protos/dns.pyx":727
  *                 raise ValueError("DNS resp_code must be between 0 and 15.")
  * 
  *     cpdef bytes pkt2net(self, dict kwargs):             # <<<<<<<<<<<<<<
@@ -13692,7 +13692,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_pkt2net); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 728, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_pkt2net); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 727, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_9pkt2net)) {
       __Pyx_XDECREF(__pyx_r);
@@ -13708,13 +13708,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
         }
       }
       if (!__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 728, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 727, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_kwargs};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 728, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 727, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
@@ -13722,25 +13722,25 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_kwargs};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 728, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 727, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_2);
         } else
         #endif
         {
-          __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 728, __pyx_L1_error)
+          __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 727, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
           __Pyx_INCREF(__pyx_v_kwargs);
           __Pyx_GIVEREF(__pyx_v_kwargs);
           PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_v_kwargs);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 728, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 727, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 728, __pyx_L1_error)
+      if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 727, __pyx_L1_error)
       __pyx_r = ((PyObject*)__pyx_t_2);
       __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -13749,7 +13749,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "steelscript/packets/protos/dns.pyx":751
+  /* "steelscript/packets/protos/dns.pyx":750
  *             DNSResource resource
  * 
  *         update = kwargs.get('update', 0)             # <<<<<<<<<<<<<<
@@ -13758,15 +13758,15 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
  */
   if (unlikely(__pyx_v_kwargs == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "get");
-    __PYX_ERR(0, 751, __pyx_L1_error)
+    __PYX_ERR(0, 750, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_update, __pyx_int_0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 751, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_update, __pyx_int_0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 750, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 751, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 750, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_update = __pyx_t_6;
 
-  /* "steelscript/packets/protos/dns.pyx":752
+  /* "steelscript/packets/protos/dns.pyx":751
  * 
  *         update = kwargs.get('update', 0)
  *         compress = kwargs.get('compress', 1)             # <<<<<<<<<<<<<<
@@ -13775,27 +13775,27 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
  */
   if (unlikely(__pyx_v_kwargs == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "get");
-    __PYX_ERR(0, 752, __pyx_L1_error)
+    __PYX_ERR(0, 751, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_compress, __pyx_int_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 752, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_compress, __pyx_int_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 751, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 752, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 751, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_compress = __pyx_t_6;
 
-  /* "steelscript/packets/protos/dns.pyx":753
+  /* "steelscript/packets/protos/dns.pyx":752
  *         update = kwargs.get('update', 0)
  *         compress = kwargs.get('compress', 1)
  *         pack_labels = dict()             # <<<<<<<<<<<<<<
  *         offset = 12
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 752, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_pack_labels = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":754
+  /* "steelscript/packets/protos/dns.pyx":753
  *         compress = kwargs.get('compress', 1)
  *         pack_labels = dict()
  *         offset = 12             # <<<<<<<<<<<<<<
@@ -13804,7 +13804,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
  */
   __pyx_v_offset = 12;
 
-  /* "steelscript/packets/protos/dns.pyx":756
+  /* "steelscript/packets/protos/dns.pyx":755
  *         offset = 12
  * 
  *         if update:             # <<<<<<<<<<<<<<
@@ -13814,7 +13814,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
   __pyx_t_6 = (__pyx_v_update != 0);
   if (__pyx_t_6) {
 
-    /* "steelscript/packets/protos/dns.pyx":757
+    /* "steelscript/packets/protos/dns.pyx":756
  * 
  *         if update:
  *             self.query_count = len(self.queries)             # <<<<<<<<<<<<<<
@@ -13825,13 +13825,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
     __Pyx_INCREF(__pyx_t_1);
     if (unlikely(__pyx_t_1 == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 757, __pyx_L1_error)
+      __PYX_ERR(0, 756, __pyx_L1_error)
     }
-    __pyx_t_7 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 757, __pyx_L1_error)
+    __pyx_t_7 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 756, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_self->query_count = __pyx_t_7;
 
-    /* "steelscript/packets/protos/dns.pyx":758
+    /* "steelscript/packets/protos/dns.pyx":757
  *         if update:
  *             self.query_count = len(self.queries)
  *             self.answer_count = len(self.answers)             # <<<<<<<<<<<<<<
@@ -13842,13 +13842,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
     __Pyx_INCREF(__pyx_t_1);
     if (unlikely(__pyx_t_1 == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 758, __pyx_L1_error)
+      __PYX_ERR(0, 757, __pyx_L1_error)
     }
-    __pyx_t_7 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 758, __pyx_L1_error)
+    __pyx_t_7 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 757, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_self->answer_count = __pyx_t_7;
 
-    /* "steelscript/packets/protos/dns.pyx":759
+    /* "steelscript/packets/protos/dns.pyx":758
  *             self.query_count = len(self.queries)
  *             self.answer_count = len(self.answers)
  *             self.auth_count = len(self.authority)             # <<<<<<<<<<<<<<
@@ -13859,13 +13859,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
     __Pyx_INCREF(__pyx_t_1);
     if (unlikely(__pyx_t_1 == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 759, __pyx_L1_error)
+      __PYX_ERR(0, 758, __pyx_L1_error)
     }
-    __pyx_t_7 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 759, __pyx_L1_error)
+    __pyx_t_7 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 758, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_self->auth_count = __pyx_t_7;
 
-    /* "steelscript/packets/protos/dns.pyx":760
+    /* "steelscript/packets/protos/dns.pyx":759
  *             self.answer_count = len(self.answers)
  *             self.auth_count = len(self.authority)
  *             self.ad_count = len(self.ad)             # <<<<<<<<<<<<<<
@@ -13876,13 +13876,13 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
     __Pyx_INCREF(__pyx_t_1);
     if (unlikely(__pyx_t_1 == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 760, __pyx_L1_error)
+      __PYX_ERR(0, 759, __pyx_L1_error)
     }
-    __pyx_t_7 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 760, __pyx_L1_error)
+    __pyx_t_7 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 759, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_self->ad_count = __pyx_t_7;
 
-    /* "steelscript/packets/protos/dns.pyx":756
+    /* "steelscript/packets/protos/dns.pyx":755
  *         offset = 12
  * 
  *         if update:             # <<<<<<<<<<<<<<
@@ -13891,69 +13891,69 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
  */
   }
 
-  /* "steelscript/packets/protos/dns.pyx":762
+  /* "steelscript/packets/protos/dns.pyx":761
  *             self.ad_count = len(self.ad)
  * 
  *         p_bytes = struct.pack('!HHHHHH', self.ident,             # <<<<<<<<<<<<<<
  *                                          self._flags,
  *                                          self.query_count,
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 762, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_struct); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 761, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_pack); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 762, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_pack); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 761, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->ident); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 762, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->ident); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 761, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "steelscript/packets/protos/dns.pyx":763
+  /* "steelscript/packets/protos/dns.pyx":762
  * 
  *         p_bytes = struct.pack('!HHHHHH', self.ident,
  *                                          self._flags,             # <<<<<<<<<<<<<<
  *                                          self.query_count,
  *                                          self.answer_count,
  */
-  __pyx_t_5 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->_flags); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 763, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->_flags); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 762, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
 
-  /* "steelscript/packets/protos/dns.pyx":764
+  /* "steelscript/packets/protos/dns.pyx":763
  *         p_bytes = struct.pack('!HHHHHH', self.ident,
  *                                          self._flags,
  *                                          self.query_count,             # <<<<<<<<<<<<<<
  *                                          self.answer_count,
  *                                          self.auth_count,
  */
-  __pyx_t_4 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 764, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "steelscript/packets/protos/dns.pyx":765
+  /* "steelscript/packets/protos/dns.pyx":764
  *                                          self._flags,
  *                                          self.query_count,
  *                                          self.answer_count,             # <<<<<<<<<<<<<<
  *                                          self.auth_count,
  *                                          self.ad_count)
  */
-  __pyx_t_8 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->answer_count); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 765, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->answer_count); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 764, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
 
-  /* "steelscript/packets/protos/dns.pyx":766
+  /* "steelscript/packets/protos/dns.pyx":765
  *                                          self.query_count,
  *                                          self.answer_count,
  *                                          self.auth_count,             # <<<<<<<<<<<<<<
  *                                          self.ad_count)
  * 
  */
-  __pyx_t_9 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->auth_count); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 766, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->auth_count); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 765, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
 
-  /* "steelscript/packets/protos/dns.pyx":767
+  /* "steelscript/packets/protos/dns.pyx":766
  *                                          self.answer_count,
  *                                          self.auth_count,
  *                                          self.ad_count)             # <<<<<<<<<<<<<<
  * 
  *         for query in self.queries:
  */
-  __pyx_t_10 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->ad_count); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 767, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->ad_count); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 766, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __pyx_t_11 = NULL;
   __pyx_t_12 = 0;
@@ -13970,7 +13970,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[8] = {__pyx_t_11, __pyx_kp_s_HHHHHH, __pyx_t_2, __pyx_t_5, __pyx_t_4, __pyx_t_8, __pyx_t_9, __pyx_t_10};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_12, 7+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 762, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_12, 7+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 761, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -13984,7 +13984,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[8] = {__pyx_t_11, __pyx_kp_s_HHHHHH, __pyx_t_2, __pyx_t_5, __pyx_t_4, __pyx_t_8, __pyx_t_9, __pyx_t_10};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_12, 7+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 762, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_12, 7+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 761, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -13996,7 +13996,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
   } else
   #endif
   {
-    __pyx_t_13 = PyTuple_New(7+__pyx_t_12); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 762, __pyx_L1_error)
+    __pyx_t_13 = PyTuple_New(7+__pyx_t_12); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 761, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     if (__pyx_t_11) {
       __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_11); __pyx_t_11 = NULL;
@@ -14022,24 +14022,24 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
     __pyx_t_8 = 0;
     __pyx_t_9 = 0;
     __pyx_t_10 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_13, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 762, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_13, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 761, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":762
+  /* "steelscript/packets/protos/dns.pyx":761
  *             self.ad_count = len(self.ad)
  * 
  *         p_bytes = struct.pack('!HHHHHH', self.ident,             # <<<<<<<<<<<<<<
  *                                          self._flags,
  *                                          self.query_count,
  */
-  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 762, __pyx_L1_error)
+  if (!(likely(PyBytes_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 761, __pyx_L1_error)
   __pyx_v_p_bytes = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":769
+  /* "steelscript/packets/protos/dns.pyx":768
  *                                          self.ad_count)
  * 
  *         for query in self.queries:             # <<<<<<<<<<<<<<
@@ -14048,22 +14048,22 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
  */
   if (unlikely(__pyx_v_self->queries == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 769, __pyx_L1_error)
+    __PYX_ERR(0, 768, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->queries; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
   for (;;) {
     if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 769, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 768, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 769, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 768, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_11steelscript_7packets_6protos_3dns_DNSQuery))))) __PYX_ERR(0, 769, __pyx_L1_error)
+    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_11steelscript_7packets_6protos_3dns_DNSQuery))))) __PYX_ERR(0, 768, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_query, ((struct __pyx_obj_11steelscript_7packets_6protos_3dns_DNSQuery *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":770
+    /* "steelscript/packets/protos/dns.pyx":769
  * 
  *         for query in self.queries:
  *             p_bytes += query.pack(&offset, pack_labels, compress)             # <<<<<<<<<<<<<<
@@ -14072,15 +14072,15 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
  */
     __pyx_t_14.__pyx_n = 1;
     __pyx_t_14.compress = __pyx_v_compress;
-    __pyx_t_3 = ((struct __pyx_vtabstruct_11steelscript_7packets_6protos_3dns_DNSQuery *)__pyx_v_query->__pyx_vtab)->pack(__pyx_v_query, (&__pyx_v_offset), __pyx_v_pack_labels, &__pyx_t_14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 770, __pyx_L1_error)
+    __pyx_t_3 = ((struct __pyx_vtabstruct_11steelscript_7packets_6protos_3dns_DNSQuery *)__pyx_v_query->__pyx_vtab)->pack(__pyx_v_query, (&__pyx_v_offset), __pyx_v_pack_labels, &__pyx_t_14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 769, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_p_bytes, __pyx_t_3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 770, __pyx_L1_error)
+    __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_p_bytes, __pyx_t_3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 769, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF_SET(__pyx_v_p_bytes, ((PyObject*)__pyx_t_13));
     __pyx_t_13 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":769
+    /* "steelscript/packets/protos/dns.pyx":768
  *                                          self.ad_count)
  * 
  *         for query in self.queries:             # <<<<<<<<<<<<<<
@@ -14090,16 +14090,16 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":771
+  /* "steelscript/packets/protos/dns.pyx":770
  *         for query in self.queries:
  *             p_bytes += query.pack(&offset, pack_labels, compress)
  *         for resource in self.answers + self.authority + self.ad:             # <<<<<<<<<<<<<<
  *             p_bytes += resource.pack(&offset, pack_labels, compress)
  * 
  */
-  __pyx_t_1 = PyNumber_Add(__pyx_v_self->answers, __pyx_v_self->authority); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 771, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_v_self->answers, __pyx_v_self->authority); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 770, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_13 = PyNumber_Add(__pyx_t_1, __pyx_v_self->ad); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 771, __pyx_L1_error)
+  __pyx_t_13 = PyNumber_Add(__pyx_t_1, __pyx_v_self->ad); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 770, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = __pyx_t_13; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
@@ -14107,16 +14107,16 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
   for (;;) {
     if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_13 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_13); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 771, __pyx_L1_error)
+    __pyx_t_13 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_13); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 770, __pyx_L1_error)
     #else
-    __pyx_t_13 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 771, __pyx_L1_error)
+    __pyx_t_13 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 770, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     #endif
-    if (!(likely(((__pyx_t_13) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_13, __pyx_ptype_11steelscript_7packets_6protos_3dns_DNSResource))))) __PYX_ERR(0, 771, __pyx_L1_error)
+    if (!(likely(((__pyx_t_13) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_13, __pyx_ptype_11steelscript_7packets_6protos_3dns_DNSResource))))) __PYX_ERR(0, 770, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_resource, ((struct __pyx_obj_11steelscript_7packets_6protos_3dns_DNSResource *)__pyx_t_13));
     __pyx_t_13 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":772
+    /* "steelscript/packets/protos/dns.pyx":771
  *             p_bytes += query.pack(&offset, pack_labels, compress)
  *         for resource in self.answers + self.authority + self.ad:
  *             p_bytes += resource.pack(&offset, pack_labels, compress)             # <<<<<<<<<<<<<<
@@ -14125,15 +14125,15 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
  */
     __pyx_t_15.__pyx_n = 1;
     __pyx_t_15.compress = __pyx_v_compress;
-    __pyx_t_13 = ((struct __pyx_vtabstruct_11steelscript_7packets_6protos_3dns_DNSResource *)__pyx_v_resource->__pyx_vtab)->pack(__pyx_v_resource, (&__pyx_v_offset), __pyx_v_pack_labels, &__pyx_t_15); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 772, __pyx_L1_error)
+    __pyx_t_13 = ((struct __pyx_vtabstruct_11steelscript_7packets_6protos_3dns_DNSResource *)__pyx_v_resource->__pyx_vtab)->pack(__pyx_v_resource, (&__pyx_v_offset), __pyx_v_pack_labels, &__pyx_t_15); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 771, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_p_bytes, __pyx_t_13); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 772, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_p_bytes, __pyx_t_13); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 771, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     __Pyx_DECREF_SET(__pyx_v_p_bytes, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "steelscript/packets/protos/dns.pyx":771
+    /* "steelscript/packets/protos/dns.pyx":770
  *         for query in self.queries:
  *             p_bytes += query.pack(&offset, pack_labels, compress)
  *         for resource in self.answers + self.authority + self.ad:             # <<<<<<<<<<<<<<
@@ -14143,7 +14143,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":774
+  /* "steelscript/packets/protos/dns.pyx":773
  *             p_bytes += resource.pack(&offset, pack_labels, compress)
  * 
  *         return p_bytes             # <<<<<<<<<<<<<<
@@ -14153,7 +14153,7 @@ static PyObject *__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(struct
   __pyx_r = __pyx_v_p_bytes;
   goto __pyx_L0;
 
-  /* "steelscript/packets/protos/dns.pyx":728
+  /* "steelscript/packets/protos/dns.pyx":727
  *                 raise ValueError("DNS resp_code must be between 0 and 15.")
  * 
  *     cpdef bytes pkt2net(self, dict kwargs):             # <<<<<<<<<<<<<<
@@ -14192,7 +14192,7 @@ static PyObject *__pyx_pw_11steelscript_7packets_6protos_3dns_3DNS_9pkt2net(PyOb
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("pkt2net (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_kwargs), (&PyDict_Type), 1, "kwargs", 1))) __PYX_ERR(0, 728, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_kwargs), (&PyDict_Type), 1, "kwargs", 1))) __PYX_ERR(0, 727, __pyx_L1_error)
   __pyx_r = __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_8pkt2net(((struct __pyx_obj_11steelscript_7packets_6protos_3dns_DNS *)__pyx_v_self), ((PyObject*)__pyx_v_kwargs));
 
   /* function exit code */
@@ -14210,7 +14210,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_8pkt2net(stru
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("pkt2net", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(__pyx_v_self, __pyx_v_kwargs, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 728, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net(__pyx_v_self, __pyx_v_kwargs, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 727, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -14227,7 +14227,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_8pkt2net(stru
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pxd":121
+/* "steelscript/packets/protos/dns.pxd":120
  *     cdef:
  *         array _buffer
  *         public uint16_t ident, query_count, answer_count, auth_count, ad_count             # <<<<<<<<<<<<<<
@@ -14254,7 +14254,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_5ident___get_
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->ident); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->ident); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -14289,7 +14289,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_5ident_2__set__(str
   __Pyx_RefNannyDeclarations
   uint16_t __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 120, __pyx_L1_error)
   __pyx_v_self->ident = __pyx_t_1;
 
   /* function exit code */
@@ -14322,7 +14322,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_11query_count
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->query_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -14357,7 +14357,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_11query_count_2__se
   __Pyx_RefNannyDeclarations
   uint16_t __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 120, __pyx_L1_error)
   __pyx_v_self->query_count = __pyx_t_1;
 
   /* function exit code */
@@ -14390,7 +14390,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_12answer_coun
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->answer_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->answer_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -14425,7 +14425,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_12answer_count_2__s
   __Pyx_RefNannyDeclarations
   uint16_t __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 120, __pyx_L1_error)
   __pyx_v_self->answer_count = __pyx_t_1;
 
   /* function exit code */
@@ -14458,7 +14458,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10auth_count_
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->auth_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->auth_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -14493,7 +14493,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_10auth_count_2__set
   __Pyx_RefNannyDeclarations
   uint16_t __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 120, __pyx_L1_error)
   __pyx_v_self->auth_count = __pyx_t_1;
 
   /* function exit code */
@@ -14526,7 +14526,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_8ad_count___g
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->ad_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint16_t(__pyx_v_self->ad_count); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -14561,7 +14561,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_8ad_count_2__set__(
   __Pyx_RefNannyDeclarations
   uint16_t __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_uint16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 120, __pyx_L1_error)
   __pyx_v_self->ad_count = __pyx_t_1;
 
   /* function exit code */
@@ -14575,7 +14575,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_8ad_count_2__set__(
   return __pyx_r;
 }
 
-/* "steelscript/packets/protos/dns.pxd":123
+/* "steelscript/packets/protos/dns.pxd":122
  *         public uint16_t ident, query_count, answer_count, auth_count, ad_count
  *         uint16_t _flags
  *         public list queries, answers, authority, ad             # <<<<<<<<<<<<<<
@@ -14630,7 +14630,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_7queries_2__set__(s
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(1, 123, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(1, 122, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -14727,7 +14727,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_7answers_2__set__(s
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(1, 123, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(1, 122, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -14824,7 +14824,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_9authority_2__set__
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(1, 123, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(1, 122, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -14921,7 +14921,7 @@ static int __pyx_pf_11steelscript_7packets_6protos_3dns_3DNS_2ad_2__set__(struct
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(1, 123, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(1, 122, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -18833,9 +18833,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 50, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 179, __pyx_L1_error)
-  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(0, 469, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(3, 109, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -18846,303 +18846,303 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "steelscript/packets/protos/dns.pyx":42
+  /* "steelscript/packets/protos/dns.pyx":41
  * 
  *     if domainname_re.match(hostname) or hostname_re.match(hostname):
  *         out = array('B')             # <<<<<<<<<<<<<<
  *         for part in hostname.split('.'):
  *             out.append(len(part))
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_B); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_B); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "steelscript/packets/protos/dns.pyx":43
+  /* "steelscript/packets/protos/dns.pyx":42
  *     if domainname_re.match(hostname) or hostname_re.match(hostname):
  *         out = array('B')
  *         for part in hostname.split('.'):             # <<<<<<<<<<<<<<
  *             out.append(len(part))
  *             for ch in part:
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s__2); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s__2); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "steelscript/packets/protos/dns.pyx":80
+  /* "steelscript/packets/protos/dns.pyx":79
  *         out_array = array('B', [0])
  *     else:
  *         parts = dns_name.encode('UTF-8').split('.')             # <<<<<<<<<<<<<<
  *         parts.append(b'')
  *         if compress:
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_UTF_8); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_UTF_8); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s__2); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s__2); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "steelscript/packets/protos/dns.pyx":102
+  /* "steelscript/packets/protos/dns.pyx":101
  *         else:
  *             for part in parts:
  *                 out_array = array('B')             # <<<<<<<<<<<<<<
  *                 out_array.append(len(part))
  *                 out_array.extend(array('B', part))
  */
-  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_n_s_B); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_n_s_B); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "steelscript/packets/protos/dns.pyx":264
+  /* "steelscript/packets/protos/dns.pyx":263
  * 
  *     original_offset = offset[PNTR]
  *     count = data[offset[PNTR]:offset[PNTR] + rlen[PNTR]].count(ord(b' '))             # <<<<<<<<<<<<<<
  * 
  *     if (count <= 7 and
  */
-  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_int_32); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_int_32); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "steelscript/packets/protos/dns.pyx":271
+  /* "steelscript/packets/protos/dns.pyx":270
  *         mname = read_dns_name_bytes(data, offset, label_store)
  *         rname = read_dns_name_bytes(data, offset, label_store)
  *         rname = rname.replace(b'.', b'@', 1)             # <<<<<<<<<<<<<<
  *         serial, refresh, retry, expire, minimum = struct.unpack('!IIIII',
  *                                           data[offset[PNTR]:offset[PNTR] + 20])
  */
-  __pyx_tuple__10 = PyTuple_Pack(3, __pyx_kp_b__2, __pyx_kp_b__9, __pyx_int_1); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(3, __pyx_kp_b__2, __pyx_kp_b__9, __pyx_int_1); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 270, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "steelscript/packets/protos/dns.pyx":309
+  /* "steelscript/packets/protos/dns.pyx":308
  *     parts = res_data.split()
  *     if len(parts) == 15:
  *         p_bytes += write_dns_name_bytes(parts[SOA_MNAME][:-1], offset, labels,             # <<<<<<<<<<<<<<
  *                                         compress)
  *         parts[SOA_RNAME] = parts[SOA_RNAME].replace(b'@', b'.')
  */
-  __pyx_slice__11 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__11)) __PYX_ERR(0, 309, __pyx_L1_error)
+  __pyx_slice__11 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__11)) __PYX_ERR(0, 308, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__11);
   __Pyx_GIVEREF(__pyx_slice__11);
 
-  /* "steelscript/packets/protos/dns.pyx":311
+  /* "steelscript/packets/protos/dns.pyx":310
  *         p_bytes += write_dns_name_bytes(parts[SOA_MNAME][:-1], offset, labels,
  *                                         compress)
  *         parts[SOA_RNAME] = parts[SOA_RNAME].replace(b'@', b'.')             # <<<<<<<<<<<<<<
  *         p_bytes += write_dns_name_bytes(parts[SOA_RNAME][:-1], offset, labels,
  *                                         compress)
  */
-  __pyx_tuple__12 = PyTuple_Pack(2, __pyx_kp_b__9, __pyx_kp_b__2); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(2, __pyx_kp_b__9, __pyx_kp_b__2); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 310, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 
-  /* "steelscript/packets/protos/dns.pyx":312
+  /* "steelscript/packets/protos/dns.pyx":311
  *                                         compress)
  *         parts[SOA_RNAME] = parts[SOA_RNAME].replace(b'@', b'.')
  *         p_bytes += write_dns_name_bytes(parts[SOA_RNAME][:-1], offset, labels,             # <<<<<<<<<<<<<<
  *                                         compress)
  *         offset[PNTR] += 20
  */
-  __pyx_slice__13 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__13)) __PYX_ERR(0, 312, __pyx_L1_error)
+  __pyx_slice__13 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__13)) __PYX_ERR(0, 311, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__13);
   __Pyx_GIVEREF(__pyx_slice__13);
 
-  /* "steelscript/packets/protos/dns.pyx":318
+  /* "steelscript/packets/protos/dns.pyx":317
  *         return b'{0}{1}'.format(p_bytes,
  *                                 struct.pack("!IIIII",
  *                                             int(parts[SOA_SER][:-1]),             # <<<<<<<<<<<<<<
  *                                             int(parts[SOA_REF][:-1]),
  *                                             int(parts[SOA_RET][:-1]),
  */
-  __pyx_slice__14 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__14)) __PYX_ERR(0, 318, __pyx_L1_error)
+  __pyx_slice__14 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__14)) __PYX_ERR(0, 317, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__14);
   __Pyx_GIVEREF(__pyx_slice__14);
 
-  /* "steelscript/packets/protos/dns.pyx":319
+  /* "steelscript/packets/protos/dns.pyx":318
  *                                 struct.pack("!IIIII",
  *                                             int(parts[SOA_SER][:-1]),
  *                                             int(parts[SOA_REF][:-1]),             # <<<<<<<<<<<<<<
  *                                             int(parts[SOA_RET][:-1]),
  *                                             int(parts[SOA_EXP][:-1]),
  */
-  __pyx_slice__15 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__15)) __PYX_ERR(0, 319, __pyx_L1_error)
+  __pyx_slice__15 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__15)) __PYX_ERR(0, 318, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__15);
   __Pyx_GIVEREF(__pyx_slice__15);
 
-  /* "steelscript/packets/protos/dns.pyx":320
+  /* "steelscript/packets/protos/dns.pyx":319
  *                                             int(parts[SOA_SER][:-1]),
  *                                             int(parts[SOA_REF][:-1]),
  *                                             int(parts[SOA_RET][:-1]),             # <<<<<<<<<<<<<<
  *                                             int(parts[SOA_EXP][:-1]),
  *                                             int(parts[SOA_MIN])))
  */
-  __pyx_slice__16 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__16)) __PYX_ERR(0, 320, __pyx_L1_error)
+  __pyx_slice__16 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__16)) __PYX_ERR(0, 319, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__16);
   __Pyx_GIVEREF(__pyx_slice__16);
 
-  /* "steelscript/packets/protos/dns.pyx":321
+  /* "steelscript/packets/protos/dns.pyx":320
  *                                             int(parts[SOA_REF][:-1]),
  *                                             int(parts[SOA_RET][:-1]),
  *                                             int(parts[SOA_EXP][:-1]),             # <<<<<<<<<<<<<<
  *                                             int(parts[SOA_MIN])))
  *     else:
  */
-  __pyx_slice__17 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__17)) __PYX_ERR(0, 321, __pyx_L1_error)
+  __pyx_slice__17 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__17)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__17);
   __Pyx_GIVEREF(__pyx_slice__17);
 
-  /* "steelscript/packets/protos/dns.pyx":498
+  /* "steelscript/packets/protos/dns.pyx":497
  *              self.answer_count,
  *              self.auth_count,
  *              self.ad_count) = struct.unpack('!6H', self._buffer[:12])             # <<<<<<<<<<<<<<
  *             # add those 12 bytes to the offset index.
  *             offset = 12
  */
-  __pyx_slice__18 = PySlice_New(Py_None, __pyx_int_12, Py_None); if (unlikely(!__pyx_slice__18)) __PYX_ERR(0, 498, __pyx_L1_error)
+  __pyx_slice__18 = PySlice_New(Py_None, __pyx_int_12, Py_None); if (unlikely(!__pyx_slice__18)) __PYX_ERR(0, 497, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__18);
   __Pyx_GIVEREF(__pyx_slice__18);
 
-  /* "steelscript/packets/protos/dns.pyx":567
+  /* "steelscript/packets/protos/dns.pyx":566
  *         return: uint16_t pq_type, tuple_of_string query_fields"""
  *         return (DNS_PACKET_TYPE,
  *                 (b'dns.ident', b'dns.query_resp', b'dns.op_code',             # <<<<<<<<<<<<<<
  *                  b'dns.authoritative',
  *                  b'dns.truncated', b'dns.recursion_requested',
  */
-  __pyx_tuple__19 = PyTuple_Pack(14, __pyx_kp_b_dns_ident, __pyx_kp_b_dns_query_resp, __pyx_kp_b_dns_op_code, __pyx_kp_b_dns_authoritative, __pyx_kp_b_dns_truncated, __pyx_kp_b_dns_recursion_requested, __pyx_kp_b_dns_recursion_available, __pyx_kp_b_dns_authentic_data, __pyx_kp_b_dns_check_disabled, __pyx_kp_b_dns_resp_code, __pyx_kp_b_dns_query_count, __pyx_kp_b_dns_answer_count, __pyx_kp_b_dns_auth_count, __pyx_kp_b_dns_ad_count); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(14, __pyx_kp_b_dns_ident, __pyx_kp_b_dns_query_resp, __pyx_kp_b_dns_op_code, __pyx_kp_b_dns_authoritative, __pyx_kp_b_dns_truncated, __pyx_kp_b_dns_recursion_requested, __pyx_kp_b_dns_recursion_available, __pyx_kp_b_dns_authentic_data, __pyx_kp_b_dns_check_disabled, __pyx_kp_b_dns_resp_code, __pyx_kp_b_dns_query_count, __pyx_kp_b_dns_answer_count, __pyx_kp_b_dns_auth_count, __pyx_kp_b_dns_ad_count); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 566, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
 
-  /* "steelscript/packets/protos/dns.pyx":634
+  /* "steelscript/packets/protos/dns.pyx":633
  *                 set_bit(&self._flags, 15)
  *             else:
  *                 raise ValueError("DNS query_resp bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property op_code:
  */
-  __pyx_tuple__20 = PyTuple_Pack(1, __pyx_kp_s_DNS_query_resp_bit_must_be_0_or); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 634, __pyx_L1_error)
+  __pyx_tuple__20 = PyTuple_Pack(1, __pyx_kp_s_DNS_query_resp_bit_must_be_0_or); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 633, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 
-  /* "steelscript/packets/protos/dns.pyx":644
+  /* "steelscript/packets/protos/dns.pyx":643
  *                 set_short_nibble(&self._flags, val, 11)
  *             else:
  *                 raise ValueError("DNS op_code must be between 0 and 15.")             # <<<<<<<<<<<<<<
  * 
  *     property authoritative:
  */
-  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_kp_s_DNS_op_code_must_be_between_0_an); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 644, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_kp_s_DNS_op_code_must_be_between_0_an); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
 
-  /* "steelscript/packets/protos/dns.pyx":656
+  /* "steelscript/packets/protos/dns.pyx":655
  *                 set_bit(&self._flags, 10)
  *             else:
  *                 raise ValueError("DNS authoritative bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property truncated:
  */
-  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_kp_s_DNS_authoritative_bit_must_be_0); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 656, __pyx_L1_error)
+  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_kp_s_DNS_authoritative_bit_must_be_0); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 655, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "steelscript/packets/protos/dns.pyx":668
+  /* "steelscript/packets/protos/dns.pyx":667
  *                 set_bit(&self._flags, 9)
  *             else:
  *                 raise ValueError("DNS truncated bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property recursion_requested:
  */
-  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_kp_s_DNS_truncated_bit_must_be_0_or_1); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 668, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_kp_s_DNS_truncated_bit_must_be_0_or_1); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 667, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
 
-  /* "steelscript/packets/protos/dns.pyx":680
+  /* "steelscript/packets/protos/dns.pyx":679
  *                 set_bit(&self._flags, 8)
  *             else:
  *                 raise ValueError("DNS recursion_requested bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property recursion_available:
  */
-  __pyx_tuple__24 = PyTuple_Pack(1, __pyx_kp_s_DNS_recursion_requested_bit_must); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 680, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(1, __pyx_kp_s_DNS_recursion_requested_bit_must); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
 
-  /* "steelscript/packets/protos/dns.pyx":692
+  /* "steelscript/packets/protos/dns.pyx":691
  *                 set_bit(&self._flags, 7)
  *             else:
  *                 raise ValueError("DNS recursion_available bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property authentic_data:
  */
-  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_kp_s_DNS_recursion_available_bit_must); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 692, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_kp_s_DNS_recursion_available_bit_must); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 691, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
 
-  /* "steelscript/packets/protos/dns.pyx":704
+  /* "steelscript/packets/protos/dns.pyx":703
  *                 set_bit(&self._flags, 5)
  *             else:
  *                 raise ValueError("DNS authentic_data bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property check_disabled:
  */
-  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_kp_s_DNS_authentic_data_bit_must_be_0); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 704, __pyx_L1_error)
+  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_kp_s_DNS_authentic_data_bit_must_be_0); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 703, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_GIVEREF(__pyx_tuple__26);
 
-  /* "steelscript/packets/protos/dns.pyx":716
+  /* "steelscript/packets/protos/dns.pyx":715
  *                 set_bit(&self._flags, 4)
  *             else:
  *                 raise ValueError("DNS check_disabled bit must be 0 or 1.")             # <<<<<<<<<<<<<<
  * 
  *     property resp_code:
  */
-  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_kp_s_DNS_check_disabled_bit_must_be_0); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_kp_s_DNS_check_disabled_bit_must_be_0); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 715, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
 
-  /* "steelscript/packets/protos/dns.pyx":726
+  /* "steelscript/packets/protos/dns.pyx":725
  *                 set_short_nibble(&self._flags, val, 0)
  *             else:
  *                 raise ValueError("DNS resp_code must be between 0 and 15.")             # <<<<<<<<<<<<<<
  * 
  *     cpdef bytes pkt2net(self, dict kwargs):
  */
-  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_DNS_resp_code_must_be_between_0); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 726, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_DNS_resp_code_must_be_between_0); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 725, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
 
-  /* "steelscript/packets/protos/dns.pyx":18
+  /* "steelscript/packets/protos/dns.pyx":17
  * 
  * # Regex to see if data is a valid domain name
  * hostname_re = re.compile(r"^(?:(?!-|[^.]+_)[A-Za-z0-9-_]{1,63}(?<!-)"             # <<<<<<<<<<<<<<
  *                           "(?:\.|$))$")
  * domainname_re = re.compile(r"^(?=.{1,253}\.?$)(?:(?!-|[^.]+_)[A-Za-z0-9-_]"
  */
-  __pyx_tuple__29 = PyTuple_Pack(1, __pyx_kp_s_A_Za_z0_9___1_63); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(1, __pyx_kp_s_A_Za_z0_9___1_63); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_GIVEREF(__pyx_tuple__29);
 
-  /* "steelscript/packets/protos/dns.pyx":20
+  /* "steelscript/packets/protos/dns.pyx":19
  * hostname_re = re.compile(r"^(?:(?!-|[^.]+_)[A-Za-z0-9-_]{1,63}(?<!-)"
  *                           "(?:\.|$))$")
  * domainname_re = re.compile(r"^(?=.{1,253}\.?$)(?:(?!-|[^.]+_)[A-Za-z0-9-_]"             # <<<<<<<<<<<<<<
  *                             "{1,63}(?<!-)(?:\.|$)){2,}$")
  * 
  */
-  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_1_253___A_Za_z0_9___1_63_2); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_1_253___A_Za_z0_9___1_63_2); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
 
-  /* "steelscript/packets/protos/dns.pyx":23
+  /* "steelscript/packets/protos/dns.pyx":22
  *                             "{1,63}(?<!-)(?:\.|$)){2,}$")
  * 
  * email_re = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_a_zA_Z0_9__a_zA_Z0_9_a_zA_Z0_9); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_a_zA_Z0_9__a_zA_Z0_9_a_zA_Z0_9); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__31);
   __Pyx_GIVEREF(__pyx_tuple__31);
 
@@ -19333,11 +19333,11 @@ static int __pyx_pymod_exec_dns(PyObject *__pyx_pyinit_module)
   /*--- Type init code ---*/
   __pyx_vtabptr_11steelscript_7packets_6protos_3dns_DNSQuery = &__pyx_vtable_11steelscript_7packets_6protos_3dns_DNSQuery;
   __pyx_vtable_11steelscript_7packets_6protos_3dns_DNSQuery.pack = (PyObject *(*)(struct __pyx_obj_11steelscript_7packets_6protos_3dns_DNSQuery *, uint16_t *, PyObject *, struct __pyx_opt_args_11steelscript_7packets_6protos_3dns_8DNSQuery_pack *__pyx_optional_args))__pyx_f_11steelscript_7packets_6protos_3dns_8DNSQuery_pack;
-  if (PyType_Ready(&__pyx_type_11steelscript_7packets_6protos_3dns_DNSQuery) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_11steelscript_7packets_6protos_3dns_DNSQuery) < 0) __PYX_ERR(0, 326, __pyx_L1_error)
   __pyx_type_11steelscript_7packets_6protos_3dns_DNSQuery.tp_print = 0;
   #if CYTHON_COMPILING_IN_CPYTHON
   {
-    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_11steelscript_7packets_6protos_3dns_DNSQuery, "__init__"); if (unlikely(!wrapper)) __PYX_ERR(0, 327, __pyx_L1_error)
+    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_11steelscript_7packets_6protos_3dns_DNSQuery, "__init__"); if (unlikely(!wrapper)) __PYX_ERR(0, 326, __pyx_L1_error)
     if (Py_TYPE(wrapper) == &PyWrapperDescr_Type) {
       __pyx_wrapperbase_11steelscript_7packets_6protos_3dns_8DNSQuery___init__ = *((PyWrapperDescrObject *)wrapper)->d_base;
       __pyx_wrapperbase_11steelscript_7packets_6protos_3dns_8DNSQuery___init__.doc = __pyx_doc_11steelscript_7packets_6protos_3dns_8DNSQuery___init__;
@@ -19345,17 +19345,17 @@ static int __pyx_pymod_exec_dns(PyObject *__pyx_pyinit_module)
     }
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_type_11steelscript_7packets_6protos_3dns_DNSQuery.tp_dict, __pyx_vtabptr_11steelscript_7packets_6protos_3dns_DNSQuery) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "DNSQuery", (PyObject *)&__pyx_type_11steelscript_7packets_6protos_3dns_DNSQuery) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_11steelscript_7packets_6protos_3dns_DNSQuery) < 0) __PYX_ERR(0, 327, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_11steelscript_7packets_6protos_3dns_DNSQuery.tp_dict, __pyx_vtabptr_11steelscript_7packets_6protos_3dns_DNSQuery) < 0) __PYX_ERR(0, 326, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "DNSQuery", (PyObject *)&__pyx_type_11steelscript_7packets_6protos_3dns_DNSQuery) < 0) __PYX_ERR(0, 326, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_11steelscript_7packets_6protos_3dns_DNSQuery) < 0) __PYX_ERR(0, 326, __pyx_L1_error)
   __pyx_ptype_11steelscript_7packets_6protos_3dns_DNSQuery = &__pyx_type_11steelscript_7packets_6protos_3dns_DNSQuery;
   __pyx_vtabptr_11steelscript_7packets_6protos_3dns_DNSResource = &__pyx_vtable_11steelscript_7packets_6protos_3dns_DNSResource;
   __pyx_vtable_11steelscript_7packets_6protos_3dns_DNSResource.pack = (PyObject *(*)(struct __pyx_obj_11steelscript_7packets_6protos_3dns_DNSResource *, uint16_t *, PyObject *, struct __pyx_opt_args_11steelscript_7packets_6protos_3dns_11DNSResource_pack *__pyx_optional_args))__pyx_f_11steelscript_7packets_6protos_3dns_11DNSResource_pack;
-  if (PyType_Ready(&__pyx_type_11steelscript_7packets_6protos_3dns_DNSResource) < 0) __PYX_ERR(0, 375, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_11steelscript_7packets_6protos_3dns_DNSResource) < 0) __PYX_ERR(0, 374, __pyx_L1_error)
   __pyx_type_11steelscript_7packets_6protos_3dns_DNSResource.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_11steelscript_7packets_6protos_3dns_DNSResource.tp_dict, __pyx_vtabptr_11steelscript_7packets_6protos_3dns_DNSResource) < 0) __PYX_ERR(0, 375, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "DNSResource", (PyObject *)&__pyx_type_11steelscript_7packets_6protos_3dns_DNSResource) < 0) __PYX_ERR(0, 375, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_11steelscript_7packets_6protos_3dns_DNSResource) < 0) __PYX_ERR(0, 375, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_11steelscript_7packets_6protos_3dns_DNSResource.tp_dict, __pyx_vtabptr_11steelscript_7packets_6protos_3dns_DNSResource) < 0) __PYX_ERR(0, 374, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "DNSResource", (PyObject *)&__pyx_type_11steelscript_7packets_6protos_3dns_DNSResource) < 0) __PYX_ERR(0, 374, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_11steelscript_7packets_6protos_3dns_DNSResource) < 0) __PYX_ERR(0, 374, __pyx_L1_error)
   __pyx_ptype_11steelscript_7packets_6protos_3dns_DNSResource = &__pyx_type_11steelscript_7packets_6protos_3dns_DNSResource;
   __pyx_ptype_11steelscript_7packets_4core_7inetpkt_PKT = __Pyx_ImportType("steelscript.packets.core.inetpkt", "PKT", sizeof(struct __pyx_obj_11steelscript_7packets_4core_7inetpkt_PKT), 1); if (unlikely(!__pyx_ptype_11steelscript_7packets_4core_7inetpkt_PKT)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_vtabptr_11steelscript_7packets_4core_7inetpkt_PKT = (struct __pyx_vtabstruct_11steelscript_7packets_4core_7inetpkt_PKT*)__Pyx_GetVtable(__pyx_ptype_11steelscript_7packets_4core_7inetpkt_PKT->tp_dict); if (unlikely(!__pyx_vtabptr_11steelscript_7packets_4core_7inetpkt_PKT)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -19364,16 +19364,16 @@ static int __pyx_pymod_exec_dns(PyObject *__pyx_pyinit_module)
   __pyx_vtable_11steelscript_7packets_6protos_3dns_DNS.__pyx_base.pkt2net = (PyObject *(*)(struct __pyx_obj_11steelscript_7packets_4core_7inetpkt_PKT *, PyObject *, int __pyx_skip_dispatch))__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_pkt2net;
   __pyx_vtable_11steelscript_7packets_6protos_3dns_DNS.__pyx_base.get_field_val = (PyObject *(*)(struct __pyx_obj_11steelscript_7packets_4core_7inetpkt_PKT *, PyObject *, int __pyx_skip_dispatch))__pyx_f_11steelscript_7packets_6protos_3dns_3DNS_get_field_val;
   __pyx_type_11steelscript_7packets_6protos_3dns_DNS.tp_base = __pyx_ptype_11steelscript_7packets_4core_7inetpkt_PKT;
-  if (PyType_Ready(&__pyx_type_11steelscript_7packets_6protos_3dns_DNS) < 0) __PYX_ERR(0, 465, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_11steelscript_7packets_6protos_3dns_DNS) < 0) __PYX_ERR(0, 464, __pyx_L1_error)
   __pyx_type_11steelscript_7packets_6protos_3dns_DNS.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_11steelscript_7packets_6protos_3dns_DNS.tp_dict, __pyx_vtabptr_11steelscript_7packets_6protos_3dns_DNS) < 0) __PYX_ERR(0, 465, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "DNS", (PyObject *)&__pyx_type_11steelscript_7packets_6protos_3dns_DNS) < 0) __PYX_ERR(0, 465, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_11steelscript_7packets_6protos_3dns_DNS) < 0) __PYX_ERR(0, 465, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_11steelscript_7packets_6protos_3dns_DNS.tp_dict, __pyx_vtabptr_11steelscript_7packets_6protos_3dns_DNS) < 0) __PYX_ERR(0, 464, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "DNS", (PyObject *)&__pyx_type_11steelscript_7packets_6protos_3dns_DNS) < 0) __PYX_ERR(0, 464, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_11steelscript_7packets_6protos_3dns_DNS) < 0) __PYX_ERR(0, 464, __pyx_L1_error)
   __pyx_ptype_11steelscript_7packets_6protos_3dns_DNS = &__pyx_type_11steelscript_7packets_6protos_3dns_DNS;
-  if (PyType_Ready(&__pyx_type_11steelscript_7packets_6protos_3dns___pyx_scope_struct____pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_11steelscript_7packets_6protos_3dns___pyx_scope_struct____pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes) < 0) __PYX_ERR(0, 108, __pyx_L1_error)
   __pyx_type_11steelscript_7packets_6protos_3dns___pyx_scope_struct____pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes.tp_print = 0;
   __pyx_ptype_11steelscript_7packets_6protos_3dns___pyx_scope_struct____pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes = &__pyx_type_11steelscript_7packets_6protos_3dns___pyx_scope_struct____pyx_f_11steelscript_7packets_6protos_3dns_read_dns_name_bytes;
-  if (PyType_Ready(&__pyx_type_11steelscript_7packets_6protos_3dns___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 180, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_11steelscript_7packets_6protos_3dns___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
   __pyx_type_11steelscript_7packets_6protos_3dns___pyx_scope_struct_1_genexpr.tp_print = 0;
   __pyx_ptype_11steelscript_7packets_6protos_3dns___pyx_scope_struct_1_genexpr = &__pyx_type_11steelscript_7packets_6protos_3dns___pyx_scope_struct_1_genexpr;
   /*--- Type import code ---*/
@@ -19496,141 +19496,141 @@ static int __pyx_pymod_exec_dns(PyObject *__pyx_pyinit_module)
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "steelscript/packets/protos/dns.pyx":8
+  /* "steelscript/packets/protos/dns.pyx":7
  * # as set forth in the License.
  * 
  * import re             # <<<<<<<<<<<<<<
  * import struct
  * import socket
  */
-  __pyx_t_3 = __Pyx_Import(__pyx_n_s_re, 0, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Import(__pyx_n_s_re, 0, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_re, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_re, __pyx_t_3) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":9
+  /* "steelscript/packets/protos/dns.pyx":8
  * 
  * import re
  * import struct             # <<<<<<<<<<<<<<
  * import socket
  * from cpython.array cimport array
  */
-  __pyx_t_3 = __Pyx_Import(__pyx_n_s_struct, 0, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Import(__pyx_n_s_struct, 0, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_struct, __pyx_t_3) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_struct, __pyx_t_3) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":10
+  /* "steelscript/packets/protos/dns.pyx":9
  * import re
  * import struct
  * import socket             # <<<<<<<<<<<<<<
  * from cpython.array cimport array
  * from libc.stdint cimport uint16_t
  */
-  __pyx_t_3 = __Pyx_Import(__pyx_n_s_socket, 0, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Import(__pyx_n_s_socket, 0, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_socket, __pyx_t_3) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_socket, __pyx_t_3) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":18
+  /* "steelscript/packets/protos/dns.pyx":17
  * 
  * # Regex to see if data is a valid domain name
  * hostname_re = re.compile(r"^(?:(?!-|[^.]+_)[A-Za-z0-9-_]{1,63}(?<!-)"             # <<<<<<<<<<<<<<
  *                           "(?:\.|$))$")
  * domainname_re = re.compile(r"^(?=.{1,253}\.?$)(?:(?!-|[^.]+_)[A-Za-z0-9-_]"
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_compile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_compile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__29, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__29, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_hostname_re, __pyx_t_3) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_hostname_re, __pyx_t_3) < 0) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":20
+  /* "steelscript/packets/protos/dns.pyx":19
  * hostname_re = re.compile(r"^(?:(?!-|[^.]+_)[A-Za-z0-9-_]{1,63}(?<!-)"
  *                           "(?:\.|$))$")
  * domainname_re = re.compile(r"^(?=.{1,253}\.?$)(?:(?!-|[^.]+_)[A-Za-z0-9-_]"             # <<<<<<<<<<<<<<
  *                             "{1,63}(?<!-)(?:\.|$)){2,}$")
  * 
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_compile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_compile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_domainname_re, __pyx_t_3) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_domainname_re, __pyx_t_3) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":23
+  /* "steelscript/packets/protos/dns.pyx":22
  *                             "{1,63}(?<!-)(?:\.|$)){2,}$")
  * 
  * email_re = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_re); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_compile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_compile); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_email_re, __pyx_t_3) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_email_re, __pyx_t_3) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "steelscript/packets/protos/dns.pyx":558
+  /* "steelscript/packets/protos/dns.pyx":557
  * 
  *     @classmethod
  *     def query_info(cls):             # <<<<<<<<<<<<<<
  *         """
  *         Used by pcap_query to derive what PKT class ID this class has AND
  */
-  __pyx_t_3 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS, __pyx_n_s_query_info); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 558, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS, __pyx_n_s_query_info); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 557, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "steelscript/packets/protos/dns.pyx":557
+  /* "steelscript/packets/protos/dns.pyx":556
  *             self.ad_count = kwargs.get('ad_count', 0)
  * 
  *     @classmethod             # <<<<<<<<<<<<<<
  *     def query_info(cls):
  *         """
  */
-  __pyx_t_4 = __Pyx_Method_ClassMethod(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 557, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_Method_ClassMethod(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 556, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS->tp_dict, __pyx_n_s_query_info, __pyx_t_4) < 0) __PYX_ERR(0, 558, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS->tp_dict, __pyx_n_s_query_info, __pyx_t_4) < 0) __PYX_ERR(0, 557, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   PyType_Modified(__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS);
 
-  /* "steelscript/packets/protos/dns.pyx":578
+  /* "steelscript/packets/protos/dns.pyx":577
  * 
  *     @classmethod
  *     def default_ports(cls):             # <<<<<<<<<<<<<<
  *         """
  *         Used by pcap_query to deterimine what layer 4 ports should be parsed
  */
-  __pyx_t_4 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS, __pyx_n_s_default_ports); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS, __pyx_n_s_default_ports); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 577, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "steelscript/packets/protos/dns.pyx":577
+  /* "steelscript/packets/protos/dns.pyx":576
  * 
  * 
  *     @classmethod             # <<<<<<<<<<<<<<
  *     def default_ports(cls):
  *         """
  */
-  __pyx_t_3 = __Pyx_Method_ClassMethod(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 577, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Method_ClassMethod(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 576, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS->tp_dict, __pyx_n_s_default_ports, __pyx_t_3) < 0) __PYX_ERR(0, 578, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS->tp_dict, __pyx_n_s_default_ports, __pyx_t_3) < 0) __PYX_ERR(0, 577, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11steelscript_7packets_6protos_3dns_DNS);
 
@@ -19667,9 +19667,9 @@ static int __pyx_pymod_exec_dns(PyObject *__pyx_pyinit_module)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "steelscript/packets/protos/dns.pyx":1
- * #!/usr/bin/env python             # <<<<<<<<<<<<<<
- * # Copyright (c) 2017 Riverbed Technology, Inc.
+ * # Copyright (c) 2017 Riverbed Technology, Inc.             # <<<<<<<<<<<<<<
  * #
+ * # This software is licensed under the terms and conditions of the MIT License
  */
   __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -19687,298 +19687,298 @@ static int __pyx_pymod_exec_dns(PyObject *__pyx_pyinit_module)
   /*--- Wrapped vars code ---*/
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_A);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 18, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_A", wrapped) < 0) __PYX_ERR(1, 18, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 17, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_A", wrapped) < 0) __PYX_ERR(1, 17, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_AAAA);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 30, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_AAAA", wrapped) < 0) __PYX_ERR(1, 30, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 29, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_AAAA", wrapped) < 0) __PYX_ERR(1, 29, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_ALL);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 45, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_ALL", wrapped) < 0) __PYX_ERR(1, 45, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 44, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_ALL", wrapped) < 0) __PYX_ERR(1, 44, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_ANY);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 17, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_ANY", wrapped) < 0) __PYX_ERR(1, 17, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 16, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_ANY", wrapped) < 0) __PYX_ERR(1, 16, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_AXFR);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 44, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_AXFR", wrapped) < 0) __PYX_ERR(1, 44, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 43, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_AXFR", wrapped) < 0) __PYX_ERR(1, 43, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_CERT);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 35, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_CERT", wrapped) < 0) __PYX_ERR(1, 35, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 34, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_CERT", wrapped) < 0) __PYX_ERR(1, 34, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_CNAME);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 20, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_CNAME", wrapped) < 0) __PYX_ERR(1, 20, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 19, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_CNAME", wrapped) < 0) __PYX_ERR(1, 19, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_DHCID);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 40, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_DHCID", wrapped) < 0) __PYX_ERR(1, 40, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 39, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_DHCID", wrapped) < 0) __PYX_ERR(1, 39, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_DNSKEY);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 39, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_DNSKEY", wrapped) < 0) __PYX_ERR(1, 39, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 38, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_DNSKEY", wrapped) < 0) __PYX_ERR(1, 38, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_EID);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 32, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_EID", wrapped) < 0) __PYX_ERR(1, 32, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 31, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_EID", wrapped) < 0) __PYX_ERR(1, 31, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_GPOS);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 29, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_GPOS", wrapped) < 0) __PYX_ERR(1, 29, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 28, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_GPOS", wrapped) < 0) __PYX_ERR(1, 28, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_HINFO);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 24, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_HINFO", wrapped) < 0) __PYX_ERR(1, 24, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 23, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_HINFO", wrapped) < 0) __PYX_ERR(1, 23, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_IXFR);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 43, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_IXFR", wrapped) < 0) __PYX_ERR(1, 43, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 42, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_IXFR", wrapped) < 0) __PYX_ERR(1, 42, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_KEY);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 28, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_KEY", wrapped) < 0) __PYX_ERR(1, 28, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 27, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_KEY", wrapped) < 0) __PYX_ERR(1, 27, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_KX);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 34, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_KX", wrapped) < 0) __PYX_ERR(1, 34, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 33, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_KX", wrapped) < 0) __PYX_ERR(1, 33, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_LOC);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 31, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_LOC", wrapped) < 0) __PYX_ERR(1, 31, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 30, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_LOC", wrapped) < 0) __PYX_ERR(1, 30, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_MX);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 25, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_MX", wrapped) < 0) __PYX_ERR(1, 25, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 24, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_MX", wrapped) < 0) __PYX_ERR(1, 24, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_NS);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 19, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_NS", wrapped) < 0) __PYX_ERR(1, 19, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 18, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_NS", wrapped) < 0) __PYX_ERR(1, 18, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_NSEC);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 38, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_NSEC", wrapped) < 0) __PYX_ERR(1, 38, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 37, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_NSEC", wrapped) < 0) __PYX_ERR(1, 37, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_NSEC3);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 41, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_NSEC3", wrapped) < 0) __PYX_ERR(1, 41, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 40, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_NSEC3", wrapped) < 0) __PYX_ERR(1, 40, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_NSEC3PARAM);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 42, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_NSEC3PARAM", wrapped) < 0) __PYX_ERR(1, 42, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 41, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_NSEC3PARAM", wrapped) < 0) __PYX_ERR(1, 41, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_OPT);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 36, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_OPT", wrapped) < 0) __PYX_ERR(1, 36, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 35, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_OPT", wrapped) < 0) __PYX_ERR(1, 35, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_PTR);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 23, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_PTR", wrapped) < 0) __PYX_ERR(1, 23, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 22, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_PTR", wrapped) < 0) __PYX_ERR(1, 22, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_RESERVED);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 46, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_RESERVED", wrapped) < 0) __PYX_ERR(1, 46, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 45, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_RESERVED", wrapped) < 0) __PYX_ERR(1, 45, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_RRSIG);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 37, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_RRSIG", wrapped) < 0) __PYX_ERR(1, 37, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 36, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_RRSIG", wrapped) < 0) __PYX_ERR(1, 36, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_SIG);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 27, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_SIG", wrapped) < 0) __PYX_ERR(1, 27, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 26, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_SIG", wrapped) < 0) __PYX_ERR(1, 26, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_SOA);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 21, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_SOA", wrapped) < 0) __PYX_ERR(1, 21, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 20, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_SOA", wrapped) < 0) __PYX_ERR(1, 20, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_SRV);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 33, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_SRV", wrapped) < 0) __PYX_ERR(1, 33, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 32, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_SRV", wrapped) < 0) __PYX_ERR(1, 32, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_TXT);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 26, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_TXT", wrapped) < 0) __PYX_ERR(1, 26, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 25, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_TXT", wrapped) < 0) __PYX_ERR(1, 25, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNSTYPE_WKS);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 22, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_WKS", wrapped) < 0) __PYX_ERR(1, 22, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 21, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNSTYPE_WKS", wrapped) < 0) __PYX_ERR(1, 21, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNS_PACKET_PORT);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 16, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNS_PACKET_PORT", wrapped) < 0) __PYX_ERR(1, 16, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 15, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNS_PACKET_PORT", wrapped) < 0) __PYX_ERR(1, 15, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_DNS_PACKET_TYPE);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 15, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "DNS_PACKET_TYPE", wrapped) < 0) __PYX_ERR(1, 15, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 14, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "DNS_PACKET_TYPE", wrapped) < 0) __PYX_ERR(1, 14, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_LABEL);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 66, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "LABEL", wrapped) < 0) __PYX_ERR(1, 66, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 65, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "LABEL", wrapped) < 0) __PYX_ERR(1, 65, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_OPTCODE_NOTIFY);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 49, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "OPTCODE_NOTIFY", wrapped) < 0) __PYX_ERR(1, 49, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 48, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "OPTCODE_NOTIFY", wrapped) < 0) __PYX_ERR(1, 48, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_OPTCODE_QUERY);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 47, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "OPTCODE_QUERY", wrapped) < 0) __PYX_ERR(1, 47, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 46, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "OPTCODE_QUERY", wrapped) < 0) __PYX_ERR(1, 46, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_OPTCODE_STATUS);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 48, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "OPTCODE_STATUS", wrapped) < 0) __PYX_ERR(1, 48, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 47, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "OPTCODE_STATUS", wrapped) < 0) __PYX_ERR(1, 47, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_OPTCODE_UPDATE);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 50, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "OPTCODE_UPDATE", wrapped) < 0) __PYX_ERR(1, 50, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 49, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "OPTCODE_UPDATE", wrapped) < 0) __PYX_ERR(1, 49, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_PNTR);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 65, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "PNTR", wrapped) < 0) __PYX_ERR(1, 65, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 64, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "PNTR", wrapped) < 0) __PYX_ERR(1, 64, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCLASS_ANY);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 64, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCLASS_ANY", wrapped) < 0) __PYX_ERR(1, 64, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 63, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCLASS_ANY", wrapped) < 0) __PYX_ERR(1, 63, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCLASS_IN);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 62, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCLASS_IN", wrapped) < 0) __PYX_ERR(1, 62, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 61, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCLASS_IN", wrapped) < 0) __PYX_ERR(1, 61, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCLASS_NONE);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 63, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCLASS_NONE", wrapped) < 0) __PYX_ERR(1, 63, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 62, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCLASS_NONE", wrapped) < 0) __PYX_ERR(1, 62, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCODE_FORMERR);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 52, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCODE_FORMERR", wrapped) < 0) __PYX_ERR(1, 52, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 51, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCODE_FORMERR", wrapped) < 0) __PYX_ERR(1, 51, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCODE_NOERROR);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 51, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCODE_NOERROR", wrapped) < 0) __PYX_ERR(1, 51, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 50, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCODE_NOERROR", wrapped) < 0) __PYX_ERR(1, 50, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCODE_NOTAUTH);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 60, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCODE_NOTAUTH", wrapped) < 0) __PYX_ERR(1, 60, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 59, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCODE_NOTAUTH", wrapped) < 0) __PYX_ERR(1, 59, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCODE_NOTIMP);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 55, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCODE_NOTIMP", wrapped) < 0) __PYX_ERR(1, 55, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 54, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCODE_NOTIMP", wrapped) < 0) __PYX_ERR(1, 54, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCODE_NOTZONE);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 61, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCODE_NOTZONE", wrapped) < 0) __PYX_ERR(1, 61, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 60, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCODE_NOTZONE", wrapped) < 0) __PYX_ERR(1, 60, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCODE_NXDOMAIN);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 54, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCODE_NXDOMAIN", wrapped) < 0) __PYX_ERR(1, 54, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 53, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCODE_NXDOMAIN", wrapped) < 0) __PYX_ERR(1, 53, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCODE_NXRRSET);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 59, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCODE_NXRRSET", wrapped) < 0) __PYX_ERR(1, 59, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 58, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCODE_NXRRSET", wrapped) < 0) __PYX_ERR(1, 58, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCODE_REFUSED);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 56, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCODE_REFUSED", wrapped) < 0) __PYX_ERR(1, 56, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 55, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCODE_REFUSED", wrapped) < 0) __PYX_ERR(1, 55, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCODE_SERVFAIL);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 53, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCODE_SERVFAIL", wrapped) < 0) __PYX_ERR(1, 53, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 52, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCODE_SERVFAIL", wrapped) < 0) __PYX_ERR(1, 52, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCODE_YXDOMAIN);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 57, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCODE_YXDOMAIN", wrapped) < 0) __PYX_ERR(1, 57, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 56, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCODE_YXDOMAIN", wrapped) < 0) __PYX_ERR(1, 56, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_RCODE_YXRRSET);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 58, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "RCODE_YXRRSET", wrapped) < 0) __PYX_ERR(1, 58, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 57, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "RCODE_YXRRSET", wrapped) < 0) __PYX_ERR(1, 57, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_SOA_EXP);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 72, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "SOA_EXP", wrapped) < 0) __PYX_ERR(1, 72, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 71, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "SOA_EXP", wrapped) < 0) __PYX_ERR(1, 71, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_SOA_MIN);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 73, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "SOA_MIN", wrapped) < 0) __PYX_ERR(1, 73, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 72, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "SOA_MIN", wrapped) < 0) __PYX_ERR(1, 72, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_SOA_MNAME);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 67, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "SOA_MNAME", wrapped) < 0) __PYX_ERR(1, 67, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 66, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "SOA_MNAME", wrapped) < 0) __PYX_ERR(1, 66, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_SOA_REF);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 70, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "SOA_REF", wrapped) < 0) __PYX_ERR(1, 70, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 69, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "SOA_REF", wrapped) < 0) __PYX_ERR(1, 69, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_SOA_RET);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 71, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "SOA_RET", wrapped) < 0) __PYX_ERR(1, 71, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 70, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "SOA_RET", wrapped) < 0) __PYX_ERR(1, 70, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_SOA_RNAME);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 68, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "SOA_RNAME", wrapped) < 0) __PYX_ERR(1, 68, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 67, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "SOA_RNAME", wrapped) < 0) __PYX_ERR(1, 67, __pyx_L1_error);
   }
   {
     PyObject* wrapped = __Pyx_PyInt_From_int(__pyx_e_11steelscript_7packets_6protos_3dns_SOA_SER);
-    if (unlikely(!wrapped)) __PYX_ERR(1, 69, __pyx_L1_error)
-    if (PyObject_SetAttrString(__pyx_m, "SOA_SER", wrapped) < 0) __PYX_ERR(1, 69, __pyx_L1_error);
+    if (unlikely(!wrapped)) __PYX_ERR(1, 68, __pyx_L1_error)
+    if (PyObject_SetAttrString(__pyx_m, "SOA_SER", wrapped) < 0) __PYX_ERR(1, 68, __pyx_L1_error);
   }
 
   goto __pyx_L0;

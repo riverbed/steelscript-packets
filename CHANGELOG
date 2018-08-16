@@ -1,6 +1,9 @@
 CHANGELOG
 ---------
 
+[1.1.1]
+ * Minor fixes for doc updates
+
 [1.1]
  * Add Tutorial Documents and Additional Protocols
  * Add pure python version of DNS to accompany tutorial

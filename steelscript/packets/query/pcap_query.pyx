@@ -61,6 +61,9 @@ cdef class PcapQuery:
         self.l7_ports.update(kwargs.get('l7_ports', dict()))
         self.local_tz = tzlocal.get_localzone()
 
+    cpdef dict show_fields(self):
+        return self.fields
+
     cpdef unsigned char fields_supported(self, list field_names):
         """Helper function that checks a list of field names to see if THIS
         instance of PcapQuery can service all of the fields. Used, for example,

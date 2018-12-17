@@ -22,6 +22,8 @@ cdef class PcapQuery:
 
     cpdef unsigned char fields_supported(self, list field_names)
 
+    cpdef dict show_fields(self)
+
     cpdef pcap_query(self,
                      object file_handle,
                      list wshark_fields,

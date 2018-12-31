@@ -95,7 +95,7 @@ cdef:
 
 cdef uint16_t checksum(bytes pkt)
 
-cdef unsigned char is_ipv4(bytes ip)
+cdef unsigned char is_ipv4(str ip)
 
 cdef void set_short_nibble(uint16_t* short_word,
                            unsigned char nibble,
@@ -202,11 +202,11 @@ cdef class IP_CONST:
 cdef class PKT:
     cdef:
         public dict l7_ports, query_field_map
-        public bytes pkt_name
+        public str pkt_name
         public uint16_t pq_type
         public tuple query_fields
 
-    cpdef PKT get_layer(self, bytes name, int instance=*, int found=*)
+    cpdef PKT get_layer(self, str name, int instance=*, int found=*)
 
     cpdef PKT get_layer_by_type(self,
                                 uint16_t pq_type,
@@ -217,7 +217,7 @@ cdef class PKT:
 
     cpdef tuple from_buffer(self, tuple args, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class ARP(PKT):
@@ -226,22 +226,21 @@ cdef class ARP(PKT):
         uint16_t _operation
         public uint16_t hardware_type, proto_type,
         public unsigned char hardware_len, proto_len
-        public bytes sender_hw_addr, sender_proto_addr, target_hw_addr, \
+        public str sender_hw_addr, sender_proto_addr, target_hw_addr, \
             target_proto_addr
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class NullPkt(PKT):
     cdef:
         array _buffer
-        public bytes payload
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class Ip4Ph:
@@ -260,7 +259,7 @@ cdef class NetflowSimple(PKT):
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class UDP(PKT):
@@ -272,9 +271,9 @@ cdef class UDP(PKT):
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cdef app_layer(self, array plbuffer)
+    cdef app_layer(self)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class TCP(PKT):
@@ -289,9 +288,9 @@ cdef class TCP(PKT):
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cdef app_layer(self, array plbuffer)
+    cdef app_layer(self)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class ICMP(PKT):
@@ -304,16 +303,17 @@ cdef class ICMP(PKT):
         public uint32_t orig_ts, rec_ts, trans_ts
         public PKT hdr_pkt
         public bytes echo_data
-        array _address
+        bytes _address
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
     cpdef bytes pkt2net(self, dict kwargs)
 
 cdef class IP(PKT):
 
     cdef:
-        array _src, _dst, _buffer, _pad
+        bytes _src, _dst
+        array _buffer, _pad
         uint16_t _flags_offset
         unsigned char _version_iphl, _proto
         Ip4Ph ipv4_pheader
@@ -325,7 +325,7 @@ cdef class IP(PKT):
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class MPLS(PKT):
@@ -336,7 +336,7 @@ cdef class MPLS(PKT):
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class Ethernet(PKT):
@@ -349,4 +349,4 @@ cdef class Ethernet(PKT):
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)

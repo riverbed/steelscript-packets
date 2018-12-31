@@ -122,6 +122,7 @@ cdef class DNS(PKT):
         public list queries, answers, authority, ad
         dict labels
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
     cpdef bytes pkt2net(self, dict kwargs)
+

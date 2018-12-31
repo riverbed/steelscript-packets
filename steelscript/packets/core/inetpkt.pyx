@@ -202,7 +202,7 @@ cdef uint16_t checksum(bytes pkt):
     return (((_s>>8)&0xff)|_s<<8) & 0xffff
 
 
-cdef unsigned char is_ipv4(bytes ip):
+cdef unsigned char is_ipv4(str ip):
     """
     Test if a set of bytes is a valid IPv4 address.
     :param ip: 
@@ -384,7 +384,7 @@ cdef class PKT:
                 decoding their payload.
 
         """
-        self.pkt_name = b'PKT'
+        self.pkt_name = 'PKT'
         self.pq_type, self.query_fields = PKT.query_info()
         if 'l7_ports' in kwargs and isinstance(kwargs['l7_ports'], dict):
             self.l7_ports = kwargs['l7_ports']
@@ -413,15 +413,15 @@ cdef class PKT:
         """
         return []
 
-    cpdef object get_field_val(self, bytes field):
+    cpdef object get_field_val(self, str field):
         return None
 
-    cpdef PKT get_layer(self, bytes name, int instance=1, int found=0):
+    cpdef PKT get_layer(self, str name, int instance=1, int found=0):
         """Used to get sub 'layers' of a PKT class based on the name of the
         desired layer.
 
         Args:
-            :name (bytes): Class name of the desired layer ('IP', 'UDP', ...)
+            :name (str): Class name of the desired layer ('IP', 'UDP', ...)
             :instance (int): The Nth instance of the class you want. 
                 Useful for PKT types that can exist multiple times in a single 
                 packet. Examples include MPLS or Ethernet.
@@ -514,11 +514,11 @@ cdef class PKT:
         """
         if len(args) == 1 and isinstance(args[0], array):
             return 1, args[0]
-        elif len(args) == 1 and isinstance(args[0], (bytes, str)):
+        elif len(args) == 1 and isinstance(args[0], bytes):
             return 1, array('B', args[0])
         elif 'data' in kwargs and isinstance(kwargs['data'], array):
             return 1, kwargs['data']
-        elif 'data' in kwargs and isinstance(kwargs['data'], (bytes, str)):
+        elif 'data' in kwargs and isinstance(kwargs['data'], bytes):
             return 1, array('B', kwargs['data'])
         return 0, array('B')
 
@@ -556,61 +556,78 @@ cdef class ARP(PKT):
                 hardware address.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
-        self.pkt_name = b'ARP'
+        self.pkt_name = 'ARP'
         self.pq_type, self.query_fields = ARP.query_info()
 
         cdef:
             unsigned char use_buffer
             unsigned int s_proto_start, t_hw_start, t_proto_start
-            bytes h_u, p_u
+            str h_u, p_u
+            bytes tmpbuf
         use_buffer, self._buffer = self.from_buffer(args, kwargs)
         if use_buffer:
             (self.hardware_type, self.proto_type, self.hardware_len,
              self.proto_len, self.operation) = \
-                unpack('!HHBBH', self._buffer[:8])
+                unpack(b'!HHBBH', self._buffer[:8])
             if(self.hardware_type == ARP_TYPE_ETH and
                        self.proto_type == ETH_TYPE_IPV4 and
                        self.proto_len == IPV4_LEN):
-                self.sender_hw_addr = bytes(':'.join('%02x'%i for i in
-                                unpack("!6B",self._buffer[8:14])))
+                self.sender_hw_addr = ':'.join('%02x' % i for i in
+                                      unpack('!6B', self._buffer[8:14]))
                 self.sender_proto_addr = socket.inet_ntoa(self._buffer[14:18])
-                self.target_hw_addr = bytes(':'.join('%02x'%i for i in
-                                unpack("!6B",self._buffer[18:24])))
+                self.target_hw_addr = ':'.join('%02x' % i for i in
+                                      unpack('!6B', self._buffer[18:24]))
                 self.target_proto_addr = socket.inet_ntoa(self._buffer[24:28])
             else:
                 s_proto_start = 8 + self.hardware_len
                 t_hw_start = s_proto_start + self.proto_len
                 t_proto_start = t_hw_start + self.hardware_len
                 t_proto_end = t_proto_start + self.proto_len
-                h_u = "!{0}B".format(self.hardware_len)
-                p_u = "!{0}B".format(self.proto_len)
+                h_u = '!%sB' % self.hardware_len
+                p_u = '!%sB' % self.proto_len
                 self.sender_hw_addr = \
-                    bytes(''.join('%02x'%i for i in unpack(h_u,
-                        self._buffer[8:s_proto_start])))
+                    ''.join('%02x' % i for i in unpack(h_u,
+                        self._buffer[8:s_proto_start]))
                 self.sender_proto_addr = \
-                    bytes(''.join('%02x'%i for i in unpack(p_u,
-                        self._buffer[s_proto_start:t_hw_start])))
+                    ''.join('%02x' % i for i in unpack(p_u,
+                        self._buffer[s_proto_start:t_hw_start]))
                 self.taget_hw_addr = \
-                    bytes(''.join('%02x'%i for i in unpack(h_u,
-                        self._buffer[t_hw_start:t_proto_start])))
+                    ''.join('%02x' % i for i in unpack(h_u,
+                        self._buffer[t_hw_start:t_proto_start]))
                 self.taget_proto_addr = \
-                    bytes(''.join('%02x'%i for i in unpack(p_u,
-                        self._buffer[t_proto_start:t_proto_end])))
+                    ''.join('%02x' % i for i in unpack(p_u,
+                        self._buffer[t_proto_start:t_proto_end]))
         else:
+
             self.hardware_type = kwargs.get('hardware_type',
                                             ARP_TYPE_ETH)
             self.proto_type = kwargs.get('proto_type', ETH_TYPE_IPV4)
+
             self.hardware_len = kwargs.get('hardware_len',MAC_LEN)
             self.proto_len = kwargs.get('proto_len', IPV4_LEN)
             self.operation = kwargs.get('operation', 1)
-            self.sender_hw_addr = kwargs.get('sender_hw_addr',
-                                             b'00:00:00:00:00:00')
-            self.sender_proto_addr = kwargs.get('sender_proto_addr',
-                                                b'0.0.0.0')
-            self.target_hw_addr = kwargs.get('target_hw_addr',
-                                            b'00:00:00:00:00:00')
-            self.target_proto_addr = kwargs.get('target_proto_addr',
-                                                b'0.0.0.0')
+            if (self.hardware_type == ARP_TYPE_ETH and
+                    self.proto_type == ETH_TYPE_IPV4 and
+                    self.proto_len == IPV4_LEN):
+                self.sender_hw_addr = kwargs.get('sender_hw_addr',
+                                                 '00:00:00:00:00:00')
+                self.sender_proto_addr = kwargs.get('sender_proto_addr',
+                                                    '0.0.0.0')
+                self.target_hw_addr = kwargs.get('target_hw_addr',
+                                                '00:00:00:00:00:00')
+                self.target_proto_addr = kwargs.get('target_proto_addr',
+                                                    '0.0.0.0')
+            else:
+                # No idea how to pack this so build the buffer now
+                self._buffer = array('B', pack(b'!HHBBH', self.hardware_type,
+                                                          self.proto_type,
+                                                          self.hardware_len,
+                                                          self.proto_len,
+                                                          self.operation))
+                # Temporary hack to get around not being able to pack any
+                # other supported address types
+                tmpbuf = b'\x00' * (self.hardware_len * 2 + self.proto_len * 2)
+                self._buffer += array('B', tmpbuf)
 
     @classmethod
     def query_info(cls):
@@ -622,40 +639,40 @@ cdef class ARP(PKT):
                 field names.
         """
         return (ETH_TYPE_ARP,
-                (b'arp.hw.type', b'arp.proto.type', b'arp.hw.size',
-                 b'arp.proto.size', b'arp.opcode', 'arp.src.hw_mac',
-                 b'arp.src.proto_ipv4', b'arp.dst.hw_mac',
-                 b'arp.dst.proto_ipv4'))
+                ('arp.hw.type', 'arp.proto.type', 'arp.hw.size',
+                 'arp.proto.size', 'arp.opcode', 'arp.src.hw_mac',
+                 'arp.src.proto_ipv4', 'arp.dst.hw_mac',
+                 'arp.dst.proto_ipv4'))
 
-    cpdef object get_field_val(self, bytes field):
+    cpdef object get_field_val(self, str field):
         """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch.
 
         Args:
-            :field (bytes): name of the desired field in Wireshark format. For 
+            :field (str): name of the desired field in Wireshark format. For 
                 example: arp.proto.type or tcp.flags.urg
 
         Returns:
             :object: the value of the field.
         """
-        if field == b'arp.hw.type':
+        if field == 'arp.hw.type':
             return self.hardware_type
-        elif field == b'arp.proto.type':
+        elif field == 'arp.proto.type':
             return self.proto_type
-        elif field == b'arp.hw.size':
+        elif field == 'arp.hw.size':
             return self.hardware_len
-        elif field == b'arp.proto.size':
+        elif field == 'arp.proto.size':
             return self.proto_len
-        elif field == b'arp.opcode':
+        elif field == 'arp.opcode':
             return self.operation
-        elif field == b'arp.src.hw_mac':
+        elif field == 'arp.src.hw_mac':
             return self.sender_hw_addr
-        elif field == b'arp.src.proto_ipv4':
+        elif field == 'arp.src.proto_ipv4':
             return self.sender_proto_addr
-        elif field == b'arp.dst.hw_mac':
+        elif field == 'arp.dst.hw_mac':
             return self.target_hw_addr
-        elif field == b'arp.dst.proto_ipv4':
+        elif field == 'arp.dst.proto_ipv4':
             return self.target_proto_addr
         else:
             return None
@@ -715,21 +732,19 @@ cdef class ARP(PKT):
                 sndr += binascii.unhexlify(pair)
             for pair in self.target_hw_addr.split(':'):
                 trgt += binascii.unhexlify(pair)
-            return b'{0}{1}{2}{3}{4}'.format(
-                pack('!HHBBH', self.hardware_type,
-                               self.proto_type,
-                               self.hardware_len,
-                               self.proto_len,
-                               self.operation),
+            return b'%b%b%b%b%b' % (
+                pack(b'!HHBBH', self.hardware_type,
+                                self.proto_type,
+                                self.hardware_len,
+                                self.proto_len,
+                                self.operation),
                 sndr,
                 socket.inet_aton(self.sender_proto_addr),
                 trgt,
                 socket.inet_aton(self.target_proto_addr)
             )
-        elif self._buffer != b'':
-            return self._buffer
         else:
-            return b''
+            return self._buffer.tobytes()
 
 
 cdef class NullPkt(PKT):
@@ -747,16 +762,12 @@ cdef class NullPkt(PKT):
             of an ARP packet
         """
         super(self.__class__, self).__init__(*args, **kwargs)
-        self.pkt_name = b'NullPkt'
+        self.pkt_name = 'NullPkt'
         self.pq_type, self.query_fields = NullPkt.query_info()
 
         cdef:
             unsigned char use_buffer
         use_buffer, self._buffer = self.from_buffer(args, kwargs)
-        if use_buffer:
-            self.payload = self._buffer.tostring()
-        else:
-            self.payload = b''
 
     @classmethod
     def query_info(cls):
@@ -768,10 +779,20 @@ cdef class NullPkt(PKT):
         return (PQ_NULLPKT,
                 ())
 
-    def __repr__(self):
-        return "{0}: {1}".format(self.pkt_name, self.payload)
+    property payload:
+        """
+        get and set payload bytes
+        """
+        def __get__(self):
+            return self._buffer.tobytes()
 
-    cpdef object get_field_val(self, bytes field):
+        def __set__(self, bytes value):
+            self._buffer = array('B', value)
+
+    def __repr__(self):
+        return b'%b: %b' % (self.pkt_name.encode(), self._buffer.tobytes())
+
+    cpdef object get_field_val(self, str field):
         """
         pseudo pcap_query support for get_field_val.
         """
@@ -787,7 +808,7 @@ cdef class NullPkt(PKT):
         Returns:
             :bytes: The NullPkt data exactly as it came into __init__
         """
-        return b'{0}'.format(self.payload)
+        return self._buffer.tobytes()
 
 
 cdef class Ip4Ph:
@@ -816,8 +837,8 @@ cdef class Ip4Ph:
         """The real C level init function for Ip4Ph. __init__ above is only
         for documentation.
         """
-        self.src = kwargs.get('src', b'0.0.0.0')
-        self.dst = kwargs.get('dst', b'0.0.0.0')
+        self.src = kwargs.get('src', b'\x00\x00\x00\x00')
+        self.dst = kwargs.get('dst', b'\x00\x00\x00\x00')
         self.reserved = kwargs.get('reserved', 0)
         self.proto = kwargs.get('proto', 0)
         self.payload_len = kwargs.get('payload_len', 0)
@@ -853,7 +874,7 @@ cdef class NetflowSimple(PKT):
             :payload (bytes): The rest of the netflow packet as bytes.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
-        self.pkt_name = b'NetflowSimple'
+        self.pkt_name = 'NetflowSimple'
         self.pq_type, self.query_fields = NetflowSimple.query_info()
         cdef:
             unsigned char use_buffer
@@ -865,10 +886,10 @@ cdef class NetflowSimple(PKT):
              self.sys_uptime,
              self.unix_secs,
              self.unix_nano_seconds) = \
-                unpack('!HHIII', self._buffer[:16])
+                unpack(b'!HHIII', self._buffer[:16])
 
             if len(self._buffer[16:]):
-                self.payload = self._buffer[16:]
+                self.payload = self._buffer[16:].tobytes()
             else:
                 self.payload = b''
         else:
@@ -889,8 +910,8 @@ cdef class NetflowSimple(PKT):
             field names.
         """
         return (PQ_NETFLOW_SIMPLE,
-                (b'netflow.version', b'netflow.count', b'netflow.sys_uptime',
-                 b'netflow.unix_secs', b'netflow.unix_nano_seconds'))
+                ('netflow.version', 'netflow.count', 'netflow.sys_uptime',
+                 'netflow.unix_secs', 'netflow.unix_nano_seconds'))
 
     @classmethod
     def default_ports(cls):
@@ -903,27 +924,27 @@ cdef class NetflowSimple(PKT):
         """
         return [2005, 2055]
 
-    cpdef object get_field_val(self, bytes field):
+    cpdef object get_field_val(self, str field):
         """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch.
 
         Args:
-            :field (bytes): name of the desired field in Wireshark format. For 
+            :field (str): name of the desired field in Wireshark format. For 
                 example: arp.proto.type or tcp.flags.urg
 
         Returns:
             :object: the value of the field.
         """
-        if field == b'netflow.version':
+        if field == 'netflow.version':
             return self.version
-        elif field == b'netflow.count':
+        elif field == 'netflow.count':
             return self.count
-        elif field == b'netflow.sys_uptime':
+        elif field == 'netflow.sys_uptime':
             return self.sys_uptime
-        elif field == b'netflow.unix_secs':
+        elif field == 'netflow.unix_secs':
             return self.unix_secs
-        elif field == b'netflow.unix_nano_seconds':
+        elif field == 'netflow.unix_nano_seconds':
             return self.unix_nano_seconds
         else:
             return None
@@ -941,12 +962,12 @@ cdef class NetflowSimple(PKT):
             :bytes: network order byte string representation of the 
                 NetflowSimple instance.
         """
-        return b'{0}{1}'.format(pack("!HHIII", self.version,
-                                               self.count,
-                                               self.sys_uptime,
-                                               self.unix_secs,
-                                               self.unix_nano_seconds),
-                                self.payload)
+        return b'%b%b' % (pack(b'!HHIII', self.version,
+                                          self.count,
+                                          self.sys_uptime,
+                                          self.unix_secs,
+                                          self.unix_nano_seconds),
+                          self.payload)
 
 
 cdef class UDP(PKT):
@@ -971,15 +992,15 @@ cdef class UDP(PKT):
                    decode the payload string or byte array.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
-        self.pkt_name = b'UDP'
+        self.pkt_name = 'UDP'
         self.pq_type, self.query_fields = UDP.query_info()
         cdef:
             unsigned char use_buffer
         use_buffer, self._buffer = self.from_buffer(args, kwargs)
         if use_buffer:
             self.sport, self.dport, self.ulen, self.checksum = \
-                unpack('!HHHH', self._buffer[:8])
-            self.app_layer(self._buffer[8:])
+                unpack(b'!HHHH', self._buffer[:8])
+            self.app_layer()
         else:
             self.sport = kwargs.get('sport', 0)
             self.dport = kwargs.get('dport', 0)
@@ -988,8 +1009,10 @@ cdef class UDP(PKT):
             if kwargs.has_key('payload'):
                 if isinstance(kwargs['payload'], PKT):
                    self.payload = kwargs['payload']
-                elif isinstance(kwargs['payload'], (bytes, str)):
-                    self.app_layer(array('B', kwargs['payload']))
+                elif isinstance(kwargs['payload'], bytes):
+                    self._buffer = \
+                        array('B', (b'\x00' * 8 + kwargs['payload']))
+                    self.app_layer()
                 else:
                     self.payload = NullPkt()
             else:
@@ -1004,10 +1027,10 @@ cdef class UDP(PKT):
             :tuple: PQTYPES.t_udp and a tuple of the supported field names.
         """
         return (PQ_UDP,
-                (b'udp.srcport', b'udp.dstport', b'udp.length',
-                 b'udp.checksum', b'udp.payload',b'udp.payload.offset[x:y]'))
+                ('udp.srcport', 'udp.dstport', 'udp.length',
+                 'udp.checksum', 'udp.payload','udp.payload.offset[x:y]'))
 
-    cpdef object get_field_val(self, bytes field):
+    cpdef object get_field_val(self, str field):
         """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch. Also handles 
@@ -1022,17 +1045,17 @@ cdef class UDP(PKT):
         """
         cdef list offsets
         cdef f = field[:18]
-        if f == b'udp.srcport':
+        if f == 'udp.srcport':
             return self.sport
-        elif f == b'udp.dstport':
+        elif f == 'udp.dstport':
             return self.dport
-        elif f == b'udp.length':
+        elif f == 'udp.length':
             return self.ulen
-        elif f == b'udp.checksum':
+        elif f == 'udp.checksum':
             return self.checksum
-        elif f == b'udp.payload':
+        elif f == 'udp.payload':
             return self.payload.pkt2net({})
-        elif f == b'udp.payload.offset':
+        elif f == 'udp.payload.offset':
             offsets = (field[19:field.index(']')].split(':'))
             if len(offsets) == 2:
                 return self.payload.pkt2net({})[
@@ -1076,32 +1099,28 @@ cdef class UDP(PKT):
         if _update:
             self.ulen = 8 + len(_pload_bytes)
         if _csum and isinstance(_ipv4_pheader, Ip4Ph):
-            ip_ph = b'{0}{1}{2}'.format(_ipv4_pheader.src,
-                                        _ipv4_pheader.dst,
-                                        pack('!HHHHH', _ipv4_pheader.proto,
-                                                       self.ulen,
-                                                       self.sport,
-                                                       self.dport,
-                                                       self.ulen))
-            self.checksum = checksum(b'{0}\000\000{1}'.format(ip_ph,
-                                                              _pload_bytes))
-        return b'{0}{1}'.format(pack('!HHHH', self.sport,
-                                              self.dport,
-                                              self.ulen,
-                                              self.checksum),
-                                _pload_bytes)
+            ip_ph = b'%b%b%b' % (_ipv4_pheader.src,
+                                 _ipv4_pheader.dst,
+                                 pack(b'!HHHHH', _ipv4_pheader.proto,
+                                                 self.ulen,
+                                                 self.sport,
+                                                 self.dport,
+                                                 self.ulen))
+            self.checksum = checksum(b'%b\000\000%b' % (ip_ph, _pload_bytes))
+        return b'%b%b' % (pack('!HHHH', self.sport,
+                                        self.dport,
+                                        self.ulen,
+                                        self.checksum),
+                          _pload_bytes)
 
-    cdef app_layer(self, array plbuffer):
+    cdef app_layer(self):
         """Attempts to create an instance of the correct layer 7 protocol
-        if the layer 4 ports match. Otherwise returns NullPkt.
+        if the layer 4 ports match. Otherwise sets payload to a NullPkt.
         instance.
-
-        Args:
-            :plbuffer (array.array of bytes): The Layer 7 payload.
         """
         cdef type pkt_cls
         pkt_cls = NullPkt
-        if len(plbuffer):
+        if len(self._buffer[8:]):
             if self.dport in self.l7_ports:
                 if issubclass(self.l7_ports[self.dport], PKT):
                     pkt_cls = self.l7_ports[self.dport]
@@ -1117,7 +1136,7 @@ cdef class UDP(PKT):
                     pkt_cls = self.l7_ports[0]
                 else:
                     pkt_cls = globals()[self.l7_ports[0]]
-        self.payload = pkt_cls(plbuffer)
+        self.payload = pkt_cls(self._buffer[8:])
 
 
 cdef class TCP(PKT):
@@ -1162,7 +1181,7 @@ cdef class TCP(PKT):
                 decode the payload string or byte array.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
-        self.pkt_name = b'TCP'
+        self.pkt_name = 'TCP'
         self.pq_type, self.query_fields = TCP.query_info()
         cdef:
             unsigned char use_buffer
@@ -1173,14 +1192,13 @@ cdef class TCP(PKT):
         if use_buffer and self.ws_len >= 20:
             (self.sport, self.dport, self.sequence, self.acknowledgment,
             self._off_flags, self.window, self.checksum, self.urg_ptr) = \
-                unpack('!HHIIHHHH', self._buffer[:20])
+                unpack(b'!HHIIHHHH', self._buffer[:20])
             if self.data_offset > 5:
                 self._options = \
-                    bytes(self._buffer[20:(self.data_offset * 4)].tostring())
+                    self._buffer[20:(self.data_offset * 4)].tobytes()
             else:
                 self._options = b''
-
-            self.app_layer(self._buffer[(self.data_offset * 4):])
+            self.app_layer()
         else:
             if use_buffer and self.ws_len == 8:
                 # From ICMP
@@ -1208,8 +1226,11 @@ cdef class TCP(PKT):
             if kwargs.has_key('payload'):
                 if isinstance(kwargs['payload'], PKT):
                    self.payload = kwargs['payload']
-                elif isinstance(kwargs['payload'], (bytes, str)):
-                    self.app_layer(array('B', kwargs['payload']))
+                elif isinstance(kwargs['payload'], bytes):
+                    self._buffer = array('B',
+                                         b'\x00' * (self.data_offset * 4) +
+                                         kwargs['payload'])
+                    self.app_layer()
                 else:
                     self.payload = NullPkt()
             else:
@@ -1224,14 +1245,14 @@ cdef class TCP(PKT):
             :tuple: PQTYPES.t_tcp and a tuple of the supported field names.
         """
         return (PQ_TCP,
-                (b'tcp.srcport', b'tcp.dstport', b'tcp.seq', b'tcp.ack',
-                 b'tcp.hdr_len', b'tcp.len', b'tcp.flags', b'tcp.flags.urg',
-                 b'tcp.flags.ack', b'tcp.flags.push', b'tcp.flags.reset',
-                 b'tcp.flags.syn', b'tcp.flags.fin', b'tcp.window_size_value',
-                 b'tcp.checksum', b'tcp.urgent_pointer', b'tcp.payload',
-                 b'tcp.payload.offset[x:y]'))
+                ('tcp.srcport', 'tcp.dstport', 'tcp.seq', 'tcp.ack',
+                 'tcp.hdr_len', 'tcp.len', 'tcp.flags', 'tcp.flags.urg',
+                 'tcp.flags.ack', 'tcp.flags.push', 'tcp.flags.reset',
+                 'tcp.flags.syn', 'tcp.flags.fin', 'tcp.window_size_value',
+                 'tcp.checksum', 'tcp.urgent_pointer', 'tcp.payload',
+                 'tcp.payload.offset[x:y]'))
 
-    cpdef object get_field_val(self, bytes field):
+    cpdef object get_field_val(self, str field):
         """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch. Also handles 
@@ -1245,41 +1266,41 @@ cdef class TCP(PKT):
         """
         cdef list offsets
         cdef f = field[:18]
-        if f == b'tcp.srcport':
+        if f == 'tcp.srcport':
             return self.sport
-        elif f == b'tcp.dstport':
+        elif f == 'tcp.dstport':
             return self.dport
-        elif f == b'tcp.seq':
+        elif f == 'tcp.seq':
             return self.sequence
-        elif f == b'tcp.ack':
+        elif f == 'tcp.ack':
             return self.acknowledgment
-        elif f == b'tcp.hdr_len':
+        elif f == 'tcp.hdr_len':
             return self.data_offset
-        elif f == b'tcp.len':
+        elif f == 'tcp.len':
             return self.ws_len
-        elif f == b'tcp.flags':
+        elif f == 'tcp.flags':
             return self.flags
-        elif f == b'tcp.flags.urg':
+        elif f == 'tcp.flags.urg':
             return self.flag_urg
-        elif f == b'tcp.flags.ack':
+        elif f == 'tcp.flags.ack':
             return self.flag_ack
-        elif f == b'tcp.flags.push':
+        elif f == 'tcp.flags.push':
             return self.flag_psh
-        elif f == b'tcp.flags.reset':
+        elif f == 'tcp.flags.reset':
             return self.flag_rst
-        elif f == b'tcp.flags.syn':
+        elif f == 'tcp.flags.syn':
             return self.flag_syn
-        elif f == b'tcp.flags.fin':
+        elif f == 'tcp.flags.fin':
             return self.flag_fin
-        elif f == b'tcp.window_size_va':
+        elif f == 'tcp.window_size_va':
             return self.window
-        elif f == b'tcp.checksum':
+        elif f == 'tcp.checksum':
             return self.checksum
-        elif f == b'tcp.urgent_pointer':
+        elif f == 'tcp.urgent_pointer':
             return self.urg_ptr
-        elif f == b'tcp.payload':
+        elif f == 'tcp.payload':
             return self.payload.pkt2net({})
-        elif f == b'tcp.payload.offset':
+        elif f == 'tcp.payload.offset':
             offsets = (field[19:field.index(']')].split(':'))
             if len(offsets) == 2:
                 return self.payload.pkt2net({})[
@@ -1451,46 +1472,44 @@ cdef class TCP(PKT):
 
         _pload_bytes = self.payload.pkt2net(kwargs)
 
-        sport_window = pack('!HHIIHH', self.sport,
-                                       self.dport,
-                                       self.sequence,
-                                       self.acknowledgment,
-                                       self._off_flags,
-                                       self.window)
+        sport_window = pack(b'!HHIIHH', self.sport,
+                                        self.dport,
+                                        self.sequence,
+                                        self.acknowledgment,
+                                        self._off_flags,
+                                        self.window)
 
         if _csum and isinstance(_ipv4_pheader, Ip4Ph):
             tcp_len = (self.data_offset * 4) + len(_pload_bytes)
             # Note _ipv4_pheader.proto is packed as a short on purpose.
-            ip_ph = b'{0}{1}{2}{3}'.format(
-                _ipv4_pheader.src,
-                _ipv4_pheader.dst,
-                pack('!HH', _ipv4_pheader.proto, tcp_len),
-                sport_window)
-            self.checksum = checksum(b'{0}\000\000{1}{2}{3}{4}'.format(
+            ip_ph = b'%b%b%b%b' % (_ipv4_pheader.src,
+                                   _ipv4_pheader.dst,
+                                   pack(b'!HH', _ipv4_pheader.proto,
+                                                tcp_len),
+                                   sport_window)
+            self.checksum = checksum(b'%b\000\000%b%b%b%b' % (
                 ip_ph,
-                pack('!H', self.urg_ptr),
+                pack(b'!H', self.urg_ptr),
                 self._options,
                 self._pad,
                 _pload_bytes))
 
-        return b'{0}{1}{2}{3}{4}'.format(sport_window,
-                                         pack('!HH', self.checksum,
-                                                     self.urg_ptr),
-                                         self._options,
-                                         self._pad,
-                                         _pload_bytes)
+        return b'%b%b%b%b%b' % (sport_window,
+                                pack(b'!HH', self.checksum, self.urg_ptr),
+                                self._options,
+                                self._pad,
+                                _pload_bytes)
 
-    cdef app_layer(self, array plbuffer):
+    cdef app_layer(self):
         """
         Attempts to create an instance of the correct layer 7 protocol
-        if the layer 4 ports match. Otherwise returns NullPkt or PKT
+        if the layer 4 ports match. Otherwise sets payload to  NullPkt or PKT
         instance.
-        :param plbuffer: array of bytes that make up the Layer 7 payload.
         :return: void
         """
         cdef type pkt_cls
         pkt_cls = NullPkt
-        if len(plbuffer):
+        if len(self._buffer[(self.data_offset * 4):]):
             if self.dport in self.l7_ports:
                 if issubclass(self.l7_ports[self.dport], PKT):
                     pkt_cls = self.l7_ports[self.dport]
@@ -1506,7 +1525,7 @@ cdef class TCP(PKT):
                     pkt_cls = self.l7_ports[0]
                 else:
                     pkt_cls = globals()[self.l7_ports[0]]
-        self.payload = pkt_cls(plbuffer)
+        self.payload = pkt_cls(self._buffer[(self.data_offset * 4):])
 
 
 cdef class ICMP(PKT):
@@ -1515,7 +1534,7 @@ cdef class ICMP(PKT):
     """
     def __init__(self, *args, **kwargs):
         super(self.__class__, self).__init__(*args, **kwargs)
-        self.pkt_name = b'ICMP'
+        self.pkt_name = 'ICMP'
         self.pq_type, self.query_fields = ICMP.query_info()
         cdef:
             unsigned char use_buffer
@@ -1531,23 +1550,23 @@ cdef class ICMP(PKT):
             self.hdr_pkt = NullPkt()
             self.data = array('B')
             self.echo_data = b''
-            self._address = array('B', (0,0,0,0))
+            self._address = b'\x00\x00\x00\x00'
             self.type, self.code, self.checksum = \
-                unpack('!BBH', self._buffer[:4])
+                unpack(b'!BBH', self._buffer[:4])
             if (self.type in (ICMP_TYPE_ECHO_REPLY,
                               ICMP_TYPE_ECHO,
                               ICMP_TYPE_INFO,
                               ICMP_TYPE_INFO_REPLY)):
                 # Echo packet format
-                (self.identifier, self.sequence) = unpack('!HH',
+                (self.identifier, self.sequence) = unpack(b'!HH',
                                                           self._buffer[4:8])
                 if self._buffer[8:]:
-                    self.echo_data = self._buffer[8:].tostring()
+                    self.echo_data = self._buffer[8:].tobytes()
                 else:
                     self.echo_data = b''
             elif self.type == ICMP_TYPE_DU:
                 # Destination Unreachable format
-                self.mtu = unpack('!H', self._buffer[6:8])[0]
+                self.mtu = unpack(b'!H', self._buffer[6:8])[0]
                 self.hdr_pkt = IP(self._buffer[8:])
             elif (self.type in (ICMP_TYPE_SRC_QUENCH,
                                 ICMP_TYPE_TIME_EX)):
@@ -1555,7 +1574,7 @@ cdef class ICMP(PKT):
                 self.hdr_pkt = IP(self._buffer[8:])
             elif self.type == ICMP_TYPE_REDIR:
                 # redirect format
-                self._address = self._buffer[4:8]
+                self._address = socket.inet_aton(self._buffer[4:8])
                 self.hdr_pkt = IP(self._buffer[8:])
             elif self.type == ICMP_TYPE_PER_PROB:
                 # Parameter Problem format
@@ -1564,7 +1583,7 @@ cdef class ICMP(PKT):
             elif (self.type in (ICMP_TYPE_TS,
                                 ICMP_TYPE_TS_REPLY)):
                 (self.identifier, self.sequence, self.orig_ts,
-                 self.rec_ts, self.trans_ts) = unpack('!HHIII',
+                 self.rec_ts, self.trans_ts) = unpack(b'!HHIII',
                                                       self._buffer)
             else:
                 # unknown
@@ -1583,7 +1602,7 @@ cdef class ICMP(PKT):
             self.hdr_pkt = kwargs.get('hdr_pkt', NullPkt())
             self.data = kwargs.get('data', array('B'))
             self.echo_data = kwargs.get('echo_data', b'')
-            self.address = kwargs.get('address', b'0.0.0.0')
+            self.address = kwargs.get('address', '0.0.0.0')
 
     @classmethod
     def query_info(cls):
@@ -1594,12 +1613,12 @@ cdef class ICMP(PKT):
             :tuple: PQTYPES.t_udp and a tuple of the supported field names.
         """
         return (PQ_ICMP,
-                (b'icmp.checksum', b'icmp.code', b'icmp.seq', b'icmp.mtu',
-                 b'icmp.ident', b'icmp.originate_timestamp', b'icmp.pointer'
-                 b'icmp.receive_timestamp', b'icmp.redir_gw',
-                 b'icmp.transmit_timestamp', b'icmp.type'))
+                ('icmp.checksum', 'icmp.code', 'icmp.seq', 'icmp.mtu',
+                 'icmp.ident', 'icmp.originate_timestamp', 'icmp.pointer'
+                 'icmp.receive_timestamp', 'icmp.redir_gw',
+                 'icmp.transmit_timestamp', 'icmp.type'))
 
-    cpdef object get_field_val(self, bytes field):
+    cpdef object get_field_val(self, str field):
         """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch.
@@ -1613,33 +1632,33 @@ cdef class ICMP(PKT):
         """
         cdef:
             uint32_t ts_secs, ts_mills
-        if field == b'icmp.checksum':
+        if field == 'icmp.checksum':
             return self.checksum
-        elif field == b'icmp.code':
+        elif field == 'icmp.code':
             return self.code
-        elif field == b'icmp.ident':
+        elif field == 'icmp.ident':
             return self.identifier
-        elif field == b'icmp.originate_timestamp':
+        elif field == 'icmp.originate_timestamp':
             return self.orig_ts
-        elif field == b'icmp.receive_timestamp':
+        elif field == 'icmp.receive_timestamp':
             return self.rec_ts
-        elif field == b'icmp.redir_gw':
+        elif field == 'icmp.redir_gw':
             return self.address
-        elif field == b'icmp.seq':
+        elif field == 'icmp.seq':
             return self.sequence
-        elif field == b'icmp.transmit_timestamp':
+        elif field == 'icmp.transmit_timestamp':
             return self.trans_ts
-        elif field == b'icmp.type':
+        elif field == 'icmp.type':
             return self.type
-        elif field == b'icmp.mtu':
+        elif field == 'icmp.mtu':
             return self.mtu
-        elif field == b'icmp.pointer':
+        elif field == 'icmp.pointer':
             return self.pointer
-        elif field == b'icmp.data_time':
+        elif field == 'icmp.data_time':
             if (self.type in (ICMP_TYPE_ECHO_REPLY, ICMP_TYPE_ECHO) and
                     len(self.echo_data) >= 8):
                 ts_secs, ts_mills = unpack('!II', self.echo_data[:8])
-                return b'{0}.{1}'.format(ts_secs, ts_mills)
+                return b'%d.%d' % (ts_secs, ts_mills)
             else:
                 return b'0.0'
         else:
@@ -1660,8 +1679,8 @@ cdef class ICMP(PKT):
         """
         cdef:
             bytes pkt_hdr_bytes = b''
-            bytes before_check = b'{0}{1}'.format(chr(self.type),
-                                                  chr(self.code))
+            bytes before_check = b'%b%b' % (chr(self.type).encode(),
+                                            chr(self.code).encode())
             bytes after_check = b''
             bytes nullcheck = b'\000\000'
             bint for_icmp = 1
@@ -1675,53 +1694,50 @@ cdef class ICMP(PKT):
                           ICMP_TYPE_ECHO,
                           ICMP_TYPE_INFO,
                           ICMP_TYPE_INFO_REPLY)):
-            after_check =  b'{0}{1}'.format(pack('!HH', self.identifier,
-                                                        self.sequence),
-                                            self.echo_data)
+            after_check =  b'%b%b' % (pack('!HH', self.identifier,
+                                                  self.sequence),
+                                      self.echo_data)
         elif self.type == ICMP_TYPE_DU:
-            after_check = (b'\000\000{0}{1}'
-                           b''.format(pack('!H', self.mtu),
-                                      self.hdr_pkt.pkt2net(kwargs)))
+            after_check = b'\000\000%b%b' % (pack('!H', self.mtu),
+                                             self.hdr_pkt.pkt2net(kwargs))
         elif (self.type in (ICMP_TYPE_SRC_QUENCH,
                             ICMP_TYPE_TIME_EX)):
-            after_check = b'\000\000\000\000{0}'.format(
+            after_check = b'\000\000\000\000%b' % (
                 self.hdr_pkt.pkt2net(kwargs))
         elif self.type == ICMP_TYPE_REDIR:
-            after_check = b'{0}{1}'.format(self.address.tostring(),
-                                           self.hdr_pkt.pkt2net(kwargs))
+            after_check = b'%b%b' % (self._address,
+                                     self.hdr_pkt.pkt2net(kwargs))
         elif self.type == ICMP_TYPE_PER_PROB:
-            after_check = b'{0}\000\000\000{1}'.format(
-                chr(self.pointer),
+            after_check = b'%b\000\000\000%b' % (
+                chr(self.pointer).encode(),
                 self.hdr_pkt.pkt2net(kwargs)
             )
         elif (self.type in (ICMP_TYPE_TS,
                             ICMP_TYPE_TS_REPLY)):
-            after_check = pack('!HHIII',  self.identifier, self.sequence,
+            after_check = pack(b'!HHIII',  self.identifier, self.sequence,
                                           self.orig_ts, self.rec_ts,
                                           self.trans_ts)
         else:
             # type is not supported yet. Just try to return the bytes we got
             if self.have_data:
-                return self._buffer.tostring()
+                return self._buffer.tobytes()
             else:
                 return b''
 
         if _csum:
-            self.checksum = checksum(b'{0}{1}{2}'.format(before_check,
-                                                         nullcheck,
-                                                         after_check))
-        return b'{0}{1}{2}'.format(before_check,
-                                   pack('!H', self.checksum),
-                                   after_check)
+            self.checksum = checksum(b'%b%b%b' % (before_check,
+                                                  nullcheck,
+                                                  after_check))
+        return b'%b%b%b' % (before_check,
+                            pack('!H', self.checksum),
+                            after_check)
 
     property address:
         def __get__(self):
             return socket.inet_ntoa(self._address)
-        def __set__(self, bytes val):
-            cdef bytes t
-            if is_ipv4(val):
-                t = socket.inet_aton(val)
-                self._address = array('B', t)
+        def __set__(self, str value):
+            if is_ipv4(value):
+                self._address = socket.inet_aton(value)
             else:
                 raise ValueError("address must be a dot notation "
                                  "IPv4 string. (1.1.1.1)")
@@ -1771,7 +1787,7 @@ cdef class IP(PKT):
                 the payload string or byte array.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
-        self.pkt_name = b'IP'
+        self.pkt_name = 'IP'
         self.pq_type, self.query_fields = IP.query_info()
         cdef:
             unsigned char use_buffer
@@ -1815,13 +1831,13 @@ cdef class IP(PKT):
             self.ttl = kwargs.get('ttl', 64)
             self.proto = kwargs.get('proto', 0)
             self.checksum = kwargs.get('checksum', 0)
-            self.src = kwargs.get('src', b'0.0.0.0')
-            self.dst = kwargs.get('dst', b'0.0.0.0')
+            self.src = kwargs.get('src', '0.0.0.0')
+            self.dst = kwargs.get('dst', '0.0.0.0')
             if (kwargs.has_key('payload') and
                     isinstance(kwargs['payload'], PKT)):
                 self.payload = kwargs['payload']
             elif (kwargs.has_key('payload') and
-                      isinstance(kwargs['payload'], (str, bytes))):
+                      isinstance(kwargs['payload'], bytes)):
                 if self.proto == PROTO_UDP:
                     self.payload = UDP(kwargs['payload'],
                                        l7_ports = self.l7_ports)
@@ -1846,12 +1862,12 @@ cdef class IP(PKT):
                 field names.
         """
         return (PQ_IP,
-                (b'ip.version', b'ip.hdr_len', b'ip.tos', b'ip.len', b'ip.id',
-                 b'ip.flags', b'ip.flags.df', b'ip.flags.mf',
-                 b'ip.frag_offset', b'ip.ttl', b'ip.proto', b'ip.src',
-                 b'ip.dst', b'ip.checksum'))
+                ('ip.version', 'ip.hdr_len', 'ip.tos', 'ip.len', 'ip.id',
+                 'ip.flags', 'ip.flags.df', 'ip.flags.mf',
+                 'ip.frag_offset', 'ip.ttl', 'ip.proto', 'ip.src',
+                 'ip.dst', 'ip.checksum'))
 
-    cpdef object get_field_val(self, bytes field):
+    cpdef object get_field_val(self, str field):
         """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch.
@@ -1863,33 +1879,33 @@ cdef class IP(PKT):
         Returns:
             :object: the value of the field.
         """
-        if field == b'ip.version':
+        if field == 'ip.version':
             return self.version
-        elif field == b'ip.hdr_len':
+        elif field == 'ip.hdr_len':
             return self.iphl
-        elif field == b'ip.tos':
+        elif field == 'ip.tos':
             return self.tos
-        elif field == b'ip.len':
+        elif field == 'ip.len':
             return self.total_len
-        elif field == b'ip.id':
+        elif field == 'ip.id':
             return self.ident
-        elif field == b'ip.flags':
+        elif field == 'ip.flags':
             return self.flags
-        elif field == b'ip.flags.df':
+        elif field == 'ip.flags.df':
             return self.flag_d
-        elif field == b'ip.flags.mf':
+        elif field == 'ip.flags.mf':
             return self.flag_m
-        elif field == b'ip.frag_offset':
+        elif field == 'ip.frag_offset':
             return self.frag_offset
-        elif field == b'ip.ttl':
+        elif field == 'ip.ttl':
             return self.ttl
-        elif field == b'ip.proto':
+        elif field == 'ip.proto':
             return self.proto
-        elif field == b'ip.src':
+        elif field == 'ip.src':
             return self.src
-        elif field == b'ip.dst':
+        elif field == 'ip.dst':
             return self.dst
-        elif field == b'ip.checksum':
+        elif field == 'ip.checksum':
             return self.checksum
         else:
             return None
@@ -1945,25 +1961,25 @@ cdef class IP(PKT):
         if _update:
             self.total_len = self.iphl * 4 + len(_pload_bytes)
 
-        ip_ph = pack('!BBHHHBB', self._version_iphl,
-                                 self.tos,
-                                 self.total_len,
-                                 self.ident,
-                                 self._flags_offset,
-                                 self.ttl,
-                                 self._proto)
+        ip_ph = pack(b'!BBHHHBB', self._version_iphl,
+                                  self.tos,
+                                  self.total_len,
+                                  self.ident,
+                                  self._flags_offset,
+                                  self.ttl,
+                                  self._proto)
 
         if _csum:
-            self.checksum = checksum(b'{0}\000\000{1}{2}'
-                                     b''.format(ip_ph,
-                                                self.ipv4_pheader.src,
-                                                self.ipv4_pheader.dst)
-                                     )
-        return bytes("{0}{1}{2}{3}{4}".format(ip_ph,
-                                              pack('!H', self.checksum),
-                                              self.ipv4_pheader.src,
-                                              self.ipv4_pheader.dst,
-                                              _pload_bytes))
+            self.checksum = checksum(b'%b\000\000%b%b' % (
+                ip_ph,
+                self._src,
+                self._dst)
+            )
+        return b'%b%b%b%b%b' % (ip_ph,
+                                pack('!H', self.checksum),
+                                self._src,
+                                self._dst,
+                                _pload_bytes)
 
     property version:
         """ The IP version defined by this packet. """
@@ -2057,36 +2073,28 @@ cdef class IP(PKT):
             self.ipv4_pheader.proto = val
 
     property src_nochk:
-        def __set__(self, array val):
-            self.ipv4_pheader.src = val.tostring()
-            self._src = val
+        def __set__(self, array value):
+            self.ipv4_pheader.src = self._src = value.tobytes()
 
     property src:
         def __get__(self):
             return socket.inet_ntoa(self._src)
-        def __set__(self, bytes val):
-            cdef bytes t
-            if is_ipv4(val):
-                t = socket.inet_aton(val)
-                self._src = array('B', t)
-                self.ipv4_pheader.src = t
+        def __set__(self, str value):
+            if is_ipv4(value):
+                self.ipv4_pheader.src = self._src = socket.inet_aton(value)
             else:
                 raise ValueError("src must be a dot notation "
                                  "IPv4 string. (1.1.1.1)")
     property dst_nochk:
-        def __set__(self, array val):
-            self.ipv4_pheader.dst = val.tostring()
-            self._dst = val
+        def __set__(self, array value):
+            self.ipv4_pheader.dst = self._dst = value.tobytes()
 
     property dst:
         def __get__(self):
             return socket.inet_ntoa(self._dst)
-        def __set__(self, bytes val):
-            cdef bytes t
-            if is_ipv4(val):
-                t = socket.inet_aton(val)
-                self._dst = array('B', t)
-                self.ipv4_pheader.dst = t
+        def __set__(self, str value):
+            if is_ipv4(value):
+                self.ipv4_pheader.dst = self._dst = socket.inet_aton(value)
             else:
                 raise ValueError("dst must be a dot notation "
                                  "IPv4 string. (1.1.1.1)")
@@ -2120,7 +2128,7 @@ cdef class MPLS(PKT):
                 on to subsequent packet layers.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
-        self.pkt_name = b'MPLS'
+        self.pkt_name = 'MPLS'
         self.pq_type, self.query_fields = MPLS.query_info()
         cdef:
             unsigned char use_buffer
@@ -2176,12 +2184,12 @@ cdef class MPLS(PKT):
             :tuple: PQTYPES.t_mpls and a tuple of the supported field names.
         """
         return (PQ_MPLS,
-                (b'mpls.bottom.label', b'mpls.bottom.tc',
-                 b'mpls.bottom.stack_bit', b'mpls.bottom.ttl',
-                 b'mpls.top.label', b'mpls.top.tc',
-                 b'mpls.top.stack_bit', b'mpls.top.ttl'))
+                ('mpls.bottom.label', 'mpls.bottom.tc',
+                 'mpls.bottom.stack_bit', 'mpls.bottom.ttl',
+                 'mpls.top.label', 'mpls.top.tc',
+                 'mpls.top.stack_bit', 'mpls.top.ttl'))
 
-    cpdef get_field_val(self, bytes field):
+    cpdef get_field_val(self, str field):
         """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch. This function is
@@ -2196,24 +2204,24 @@ cdef class MPLS(PKT):
             :object: value of the field.
         """
         if field.find('.bottom.') >= 0 and self.s:
-            if field == b'mpls.bottom.label':
+            if field == 'mpls.bottom.label':
                 return self.label
-            elif field == b'mpls.bottom.tc':
+            elif field == 'mpls.bottom.tc':
                 return self.tc
-            elif field == b'mpls.bottom.stack_bit':
+            elif field == 'mpls.bottom.stack_bit':
                 return self.s
-            elif field == b'mpls.bottom.ttl':
+            elif field == 'mpls.bottom.ttl':
                 return self.ttl
             else:
                 return None
         elif field.find('.top.') >= 0 and not self.s:
-            if field == b'mpls.top.label':
+            if field == 'mpls.top.label':
                 return self.label
-            elif field == b'mpls.top.tc':
+            elif field == 'mpls.top.tc':
                 return self.tc
-            elif field == b'mpls.top.stack_bit':
+            elif field == 'mpls.top.stack_bit':
                 return self.s
-            elif field == b'mpls.top.ttl':
+            elif field == 'mpls.top.ttl':
                 return self.ttl
             else:
                 return None
@@ -2291,8 +2299,8 @@ cdef class MPLS(PKT):
         else:
             _pload_bytes = b''
 
-        return bytes("{0}{1}".format(pack('!I', self._data),
-                                     _pload_bytes))
+        return b'%b%b' % (pack(b'!I', self._data),
+                          _pload_bytes)
 
 
 cdef class Ethernet(PKT):
@@ -2320,7 +2328,7 @@ cdef class Ethernet(PKT):
                 the payload string or byte array.
         """
         super(self.__class__, self).__init__(*args, **kwargs)
-        self.pkt_name = b'Ethernet'
+        self.pkt_name = 'Ethernet'
         self.tpid = 0
         self._tci = 0
         self.pq_type, self.query_fields = Ethernet.query_info()
@@ -2333,10 +2341,10 @@ cdef class Ethernet(PKT):
         if use_buffer:
             self._dst_mac = self._buffer[:6]
             self._src_mac = self._buffer[6:12]
-            self.type = unpack('!H', self._buffer[12:14])[0]
+            self.type = unpack(b'!H', self._buffer[12:14])[0]
             if self.type == ETH_TYPE_8021Q:
                 self.tpid = ETH_TYPE_8021Q
-                self._tci, self.type = unpack('!HH', self._buffer[14:18])
+                self._tci, self.type = unpack(b'!HH', self._buffer[14:18])
                 vlan_hdr_add = 4
             if self.type == ETH_TYPE_IPV4:
                 self.payload = IP(self._buffer[14 + vlan_hdr_add:],
@@ -2349,8 +2357,8 @@ cdef class Ethernet(PKT):
             else:
                 self.payload = NullPkt(self._buffer[14 + vlan_hdr_add:])
         else:
-            self.src_mac = kwargs.get('src_mac', b'00:00:00:00:00:00')
-            self.dst_mac = kwargs.get('dst_mac', b'00:00:00:00:00:00')
+            self.src_mac = kwargs.get('src_mac', '00:00:00:00:00:00')
+            self.dst_mac = kwargs.get('dst_mac', '00:00:00:00:00:00')
             self.type = kwargs.get('type', ETH_TYPE_IPV4)
             self.tpid = kwargs.get('tpid', 0)
             if self.tpid == ETH_TYPE_8021Q:
@@ -2369,9 +2377,9 @@ cdef class Ethernet(PKT):
                 field names.
         """
         return (PQ_ETH,
-                (b'eth.type', b'eth.src', b'eth.dst'))
+                ('eth.type', 'eth.src', 'eth.dst'))
 
-    cpdef object get_field_val(self, bytes field):
+    cpdef object get_field_val(self, str field):
         """Returns the value of the Wireshark format field name. Implemented as 
         an if, elif, else set because Cython documentation shows that this 
         form is turned that into an efficient case switch.
@@ -2383,26 +2391,28 @@ cdef class Ethernet(PKT):
         Returns:
             :object: the value of the field.
         """
-        if field == b'eth.type':
+        if field == 'eth.type':
             return self.type
-        elif field == b'eth.src':
+        elif field == 'eth.src':
             return self.src_mac
-        elif field == b'eth.dst':
+        elif field == 'eth.dst':
             return self.dst_mac
         else:
             return None
 
     property src_mac:
         def __get__(self):
-            return b':'.join(b'%02d' % x for x in self._src_mac)
+            return "%02x:%02x:%02x:%02x:%02x:%02x" % unpack("BBBBBB",
+                                                            self._src_mac)
         def __set__(self, bytes val):
-            self._src_mac = array('B', (int(x, 16) for x in val.split(b':')))
+            self._src_mac = array('B', (int(x, 16) for x in val.split(':')))
 
     property dst_mac:
         def __get__(self):
-            return b':'.join(b'%02d' % x for x in self._dst_mac)
+            return "%02x:%02x:%02x:%02x:%02x:%02x" % unpack("BBBBBB",
+                                                            self._dst_mac)
         def __set__(self, bytes val):
-            self._dst_mac = array('B', (int(x, 16) for x in val.split(b':')))
+            self._dst_mac = array('B', (int(x, 16) for x in val.split(':')))
 
     property priority_code:
         """ The priority_code. """
@@ -2462,14 +2472,14 @@ cdef class Ethernet(PKT):
         if isinstance(self.payload, PKT):
             _pload_bytes = self.payload.pkt2net(kwargs)
         if self.tpid == ETH_TYPE_8021Q:
-            return b'{0}{1}{2}{3}'.format(self._dst_mac.tostring(),
-                                          self._src_mac.tostring(),
-                                          pack('!HHH', self.tpid,
-                                                       self._tci,
-                                                       self.type),
-                                          _pload_bytes)
+            return b'%b%b%b%b' % (self._dst_mac.tobytes(),
+                                  self._src_mac.tobytes(),
+                                  pack('!HHH', self.tpid,
+                                               self._tci,
+                                               self.type),
+                                  _pload_bytes)
         else:
-            return b'{0}{1}{2}{3}'.format(self._dst_mac.tostring(),
-                                          self._src_mac.tostring(),
-                                          pack('!H', self.type),
-                                          _pload_bytes)
+            return b'%b%b%b%b' % (self._dst_mac.tobytes(),
+                                  self._src_mac.tobytes(),
+                                  pack('!H', self.type),
+                                  _pload_bytes)

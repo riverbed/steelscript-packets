@@ -64,22 +64,22 @@ cdef class PcapHeader:
             self.use_buffer = 1
 
         if self.use_buffer:
-            self.magic = struct.unpack('I', self._buffer[:4])[0]
+            self.magic = struct.unpack(b'I', self._buffer[:4])[0]
             if self.magic == MAGIC.ident:
-                self.order = '<'
+                self.order = b'<'
                 self.nano = 0
             elif self.magic == MAGIC.ident_nano:
-                self.order = '<'
+                self.order = b'<'
                 self.nano = 1
             elif self.magic == MAGIC.swapped:
-                self.order = '>'
+                self.order = b'>'
                 self.nano = 0
             elif self.magic == MAGIC.swapped_nano:
-                self.order = '>'
+                self.order = b'>'
                 self.nano = 1
             else:
                 raise ValueError('PCAP header magic number is invalid. Was '
-                                 '{0} vs once of {1}.'
+                                 '{0} vs one of {1}.'
                                  ''.format(self.magic,
                                            ','.join([MAGIC.ident,
                                                      MAGIC.ident_nano,
@@ -90,21 +90,21 @@ cdef class PcapHeader:
              self.tz_offset,
              self.ts_accuracy,
              self.snap_len,
-             self.net_layer) = struct.unpack('{0}HHiIII'.format(self.order),
+             self.net_layer) = struct.unpack(b'%bHHiIII' % self.order,
                                              self._buffer[4:])
         else:
             self.magic = kwargs.get('magic', MAGIC.ident)
             if self.magic == MAGIC.ident:
-                self.order = '<'
+                self.order = b'<'
                 self.nano = 0
             elif self.magic == MAGIC.ident_nano:
-                self.order = '<'
+                self.order = b'<'
                 self.nano = 1
             elif self.magic == MAGIC.swapped:
-                self.order = '>'
+                self.order = b'>'
                 self.nano = 0
             elif self.magic == MAGIC.swapped_nano:
-                self.order = '>'
+                self.order = b'>'
                 self.nano = 1
             else:
                 raise ValueError('PCAP header magic number is invalid. Was '
@@ -125,10 +125,10 @@ cdef class PcapHeader:
         def __get__(self):
             return self._order
         def __set__(self, bytes val):
-            if val in ['<', '>']:
+            if val in [b'<', b'>']:
                 self._order = val
             else:
-                raise ValueError("order must '>' or '<'")
+                raise ValueError("order must b'>' or b'<'")
 
     property tz_offset:
         def __get__(self):
@@ -141,7 +141,7 @@ cdef class PcapHeader:
                                  "{0}-{1}".format(-0x80000000, 0x7fffffff))
 
     def __str__(self):
-        return bytes(pack('{0}IHHIIII'.format(self.order),
+        return bytes(pack(b'%bIHHIIII' % self.order,
                           self.magic,
                           self.major_version,
                           self.minor_version,
@@ -173,7 +173,7 @@ cdef class PktHeader:
         self.order = kwargs.get('order', b'<')
         self.use_buffer = 0
         self._buffer = b''
-        if (args and len(args) == 1 and isinstance(args[0], (str, bytes))):
+        if (args and len(args) == 1 and isinstance(args[0], bytes)):
             self._buffer = args[0]
             self.use_buffer = 1
         elif (kwargs and kwargs.has_key('data') and
@@ -185,7 +185,7 @@ cdef class PktHeader:
             (self.ts_sec,
              self.ts_usec,
              self.incl_len,
-             self.orig_len) = struct.unpack('{0}IIII'.format(self.order),
+             self.orig_len) = struct.unpack(b'%bIIII' % self.order,
                                             self._buffer)
         else:
             self.ts_sec = kwargs.get('ts_sec', 0)
@@ -194,7 +194,7 @@ cdef class PktHeader:
             self.orig_len = kwargs.get('orig_len', 0)
 
     def __str__(self):
-        return bytes(pack('{0}IIII'.format(self.order),
+        return bytes(pack(b'%bIIII' % self.order,
                           self.ts_sec,
                           self.ts_usec,
                           self.incl_len,
@@ -204,10 +204,10 @@ cdef class PktHeader:
         def __get__(self):
             return self._order
         def __set__(self, bytes val):
-            if val in ['<', '>']:
+            if val in [b'<', b'>']:
                 self._order = val
             else:
-                raise ValueError("order must '>' or '<'")
+                raise ValueError("order must b'>' or b'<'")
 
     cpdef double get_timestamp(self, uint16_t file_header_nano):
         cdef double rval
@@ -325,16 +325,16 @@ cdef class SectionHeaderBlock:
 
         if self.use_buffer:
             b_len_data = self.fh.read(4)
-            self.magic = struct.unpack('I', self.fh.read(4))[0]
+            self.magic = struct.unpack(b'I', self.fh.read(4))[0]
             if self.magic == NGMAGIC.little:
                 self.order = b'<'
             else:
                 self.order = b'>'
             (self.major,
              self.minor,
-             self.section_len) = struct.unpack('{0}HHq'.format(self.order),
+             self.section_len) = struct.unpack(b'%bHHq' % self.order,
                                                self.fh.read(12))
-            self.block_len = struct.unpack('{0}I'.format(self.order),
+            self.block_len = struct.unpack(b'%bI' % self.order,
                                            b_len_data)[0]
             self.fh.seek(self.block_len - 24, SEEK_FROM_CUR_POS)
         else:
@@ -352,10 +352,10 @@ cdef class SectionHeaderBlock:
         def __get__(self):
             return self._order
         def __set__(self, bytes val):
-            if val in ['<', '>']:
+            if val in [b'<', b'>']:
                 self._order = val
             else:
-                raise ValueError("order must '>' or '<'")
+                raise ValueError("order must b'>' or b'<'")
 
 cdef tuple parse_epb(object fh,
                      bytes order,
@@ -386,7 +386,7 @@ cdef tuple parse_epb(object fh,
      ts_high,
      ts_low,
      cap_len,
-     pkt_len) = struct.unpack('{order}IIIIII'.format(order=order),
+     pkt_len) = struct.unpack(b'%bIIIIII' % order,
                               fh.read(6 * 4))
 
     linktype_index = 0
@@ -444,7 +444,7 @@ cdef tuple parse_iface_descr(object fh, bytes order):
     # is not present, a resolution of 10^-6 is assumed (i.e. timestamps have
     # the same resolution of the standard 'libpcap' timestamps).
     tsres = 6
-    (block_len, link) = struct.unpack('{order}IH'.format(order=order),
+    (block_len, link) = struct.unpack(b'%bIH' % order,
                                       fh.read(6))
     # Seek 6 bytes to bypass reserved and SnapLen
     fh.seek(6, SEEK_FROM_CUR_POS)
@@ -456,12 +456,10 @@ cdef tuple parse_iface_descr(object fh, bytes order):
     else:
         opt_bytes_remain = 1
         while opt_bytes_remain:
-            (opt_code, opt_len) = \
-                struct.unpack('{order}HH'.format(order=order),
-                                                 fh.read(4))
+            (opt_code, opt_len) = struct.unpack(b'%bHH' % order, fh.read(4))
             if opt_code == OPT_CODE_TSRES and opt_len == OPT_CODE_TSLEN:
                 # order does not matter for a byte
-                tsres = struct.unpack('B', fh.read(OPT_CODE_TSLEN))[0]
+                tsres = struct.unpack(b'B', fh.read(OPT_CODE_TSLEN))[0]
                 # seek past padding
                 fh.seek(3, SEEK_FROM_CUR_POS)
             elif opt_code == 0 and opt_len == 0:
@@ -493,7 +491,7 @@ cdef class PCAPNGDecode(Decode):
         self.fh = file_handle
         self.pk_format = pk_format
         self.order = b'@'
-        self.int_unpack = b'{en}I'.format(en=self.order)
+        self.int_unpack = b'%bI' % self.order
         self.iface_descrs = list()
         self.pkt_count = 0
         self.sec_hdr = SectionHeaderBlock()
@@ -534,7 +532,7 @@ cdef class PCAPNGDecode(Decode):
                     self.sec_hdr = SectionHeaderBlock(self.fh)
                     self.order = self.sec_hdr.order
                     self.iface_descrs = list()
-                    self.int_unpack = b'{en}I'.format(en=self.order)
+                    self.int_unpack = b'%bI' % self.order
                 elif bt == NGMAGIC.iface_descr:
                     # once per file
                     self.iface_descrs.append(parse_iface_descr(self.fh,
@@ -581,8 +579,7 @@ cdef class PCAPReader:
                 packet data will be returned as a bytes string.
         """
         cdef uint32_t firstbytes
-        firstbytes = struct.unpack('I', file_handle.read(4))[0]
-        # print binascii.hexlify(self.fh.read(4))
+        firstbytes = struct.unpack(b'I', file_handle.read(4))[0]
         file_handle.seek(0)
         if firstbytes == NGMAGIC.sec_hdr:
             self.decoder = PCAPNGDecode(file_handle, pk_format=pk_format)
@@ -637,7 +634,7 @@ cdef class PCAPWriter:
         self._f = file_handle
         self._header = PcapHeader(magic=self._magic, snap_len=snap_len,
                                   net_layer=net_layer)
-        self._f.write(str(self._header))
+        self._f.write(bytes(self._header))
 
     cpdef writepkt(self, bytes pkt, double ts):
         """Write the bytes of a single packet to an open pcap file.
@@ -667,7 +664,7 @@ cdef class PCAPWriter:
                                 ts_usec=int(round(time_stmp % 1, 6) * 10 ** 6),
                                 incl_len=writelen, orig_len=pktlen,
                                 order = self._header.order)
-        self._f.write(str(pkt_header))
+        self._f.write(bytes(pkt_header))
         self._f.write(pkt[:writelen])
 
     def close(self):

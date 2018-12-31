@@ -467,7 +467,7 @@ cdef class DNS(PKT):
     """
     def __init__(self, *args, **kwargs):
         super(DNS, self).__init__(*args, **kwargs)
-        self.pkt_name = b'DNS'
+        self.pkt_name = 'DNS'
         self.pq_type, self.query_fields = DNS.query_info()
         cdef:
             bint use_buffer
@@ -563,14 +563,14 @@ cdef class DNS(PKT):
         get_field_val(<field_name>) function as well.
         return: uint16_t pq_type, tuple_of_string query_fields"""
         return (DNS_PACKET_TYPE,
-                (b'dns.ident', b'dns.query_resp', b'dns.op_code',
-                 b'dns.authoritative',
-                 b'dns.truncated', b'dns.recursion_requested',
-                 b'dns.recursion_available',
-                 b'dns.authentic_data', b'dns.check_disabled',
-                 b'dns.resp_code',
-                 b'dns.query_count', b'dns.answer_count', b'dns.auth_count',
-                 b'dns.ad_count'))
+                ('dns.ident', 'dns.query_resp', 'dns.op_code',
+                 'dns.authoritative',
+                 'dns.truncated', 'dns.recursion_requested',
+                 'dns.recursion_available',
+                 'dns.authentic_data', 'dns.check_disabled',
+                 'dns.resp_code',
+                 'dns.query_count', 'dns.answer_count', 'dns.auth_count',
+                 'dns.ad_count'))
 
 
     @classmethod
@@ -581,41 +581,41 @@ cdef class DNS(PKT):
         return [DNS_PACKET_PORT]
 
 
-    cpdef object get_field_val(self, bytes field):
+    cpdef object get_field_val(self, str field):
         """ Used to fetch field data values for DNS packets. Does not yet have
             support for retrieving query and resource record values.
             Args:
-                :field (bytes): name of the field
+                :field (str): name of the field
             Returns:
                 :object: the value of the field in this packet.
         """
-        if field == b'dns.ident':
+        if field == 'dns.ident':
             return self.ident
-        elif field == b'dns.query_resp':
+        elif field == 'dns.query_resp':
             return self.query_resp
-        elif field == b'dns.op_code':
+        elif field == 'dns.op_code':
             return self.op_code
-        elif field == b'dns.authoritative':
+        elif field == 'dns.authoritative':
             return self.authoritative
-        elif field == b'dns.truncated':
+        elif field == 'dns.truncated':
             return self.truncated
-        elif field == b'dns.recursion_requested':
+        elif field == 'dns.recursion_requested':
             return self.recursion_requested
-        elif field == b'dns.recursion_available':
+        elif field == 'dns.recursion_available':
             return self.recursion_available
-        elif field == b'dns.authentic_data':
+        elif field == 'dns.authentic_data':
             return self.authentic_data
-        elif field == b'dns.check_disabled':
+        elif field == 'dns.check_disabled':
             return self.check_disabled
-        elif field == b'dns.resp_code':
+        elif field == 'dns.resp_code':
             return self.resp_code
-        elif field == b'dns.query_count':
+        elif field == 'dns.query_count':
             return self.query_count
-        elif field == b'dns.answer_count':
+        elif field == 'dns.answer_count':
             return self.answer_count
-        elif field == b'dns.auth_count':
+        elif field == 'dns.auth_count':
             return self.auth_count
-        elif field == b'dns.ad_count':
+        elif field == 'dns.ad_count':
             return self.ad_count
         else:
             return None

@@ -11,5 +11,6 @@ steel_bootstrap.*
 .idea/
 .tox/
 *.so
+*.c
 setup-inplace.py
 *.pcap

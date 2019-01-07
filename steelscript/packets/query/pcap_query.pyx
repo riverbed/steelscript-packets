@@ -7,6 +7,7 @@
 # as set forth in the License.
 
 from cpython.array cimport array
+from pandas import DataFrame
 import datetime
 import tzlocal
 import pytz
@@ -43,7 +44,7 @@ cdef class PcapQuery:
             list default_classes
             uint16_t ptype, port
             tuple pfields
-            bytes pfield
+            str pfield
             object pkt_class
 
         self.fields = dict()
@@ -90,10 +91,10 @@ cdef class PcapQuery:
             found = 0
             if this_field in self.fields:
                 found = 1
-            elif this_field == b'frame.time_epoch':
+            elif this_field == 'frame.time_epoch':
                 found = 1
-            elif this_field[:18] in (b'tcp.payload.offset',
-                                     b'udp.payload.offset'):
+            elif this_field[:18] in ('tcp.payload.offset',
+                                     'udp.payload.offset'):
                 groups = offset_re.match(this_field)
                 if groups:
                     if int(groups.groups()[1]) < int(groups.groups()[2]):
@@ -157,14 +158,14 @@ cdef class PcapQuery:
 
 
         for fname in wshark_fields:
-            if fname == b'frame.time_epoch':
+            if fname == 'frame.time_epoch':
                 id_name.append((PQ_FRAME, fname))
-            elif fname.find(b'payload.offset') == NOT_FOUND:
+            elif fname.find('payload.offset') == NOT_FOUND:
                 id_name.append((self.fields[fname], fname))
-            elif fname.find(b'payload.offset') >= 0:
-                if fname[:3] == b'tcp':
+            elif fname.find('payload.offset') >= 0:
+                if fname[:3] == 'tcp':
                     id_name.append((PQ_TCP, fname))
-                elif fname[:3] == b'udp':
+                elif fname[:3] == 'udp':
                     id_name.append((PQ_UDP, fname))
                 else:
                     print("invalid payload.offset[x:y] field name!! "
@@ -200,7 +201,7 @@ cdef class PcapQuery:
                 # we have all the objects now. Do the report and return.
                 # order matters.
                 for rep_fname, layer_index in name_idx:
-                    if rep_fname == b'frame.time_epoch':
+                    if rep_fname == 'frame.time_epoch':
                         # the one and only field from FRAME
                         if as_datetime:
                             return_vals[-1].append((datetime.datetime
@@ -219,13 +220,7 @@ cdef class PcapQuery:
                         )
 
         if rdf and return_vals:
-            try:
-                import pandas
-            except ImportError as e:
-                raise ImportError("pcap_query's rdf option requires pandas. "
-                                  "Please pip install pandas. Error was: {0}"
-                                  "".format(e.message))
-            return pandas.DataFrame(return_vals, columns=wshark_fields)
+            return DataFrame(return_vals, columns=wshark_fields)
         elif rdf and not return_vals:
             return None
         return return_vals

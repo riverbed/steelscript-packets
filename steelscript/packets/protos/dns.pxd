@@ -11,6 +11,10 @@ from libc.stdint cimport int64_t, uint64_t, \
 from steelscript.packets.core.inetpkt cimport PKT
 
 cpdef enum:
+    # global
+    # for pointer dereference
+    PNTR=0
+    # dns specific
     DNS_PACKET_TYPE = 53
     DNS_PACKET_PORT = 53
     DNSTYPE_ANY = 0
@@ -61,7 +65,6 @@ cpdef enum:
     RCLASS_IN = 1
     RCLASS_NONE = 254
     RCLASS_ANY = 255
-    PNTR=0
     LABEL = 49152
     SOA_MNAME = 2
     SOA_RNAME = 4
@@ -73,11 +76,11 @@ cpdef enum:
 
 cdef array hostname_to_label_array(bytes hostname)
 
-cdef bytes read_dns_name_bytes(array byte_array,
-                               uint16_t* offset,
-                               dict label_store)
+cdef str read_dns_name_bytes(array byte_array,
+                             uint16_t* offset,
+                             dict label_store)
 
-cdef bytes write_dns_name_bytes(bytes dns_name,
+cdef bytes write_dns_name_bytes(str dns_name,
                                 uint16_t* offset,
                                 dict labels,
                                 bint compress=*)
@@ -86,16 +89,16 @@ cdef tuple parse_resource(array byte_array,
                           uint16_t* offset,
                           dict label_store)
 
-cdef bytes parse_soa(array res_data, uint16_t* offset, uint16_t* rlen,
-                     dict labels)
+cdef str parse_soa(array res_data, uint16_t* offset, uint16_t* rlen,
+                   dict labels)
 
-cdef bytes pack_soa(bytes res_data, uint16_t* offset, dict labels,
+cdef bytes pack_soa(str res_data, uint16_t* offset, dict labels,
                     bint compress=*)
 
 
 cdef class DNSQuery:
     cdef:
-        bytes _query_name
+        str _query_name
         public uint16_t query_type, query_class
 
     cdef bytes pack(self, uint16_t* offset, dict labels, bint compress=*)
@@ -103,10 +106,10 @@ cdef class DNSQuery:
 
 cdef class DNSResource:
     cdef:
-        bytes _domain_name
+        str _domain_name
         public uint16_t res_type, res_class, res_len
         public uint32_t res_ttl
-        bytes res_data
+        str res_data
 
     cdef bytes pack(self, uint16_t* offset,
                           dict labels,

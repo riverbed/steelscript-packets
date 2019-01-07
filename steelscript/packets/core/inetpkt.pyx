@@ -790,7 +790,8 @@ cdef class NullPkt(PKT):
             self._buffer = array('B', value)
 
     def __repr__(self):
-        return b'%b: %b' % (self.pkt_name.encode(), self._buffer.tobytes())
+        return '{0}: {1}'.format(self.pkt_name,
+                                 self._buffer.tobytes().decode())
 
     cpdef object get_field_val(self, str field):
         """

@@ -1640,7 +1640,7 @@ struct __pyx_vtabstruct_11steelscript_7packets_4core_4pcap_PCAPWriter {
 static struct __pyx_vtabstruct_11steelscript_7packets_4core_4pcap_PCAPWriter *__pyx_vtabptr_11steelscript_7packets_4core_4pcap_PCAPWriter;
 
 
-/* "steelscript/packets/query/pcap_query.pyx":25
+/* "steelscript/packets/query/pcap_query.pyx":26
  * 
  * 
  * cdef class PcapQuery:             # <<<<<<<<<<<<<<
@@ -1719,16 +1719,6 @@ static struct __pyx_vtabstruct_11steelscript_7packets_5query_10pcap_query_PcapQu
 #define __Pyx_CLEAR(r)    do { PyObject* tmp = ((PyObject*)(r)); r = NULL; __Pyx_DECREF(tmp);} while(0)
 #define __Pyx_XCLEAR(r)   do { if((r) != NULL) {PyObject* tmp = ((PyObject*)(r)); r = NULL; __Pyx_DECREF(tmp);}} while(0)
 
-/* PyObjectGetAttrStr.proto */
-#if CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject* attr_name);
-#else
-#define __Pyx_PyObject_GetAttrStr(o,n) PyObject_GetAttr(o,n)
-#endif
-
-/* GetBuiltinName.proto */
-static PyObject *__Pyx_GetBuiltinName(PyObject *name);
-
 /* KeywordStringCheck.proto */
 static int __Pyx_CheckKeywordStrings(PyObject *kwdict, const char* function_name, int kw_allowed);
 
@@ -1761,6 +1751,13 @@ static CYTHON_INLINE int __Pyx_PyList_Extend(PyObject* L, PyObject* v) {
     return PyList_SetSlice(L, PY_SSIZE_T_MAX, PY_SSIZE_T_MAX, v);
 #endif
 }
+
+/* PyObjectGetAttrStr.proto */
+#if CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject* attr_name);
+#else
+#define __Pyx_PyObject_GetAttrStr(o,n) PyObject_GetAttr(o,n)
+#endif
 
 /* PyFunctionFastCall.proto */
 #if CYTHON_FAST_PYCALL
@@ -1856,6 +1853,9 @@ static CYTHON_INLINE PyObject *__Pyx_CallUnboundCMethod2(__Pyx_CachedCFunction *
 
 /* PyObjectCall2Args.proto */
 static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
+
+/* GetBuiltinName.proto */
+static PyObject *__Pyx_GetBuiltinName(PyObject *name);
 
 /* GetModuleGlobalName.proto */
 #if CYTHON_USE_DICT_VERSIONS
@@ -1992,44 +1992,6 @@ static PyObject* __Pyx_PyObject_CallMethod1(PyObject* obj, PyObject* method_name
 /* append.proto */
 static CYTHON_INLINE int __Pyx_PyObject_Append(PyObject* L, PyObject* x);
 
-/* Import.proto */
-static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level);
-
-/* GetTopmostException.proto */
-#if CYTHON_USE_EXC_INFO_STACK
-static _PyErr_StackItem * __Pyx_PyErr_GetTopmostException(PyThreadState *tstate);
-#endif
-
-/* SaveResetException.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_ExceptionSave(type, value, tb)  __Pyx__ExceptionSave(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#define __Pyx_ExceptionReset(type, value, tb)  __Pyx__ExceptionReset(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb);
-#else
-#define __Pyx_ExceptionSave(type, value, tb)   PyErr_GetExcInfo(type, value, tb)
-#define __Pyx_ExceptionReset(type, value, tb)  PyErr_SetExcInfo(type, value, tb)
-#endif
-
-/* PyErrExceptionMatches.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
-static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err);
-#else
-#define __Pyx_PyErr_ExceptionMatches(err)  PyErr_ExceptionMatches(err)
-#endif
-
-/* GetException.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_GetException(type, value, tb)  __Pyx__GetException(__pyx_tstate, type, value, tb)
-static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#else
-static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb);
-#endif
-
-/* RaiseException.proto */
-static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
-
 /* RaiseArgTupleInvalid.proto */
 static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
     Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
@@ -2042,14 +2004,28 @@ static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
     PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
     const char* function_name);
 
+/* PyErrExceptionMatches.proto */
+#if CYTHON_FAST_THREAD_STATE
+#define __Pyx_PyErr_ExceptionMatches(err) __Pyx_PyErr_ExceptionMatchesInState(__pyx_tstate, err)
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err);
+#else
+#define __Pyx_PyErr_ExceptionMatches(err)  PyErr_ExceptionMatches(err)
+#endif
+
 /* GetAttr.proto */
 static CYTHON_INLINE PyObject *__Pyx_GetAttr(PyObject *, PyObject *);
 
 /* GetAttr3.proto */
 static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *, PyObject *, PyObject *);
 
+/* Import.proto */
+static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level);
+
 /* ImportFrom.proto */
 static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name);
+
+/* RaiseException.proto */
+static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
 
 /* HasAttr.proto */
 static CYTHON_INLINE int __Pyx_HasAttr(PyObject *, PyObject *);
@@ -2527,7 +2503,6 @@ extern int __pyx_module_is_main_steelscript__packets__query__pcap_query;
 int __pyx_module_is_main_steelscript__packets__query__pcap_query = 0;
 
 /* Implementation of 'steelscript.packets.query.pcap_query' */
-static PyObject *__pyx_builtin_ImportError;
 static PyObject *__pyx_builtin_MemoryError;
 static const char __pyx_k_re[] = "re";
 static const char __pyx_k_0_1[] = "{0}:{1}";
@@ -2559,7 +2534,6 @@ static const char __pyx_k_update[] = "update";
 static const char __pyx_k_columns[] = "columns";
 static const char __pyx_k_compile[] = "compile";
 static const char __pyx_k_endtime[] = "endtime";
-static const char __pyx_k_message[] = "message";
 static const char __pyx_k_replace[] = "replace";
 static const char __pyx_k_tzlocal[] = "tzlocal";
 static const char __pyx_k_datetime[] = "datetime";
@@ -2580,7 +2554,6 @@ static const char __pyx_k_pcap_query[] = "pcap_query";
 static const char __pyx_k_pyx_result[] = "__pyx_result";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_query_info[] = "query_info";
-static const char __pyx_k_ImportError[] = "ImportError";
 static const char __pyx_k_MemoryError[] = "MemoryError";
 static const char __pyx_k_PickleError[] = "PickleError";
 static const char __pyx_k_as_datetime[] = "as_datetime";
@@ -2610,11 +2583,9 @@ static const char __pyx_k_tcp_udp_payload_offset_x_y_x_y[] = "tcp|udp.payload.of
 static const char __pyx_k_Incompatible_checksums_s_vs_0x99[] = "Incompatible checksums (%s vs 0x99ce20c = (fields, l7_ports, local_tz))";
 static const char __pyx_k_invalid_payload_offset_x_y_field[] = "invalid payload.offset[x:y] field name!! Use fields_supported to check fields.";
 static const char __pyx_k_invalid_query_field_name_Use_fie[] = "invalid query field name!! Use fields_supported to check fields.";
-static const char __pyx_k_pcap_query_s_rdf_option_requires[] = "pcap_query's rdf option requires pandas. Please pip install pandas. Error was: {0}";
 static const char __pyx_k_steelscript_packets_query_pcap_q[] = "steelscript.packets.query.pcap_query";
 static PyObject *__pyx_kp_s_0_1;
 static PyObject *__pyx_n_s_DataFrame;
-static PyObject *__pyx_n_s_ImportError;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x99;
 static PyObject *__pyx_n_s_MemoryError;
 static PyObject *__pyx_n_s_NOT_FOUND;
@@ -2636,7 +2607,7 @@ static PyObject *__pyx_n_s_file;
 static PyObject *__pyx_n_s_file_handle;
 static PyObject *__pyx_n_s_find;
 static PyObject *__pyx_n_s_format;
-static PyObject *__pyx_kp_b_frame_time_epoch;
+static PyObject *__pyx_kp_s_frame_time_epoch;
 static PyObject *__pyx_n_s_get;
 static PyObject *__pyx_n_s_get_field_val;
 static PyObject *__pyx_n_s_get_localzone;
@@ -2649,14 +2620,12 @@ static PyObject *__pyx_n_s_known_fields;
 static PyObject *__pyx_n_s_l7_ports;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_match;
-static PyObject *__pyx_n_s_message;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_n_s_offset_re;
 static PyObject *__pyx_n_s_pandas;
-static PyObject *__pyx_kp_b_payload_offset;
+static PyObject *__pyx_kp_s_payload_offset;
 static PyObject *__pyx_n_s_pcap_query;
-static PyObject *__pyx_kp_s_pcap_query_s_rdf_option_requires;
 static PyObject *__pyx_n_s_pickle;
 static PyObject *__pyx_n_s_pkt_classes;
 static PyObject *__pyx_n_s_print;
@@ -2682,14 +2651,14 @@ static PyObject *__pyx_n_s_show_fields;
 static PyObject *__pyx_n_s_starttime;
 static PyObject *__pyx_n_s_steelscript_packets_query_pcap_q;
 static PyObject *__pyx_kp_s_stringsource;
-static PyObject *__pyx_n_b_tcp;
-static PyObject *__pyx_kp_b_tcp_payload_offset;
+static PyObject *__pyx_n_s_tcp;
+static PyObject *__pyx_kp_s_tcp_payload_offset;
 static PyObject *__pyx_kp_s_tcp_udp_payload_offset_x_y_x_y;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_tzinfo;
 static PyObject *__pyx_n_s_tzlocal;
-static PyObject *__pyx_n_b_udp;
-static PyObject *__pyx_kp_b_udp_payload_offset;
+static PyObject *__pyx_n_s_udp;
+static PyObject *__pyx_kp_s_udp_payload_offset;
 static PyObject *__pyx_kp_s_udp_tcp_payload_offset_d_d;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_utc;
@@ -2714,7 +2683,7 @@ static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_codeobj__3;
 /* Late includes */
 
-/* "steelscript/packets/query/pcap_query.pyx":29
+/* "steelscript/packets/query/pcap_query.pyx":30
  *     Also supports custom layer 7 port mapping.
  *     """
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -2773,14 +2742,14 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
   PyObject *(*__pyx_t_14)(PyObject *);
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "steelscript/packets/query/pcap_query.pyx":49
+  /* "steelscript/packets/query/pcap_query.pyx":50
  *             object pkt_class
  * 
  *         self.fields = dict()             # <<<<<<<<<<<<<<
  *         self.l7_ports = dict()
  *         default_classes = [Ethernet, IP, ICMP, TCP, UDP, ARP, MPLS]
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->fields);
@@ -2788,14 +2757,14 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
   __pyx_v_self->fields = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":50
+  /* "steelscript/packets/query/pcap_query.pyx":51
  * 
  *         self.fields = dict()
  *         self.l7_ports = dict()             # <<<<<<<<<<<<<<
  *         default_classes = [Ethernet, IP, ICMP, TCP, UDP, ARP, MPLS]
  *         if ('pkt_classes' in kwargs and
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->l7_ports);
@@ -2803,14 +2772,14 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
   __pyx_v_self->l7_ports = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":51
+  /* "steelscript/packets/query/pcap_query.pyx":52
  *         self.fields = dict()
  *         self.l7_ports = dict()
  *         default_classes = [Ethernet, IP, ICMP, TCP, UDP, ARP, MPLS]             # <<<<<<<<<<<<<<
  *         if ('pkt_classes' in kwargs and
  *                 isinstance(kwargs['pkt_classes'], list)):
  */
-  __pyx_t_1 = PyList_New(7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_ptype_11steelscript_7packets_4core_7inetpkt_Ethernet));
   __Pyx_GIVEREF(((PyObject *)__pyx_ptype_11steelscript_7packets_4core_7inetpkt_Ethernet));
@@ -2836,14 +2805,14 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
   __pyx_v_default_classes = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":52
+  /* "steelscript/packets/query/pcap_query.pyx":53
  *         self.l7_ports = dict()
  *         default_classes = [Ethernet, IP, ICMP, TCP, UDP, ARP, MPLS]
  *         if ('pkt_classes' in kwargs and             # <<<<<<<<<<<<<<
  *                 isinstance(kwargs['pkt_classes'], list)):
  *             default_classes.extend(kwargs['pkt_classes'])
  */
-  __pyx_t_3 = (__Pyx_PyDict_ContainsTF(__pyx_n_s_pkt_classes, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 52, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyDict_ContainsTF(__pyx_n_s_pkt_classes, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 53, __pyx_L1_error)
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
   } else {
@@ -2851,14 +2820,14 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "steelscript/packets/query/pcap_query.pyx":53
+  /* "steelscript/packets/query/pcap_query.pyx":54
  *         default_classes = [Ethernet, IP, ICMP, TCP, UDP, ARP, MPLS]
  *         if ('pkt_classes' in kwargs and
  *                 isinstance(kwargs['pkt_classes'], list)):             # <<<<<<<<<<<<<<
  *             default_classes.extend(kwargs['pkt_classes'])
  *         for pkt_class in default_classes:
  */
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_pkt_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_pkt_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_4 = PyList_Check(__pyx_t_1); 
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -2866,7 +2835,7 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
   __pyx_t_2 = __pyx_t_3;
   __pyx_L4_bool_binop_done:;
 
-  /* "steelscript/packets/query/pcap_query.pyx":52
+  /* "steelscript/packets/query/pcap_query.pyx":53
  *         self.l7_ports = dict()
  *         default_classes = [Ethernet, IP, ICMP, TCP, UDP, ARP, MPLS]
  *         if ('pkt_classes' in kwargs and             # <<<<<<<<<<<<<<
@@ -2875,19 +2844,19 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
  */
   if (__pyx_t_2) {
 
-    /* "steelscript/packets/query/pcap_query.pyx":54
+    /* "steelscript/packets/query/pcap_query.pyx":55
  *         if ('pkt_classes' in kwargs and
  *                 isinstance(kwargs['pkt_classes'], list)):
  *             default_classes.extend(kwargs['pkt_classes'])             # <<<<<<<<<<<<<<
  *         for pkt_class in default_classes:
  *             ptype, pfields = pkt_class.query_info()
  */
-    __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_pkt_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_pkt_classes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyList_Extend(__pyx_v_default_classes, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyList_Extend(__pyx_v_default_classes, __pyx_t_1); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "steelscript/packets/query/pcap_query.pyx":52
+    /* "steelscript/packets/query/pcap_query.pyx":53
  *         self.l7_ports = dict()
  *         default_classes = [Ethernet, IP, ICMP, TCP, UDP, ARP, MPLS]
  *         if ('pkt_classes' in kwargs and             # <<<<<<<<<<<<<<
@@ -2896,7 +2865,7 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
  */
   }
 
-  /* "steelscript/packets/query/pcap_query.pyx":55
+  /* "steelscript/packets/query/pcap_query.pyx":56
  *                 isinstance(kwargs['pkt_classes'], list)):
  *             default_classes.extend(kwargs['pkt_classes'])
  *         for pkt_class in default_classes:             # <<<<<<<<<<<<<<
@@ -2907,22 +2876,22 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
   for (;;) {
     if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_7 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_7); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_7 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_7); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 56, __pyx_L1_error)
     #else
-    __pyx_t_7 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 55, __pyx_L1_error)
+    __pyx_t_7 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_pkt_class, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "steelscript/packets/query/pcap_query.pyx":56
+    /* "steelscript/packets/query/pcap_query.pyx":57
  *             default_classes.extend(kwargs['pkt_classes'])
  *         for pkt_class in default_classes:
  *             ptype, pfields = pkt_class.query_info()             # <<<<<<<<<<<<<<
  *             for pfield in pfields:
  *                 self.fields[pfield] = ptype
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_pkt_class, __pyx_n_s_query_info); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_pkt_class, __pyx_n_s_query_info); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_9 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -2936,7 +2905,7 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
     }
     __pyx_t_7 = (__pyx_t_9) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 56, __pyx_L1_error)
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if ((likely(PyTuple_CheckExact(__pyx_t_7))) || (PyList_CheckExact(__pyx_t_7))) {
@@ -2945,7 +2914,7 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 56, __pyx_L1_error)
+        __PYX_ERR(0, 57, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -2958,15 +2927,15 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
       __Pyx_INCREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_t_9);
       #else
-      __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 56, __pyx_L1_error)
+      __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 57, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 56, __pyx_L1_error)
+      __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 57, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       #endif
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_10 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 56, __pyx_L1_error)
+      __pyx_t_10 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 57, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_11 = Py_TYPE(__pyx_t_10)->tp_iternext;
@@ -2974,7 +2943,7 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
       __Pyx_GOTREF(__pyx_t_8);
       index = 1; __pyx_t_9 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_9)) goto __pyx_L8_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_9);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 2) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 2) < 0) __PYX_ERR(0, 57, __pyx_L1_error)
       __pyx_t_11 = NULL;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       goto __pyx_L9_unpacking_done;
@@ -2982,17 +2951,17 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __pyx_t_11 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 56, __pyx_L1_error)
+      __PYX_ERR(0, 57, __pyx_L1_error)
       __pyx_L9_unpacking_done:;
     }
-    __pyx_t_12 = __Pyx_PyInt_As_uint16_t(__pyx_t_8); if (unlikely((__pyx_t_12 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyInt_As_uint16_t(__pyx_t_8); if (unlikely((__pyx_t_12 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (!(likely(PyTuple_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+    if (!(likely(PyTuple_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 57, __pyx_L1_error)
     __pyx_v_ptype = __pyx_t_12;
     __Pyx_XDECREF_SET(__pyx_v_pfields, ((PyObject*)__pyx_t_9));
     __pyx_t_9 = 0;
 
-    /* "steelscript/packets/query/pcap_query.pyx":57
+    /* "steelscript/packets/query/pcap_query.pyx":58
  *         for pkt_class in default_classes:
  *             ptype, pfields = pkt_class.query_info()
  *             for pfield in pfields:             # <<<<<<<<<<<<<<
@@ -3001,38 +2970,38 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
  */
     if (unlikely(__pyx_v_pfields == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      __PYX_ERR(0, 57, __pyx_L1_error)
+      __PYX_ERR(0, 58, __pyx_L1_error)
     }
     __pyx_t_7 = __pyx_v_pfields; __Pyx_INCREF(__pyx_t_7); __pyx_t_13 = 0;
     for (;;) {
       if (__pyx_t_13 >= PyTuple_GET_SIZE(__pyx_t_7)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_9 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_13); __Pyx_INCREF(__pyx_t_9); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 57, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_13); __Pyx_INCREF(__pyx_t_9); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 58, __pyx_L1_error)
       #else
-      __pyx_t_9 = PySequence_ITEM(__pyx_t_7, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 57, __pyx_L1_error)
+      __pyx_t_9 = PySequence_ITEM(__pyx_t_7, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       #endif
-      if (!(likely(PyBytes_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 57, __pyx_L1_error)
+      if (!(likely(PyString_CheckExact(__pyx_t_9))||((__pyx_t_9) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_9)->tp_name), 0))) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_pfield, ((PyObject*)__pyx_t_9));
       __pyx_t_9 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":58
+      /* "steelscript/packets/query/pcap_query.pyx":59
  *             ptype, pfields = pkt_class.query_info()
  *             for pfield in pfields:
  *                 self.fields[pfield] = ptype             # <<<<<<<<<<<<<<
  *             for port in pkt_class.default_ports():
  *                 self.l7_ports[port] = pkt_class
  */
-      __pyx_t_9 = __Pyx_PyInt_From_uint16_t(__pyx_v_ptype); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyInt_From_uint16_t(__pyx_v_ptype); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 59, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       if (unlikely(__pyx_v_self->fields == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 58, __pyx_L1_error)
+        __PYX_ERR(0, 59, __pyx_L1_error)
       }
-      if (unlikely(PyDict_SetItem(__pyx_v_self->fields, __pyx_v_pfield, __pyx_t_9) < 0)) __PYX_ERR(0, 58, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_self->fields, __pyx_v_pfield, __pyx_t_9) < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":57
+      /* "steelscript/packets/query/pcap_query.pyx":58
  *         for pkt_class in default_classes:
  *             ptype, pfields = pkt_class.query_info()
  *             for pfield in pfields:             # <<<<<<<<<<<<<<
@@ -3042,14 +3011,14 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
     }
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "steelscript/packets/query/pcap_query.pyx":59
+    /* "steelscript/packets/query/pcap_query.pyx":60
  *             for pfield in pfields:
  *                 self.fields[pfield] = ptype
  *             for port in pkt_class.default_ports():             # <<<<<<<<<<<<<<
  *                 self.l7_ports[port] = pkt_class
  *         self.l7_ports.update(kwargs.get('l7_ports', dict()))
  */
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_pkt_class, __pyx_n_s_default_ports); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_pkt_class, __pyx_n_s_default_ports); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -3063,16 +3032,16 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
     }
     __pyx_t_7 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_9);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     if (likely(PyList_CheckExact(__pyx_t_7)) || PyTuple_CheckExact(__pyx_t_7)) {
       __pyx_t_9 = __pyx_t_7; __Pyx_INCREF(__pyx_t_9); __pyx_t_13 = 0;
       __pyx_t_14 = NULL;
     } else {
-      __pyx_t_13 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 59, __pyx_L1_error)
+      __pyx_t_13 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_14 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 59, __pyx_L1_error)
+      __pyx_t_14 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 60, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     for (;;) {
@@ -3080,17 +3049,17 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
         if (likely(PyList_CheckExact(__pyx_t_9))) {
           if (__pyx_t_13 >= PyList_GET_SIZE(__pyx_t_9)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_7 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_13); __Pyx_INCREF(__pyx_t_7); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
+          __pyx_t_7 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_13); __Pyx_INCREF(__pyx_t_7); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
           #else
-          __pyx_t_7 = PySequence_ITEM(__pyx_t_9, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(__pyx_t_9, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           #endif
         } else {
           if (__pyx_t_13 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_13); __Pyx_INCREF(__pyx_t_7); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
+          __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_13); __Pyx_INCREF(__pyx_t_7); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
           #else
-          __pyx_t_7 = PySequence_ITEM(__pyx_t_9, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 59, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(__pyx_t_9, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           #endif
         }
@@ -3100,17 +3069,17 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 59, __pyx_L1_error)
+            else __PYX_ERR(0, 60, __pyx_L1_error)
           }
           break;
         }
         __Pyx_GOTREF(__pyx_t_7);
       }
-      __pyx_t_12 = __Pyx_PyInt_As_uint16_t(__pyx_t_7); if (unlikely((__pyx_t_12 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 59, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyInt_As_uint16_t(__pyx_t_7); if (unlikely((__pyx_t_12 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_v_port = __pyx_t_12;
 
-      /* "steelscript/packets/query/pcap_query.pyx":60
+      /* "steelscript/packets/query/pcap_query.pyx":61
  *                 self.fields[pfield] = ptype
  *             for port in pkt_class.default_ports():
  *                 self.l7_ports[port] = pkt_class             # <<<<<<<<<<<<<<
@@ -3119,14 +3088,14 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
  */
       if (unlikely(__pyx_v_self->l7_ports == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 60, __pyx_L1_error)
+        __PYX_ERR(0, 61, __pyx_L1_error)
       }
-      __pyx_t_7 = __Pyx_PyInt_From_uint16_t(__pyx_v_port); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 60, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyInt_From_uint16_t(__pyx_v_port); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 61, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (unlikely(PyDict_SetItem(__pyx_v_self->l7_ports, __pyx_t_7, __pyx_v_pkt_class) < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_self->l7_ports, __pyx_t_7, __pyx_v_pkt_class) < 0)) __PYX_ERR(0, 61, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":59
+      /* "steelscript/packets/query/pcap_query.pyx":60
  *             for pfield in pfields:
  *                 self.fields[pfield] = ptype
  *             for port in pkt_class.default_ports():             # <<<<<<<<<<<<<<
@@ -3136,7 +3105,7 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
     }
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "steelscript/packets/query/pcap_query.pyx":55
+    /* "steelscript/packets/query/pcap_query.pyx":56
  *                 isinstance(kwargs['pkt_classes'], list)):
  *             default_classes.extend(kwargs['pkt_classes'])
  *         for pkt_class in default_classes:             # <<<<<<<<<<<<<<
@@ -3146,18 +3115,18 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":61
+  /* "steelscript/packets/query/pcap_query.pyx":62
  *             for port in pkt_class.default_ports():
  *                 self.l7_ports[port] = pkt_class
  *         self.l7_ports.update(kwargs.get('l7_ports', dict()))             # <<<<<<<<<<<<<<
  *         self.local_tz = tzlocal.get_localzone()
  * 
  */
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->l7_ports, __pyx_n_s_update); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->l7_ports, __pyx_n_s_update); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_l7_ports, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_l7_ports, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -3173,21 +3142,21 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
   __pyx_t_1 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_7, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":62
+  /* "steelscript/packets/query/pcap_query.pyx":63
  *                 self.l7_ports[port] = pkt_class
  *         self.l7_ports.update(kwargs.get('l7_ports', dict()))
  *         self.local_tz = tzlocal.get_localzone()             # <<<<<<<<<<<<<<
  * 
  *     cpdef dict show_fields(self):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_tzlocal); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_tzlocal); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_get_localzone); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_get_localzone); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_9 = NULL;
@@ -3202,7 +3171,7 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
   }
   __pyx_t_1 = (__pyx_t_9) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
@@ -3211,7 +3180,7 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
   __pyx_v_self->local_tz = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":29
+  /* "steelscript/packets/query/pcap_query.pyx":30
  *     Also supports custom layer 7 port mapping.
  *     """
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -3239,7 +3208,7 @@ static int __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init
   return __pyx_r;
 }
 
-/* "steelscript/packets/query/pcap_query.pyx":64
+/* "steelscript/packets/query/pcap_query.pyx":65
  *         self.local_tz = tzlocal.get_localzone()
  * 
  *     cpdef dict show_fields(self):             # <<<<<<<<<<<<<<
@@ -3266,7 +3235,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_s
     else {
       PY_UINT64_T type_dict_guard = (likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict)) ? __PYX_GET_DICT_VERSION(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) : 0;
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_show_fields); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_show_fields); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_11steelscript_7packets_5query_10pcap_query_9PcapQuery_3show_fields)) {
         __Pyx_XDECREF(__pyx_r);
@@ -3283,10 +3252,10 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_s
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (!(likely(PyDict_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 64, __pyx_L1_error)
+        if (!(likely(PyDict_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 65, __pyx_L1_error)
         __pyx_r = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3305,7 +3274,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_s
     #endif
   }
 
-  /* "steelscript/packets/query/pcap_query.pyx":65
+  /* "steelscript/packets/query/pcap_query.pyx":66
  * 
  *     cpdef dict show_fields(self):
  *         return self.fields             # <<<<<<<<<<<<<<
@@ -3317,7 +3286,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_s
   __pyx_r = __pyx_v_self->fields;
   goto __pyx_L0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":64
+  /* "steelscript/packets/query/pcap_query.pyx":65
  *         self.local_tz = tzlocal.get_localzone()
  * 
  *     cpdef dict show_fields(self):             # <<<<<<<<<<<<<<
@@ -3358,7 +3327,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery_
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("show_fields", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_show_fields(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_show_fields(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3375,7 +3344,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery_
   return __pyx_r;
 }
 
-/* "steelscript/packets/query/pcap_query.pyx":67
+/* "steelscript/packets/query/pcap_query.pyx":68
  *         return self.fields
  * 
  *     cpdef unsigned char fields_supported(self, list field_names):             # <<<<<<<<<<<<<<
@@ -3415,7 +3384,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
     else {
       PY_UINT64_T type_dict_guard = (likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict)) ? __PYX_GET_DICT_VERSION(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) : 0;
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_fields_supported); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_fields_supported); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_11steelscript_7packets_5query_10pcap_query_9PcapQuery_5fields_supported)) {
         __Pyx_INCREF(__pyx_t_1);
@@ -3431,10 +3400,10 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_field_names) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_field_names);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_5 = __Pyx_PyInt_As_unsigned_char(__pyx_t_2); if (unlikely((__pyx_t_5 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 67, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyInt_As_unsigned_char(__pyx_t_2); if (unlikely((__pyx_t_5 == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 68, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_5;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3453,7 +3422,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
     #endif
   }
 
-  /* "steelscript/packets/query/pcap_query.pyx":88
+  /* "steelscript/packets/query/pcap_query.pyx":89
  *             bytes this_field
  * 
  *         field_failed = 0             # <<<<<<<<<<<<<<
@@ -3462,7 +3431,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
  */
   __pyx_v_field_failed = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":89
+  /* "steelscript/packets/query/pcap_query.pyx":90
  * 
  *         field_failed = 0
  *         for this_field in field_names:             # <<<<<<<<<<<<<<
@@ -3471,22 +3440,22 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
  */
   if (unlikely(__pyx_v_field_names == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 89, __pyx_L1_error)
+    __PYX_ERR(0, 90, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_field_names; __Pyx_INCREF(__pyx_t_1); __pyx_t_6 = 0;
   for (;;) {
     if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 90, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
-    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 89, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_this_field, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "steelscript/packets/query/pcap_query.pyx":90
+    /* "steelscript/packets/query/pcap_query.pyx":91
  *         field_failed = 0
  *         for this_field in field_names:
  *             found = 0             # <<<<<<<<<<<<<<
@@ -3495,91 +3464,91 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
  */
     __pyx_v_found = 0;
 
-    /* "steelscript/packets/query/pcap_query.pyx":91
+    /* "steelscript/packets/query/pcap_query.pyx":92
  *         for this_field in field_names:
  *             found = 0
  *             if this_field in self.fields:             # <<<<<<<<<<<<<<
  *                 found = 1
- *             elif this_field == b'frame.time_epoch':
+ *             elif this_field == 'frame.time_epoch':
  */
     if (unlikely(__pyx_v_self->fields == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      __PYX_ERR(0, 91, __pyx_L1_error)
+      __PYX_ERR(0, 92, __pyx_L1_error)
     }
-    __pyx_t_7 = (__Pyx_PyDict_ContainsTF(__pyx_v_this_field, __pyx_v_self->fields, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __pyx_t_7 = (__Pyx_PyDict_ContainsTF(__pyx_v_this_field, __pyx_v_self->fields, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 92, __pyx_L1_error)
     __pyx_t_8 = (__pyx_t_7 != 0);
     if (__pyx_t_8) {
 
-      /* "steelscript/packets/query/pcap_query.pyx":92
+      /* "steelscript/packets/query/pcap_query.pyx":93
  *             found = 0
  *             if this_field in self.fields:
  *                 found = 1             # <<<<<<<<<<<<<<
- *             elif this_field == b'frame.time_epoch':
+ *             elif this_field == 'frame.time_epoch':
  *                 found = 1
  */
       __pyx_v_found = 1;
 
-      /* "steelscript/packets/query/pcap_query.pyx":91
+      /* "steelscript/packets/query/pcap_query.pyx":92
  *         for this_field in field_names:
  *             found = 0
  *             if this_field in self.fields:             # <<<<<<<<<<<<<<
  *                 found = 1
- *             elif this_field == b'frame.time_epoch':
+ *             elif this_field == 'frame.time_epoch':
  */
       goto __pyx_L5;
     }
 
-    /* "steelscript/packets/query/pcap_query.pyx":93
+    /* "steelscript/packets/query/pcap_query.pyx":94
  *             if this_field in self.fields:
  *                 found = 1
- *             elif this_field == b'frame.time_epoch':             # <<<<<<<<<<<<<<
+ *             elif this_field == 'frame.time_epoch':             # <<<<<<<<<<<<<<
  *                 found = 1
- *             elif this_field[:18] in (b'tcp.payload.offset',
+ *             elif this_field[:18] in ('tcp.payload.offset',
  */
-    __pyx_t_8 = (__Pyx_PyBytes_Equals(__pyx_v_this_field, __pyx_kp_b_frame_time_epoch, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_8 = (__Pyx_PyBytes_Equals(__pyx_v_this_field, __pyx_kp_s_frame_time_epoch, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 94, __pyx_L1_error)
     __pyx_t_7 = (__pyx_t_8 != 0);
     if (__pyx_t_7) {
 
-      /* "steelscript/packets/query/pcap_query.pyx":94
+      /* "steelscript/packets/query/pcap_query.pyx":95
  *                 found = 1
- *             elif this_field == b'frame.time_epoch':
+ *             elif this_field == 'frame.time_epoch':
  *                 found = 1             # <<<<<<<<<<<<<<
- *             elif this_field[:18] in (b'tcp.payload.offset',
- *                                      b'udp.payload.offset'):
+ *             elif this_field[:18] in ('tcp.payload.offset',
+ *                                      'udp.payload.offset'):
  */
       __pyx_v_found = 1;
 
-      /* "steelscript/packets/query/pcap_query.pyx":93
+      /* "steelscript/packets/query/pcap_query.pyx":94
  *             if this_field in self.fields:
  *                 found = 1
- *             elif this_field == b'frame.time_epoch':             # <<<<<<<<<<<<<<
+ *             elif this_field == 'frame.time_epoch':             # <<<<<<<<<<<<<<
  *                 found = 1
- *             elif this_field[:18] in (b'tcp.payload.offset',
+ *             elif this_field[:18] in ('tcp.payload.offset',
  */
       goto __pyx_L5;
     }
 
-    /* "steelscript/packets/query/pcap_query.pyx":95
- *             elif this_field == b'frame.time_epoch':
+    /* "steelscript/packets/query/pcap_query.pyx":96
+ *             elif this_field == 'frame.time_epoch':
  *                 found = 1
- *             elif this_field[:18] in (b'tcp.payload.offset',             # <<<<<<<<<<<<<<
- *                                      b'udp.payload.offset'):
+ *             elif this_field[:18] in ('tcp.payload.offset',             # <<<<<<<<<<<<<<
+ *                                      'udp.payload.offset'):
  *                 groups = offset_re.match(this_field)
  */
     if (unlikely(__pyx_v_this_field == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 95, __pyx_L1_error)
+      __PYX_ERR(0, 96, __pyx_L1_error)
     }
-    __pyx_t_2 = PySequence_GetSlice(__pyx_v_this_field, 0, 18); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_2 = PySequence_GetSlice(__pyx_v_this_field, 0, 18); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = (__Pyx_PyBytes_Equals(__pyx_t_2, __pyx_kp_b_tcp_payload_offset, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_8 = (__Pyx_PyBytes_Equals(__pyx_t_2, __pyx_kp_s_tcp_payload_offset, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 96, __pyx_L1_error)
     __pyx_t_9 = (__pyx_t_8 != 0);
     if (!__pyx_t_9) {
     } else {
       __pyx_t_7 = __pyx_t_9;
       goto __pyx_L6_bool_binop_done;
     }
-    __pyx_t_9 = (__Pyx_PyBytes_Equals(__pyx_t_2, __pyx_kp_b_udp_payload_offset, Py_EQ)); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_9 = (__Pyx_PyBytes_Equals(__pyx_t_2, __pyx_kp_s_udp_payload_offset, Py_EQ)); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 96, __pyx_L1_error)
     __pyx_t_8 = (__pyx_t_9 != 0);
     __pyx_t_7 = __pyx_t_8;
     __pyx_L6_bool_binop_done:;
@@ -3587,14 +3556,14 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
     __pyx_t_8 = (__pyx_t_7 != 0);
     if (__pyx_t_8) {
 
-      /* "steelscript/packets/query/pcap_query.pyx":97
- *             elif this_field[:18] in (b'tcp.payload.offset',
- *                                      b'udp.payload.offset'):
+      /* "steelscript/packets/query/pcap_query.pyx":98
+ *             elif this_field[:18] in ('tcp.payload.offset',
+ *                                      'udp.payload.offset'):
  *                 groups = offset_re.match(this_field)             # <<<<<<<<<<<<<<
  *                 if groups:
  *                     if int(groups.groups()[1]) < int(groups.groups()[2]):
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_11steelscript_7packets_5query_10pcap_query_offset_re, __pyx_n_s_match); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 97, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_11steelscript_7packets_5query_10pcap_query_offset_re, __pyx_n_s_match); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -3608,30 +3577,30 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
       }
       __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_this_field) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_this_field);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_XDECREF_SET(__pyx_v_groups, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":98
- *                                      b'udp.payload.offset'):
+      /* "steelscript/packets/query/pcap_query.pyx":99
+ *                                      'udp.payload.offset'):
  *                 groups = offset_re.match(this_field)
  *                 if groups:             # <<<<<<<<<<<<<<
  *                     if int(groups.groups()[1]) < int(groups.groups()[2]):
  *                         found = 1
  */
-      __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_groups); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_v_groups); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
       if (__pyx_t_8) {
 
-        /* "steelscript/packets/query/pcap_query.pyx":99
+        /* "steelscript/packets/query/pcap_query.pyx":100
  *                 groups = offset_re.match(this_field)
  *                 if groups:
  *                     if int(groups.groups()[1]) < int(groups.groups()[2]):             # <<<<<<<<<<<<<<
  *                         found = 1
  *                     else:
  */
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_groups, __pyx_n_s_groups); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_groups, __pyx_n_s_groups); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_4 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -3645,16 +3614,16 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_groups, __pyx_n_s_groups); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 99, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_groups, __pyx_n_s_groups); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_10 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -3668,23 +3637,23 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
         }
         __pyx_t_3 = (__pyx_t_10) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_10) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
+        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 99, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_4 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 99, __pyx_L1_error)
+        __pyx_t_4 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         if (__pyx_t_8) {
 
-          /* "steelscript/packets/query/pcap_query.pyx":100
+          /* "steelscript/packets/query/pcap_query.pyx":101
  *                 if groups:
  *                     if int(groups.groups()[1]) < int(groups.groups()[2]):
  *                         found = 1             # <<<<<<<<<<<<<<
@@ -3693,7 +3662,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
  */
           __pyx_v_found = 1;
 
-          /* "steelscript/packets/query/pcap_query.pyx":99
+          /* "steelscript/packets/query/pcap_query.pyx":100
  *                 groups = offset_re.match(this_field)
  *                 if groups:
  *                     if int(groups.groups()[1]) < int(groups.groups()[2]):             # <<<<<<<<<<<<<<
@@ -3703,7 +3672,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
           goto __pyx_L9;
         }
 
-        /* "steelscript/packets/query/pcap_query.pyx":102
+        /* "steelscript/packets/query/pcap_query.pyx":103
  *                         found = 1
  *                     else:
  *                         print "tcp|udp.payload.offset[x:y] x >= y!!"             # <<<<<<<<<<<<<<
@@ -3711,18 +3680,18 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
  *                                                int(groups.groups()[2]))
  */
         /*else*/ {
-          if (__Pyx_PrintOne(0, __pyx_kp_s_tcp_udp_payload_offset_x_y_x_y) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
+          if (__Pyx_PrintOne(0, __pyx_kp_s_tcp_udp_payload_offset_x_y_x_y) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
 
-          /* "steelscript/packets/query/pcap_query.pyx":103
+          /* "steelscript/packets/query/pcap_query.pyx":104
  *                     else:
  *                         print "tcp|udp.payload.offset[x:y] x >= y!!"
  *                         print "{0}:{1}".format(int(groups.groups()[1]),             # <<<<<<<<<<<<<<
  *                                                int(groups.groups()[2]))
  *             if not found:
  */
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_0_1, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_0_1, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_groups, __pyx_n_s_groups); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 103, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_groups, __pyx_n_s_groups); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 104, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __pyx_t_11 = NULL;
           if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
@@ -3736,24 +3705,24 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
           }
           __pyx_t_2 = (__pyx_t_11) ? __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_11) : __Pyx_PyObject_CallNoArg(__pyx_t_10);
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 103, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetItemInt(__pyx_t_2, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 104, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyNumber_Int(__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "steelscript/packets/query/pcap_query.pyx":104
+          /* "steelscript/packets/query/pcap_query.pyx":105
  *                         print "tcp|udp.payload.offset[x:y] x >= y!!"
  *                         print "{0}:{1}".format(int(groups.groups()[1]),
  *                                                int(groups.groups()[2]))             # <<<<<<<<<<<<<<
  *             if not found:
  *                 field_failed = 1
  */
-          __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_groups, __pyx_n_s_groups); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 104, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_groups, __pyx_n_s_groups); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 105, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __pyx_t_12 = NULL;
           if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_11))) {
@@ -3767,13 +3736,13 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
           }
           __pyx_t_10 = (__pyx_t_12) ? __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_12) : __Pyx_PyObject_CallNoArg(__pyx_t_11);
           __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 104, __pyx_L1_error)
+          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 105, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_10, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 104, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_10, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 105, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          __pyx_t_10 = __Pyx_PyNumber_Int(__pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 104, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyNumber_Int(__pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 105, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           __pyx_t_11 = NULL;
@@ -3791,7 +3760,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_3)) {
             PyObject *__pyx_temp[3] = {__pyx_t_11, __pyx_t_2, __pyx_t_10};
-            __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3801,7 +3770,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
             PyObject *__pyx_temp[3] = {__pyx_t_11, __pyx_t_2, __pyx_t_10};
-            __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_13, 2+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3809,7 +3778,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
           } else
           #endif
           {
-            __pyx_t_12 = PyTuple_New(2+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 103, __pyx_L1_error)
+            __pyx_t_12 = PyTuple_New(2+__pyx_t_13); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 104, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             if (__pyx_t_11) {
               __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_11); __pyx_t_11 = NULL;
@@ -3820,18 +3789,18 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
             PyTuple_SET_ITEM(__pyx_t_12, 1+__pyx_t_13, __pyx_t_10);
             __pyx_t_2 = 0;
             __pyx_t_10 = 0;
-            __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_12, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_12, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (__Pyx_PrintOne(0, __pyx_t_4) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
+          if (__Pyx_PrintOne(0, __pyx_t_4) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         }
         __pyx_L9:;
 
-        /* "steelscript/packets/query/pcap_query.pyx":98
- *                                      b'udp.payload.offset'):
+        /* "steelscript/packets/query/pcap_query.pyx":99
+ *                                      'udp.payload.offset'):
  *                 groups = offset_re.match(this_field)
  *                 if groups:             # <<<<<<<<<<<<<<
  *                     if int(groups.groups()[1]) < int(groups.groups()[2]):
@@ -3839,17 +3808,17 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
  */
       }
 
-      /* "steelscript/packets/query/pcap_query.pyx":95
- *             elif this_field == b'frame.time_epoch':
+      /* "steelscript/packets/query/pcap_query.pyx":96
+ *             elif this_field == 'frame.time_epoch':
  *                 found = 1
- *             elif this_field[:18] in (b'tcp.payload.offset',             # <<<<<<<<<<<<<<
- *                                      b'udp.payload.offset'):
+ *             elif this_field[:18] in ('tcp.payload.offset',             # <<<<<<<<<<<<<<
+ *                                      'udp.payload.offset'):
  *                 groups = offset_re.match(this_field)
  */
     }
     __pyx_L5:;
 
-    /* "steelscript/packets/query/pcap_query.pyx":105
+    /* "steelscript/packets/query/pcap_query.pyx":106
  *                         print "{0}:{1}".format(int(groups.groups()[1]),
  *                                                int(groups.groups()[2]))
  *             if not found:             # <<<<<<<<<<<<<<
@@ -3859,7 +3828,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
     __pyx_t_8 = ((!(__pyx_v_found != 0)) != 0);
     if (__pyx_t_8) {
 
-      /* "steelscript/packets/query/pcap_query.pyx":106
+      /* "steelscript/packets/query/pcap_query.pyx":107
  *                                                int(groups.groups()[2]))
  *             if not found:
  *                 field_failed = 1             # <<<<<<<<<<<<<<
@@ -3868,7 +3837,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
  */
       __pyx_v_field_failed = 1;
 
-      /* "steelscript/packets/query/pcap_query.pyx":105
+      /* "steelscript/packets/query/pcap_query.pyx":106
  *                         print "{0}:{1}".format(int(groups.groups()[1]),
  *                                                int(groups.groups()[2]))
  *             if not found:             # <<<<<<<<<<<<<<
@@ -3877,7 +3846,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
  */
     }
 
-    /* "steelscript/packets/query/pcap_query.pyx":89
+    /* "steelscript/packets/query/pcap_query.pyx":90
  * 
  *         field_failed = 0
  *         for this_field in field_names:             # <<<<<<<<<<<<<<
@@ -3887,7 +3856,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":108
+  /* "steelscript/packets/query/pcap_query.pyx":109
  *                 field_failed = 1
  * 
  *         if field_failed:             # <<<<<<<<<<<<<<
@@ -3897,7 +3866,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
   __pyx_t_8 = (__pyx_v_field_failed != 0);
   if (__pyx_t_8) {
 
-    /* "steelscript/packets/query/pcap_query.pyx":109
+    /* "steelscript/packets/query/pcap_query.pyx":110
  * 
  *         if field_failed:
  *             return 0             # <<<<<<<<<<<<<<
@@ -3907,7 +3876,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/query/pcap_query.pyx":108
+    /* "steelscript/packets/query/pcap_query.pyx":109
  *                 field_failed = 1
  * 
  *         if field_failed:             # <<<<<<<<<<<<<<
@@ -3916,7 +3885,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
  */
   }
 
-  /* "steelscript/packets/query/pcap_query.pyx":111
+  /* "steelscript/packets/query/pcap_query.pyx":112
  *             return 0
  *         else:
  *             return 1             # <<<<<<<<<<<<<<
@@ -3928,7 +3897,7 @@ static unsigned char __pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQue
     goto __pyx_L0;
   }
 
-  /* "steelscript/packets/query/pcap_query.pyx":67
+  /* "steelscript/packets/query/pcap_query.pyx":68
  *         return self.fields
  * 
  *     cpdef unsigned char fields_supported(self, list field_names):             # <<<<<<<<<<<<<<
@@ -3961,7 +3930,7 @@ static PyObject *__pyx_pw_11steelscript_7packets_5query_10pcap_query_9PcapQuery_
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("fields_supported (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_field_names), (&PyList_Type), 1, "field_names", 1))) __PYX_ERR(0, 67, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_field_names), (&PyList_Type), 1, "field_names", 1))) __PYX_ERR(0, 68, __pyx_L1_error)
   __pyx_r = __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery_4fields_supported(((struct __pyx_obj_11steelscript_7packets_5query_10pcap_query_PcapQuery *)__pyx_v_self), ((PyObject*)__pyx_v_field_names));
 
   /* function exit code */
@@ -3979,7 +3948,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery_
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("fields_supported", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char(__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_fields_supported(__pyx_v_self, __pyx_v_field_names, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_char(__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_fields_supported(__pyx_v_self, __pyx_v_field_names, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3996,7 +3965,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery_
   return __pyx_r;
 }
 
-/* "steelscript/packets/query/pcap_query.pyx":113
+/* "steelscript/packets/query/pcap_query.pyx":114
  *             return 1
  * 
  *     cpdef pcap_query(self,             # <<<<<<<<<<<<<<
@@ -4024,7 +3993,6 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
   arrayobject *__pyx_v_pkt = 0;
   struct __pyx_obj_11steelscript_7packets_4core_7inetpkt_Ethernet *__pyx_v_e = 0;
   struct __pyx_obj_11steelscript_7packets_4core_4pcap_PCAPReader *__pyx_v_rdr = 0;
-  PyObject *__pyx_v_pandas = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4047,9 +4015,6 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
   uint16_t __pyx_t_18;
   int __pyx_t_19;
   Py_ssize_t __pyx_t_20;
-  PyObject *__pyx_t_21 = NULL;
-  PyObject *__pyx_t_22 = NULL;
-  PyObject *__pyx_t_23 = NULL;
   __Pyx_RefNannySetupContext("pcap_query", 0);
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
@@ -4069,17 +4034,17 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
     else {
       PY_UINT64_T type_dict_guard = (likely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict)) ? __PYX_GET_DICT_VERSION(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dict) : 0;
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_pcap_query); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_pcap_query); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_11steelscript_7packets_5query_10pcap_query_9PcapQuery_7pcap_query)) {
         __Pyx_XDECREF(__pyx_r);
-        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_starttime); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_starttime); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_4 = PyFloat_FromDouble(__pyx_v_endtime); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_4 = PyFloat_FromDouble(__pyx_v_endtime); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_5 = __Pyx_PyInt_From_unsigned_char(__pyx_v_rdf); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyInt_From_unsigned_char(__pyx_v_rdf); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = __Pyx_PyInt_From_unsigned_char(__pyx_v_as_datetime); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyInt_From_unsigned_char(__pyx_v_as_datetime); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_7 = __pyx_t_1; __pyx_t_8 = NULL;
@@ -4097,7 +4062,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[7] = {__pyx_t_8, __pyx_v_file_handle, __pyx_v_wshark_fields, __pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 6+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 6+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4109,7 +4074,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
           PyObject *__pyx_temp[7] = {__pyx_t_8, __pyx_v_file_handle, __pyx_v_wshark_fields, __pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 6+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 6+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4119,7 +4084,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
         } else
         #endif
         {
-          __pyx_t_10 = PyTuple_New(6+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
+          __pyx_t_10 = PyTuple_New(6+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 114, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           if (__pyx_t_8) {
             __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -4142,7 +4107,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
           __pyx_t_4 = 0;
           __pyx_t_5 = 0;
           __pyx_t_6 = 0;
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
@@ -4165,7 +4130,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
     #endif
   }
 
-  /* "steelscript/packets/query/pcap_query.pyx":150
+  /* "steelscript/packets/query/pcap_query.pyx":151
  *             PCAPReader rdr
  * 
  *         layer_index = 0             # <<<<<<<<<<<<<<
@@ -4174,123 +4139,123 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  */
   __pyx_v_layer_index = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":151
+  /* "steelscript/packets/query/pcap_query.pyx":152
  * 
  *         layer_index = 0
  *         return_vals = list()             # <<<<<<<<<<<<<<
  *         id_name = list()
  *         name_idx = list()
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_return_vals = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":152
+  /* "steelscript/packets/query/pcap_query.pyx":153
  *         layer_index = 0
  *         return_vals = list()
  *         id_name = list()             # <<<<<<<<<<<<<<
  *         name_idx = list()
  *         id_index = dict()
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_id_name = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":153
+  /* "steelscript/packets/query/pcap_query.pyx":154
  *         return_vals = list()
  *         id_name = list()
  *         name_idx = list()             # <<<<<<<<<<<<<<
  *         id_index = dict()
  *         layer_ids = list()
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_name_idx = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":154
+  /* "steelscript/packets/query/pcap_query.pyx":155
  *         id_name = list()
  *         name_idx = list()
  *         id_index = dict()             # <<<<<<<<<<<<<<
  *         layer_ids = list()
  *         layers = list()
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_id_index = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":155
+  /* "steelscript/packets/query/pcap_query.pyx":156
  *         name_idx = list()
  *         id_index = dict()
  *         layer_ids = list()             # <<<<<<<<<<<<<<
  *         layers = list()
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_layer_ids = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":156
+  /* "steelscript/packets/query/pcap_query.pyx":157
  *         id_index = dict()
  *         layer_ids = list()
  *         layers = list()             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_layers = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":159
+  /* "steelscript/packets/query/pcap_query.pyx":160
  * 
  * 
  *         for fname in wshark_fields:             # <<<<<<<<<<<<<<
- *             if fname == b'frame.time_epoch':
+ *             if fname == 'frame.time_epoch':
  *                 id_name.append((PQ_FRAME, fname))
  */
   if (unlikely(__pyx_v_wshark_fields == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 159, __pyx_L1_error)
+    __PYX_ERR(0, 160, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_wshark_fields; __Pyx_INCREF(__pyx_t_1); __pyx_t_11 = 0;
   for (;;) {
     if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_11); __Pyx_INCREF(__pyx_t_2); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_11); __Pyx_INCREF(__pyx_t_2); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 160, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
-    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 159, __pyx_L1_error)
+    if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 160, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_fname, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "steelscript/packets/query/pcap_query.pyx":160
+    /* "steelscript/packets/query/pcap_query.pyx":161
  * 
  *         for fname in wshark_fields:
- *             if fname == b'frame.time_epoch':             # <<<<<<<<<<<<<<
+ *             if fname == 'frame.time_epoch':             # <<<<<<<<<<<<<<
  *                 id_name.append((PQ_FRAME, fname))
- *             elif fname.find(b'payload.offset') == NOT_FOUND:
+ *             elif fname.find('payload.offset') == NOT_FOUND:
  */
-    __pyx_t_12 = (__Pyx_PyBytes_Equals(__pyx_v_fname, __pyx_kp_b_frame_time_epoch, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_t_12 = (__Pyx_PyBytes_Equals(__pyx_v_fname, __pyx_kp_s_frame_time_epoch, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 161, __pyx_L1_error)
     __pyx_t_13 = (__pyx_t_12 != 0);
     if (__pyx_t_13) {
 
-      /* "steelscript/packets/query/pcap_query.pyx":161
+      /* "steelscript/packets/query/pcap_query.pyx":162
  *         for fname in wshark_fields:
- *             if fname == b'frame.time_epoch':
+ *             if fname == 'frame.time_epoch':
  *                 id_name.append((PQ_FRAME, fname))             # <<<<<<<<<<<<<<
- *             elif fname.find(b'payload.offset') == NOT_FOUND:
+ *             elif fname.find('payload.offset') == NOT_FOUND:
  *                 id_name.append((self.fields[fname], fname))
  */
-      __pyx_t_2 = __Pyx_PyInt_From_unsigned_char(__pyx_v_11steelscript_7packets_4core_7inetpkt_PQ_FRAME); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_unsigned_char(__pyx_v_11steelscript_7packets_4core_7inetpkt_PQ_FRAME); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 161, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 162, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_2);
@@ -4298,51 +4263,51 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       __Pyx_GIVEREF(__pyx_v_fname);
       PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_fname);
       __pyx_t_2 = 0;
-      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_id_name, __pyx_t_7); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 161, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_id_name, __pyx_t_7); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 162, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":160
+      /* "steelscript/packets/query/pcap_query.pyx":161
  * 
  *         for fname in wshark_fields:
- *             if fname == b'frame.time_epoch':             # <<<<<<<<<<<<<<
+ *             if fname == 'frame.time_epoch':             # <<<<<<<<<<<<<<
  *                 id_name.append((PQ_FRAME, fname))
- *             elif fname.find(b'payload.offset') == NOT_FOUND:
+ *             elif fname.find('payload.offset') == NOT_FOUND:
  */
       goto __pyx_L5;
     }
 
-    /* "steelscript/packets/query/pcap_query.pyx":162
- *             if fname == b'frame.time_epoch':
+    /* "steelscript/packets/query/pcap_query.pyx":163
+ *             if fname == 'frame.time_epoch':
  *                 id_name.append((PQ_FRAME, fname))
- *             elif fname.find(b'payload.offset') == NOT_FOUND:             # <<<<<<<<<<<<<<
+ *             elif fname.find('payload.offset') == NOT_FOUND:             # <<<<<<<<<<<<<<
  *                 id_name.append((self.fields[fname], fname))
- *             elif fname.find(b'payload.offset') >= 0:
+ *             elif fname.find('payload.offset') >= 0:
  */
-    __pyx_t_7 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyBytes_Type_find, __pyx_v_fname, __pyx_kp_b_payload_offset); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyBytes_Type_find, __pyx_v_fname, __pyx_kp_s_payload_offset); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 163, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_2 = __Pyx_PyInt_From_char(__pyx_v_11steelscript_7packets_5query_10pcap_query_NOT_FOUND); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_char(__pyx_v_11steelscript_7packets_5query_10pcap_query_NOT_FOUND); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = PyObject_RichCompare(__pyx_t_7, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_t_10 = PyObject_RichCompare(__pyx_t_7, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 163, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 163, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     if (__pyx_t_13) {
 
-      /* "steelscript/packets/query/pcap_query.pyx":163
+      /* "steelscript/packets/query/pcap_query.pyx":164
  *                 id_name.append((PQ_FRAME, fname))
- *             elif fname.find(b'payload.offset') == NOT_FOUND:
+ *             elif fname.find('payload.offset') == NOT_FOUND:
  *                 id_name.append((self.fields[fname], fname))             # <<<<<<<<<<<<<<
- *             elif fname.find(b'payload.offset') >= 0:
- *                 if fname[:3] == b'tcp':
+ *             elif fname.find('payload.offset') >= 0:
+ *                 if fname[:3] == 'tcp':
  */
       if (unlikely(__pyx_v_self->fields == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 163, __pyx_L1_error)
+        __PYX_ERR(0, 164, __pyx_L1_error)
       }
-      __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_self->fields, __pyx_v_fname); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 163, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_self->fields, __pyx_v_fname); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_10);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_10);
@@ -4350,62 +4315,62 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       __Pyx_GIVEREF(__pyx_v_fname);
       PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_fname);
       __pyx_t_10 = 0;
-      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_id_name, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 163, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_id_name, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":162
- *             if fname == b'frame.time_epoch':
+      /* "steelscript/packets/query/pcap_query.pyx":163
+ *             if fname == 'frame.time_epoch':
  *                 id_name.append((PQ_FRAME, fname))
- *             elif fname.find(b'payload.offset') == NOT_FOUND:             # <<<<<<<<<<<<<<
+ *             elif fname.find('payload.offset') == NOT_FOUND:             # <<<<<<<<<<<<<<
  *                 id_name.append((self.fields[fname], fname))
- *             elif fname.find(b'payload.offset') >= 0:
+ *             elif fname.find('payload.offset') >= 0:
  */
       goto __pyx_L5;
     }
 
-    /* "steelscript/packets/query/pcap_query.pyx":164
- *             elif fname.find(b'payload.offset') == NOT_FOUND:
+    /* "steelscript/packets/query/pcap_query.pyx":165
+ *             elif fname.find('payload.offset') == NOT_FOUND:
  *                 id_name.append((self.fields[fname], fname))
- *             elif fname.find(b'payload.offset') >= 0:             # <<<<<<<<<<<<<<
- *                 if fname[:3] == b'tcp':
+ *             elif fname.find('payload.offset') >= 0:             # <<<<<<<<<<<<<<
+ *                 if fname[:3] == 'tcp':
  *                     id_name.append((PQ_TCP, fname))
  */
-    __pyx_t_2 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyBytes_Type_find, __pyx_v_fname, __pyx_kp_b_payload_offset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyBytes_Type_find, __pyx_v_fname, __pyx_kp_s_payload_offset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = PyObject_RichCompare(__pyx_t_2, __pyx_int_0, Py_GE); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 164, __pyx_L1_error)
+    __pyx_t_10 = PyObject_RichCompare(__pyx_t_2, __pyx_int_0, Py_GE); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 165, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 164, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 165, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     if (__pyx_t_13) {
 
-      /* "steelscript/packets/query/pcap_query.pyx":165
+      /* "steelscript/packets/query/pcap_query.pyx":166
  *                 id_name.append((self.fields[fname], fname))
- *             elif fname.find(b'payload.offset') >= 0:
- *                 if fname[:3] == b'tcp':             # <<<<<<<<<<<<<<
+ *             elif fname.find('payload.offset') >= 0:
+ *                 if fname[:3] == 'tcp':             # <<<<<<<<<<<<<<
  *                     id_name.append((PQ_TCP, fname))
- *                 elif fname[:3] == b'udp':
+ *                 elif fname[:3] == 'udp':
  */
       if (unlikely(__pyx_v_fname == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 165, __pyx_L1_error)
+        __PYX_ERR(0, 166, __pyx_L1_error)
       }
-      __pyx_t_10 = PySequence_GetSlice(__pyx_v_fname, 0, 3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_10 = PySequence_GetSlice(__pyx_v_fname, 0, 3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 166, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_13 = (__Pyx_PyBytes_Equals(__pyx_t_10, __pyx_n_b_tcp, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_13 = (__Pyx_PyBytes_Equals(__pyx_t_10, __pyx_n_s_tcp, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 166, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __pyx_t_12 = (__pyx_t_13 != 0);
       if (__pyx_t_12) {
 
-        /* "steelscript/packets/query/pcap_query.pyx":166
- *             elif fname.find(b'payload.offset') >= 0:
- *                 if fname[:3] == b'tcp':
+        /* "steelscript/packets/query/pcap_query.pyx":167
+ *             elif fname.find('payload.offset') >= 0:
+ *                 if fname[:3] == 'tcp':
  *                     id_name.append((PQ_TCP, fname))             # <<<<<<<<<<<<<<
- *                 elif fname[:3] == b'udp':
+ *                 elif fname[:3] == 'udp':
  *                     id_name.append((PQ_UDP, fname))
  */
-        __pyx_t_10 = __Pyx_PyInt_From_unsigned_char(__pyx_v_11steelscript_7packets_4core_7inetpkt_PQ_TCP); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyInt_From_unsigned_char(__pyx_v_11steelscript_7packets_4core_7inetpkt_PQ_TCP); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 167, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_GIVEREF(__pyx_t_10);
         PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_10);
@@ -4413,47 +4378,47 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
         __Pyx_GIVEREF(__pyx_v_fname);
         PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_fname);
         __pyx_t_10 = 0;
-        __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_id_name, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_id_name, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 167, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "steelscript/packets/query/pcap_query.pyx":165
+        /* "steelscript/packets/query/pcap_query.pyx":166
  *                 id_name.append((self.fields[fname], fname))
- *             elif fname.find(b'payload.offset') >= 0:
- *                 if fname[:3] == b'tcp':             # <<<<<<<<<<<<<<
+ *             elif fname.find('payload.offset') >= 0:
+ *                 if fname[:3] == 'tcp':             # <<<<<<<<<<<<<<
  *                     id_name.append((PQ_TCP, fname))
- *                 elif fname[:3] == b'udp':
+ *                 elif fname[:3] == 'udp':
  */
         goto __pyx_L6;
       }
 
-      /* "steelscript/packets/query/pcap_query.pyx":167
- *                 if fname[:3] == b'tcp':
+      /* "steelscript/packets/query/pcap_query.pyx":168
+ *                 if fname[:3] == 'tcp':
  *                     id_name.append((PQ_TCP, fname))
- *                 elif fname[:3] == b'udp':             # <<<<<<<<<<<<<<
+ *                 elif fname[:3] == 'udp':             # <<<<<<<<<<<<<<
  *                     id_name.append((PQ_UDP, fname))
  *                 else:
  */
       if (unlikely(__pyx_v_fname == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 167, __pyx_L1_error)
+        __PYX_ERR(0, 168, __pyx_L1_error)
       }
-      __pyx_t_2 = PySequence_GetSlice(__pyx_v_fname, 0, 3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_2 = PySequence_GetSlice(__pyx_v_fname, 0, 3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_12 = (__Pyx_PyBytes_Equals(__pyx_t_2, __pyx_n_b_udp, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_12 = (__Pyx_PyBytes_Equals(__pyx_t_2, __pyx_n_s_udp, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_13 = (__pyx_t_12 != 0);
       if (__pyx_t_13) {
 
-        /* "steelscript/packets/query/pcap_query.pyx":168
+        /* "steelscript/packets/query/pcap_query.pyx":169
  *                     id_name.append((PQ_TCP, fname))
- *                 elif fname[:3] == b'udp':
+ *                 elif fname[:3] == 'udp':
  *                     id_name.append((PQ_UDP, fname))             # <<<<<<<<<<<<<<
  *                 else:
  *                     print("invalid payload.offset[x:y] field name!! "
  */
-        __pyx_t_2 = __Pyx_PyInt_From_unsigned_char(__pyx_v_11steelscript_7packets_4core_7inetpkt_PQ_UDP); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyInt_From_unsigned_char(__pyx_v_11steelscript_7packets_4core_7inetpkt_PQ_UDP); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 168, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GIVEREF(__pyx_t_2);
         PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_2);
@@ -4461,20 +4426,20 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
         __Pyx_GIVEREF(__pyx_v_fname);
         PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_fname);
         __pyx_t_2 = 0;
-        __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_id_name, __pyx_t_10); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 168, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_id_name, __pyx_t_10); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-        /* "steelscript/packets/query/pcap_query.pyx":167
- *                 if fname[:3] == b'tcp':
+        /* "steelscript/packets/query/pcap_query.pyx":168
+ *                 if fname[:3] == 'tcp':
  *                     id_name.append((PQ_TCP, fname))
- *                 elif fname[:3] == b'udp':             # <<<<<<<<<<<<<<
+ *                 elif fname[:3] == 'udp':             # <<<<<<<<<<<<<<
  *                     id_name.append((PQ_UDP, fname))
  *                 else:
  */
         goto __pyx_L6;
       }
 
-      /* "steelscript/packets/query/pcap_query.pyx":170
+      /* "steelscript/packets/query/pcap_query.pyx":171
  *                     id_name.append((PQ_UDP, fname))
  *                 else:
  *                     print("invalid payload.offset[x:y] field name!! "             # <<<<<<<<<<<<<<
@@ -4482,21 +4447,21 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  *             else:
  */
       /*else*/ {
-        if (__Pyx_PrintOne(0, __pyx_kp_s_invalid_payload_offset_x_y_field) < 0) __PYX_ERR(0, 170, __pyx_L1_error)
+        if (__Pyx_PrintOne(0, __pyx_kp_s_invalid_payload_offset_x_y_field) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
       }
       __pyx_L6:;
 
-      /* "steelscript/packets/query/pcap_query.pyx":164
- *             elif fname.find(b'payload.offset') == NOT_FOUND:
+      /* "steelscript/packets/query/pcap_query.pyx":165
+ *             elif fname.find('payload.offset') == NOT_FOUND:
  *                 id_name.append((self.fields[fname], fname))
- *             elif fname.find(b'payload.offset') >= 0:             # <<<<<<<<<<<<<<
- *                 if fname[:3] == b'tcp':
+ *             elif fname.find('payload.offset') >= 0:             # <<<<<<<<<<<<<<
+ *                 if fname[:3] == 'tcp':
  *                     id_name.append((PQ_TCP, fname))
  */
       goto __pyx_L5;
     }
 
-    /* "steelscript/packets/query/pcap_query.pyx":173
+    /* "steelscript/packets/query/pcap_query.pyx":174
  *                           "Use fields_supported to check fields.")
  *             else:
  *                 print("invalid query field name!! Use fields_supported "             # <<<<<<<<<<<<<<
@@ -4504,21 +4469,21 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  *         for i_n in id_name:
  */
     /*else*/ {
-      if (__Pyx_PrintOne(0, __pyx_kp_s_invalid_query_field_name_Use_fie) < 0) __PYX_ERR(0, 173, __pyx_L1_error)
+      if (__Pyx_PrintOne(0, __pyx_kp_s_invalid_query_field_name_Use_fie) < 0) __PYX_ERR(0, 174, __pyx_L1_error)
     }
     __pyx_L5:;
 
-    /* "steelscript/packets/query/pcap_query.pyx":159
+    /* "steelscript/packets/query/pcap_query.pyx":160
  * 
  * 
  *         for fname in wshark_fields:             # <<<<<<<<<<<<<<
- *             if fname == b'frame.time_epoch':
+ *             if fname == 'frame.time_epoch':
  *                 id_name.append((PQ_FRAME, fname))
  */
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":175
+  /* "steelscript/packets/query/pcap_query.pyx":176
  *                 print("invalid query field name!! Use fields_supported "
  *                       "to check fields.")
  *         for i_n in id_name:             # <<<<<<<<<<<<<<
@@ -4529,16 +4494,16 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
   for (;;) {
     if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_10 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_10 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 176, __pyx_L1_error)
     #else
-    __pyx_t_10 = PySequence_ITEM(__pyx_t_1, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_10 = PySequence_ITEM(__pyx_t_1, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     #endif
-    if (!(likely(PyTuple_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 175, __pyx_L1_error)
+    if (!(likely(PyTuple_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 176, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_i_n, ((PyObject*)__pyx_t_10));
     __pyx_t_10 = 0;
 
-    /* "steelscript/packets/query/pcap_query.pyx":176
+    /* "steelscript/packets/query/pcap_query.pyx":177
  *                       "to check fields.")
  *         for i_n in id_name:
  *             if i_n[0] in id_index:             # <<<<<<<<<<<<<<
@@ -4547,16 +4512,16 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  */
     if (unlikely(__pyx_v_i_n == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 176, __pyx_L1_error)
+      __PYX_ERR(0, 177, __pyx_L1_error)
     }
-    __pyx_t_10 = __Pyx_GetItemInt_Tuple(__pyx_v_i_n, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 176, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_GetItemInt_Tuple(__pyx_v_i_n, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_13 = (__Pyx_PyDict_ContainsTF(__pyx_t_10, __pyx_v_id_index, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 176, __pyx_L1_error)
+    __pyx_t_13 = (__Pyx_PyDict_ContainsTF(__pyx_t_10, __pyx_v_id_index, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_t_12 = (__pyx_t_13 != 0);
     if (__pyx_t_12) {
 
-      /* "steelscript/packets/query/pcap_query.pyx":177
+      /* "steelscript/packets/query/pcap_query.pyx":178
  *         for i_n in id_name:
  *             if i_n[0] in id_index:
  *                 name_idx.append((i_n[1], id_index[i_n[0]]))             # <<<<<<<<<<<<<<
@@ -4565,20 +4530,20 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  */
       if (unlikely(__pyx_v_i_n == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 177, __pyx_L1_error)
+        __PYX_ERR(0, 178, __pyx_L1_error)
       }
-      __pyx_t_10 = __Pyx_GetItemInt_Tuple(__pyx_v_i_n, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetItemInt_Tuple(__pyx_v_i_n, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 178, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       if (unlikely(__pyx_v_i_n == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 177, __pyx_L1_error)
+        __PYX_ERR(0, 178, __pyx_L1_error)
       }
-      __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_i_n, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_i_n, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_id_index, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_id_index, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 178, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_10);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_10);
@@ -4586,10 +4551,10 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_7);
       __pyx_t_10 = 0;
       __pyx_t_7 = 0;
-      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_name_idx, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_name_idx, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 178, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":176
+      /* "steelscript/packets/query/pcap_query.pyx":177
  *                       "to check fields.")
  *         for i_n in id_name:
  *             if i_n[0] in id_index:             # <<<<<<<<<<<<<<
@@ -4599,7 +4564,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       goto __pyx_L9;
     }
 
-    /* "steelscript/packets/query/pcap_query.pyx":179
+    /* "steelscript/packets/query/pcap_query.pyx":180
  *                 name_idx.append((i_n[1], id_index[i_n[0]]))
  *             else:
  *                 layers.append(NullPkt())             # <<<<<<<<<<<<<<
@@ -4607,31 +4572,31 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  *                 name_idx.append((i_n[1], layer_index))
  */
     /*else*/ {
-      __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_11steelscript_7packets_4core_7inetpkt_NullPkt)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 179, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_11steelscript_7packets_4core_7inetpkt_NullPkt)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_layers, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 179, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_layers, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 180, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":180
+      /* "steelscript/packets/query/pcap_query.pyx":181
  *             else:
  *                 layers.append(NullPkt())
  *                 id_index[i_n[0]] = layer_index             # <<<<<<<<<<<<<<
  *                 name_idx.append((i_n[1], layer_index))
  *                 layer_ids.append(i_n[0])
  */
-      __pyx_t_2 = __Pyx_PyInt_From_uint16_t(__pyx_v_layer_index); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_uint16_t(__pyx_v_layer_index); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       if (unlikely(__pyx_v_i_n == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 180, __pyx_L1_error)
+        __PYX_ERR(0, 181, __pyx_L1_error)
       }
-      __pyx_t_7 = __Pyx_GetItemInt_Tuple(__pyx_v_i_n, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 180, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt_Tuple(__pyx_v_i_n, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (unlikely(PyDict_SetItem(__pyx_v_id_index, __pyx_t_7, __pyx_t_2) < 0)) __PYX_ERR(0, 180, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_id_index, __pyx_t_7, __pyx_t_2) < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":181
+      /* "steelscript/packets/query/pcap_query.pyx":182
  *                 layers.append(NullPkt())
  *                 id_index[i_n[0]] = layer_index
  *                 name_idx.append((i_n[1], layer_index))             # <<<<<<<<<<<<<<
@@ -4640,13 +4605,13 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  */
       if (unlikely(__pyx_v_i_n == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 181, __pyx_L1_error)
+        __PYX_ERR(0, 182, __pyx_L1_error)
       }
-      __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_i_n, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_i_n, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_7 = __Pyx_PyInt_From_uint16_t(__pyx_v_layer_index); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 181, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyInt_From_uint16_t(__pyx_v_layer_index); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 182, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 181, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 182, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_2);
@@ -4654,10 +4619,10 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_7);
       __pyx_t_2 = 0;
       __pyx_t_7 = 0;
-      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_name_idx, __pyx_t_10); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 181, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_name_idx, __pyx_t_10); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 182, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":182
+      /* "steelscript/packets/query/pcap_query.pyx":183
  *                 id_index[i_n[0]] = layer_index
  *                 name_idx.append((i_n[1], layer_index))
  *                 layer_ids.append(i_n[0])             # <<<<<<<<<<<<<<
@@ -4666,14 +4631,14 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  */
       if (unlikely(__pyx_v_i_n == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 182, __pyx_L1_error)
+        __PYX_ERR(0, 183, __pyx_L1_error)
       }
-      __pyx_t_10 = __Pyx_GetItemInt_Tuple(__pyx_v_i_n, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 182, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetItemInt_Tuple(__pyx_v_i_n, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 183, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_layer_ids, __pyx_t_10); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 182, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_layer_ids, __pyx_t_10); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 183, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":183
+      /* "steelscript/packets/query/pcap_query.pyx":184
  *                 name_idx.append((i_n[1], layer_index))
  *                 layer_ids.append(i_n[0])
  *                 layer_index += 1             # <<<<<<<<<<<<<<
@@ -4684,7 +4649,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
     }
     __pyx_L9:;
 
-    /* "steelscript/packets/query/pcap_query.pyx":175
+    /* "steelscript/packets/query/pcap_query.pyx":176
  *                 print("invalid query field name!! Use fields_supported "
  *                       "to check fields.")
  *         for i_n in id_name:             # <<<<<<<<<<<<<<
@@ -4694,19 +4659,19 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":185
+  /* "steelscript/packets/query/pcap_query.pyx":186
  *                 layer_index += 1
  * 
  *         rdr = PCAPReader(file_handle)             # <<<<<<<<<<<<<<
  *         for ts, pkt, link_type in rdr:
  *             if (link_type == 1 and
  */
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_11steelscript_7packets_4core_4pcap_PCAPReader), __pyx_v_file_handle); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_11steelscript_7packets_4core_4pcap_PCAPReader), __pyx_v_file_handle); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_rdr = ((struct __pyx_obj_11steelscript_7packets_4core_4pcap_PCAPReader *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":186
+  /* "steelscript/packets/query/pcap_query.pyx":187
  * 
  *         rdr = PCAPReader(file_handle)
  *         for ts, pkt, link_type in rdr:             # <<<<<<<<<<<<<<
@@ -4717,26 +4682,26 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
     __pyx_t_1 = ((PyObject *)__pyx_v_rdr); __Pyx_INCREF(__pyx_t_1); __pyx_t_11 = 0;
     __pyx_t_15 = NULL;
   } else {
-    __pyx_t_11 = -1; __pyx_t_1 = PyObject_GetIter(((PyObject *)__pyx_v_rdr)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
+    __pyx_t_11 = -1; __pyx_t_1 = PyObject_GetIter(((PyObject *)__pyx_v_rdr)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_15 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 186, __pyx_L1_error)
+    __pyx_t_15 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 187, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_15)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_10 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
+        __pyx_t_10 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 187, __pyx_L1_error)
         #else
-        __pyx_t_10 = PySequence_ITEM(__pyx_t_1, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 186, __pyx_L1_error)
+        __pyx_t_10 = PySequence_ITEM(__pyx_t_1, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 187, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         #endif
       } else {
         if (__pyx_t_11 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_11); __Pyx_INCREF(__pyx_t_10); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 187, __pyx_L1_error)
         #else
-        __pyx_t_10 = PySequence_ITEM(__pyx_t_1, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 186, __pyx_L1_error)
+        __pyx_t_10 = PySequence_ITEM(__pyx_t_1, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 187, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         #endif
       }
@@ -4746,7 +4711,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 186, __pyx_L1_error)
+          else __PYX_ERR(0, 187, __pyx_L1_error)
         }
         break;
       }
@@ -4758,7 +4723,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 186, __pyx_L1_error)
+        __PYX_ERR(0, 187, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -4774,17 +4739,17 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(__pyx_t_6);
       #else
-      __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 186, __pyx_L1_error)
+      __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 187, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
+      __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_6 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 186, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 187, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       #endif
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_5 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 186, __pyx_L1_error)
+      __pyx_t_5 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 187, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __pyx_t_16 = Py_TYPE(__pyx_t_5)->tp_iternext;
@@ -4794,7 +4759,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       __Pyx_GOTREF(__pyx_t_2);
       index = 2; __pyx_t_6 = __pyx_t_16(__pyx_t_5); if (unlikely(!__pyx_t_6)) goto __pyx_L12_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_6);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_16(__pyx_t_5), 3) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_16(__pyx_t_5), 3) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
       __pyx_t_16 = NULL;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       goto __pyx_L13_unpacking_done;
@@ -4802,20 +4767,20 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_16 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 186, __pyx_L1_error)
+      __PYX_ERR(0, 187, __pyx_L1_error)
       __pyx_L13_unpacking_done:;
     }
-    __pyx_t_17 = __pyx_PyFloat_AsDouble(__pyx_t_7); if (unlikely((__pyx_t_17 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 186, __pyx_L1_error)
+    __pyx_t_17 = __pyx_PyFloat_AsDouble(__pyx_t_7); if (unlikely((__pyx_t_17 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_7cpython_5array_array))))) __PYX_ERR(0, 186, __pyx_L1_error)
-    __pyx_t_18 = __Pyx_PyInt_As_uint16_t(__pyx_t_6); if (unlikely((__pyx_t_18 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 186, __pyx_L1_error)
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_7cpython_5array_array))))) __PYX_ERR(0, 187, __pyx_L1_error)
+    __pyx_t_18 = __Pyx_PyInt_As_uint16_t(__pyx_t_6); if (unlikely((__pyx_t_18 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_v_ts = __pyx_t_17;
     __Pyx_XDECREF_SET(__pyx_v_pkt, ((arrayobject *)__pyx_t_2));
     __pyx_t_2 = 0;
     __pyx_v_link_type = __pyx_t_18;
 
-    /* "steelscript/packets/query/pcap_query.pyx":187
+    /* "steelscript/packets/query/pcap_query.pyx":188
  *         rdr = PCAPReader(file_handle)
  *         for ts, pkt, link_type in rdr:
  *             if (link_type == 1 and             # <<<<<<<<<<<<<<
@@ -4829,7 +4794,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       goto __pyx_L15_bool_binop_done;
     }
 
-    /* "steelscript/packets/query/pcap_query.pyx":188
+    /* "steelscript/packets/query/pcap_query.pyx":189
  *         for ts, pkt, link_type in rdr:
  *             if (link_type == 1 and
  *                     ((starttime == 0.0 == endtime) or             # <<<<<<<<<<<<<<
@@ -4847,7 +4812,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       goto __pyx_L15_bool_binop_done;
     }
 
-    /* "steelscript/packets/query/pcap_query.pyx":189
+    /* "steelscript/packets/query/pcap_query.pyx":190
  *             if (link_type == 1 and
  *                     ((starttime == 0.0 == endtime) or
  *                      (starttime <= ts <= endtime) or             # <<<<<<<<<<<<<<
@@ -4865,7 +4830,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       goto __pyx_L15_bool_binop_done;
     }
 
-    /* "steelscript/packets/query/pcap_query.pyx":190
+    /* "steelscript/packets/query/pcap_query.pyx":191
  *                     ((starttime == 0.0 == endtime) or
  *                      (starttime <= ts <= endtime) or
  *                      (starttime == 0.0 and ts <= endtime) or             # <<<<<<<<<<<<<<
@@ -4885,7 +4850,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
     }
     __pyx_L19_next_or:;
 
-    /* "steelscript/packets/query/pcap_query.pyx":191
+    /* "steelscript/packets/query/pcap_query.pyx":192
  *                      (starttime <= ts <= endtime) or
  *                      (starttime == 0.0 and ts <= endtime) or
  *                      (starttime <= ts and endtime == 0.0))):             # <<<<<<<<<<<<<<
@@ -4902,7 +4867,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
     __pyx_t_12 = __pyx_t_13;
     __pyx_L15_bool_binop_done:;
 
-    /* "steelscript/packets/query/pcap_query.pyx":187
+    /* "steelscript/packets/query/pcap_query.pyx":188
  *         rdr = PCAPReader(file_handle)
  *         for ts, pkt, link_type in rdr:
  *             if (link_type == 1 and             # <<<<<<<<<<<<<<
@@ -4911,29 +4876,29 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  */
     if (__pyx_t_12) {
 
-      /* "steelscript/packets/query/pcap_query.pyx":192
+      /* "steelscript/packets/query/pcap_query.pyx":193
  *                      (starttime == 0.0 and ts <= endtime) or
  *                      (starttime <= ts and endtime == 0.0))):
  *                 e = Ethernet(pkt, l7_ports=self.l7_ports)             # <<<<<<<<<<<<<<
  *                 layer_index = 0
  *                 for pkt_id in layer_ids:
  */
-      __pyx_t_10 = PyTuple_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 192, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 193, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_INCREF(((PyObject *)__pyx_v_pkt));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_pkt));
       PyTuple_SET_ITEM(__pyx_t_10, 0, ((PyObject *)__pyx_v_pkt));
-      __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 192, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 193, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_l7_ports, __pyx_v_self->l7_ports) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
-      __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11steelscript_7packets_4core_7inetpkt_Ethernet), __pyx_t_10, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_l7_ports, __pyx_v_self->l7_ports) < 0) __PYX_ERR(0, 193, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11steelscript_7packets_4core_7inetpkt_Ethernet), __pyx_t_10, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 193, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_XDECREF_SET(__pyx_v_e, ((struct __pyx_obj_11steelscript_7packets_4core_7inetpkt_Ethernet *)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":193
+      /* "steelscript/packets/query/pcap_query.pyx":194
  *                      (starttime <= ts and endtime == 0.0))):
  *                 e = Ethernet(pkt, l7_ports=self.l7_ports)
  *                 layer_index = 0             # <<<<<<<<<<<<<<
@@ -4942,7 +4907,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  */
       __pyx_v_layer_index = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":194
+      /* "steelscript/packets/query/pcap_query.pyx":195
  *                 e = Ethernet(pkt, l7_ports=self.l7_ports)
  *                 layer_index = 0
  *                 for pkt_id in layer_ids:             # <<<<<<<<<<<<<<
@@ -4953,28 +4918,28 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       for (;;) {
         if (__pyx_t_20 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_20); __Pyx_INCREF(__pyx_t_6); __pyx_t_20++; if (unlikely(0 < 0)) __PYX_ERR(0, 194, __pyx_L1_error)
+        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_20); __Pyx_INCREF(__pyx_t_6); __pyx_t_20++; if (unlikely(0 < 0)) __PYX_ERR(0, 195, __pyx_L1_error)
         #else
-        __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_20); __pyx_t_20++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 194, __pyx_L1_error)
+        __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_20); __pyx_t_20++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 195, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         #endif
-        __pyx_t_18 = __Pyx_PyInt_As_uint16_t(__pyx_t_6); if (unlikely((__pyx_t_18 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 194, __pyx_L1_error)
+        __pyx_t_18 = __Pyx_PyInt_As_uint16_t(__pyx_t_6); if (unlikely((__pyx_t_18 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __pyx_v_pkt_id = __pyx_t_18;
 
-        /* "steelscript/packets/query/pcap_query.pyx":197
+        /* "steelscript/packets/query/pcap_query.pyx":198
  *                     # This will populate the layer with a NullPkt if the
  *                     # packet does not have the right layer for the field.
  *                     layers[layer_index] = e.get_layer_by_type(pkt_id)             # <<<<<<<<<<<<<<
  *                     layer_index += 1
  *                 return_vals.append(list())
  */
-        __pyx_t_6 = ((PyObject *)((struct __pyx_vtabstruct_11steelscript_7packets_4core_7inetpkt_Ethernet *)__pyx_v_e->__pyx_base.__pyx_vtab)->__pyx_base.get_layer_by_type(((struct __pyx_obj_11steelscript_7packets_4core_7inetpkt_PKT *)__pyx_v_e), __pyx_v_pkt_id, 0, NULL)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 197, __pyx_L1_error)
+        __pyx_t_6 = ((PyObject *)((struct __pyx_vtabstruct_11steelscript_7packets_4core_7inetpkt_Ethernet *)__pyx_v_e->__pyx_base.__pyx_vtab)->__pyx_base.get_layer_by_type(((struct __pyx_obj_11steelscript_7packets_4core_7inetpkt_PKT *)__pyx_v_e), __pyx_v_pkt_id, 0, NULL)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 198, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        if (unlikely(__Pyx_SetItemInt(__pyx_v_layers, __pyx_v_layer_index, __pyx_t_6, uint16_t, 0, __Pyx_PyInt_From_uint16_t, 1, 0, 1) < 0)) __PYX_ERR(0, 197, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_layers, __pyx_v_layer_index, __pyx_t_6, uint16_t, 0, __Pyx_PyInt_From_uint16_t, 1, 0, 1) < 0)) __PYX_ERR(0, 198, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "steelscript/packets/query/pcap_query.pyx":198
+        /* "steelscript/packets/query/pcap_query.pyx":199
  *                     # packet does not have the right layer for the field.
  *                     layers[layer_index] = e.get_layer_by_type(pkt_id)
  *                     layer_index += 1             # <<<<<<<<<<<<<<
@@ -4983,7 +4948,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  */
         __pyx_v_layer_index = (__pyx_v_layer_index + 1);
 
-        /* "steelscript/packets/query/pcap_query.pyx":194
+        /* "steelscript/packets/query/pcap_query.pyx":195
  *                 e = Ethernet(pkt, l7_ports=self.l7_ports)
  *                 layer_index = 0
  *                 for pkt_id in layer_ids:             # <<<<<<<<<<<<<<
@@ -4993,32 +4958,32 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":199
+      /* "steelscript/packets/query/pcap_query.pyx":200
  *                     layers[layer_index] = e.get_layer_by_type(pkt_id)
  *                     layer_index += 1
  *                 return_vals.append(list())             # <<<<<<<<<<<<<<
  *                 # we have all the objects now. Do the report and return.
  *                 # order matters.
  */
-      __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
+      __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_return_vals, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 199, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_return_vals, __pyx_t_2); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 200, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":202
+      /* "steelscript/packets/query/pcap_query.pyx":203
  *                 # we have all the objects now. Do the report and return.
  *                 # order matters.
  *                 for rep_fname, layer_index in name_idx:             # <<<<<<<<<<<<<<
- *                     if rep_fname == b'frame.time_epoch':
+ *                     if rep_fname == 'frame.time_epoch':
  *                         # the one and only field from FRAME
  */
       __pyx_t_2 = __pyx_v_name_idx; __Pyx_INCREF(__pyx_t_2); __pyx_t_20 = 0;
       for (;;) {
         if (__pyx_t_20 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_20); __Pyx_INCREF(__pyx_t_6); __pyx_t_20++; if (unlikely(0 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
+        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_20); __Pyx_INCREF(__pyx_t_6); __pyx_t_20++; if (unlikely(0 < 0)) __PYX_ERR(0, 203, __pyx_L1_error)
         #else
-        __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_20); __pyx_t_20++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 202, __pyx_L1_error)
+        __pyx_t_6 = PySequence_ITEM(__pyx_t_2, __pyx_t_20); __pyx_t_20++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 203, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         #endif
         if ((likely(PyTuple_CheckExact(__pyx_t_6))) || (PyList_CheckExact(__pyx_t_6))) {
@@ -5027,7 +4992,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 202, __pyx_L1_error)
+            __PYX_ERR(0, 203, __pyx_L1_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -5040,15 +5005,15 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
           __Pyx_INCREF(__pyx_t_10);
           __Pyx_INCREF(__pyx_t_7);
           #else
-          __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 202, __pyx_L1_error)
+          __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 203, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 202, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 203, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           #endif
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_5 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 202, __pyx_L1_error)
+          __pyx_t_5 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 203, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __pyx_t_16 = Py_TYPE(__pyx_t_5)->tp_iternext;
@@ -5056,7 +5021,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
           __Pyx_GOTREF(__pyx_t_10);
           index = 1; __pyx_t_7 = __pyx_t_16(__pyx_t_5); if (unlikely(!__pyx_t_7)) goto __pyx_L26_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_7);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_16(__pyx_t_5), 2) < 0) __PYX_ERR(0, 202, __pyx_L1_error)
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_16(__pyx_t_5), 2) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
           __pyx_t_16 = NULL;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           goto __pyx_L27_unpacking_done;
@@ -5064,29 +5029,29 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __pyx_t_16 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 202, __pyx_L1_error)
+          __PYX_ERR(0, 203, __pyx_L1_error)
           __pyx_L27_unpacking_done:;
         }
-        if (!(likely(PyBytes_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 202, __pyx_L1_error)
-        __pyx_t_18 = __Pyx_PyInt_As_uint16_t(__pyx_t_7); if (unlikely((__pyx_t_18 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 202, __pyx_L1_error)
+        if (!(likely(PyBytes_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 203, __pyx_L1_error)
+        __pyx_t_18 = __Pyx_PyInt_As_uint16_t(__pyx_t_7); if (unlikely((__pyx_t_18 == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 203, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_XDECREF_SET(__pyx_v_rep_fname, ((PyObject*)__pyx_t_10));
         __pyx_t_10 = 0;
         __pyx_v_layer_index = __pyx_t_18;
 
-        /* "steelscript/packets/query/pcap_query.pyx":203
+        /* "steelscript/packets/query/pcap_query.pyx":204
  *                 # order matters.
  *                 for rep_fname, layer_index in name_idx:
- *                     if rep_fname == b'frame.time_epoch':             # <<<<<<<<<<<<<<
+ *                     if rep_fname == 'frame.time_epoch':             # <<<<<<<<<<<<<<
  *                         # the one and only field from FRAME
  *                         if as_datetime:
  */
-        __pyx_t_12 = (__Pyx_PyBytes_Equals(__pyx_v_rep_fname, __pyx_kp_b_frame_time_epoch, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 203, __pyx_L1_error)
+        __pyx_t_12 = (__Pyx_PyBytes_Equals(__pyx_v_rep_fname, __pyx_kp_s_frame_time_epoch, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 204, __pyx_L1_error)
         __pyx_t_13 = (__pyx_t_12 != 0);
         if (__pyx_t_13) {
 
-          /* "steelscript/packets/query/pcap_query.pyx":205
- *                     if rep_fname == b'frame.time_epoch':
+          /* "steelscript/packets/query/pcap_query.pyx":206
+ *                     if rep_fname == 'frame.time_epoch':
  *                         # the one and only field from FRAME
  *                         if as_datetime:             # <<<<<<<<<<<<<<
  *                             return_vals[-1].append((datetime.datetime
@@ -5095,48 +5060,48 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
           __pyx_t_13 = (__pyx_v_as_datetime != 0);
           if (__pyx_t_13) {
 
-            /* "steelscript/packets/query/pcap_query.pyx":206
+            /* "steelscript/packets/query/pcap_query.pyx":207
  *                         # the one and only field from FRAME
  *                         if as_datetime:
  *                             return_vals[-1].append((datetime.datetime             # <<<<<<<<<<<<<<
  *                                                     .utcfromtimestamp(ts)
  *                                                     .replace(tzinfo=pytz.utc)
  */
-            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_return_vals, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 206, __pyx_L1_error)
+            __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_return_vals, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 207, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_6);
 
-            /* "steelscript/packets/query/pcap_query.pyx":207
+            /* "steelscript/packets/query/pcap_query.pyx":208
  *                         if as_datetime:
  *                             return_vals[-1].append((datetime.datetime
  *                                                     .utcfromtimestamp(ts)             # <<<<<<<<<<<<<<
  *                                                     .replace(tzinfo=pytz.utc)
  *                                                     .astimezone(self.local_tz)
  */
-            __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_datetime); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 206, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_datetime); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 207, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_5);
 
-            /* "steelscript/packets/query/pcap_query.pyx":206
+            /* "steelscript/packets/query/pcap_query.pyx":207
  *                         # the one and only field from FRAME
  *                         if as_datetime:
  *                             return_vals[-1].append((datetime.datetime             # <<<<<<<<<<<<<<
  *                                                     .utcfromtimestamp(ts)
  *                                                     .replace(tzinfo=pytz.utc)
  */
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_datetime); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 206, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_datetime); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 207, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-            /* "steelscript/packets/query/pcap_query.pyx":207
+            /* "steelscript/packets/query/pcap_query.pyx":208
  *                         if as_datetime:
  *                             return_vals[-1].append((datetime.datetime
  *                                                     .utcfromtimestamp(ts)             # <<<<<<<<<<<<<<
  *                                                     .replace(tzinfo=pytz.utc)
  *                                                     .astimezone(self.local_tz)
  */
-            __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_utcfromtimestamp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 207, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_utcfromtimestamp); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            __pyx_t_4 = PyFloat_FromDouble(__pyx_v_ts); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 207, __pyx_L1_error)
+            __pyx_t_4 = PyFloat_FromDouble(__pyx_v_ts); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 208, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_3 = NULL;
             if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -5151,42 +5116,42 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
             __pyx_t_10 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4);
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 207, __pyx_L1_error)
+            if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 208, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-            /* "steelscript/packets/query/pcap_query.pyx":208
+            /* "steelscript/packets/query/pcap_query.pyx":209
  *                             return_vals[-1].append((datetime.datetime
  *                                                     .utcfromtimestamp(ts)
  *                                                     .replace(tzinfo=pytz.utc)             # <<<<<<<<<<<<<<
  *                                                     .astimezone(self.local_tz)
  *                                                     )
  */
-            __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 209, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-            __pyx_t_10 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 208, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 209, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_pytz); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 208, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_pytz); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 209, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_utc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 208, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_utc); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_tzinfo, __pyx_t_3) < 0) __PYX_ERR(0, 208, __pyx_L1_error)
+            if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_tzinfo, __pyx_t_3) < 0) __PYX_ERR(0, 209, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 208, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-            /* "steelscript/packets/query/pcap_query.pyx":209
+            /* "steelscript/packets/query/pcap_query.pyx":210
  *                                                     .utcfromtimestamp(ts)
  *                                                     .replace(tzinfo=pytz.utc)
  *                                                     .astimezone(self.local_tz)             # <<<<<<<<<<<<<<
  *                                                     )
  *                                                    )
  */
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_astimezone); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 209, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_astimezone); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 210, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_3 = NULL;
@@ -5201,23 +5166,23 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
             }
             __pyx_t_7 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_3, __pyx_v_self->local_tz) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_self->local_tz);
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-            if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 209, __pyx_L1_error)
+            if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 210, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-            /* "steelscript/packets/query/pcap_query.pyx":206
+            /* "steelscript/packets/query/pcap_query.pyx":207
  *                         # the one and only field from FRAME
  *                         if as_datetime:
  *                             return_vals[-1].append((datetime.datetime             # <<<<<<<<<<<<<<
  *                                                     .utcfromtimestamp(ts)
  *                                                     .replace(tzinfo=pytz.utc)
  */
-            __pyx_t_14 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_t_7); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 206, __pyx_L1_error)
+            __pyx_t_14 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_t_7); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 207, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-            /* "steelscript/packets/query/pcap_query.pyx":205
- *                     if rep_fname == b'frame.time_epoch':
+            /* "steelscript/packets/query/pcap_query.pyx":206
+ *                     if rep_fname == 'frame.time_epoch':
  *                         # the one and only field from FRAME
  *                         if as_datetime:             # <<<<<<<<<<<<<<
  *                             return_vals[-1].append((datetime.datetime
@@ -5226,7 +5191,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
             goto __pyx_L29;
           }
 
-          /* "steelscript/packets/query/pcap_query.pyx":213
+          /* "steelscript/packets/query/pcap_query.pyx":214
  *                                                    )
  *                         else:
  *                             return_vals[-1].append(ts)             # <<<<<<<<<<<<<<
@@ -5234,27 +5199,27 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  *                     else:
  */
           /*else*/ {
-            __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_return_vals, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 213, __pyx_L1_error)
+            __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_return_vals, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 214, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_6 = PyFloat_FromDouble(__pyx_v_ts); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 213, __pyx_L1_error)
+            __pyx_t_6 = PyFloat_FromDouble(__pyx_v_ts); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 214, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_6);
-            __pyx_t_14 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_6); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 213, __pyx_L1_error)
+            __pyx_t_14 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_6); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 214, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           }
           __pyx_L29:;
 
-          /* "steelscript/packets/query/pcap_query.pyx":203
+          /* "steelscript/packets/query/pcap_query.pyx":204
  *                 # order matters.
  *                 for rep_fname, layer_index in name_idx:
- *                     if rep_fname == b'frame.time_epoch':             # <<<<<<<<<<<<<<
+ *                     if rep_fname == 'frame.time_epoch':             # <<<<<<<<<<<<<<
  *                         # the one and only field from FRAME
  *                         if as_datetime:
  */
           goto __pyx_L28;
         }
 
-        /* "steelscript/packets/query/pcap_query.pyx":217
+        /* "steelscript/packets/query/pcap_query.pyx":218
  *                     else:
  *                         # In the case of NullPkt this will return None.
  *                         return_vals[-1].append(             # <<<<<<<<<<<<<<
@@ -5262,19 +5227,19 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  *                         )
  */
         /*else*/ {
-          __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_return_vals, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 217, __pyx_L1_error)
+          __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_return_vals, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 218, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
 
-          /* "steelscript/packets/query/pcap_query.pyx":218
+          /* "steelscript/packets/query/pcap_query.pyx":219
  *                         # In the case of NullPkt this will return None.
  *                         return_vals[-1].append(
  *                             layers[layer_index].get_field_val(rep_fname)             # <<<<<<<<<<<<<<
  *                         )
  * 
  */
-          __pyx_t_10 = __Pyx_GetItemInt_List(__pyx_v_layers, __pyx_v_layer_index, uint16_t, 0, __Pyx_PyInt_From_uint16_t, 1, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 218, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetItemInt_List(__pyx_v_layers, __pyx_v_layer_index, uint16_t, 0, __Pyx_PyInt_From_uint16_t, 1, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 219, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_get_field_val); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 218, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_get_field_val); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __pyx_t_10 = NULL;
@@ -5289,34 +5254,34 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
           }
           __pyx_t_7 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_10, __pyx_v_rep_fname) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_rep_fname);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 218, __pyx_L1_error)
+          if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 219, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "steelscript/packets/query/pcap_query.pyx":217
+          /* "steelscript/packets/query/pcap_query.pyx":218
  *                     else:
  *                         # In the case of NullPkt this will return None.
  *                         return_vals[-1].append(             # <<<<<<<<<<<<<<
  *                             layers[layer_index].get_field_val(rep_fname)
  *                         )
  */
-          __pyx_t_14 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_t_7); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 217, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_t_7); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 218, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         }
         __pyx_L28:;
 
-        /* "steelscript/packets/query/pcap_query.pyx":202
+        /* "steelscript/packets/query/pcap_query.pyx":203
  *                 # we have all the objects now. Do the report and return.
  *                 # order matters.
  *                 for rep_fname, layer_index in name_idx:             # <<<<<<<<<<<<<<
- *                     if rep_fname == b'frame.time_epoch':
+ *                     if rep_fname == 'frame.time_epoch':
  *                         # the one and only field from FRAME
  */
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "steelscript/packets/query/pcap_query.pyx":187
+      /* "steelscript/packets/query/pcap_query.pyx":188
  *         rdr = PCAPReader(file_handle)
  *         for ts, pkt, link_type in rdr:
  *             if (link_type == 1 and             # <<<<<<<<<<<<<<
@@ -5325,7 +5290,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
  */
     }
 
-    /* "steelscript/packets/query/pcap_query.pyx":186
+    /* "steelscript/packets/query/pcap_query.pyx":187
  * 
  *         rdr = PCAPReader(file_handle)
  *         for ts, pkt, link_type in rdr:             # <<<<<<<<<<<<<<
@@ -5335,12 +5300,12 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":221
+  /* "steelscript/packets/query/pcap_query.pyx":222
  *                         )
  * 
  *         if rdf and return_vals:             # <<<<<<<<<<<<<<
- *             try:
- *                 import pandas
+ *             return DataFrame(return_vals, columns=wshark_fields)
+ *         elif rdf and not return_vals:
  */
   __pyx_t_12 = (__pyx_v_rdf != 0);
   if (__pyx_t_12) {
@@ -5353,173 +5318,45 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
   __pyx_L31_bool_binop_done:;
   if (__pyx_t_13) {
 
-    /* "steelscript/packets/query/pcap_query.pyx":222
+    /* "steelscript/packets/query/pcap_query.pyx":223
  * 
  *         if rdf and return_vals:
- *             try:             # <<<<<<<<<<<<<<
- *                 import pandas
- *             except ImportError as e:
- */
-    {
-      __Pyx_PyThreadState_declare
-      __Pyx_PyThreadState_assign
-      __Pyx_ExceptionSave(&__pyx_t_21, &__pyx_t_22, &__pyx_t_23);
-      __Pyx_XGOTREF(__pyx_t_21);
-      __Pyx_XGOTREF(__pyx_t_22);
-      __Pyx_XGOTREF(__pyx_t_23);
-      /*try:*/ {
-
-        /* "steelscript/packets/query/pcap_query.pyx":223
- *         if rdf and return_vals:
- *             try:
- *                 import pandas             # <<<<<<<<<<<<<<
- *             except ImportError as e:
- *                 raise ImportError("pcap_query's rdf option requires pandas. "
- */
-        __pyx_t_1 = __Pyx_Import(__pyx_n_s_pandas, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L33_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __pyx_v_pandas = __pyx_t_1;
-        __pyx_t_1 = 0;
-
-        /* "steelscript/packets/query/pcap_query.pyx":222
- * 
- *         if rdf and return_vals:
- *             try:             # <<<<<<<<<<<<<<
- *                 import pandas
- *             except ImportError as e:
- */
-      }
-      __Pyx_XDECREF(__pyx_t_21); __pyx_t_21 = 0;
-      __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
-      __Pyx_XDECREF(__pyx_t_23); __pyx_t_23 = 0;
-      goto __pyx_L38_try_end;
-      __pyx_L33_error:;
-      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-      /* "steelscript/packets/query/pcap_query.pyx":224
- *             try:
- *                 import pandas
- *             except ImportError as e:             # <<<<<<<<<<<<<<
- *                 raise ImportError("pcap_query's rdf option requires pandas. "
- *                                   "Please pip install pandas. Error was: {0}"
- */
-      __pyx_t_9 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ImportError);
-      if (__pyx_t_9) {
-        __Pyx_AddTraceback("steelscript.packets.query.pcap_query.PcapQuery.pcap_query", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_7) < 0) __PYX_ERR(0, 224, __pyx_L35_except_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_GOTREF(__pyx_t_7);
-        __Pyx_INCREF(__pyx_t_2);
-        __Pyx_XDECREF_SET(__pyx_v_e, ((struct __pyx_obj_11steelscript_7packets_4core_7inetpkt_Ethernet *)__pyx_t_2));
-
-        /* "steelscript/packets/query/pcap_query.pyx":227
- *                 raise ImportError("pcap_query's rdf option requires pandas. "
- *                                   "Please pip install pandas. Error was: {0}"
- *                                   "".format(e.message))             # <<<<<<<<<<<<<<
- *             return pandas.DataFrame(return_vals, columns=wshark_fields)
- *         elif rdf and not return_vals:
- */
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_pcap_query_s_rdf_option_requires, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L35_except_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_e), __pyx_n_s_message); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 227, __pyx_L35_except_error)
-        __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_5 = NULL;
-        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-          __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
-          if (likely(__pyx_t_5)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-            __Pyx_INCREF(__pyx_t_5);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_3, function);
-          }
-        }
-        __pyx_t_6 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_5, __pyx_t_10) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_10);
-        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 227, __pyx_L35_except_error)
-        __Pyx_GOTREF(__pyx_t_6);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-        /* "steelscript/packets/query/pcap_query.pyx":225
- *                 import pandas
- *             except ImportError as e:
- *                 raise ImportError("pcap_query's rdf option requires pandas. "             # <<<<<<<<<<<<<<
- *                                   "Please pip install pandas. Error was: {0}"
- *                                   "".format(e.message))
- */
-        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ImportError, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 225, __pyx_L35_except_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __Pyx_Raise(__pyx_t_3, 0, 0, 0);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __PYX_ERR(0, 225, __pyx_L35_except_error)
-      }
-      goto __pyx_L35_except_error;
-      __pyx_L35_except_error:;
-
-      /* "steelscript/packets/query/pcap_query.pyx":222
- * 
- *         if rdf and return_vals:
- *             try:             # <<<<<<<<<<<<<<
- *                 import pandas
- *             except ImportError as e:
- */
-      __Pyx_XGIVEREF(__pyx_t_21);
-      __Pyx_XGIVEREF(__pyx_t_22);
-      __Pyx_XGIVEREF(__pyx_t_23);
-      __Pyx_ExceptionReset(__pyx_t_21, __pyx_t_22, __pyx_t_23);
-      goto __pyx_L1_error;
-      __pyx_L38_try_end:;
-    }
-
-    /* "steelscript/packets/query/pcap_query.pyx":228
- *                                   "Please pip install pandas. Error was: {0}"
- *                                   "".format(e.message))
- *             return pandas.DataFrame(return_vals, columns=wshark_fields)             # <<<<<<<<<<<<<<
+ *             return DataFrame(return_vals, columns=wshark_fields)             # <<<<<<<<<<<<<<
  *         elif rdf and not return_vals:
  *             return None
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_pandas, __pyx_n_s_DataFrame); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 228, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_DataFrame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_v_return_vals);
     __Pyx_GIVEREF(__pyx_v_return_vals);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_return_vals);
-    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_columns, __pyx_v_wshark_fields) < 0) __PYX_ERR(0, 228, __pyx_L1_error)
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 228, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_columns, __pyx_v_wshark_fields) < 0) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_r = __pyx_t_3;
-    __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_r = __pyx_t_6;
+    __pyx_t_6 = 0;
     goto __pyx_L0;
 
-    /* "steelscript/packets/query/pcap_query.pyx":221
+    /* "steelscript/packets/query/pcap_query.pyx":222
  *                         )
  * 
  *         if rdf and return_vals:             # <<<<<<<<<<<<<<
- *             try:
- *                 import pandas
+ *             return DataFrame(return_vals, columns=wshark_fields)
+ *         elif rdf and not return_vals:
  */
   }
 
-  /* "steelscript/packets/query/pcap_query.pyx":229
- *                                   "".format(e.message))
- *             return pandas.DataFrame(return_vals, columns=wshark_fields)
+  /* "steelscript/packets/query/pcap_query.pyx":224
+ *         if rdf and return_vals:
+ *             return DataFrame(return_vals, columns=wshark_fields)
  *         elif rdf and not return_vals:             # <<<<<<<<<<<<<<
  *             return None
  *         return return_vals
@@ -5528,16 +5365,16 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
   if (__pyx_t_12) {
   } else {
     __pyx_t_13 = __pyx_t_12;
-    goto __pyx_L41_bool_binop_done;
+    goto __pyx_L33_bool_binop_done;
   }
   __pyx_t_12 = (PyList_GET_SIZE(__pyx_v_return_vals) != 0);
   __pyx_t_19 = ((!__pyx_t_12) != 0);
   __pyx_t_13 = __pyx_t_19;
-  __pyx_L41_bool_binop_done:;
+  __pyx_L33_bool_binop_done:;
   if (__pyx_t_13) {
 
-    /* "steelscript/packets/query/pcap_query.pyx":230
- *             return pandas.DataFrame(return_vals, columns=wshark_fields)
+    /* "steelscript/packets/query/pcap_query.pyx":225
+ *             return DataFrame(return_vals, columns=wshark_fields)
  *         elif rdf and not return_vals:
  *             return None             # <<<<<<<<<<<<<<
  *         return return_vals
@@ -5546,16 +5383,16 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "steelscript/packets/query/pcap_query.pyx":229
- *                                   "".format(e.message))
- *             return pandas.DataFrame(return_vals, columns=wshark_fields)
+    /* "steelscript/packets/query/pcap_query.pyx":224
+ *         if rdf and return_vals:
+ *             return DataFrame(return_vals, columns=wshark_fields)
  *         elif rdf and not return_vals:             # <<<<<<<<<<<<<<
  *             return None
  *         return return_vals
  */
   }
 
-  /* "steelscript/packets/query/pcap_query.pyx":231
+  /* "steelscript/packets/query/pcap_query.pyx":226
  *         elif rdf and not return_vals:
  *             return None
  *         return return_vals             # <<<<<<<<<<<<<<
@@ -5565,7 +5402,7 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
   __pyx_r = __pyx_v_return_vals;
   goto __pyx_L0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":113
+  /* "steelscript/packets/query/pcap_query.pyx":114
  *             return 1
  * 
  *     cpdef pcap_query(self,             # <<<<<<<<<<<<<<
@@ -5599,7 +5436,6 @@ static PyObject *__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_p
   __Pyx_XDECREF((PyObject *)__pyx_v_pkt);
   __Pyx_XDECREF((PyObject *)__pyx_v_e);
   __Pyx_XDECREF((PyObject *)__pyx_v_rdr);
-  __Pyx_XDECREF(__pyx_v_pandas);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -5649,19 +5485,19 @@ static PyObject *__pyx_pw_11steelscript_7packets_5query_10pcap_query_9PcapQuery_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_wshark_fields)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pcap_query", 0, 4, 6, 1); __PYX_ERR(0, 113, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pcap_query", 0, 4, 6, 1); __PYX_ERR(0, 114, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_starttime)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pcap_query", 0, 4, 6, 2); __PYX_ERR(0, 113, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pcap_query", 0, 4, 6, 2); __PYX_ERR(0, 114, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_endtime)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pcap_query", 0, 4, 6, 3); __PYX_ERR(0, 113, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pcap_query", 0, 4, 6, 3); __PYX_ERR(0, 114, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -5677,7 +5513,7 @@ static PyObject *__pyx_pw_11steelscript_7packets_5query_10pcap_query_9PcapQuery_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pcap_query") < 0)) __PYX_ERR(0, 113, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pcap_query") < 0)) __PYX_ERR(0, 114, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -5695,28 +5531,28 @@ static PyObject *__pyx_pw_11steelscript_7packets_5query_10pcap_query_9PcapQuery_
     }
     __pyx_v_file_handle = values[0];
     __pyx_v_wshark_fields = ((PyObject*)values[1]);
-    __pyx_v_starttime = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_starttime == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L3_error)
-    __pyx_v_endtime = __pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_endtime == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
+    __pyx_v_starttime = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_starttime == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
+    __pyx_v_endtime = __pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_endtime == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 118, __pyx_L3_error)
     if (values[4]) {
-      __pyx_v_rdf = __Pyx_PyInt_As_unsigned_char(values[4]); if (unlikely((__pyx_v_rdf == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 118, __pyx_L3_error)
+      __pyx_v_rdf = __Pyx_PyInt_As_unsigned_char(values[4]); if (unlikely((__pyx_v_rdf == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L3_error)
     } else {
       __pyx_v_rdf = ((unsigned char)0);
     }
     if (values[5]) {
-      __pyx_v_as_datetime = __Pyx_PyInt_As_unsigned_char(values[5]); if (unlikely((__pyx_v_as_datetime == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L3_error)
+      __pyx_v_as_datetime = __Pyx_PyInt_As_unsigned_char(values[5]); if (unlikely((__pyx_v_as_datetime == (unsigned char)-1) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L3_error)
     } else {
       __pyx_v_as_datetime = ((unsigned char)1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pcap_query", 0, 4, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 113, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pcap_query", 0, 4, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 114, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("steelscript.packets.query.pcap_query.PcapQuery.pcap_query", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_wshark_fields), (&PyList_Type), 1, "wshark_fields", 1))) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_wshark_fields), (&PyList_Type), 1, "wshark_fields", 1))) __PYX_ERR(0, 116, __pyx_L1_error)
   __pyx_r = __pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery_6pcap_query(((struct __pyx_obj_11steelscript_7packets_5query_10pcap_query_PcapQuery *)__pyx_v_self), __pyx_v_file_handle, __pyx_v_wshark_fields, __pyx_v_starttime, __pyx_v_endtime, __pyx_v_rdf, __pyx_v_as_datetime);
 
   /* function exit code */
@@ -5738,7 +5574,7 @@ static PyObject *__pyx_pf_11steelscript_7packets_5query_10pcap_query_9PcapQuery_
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.rdf = __pyx_v_rdf;
   __pyx_t_2.as_datetime = __pyx_v_as_datetime;
-  __pyx_t_1 = __pyx_vtabptr_11steelscript_7packets_5query_10pcap_query_PcapQuery->pcap_query(__pyx_v_self, __pyx_v_file_handle, __pyx_v_wshark_fields, __pyx_v_starttime, __pyx_v_endtime, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_1 = __pyx_vtabptr_11steelscript_7packets_5query_10pcap_query_PcapQuery->pcap_query(__pyx_v_self, __pyx_v_file_handle, __pyx_v_wshark_fields, __pyx_v_starttime, __pyx_v_endtime, 1, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7292,7 +7128,6 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_0_1, __pyx_k_0_1, sizeof(__pyx_k_0_1), 0, 0, 1, 0},
   {&__pyx_n_s_DataFrame, __pyx_k_DataFrame, sizeof(__pyx_k_DataFrame), 0, 0, 1, 1},
-  {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x99, __pyx_k_Incompatible_checksums_s_vs_0x99, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x99), 0, 0, 1, 0},
   {&__pyx_n_s_MemoryError, __pyx_k_MemoryError, sizeof(__pyx_k_MemoryError), 0, 0, 1, 1},
   {&__pyx_n_s_NOT_FOUND, __pyx_k_NOT_FOUND, sizeof(__pyx_k_NOT_FOUND), 0, 0, 1, 1},
@@ -7314,7 +7149,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_file_handle, __pyx_k_file_handle, sizeof(__pyx_k_file_handle), 0, 0, 1, 1},
   {&__pyx_n_s_find, __pyx_k_find, sizeof(__pyx_k_find), 0, 0, 1, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
-  {&__pyx_kp_b_frame_time_epoch, __pyx_k_frame_time_epoch, sizeof(__pyx_k_frame_time_epoch), 0, 0, 0, 0},
+  {&__pyx_kp_s_frame_time_epoch, __pyx_k_frame_time_epoch, sizeof(__pyx_k_frame_time_epoch), 0, 0, 1, 0},
   {&__pyx_n_s_get, __pyx_k_get, sizeof(__pyx_k_get), 0, 0, 1, 1},
   {&__pyx_n_s_get_field_val, __pyx_k_get_field_val, sizeof(__pyx_k_get_field_val), 0, 0, 1, 1},
   {&__pyx_n_s_get_localzone, __pyx_k_get_localzone, sizeof(__pyx_k_get_localzone), 0, 0, 1, 1},
@@ -7327,14 +7162,12 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_l7_ports, __pyx_k_l7_ports, sizeof(__pyx_k_l7_ports), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_match, __pyx_k_match, sizeof(__pyx_k_match), 0, 0, 1, 1},
-  {&__pyx_n_s_message, __pyx_k_message, sizeof(__pyx_k_message), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
   {&__pyx_n_s_offset_re, __pyx_k_offset_re, sizeof(__pyx_k_offset_re), 0, 0, 1, 1},
   {&__pyx_n_s_pandas, __pyx_k_pandas, sizeof(__pyx_k_pandas), 0, 0, 1, 1},
-  {&__pyx_kp_b_payload_offset, __pyx_k_payload_offset, sizeof(__pyx_k_payload_offset), 0, 0, 0, 0},
+  {&__pyx_kp_s_payload_offset, __pyx_k_payload_offset, sizeof(__pyx_k_payload_offset), 0, 0, 1, 0},
   {&__pyx_n_s_pcap_query, __pyx_k_pcap_query, sizeof(__pyx_k_pcap_query), 0, 0, 1, 1},
-  {&__pyx_kp_s_pcap_query_s_rdf_option_requires, __pyx_k_pcap_query_s_rdf_option_requires, sizeof(__pyx_k_pcap_query_s_rdf_option_requires), 0, 0, 1, 0},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
   {&__pyx_n_s_pkt_classes, __pyx_k_pkt_classes, sizeof(__pyx_k_pkt_classes), 0, 0, 1, 1},
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
@@ -7360,14 +7193,14 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_starttime, __pyx_k_starttime, sizeof(__pyx_k_starttime), 0, 0, 1, 1},
   {&__pyx_n_s_steelscript_packets_query_pcap_q, __pyx_k_steelscript_packets_query_pcap_q, sizeof(__pyx_k_steelscript_packets_query_pcap_q), 0, 0, 1, 1},
   {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
-  {&__pyx_n_b_tcp, __pyx_k_tcp, sizeof(__pyx_k_tcp), 0, 0, 0, 1},
-  {&__pyx_kp_b_tcp_payload_offset, __pyx_k_tcp_payload_offset, sizeof(__pyx_k_tcp_payload_offset), 0, 0, 0, 0},
+  {&__pyx_n_s_tcp, __pyx_k_tcp, sizeof(__pyx_k_tcp), 0, 0, 1, 1},
+  {&__pyx_kp_s_tcp_payload_offset, __pyx_k_tcp_payload_offset, sizeof(__pyx_k_tcp_payload_offset), 0, 0, 1, 0},
   {&__pyx_kp_s_tcp_udp_payload_offset_x_y_x_y, __pyx_k_tcp_udp_payload_offset_x_y_x_y, sizeof(__pyx_k_tcp_udp_payload_offset_x_y_x_y), 0, 0, 1, 0},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_tzinfo, __pyx_k_tzinfo, sizeof(__pyx_k_tzinfo), 0, 0, 1, 1},
   {&__pyx_n_s_tzlocal, __pyx_k_tzlocal, sizeof(__pyx_k_tzlocal), 0, 0, 1, 1},
-  {&__pyx_n_b_udp, __pyx_k_udp, sizeof(__pyx_k_udp), 0, 0, 0, 1},
-  {&__pyx_kp_b_udp_payload_offset, __pyx_k_udp_payload_offset, sizeof(__pyx_k_udp_payload_offset), 0, 0, 0, 0},
+  {&__pyx_n_s_udp, __pyx_k_udp, sizeof(__pyx_k_udp), 0, 0, 1, 1},
+  {&__pyx_kp_s_udp_payload_offset, __pyx_k_udp_payload_offset, sizeof(__pyx_k_udp_payload_offset), 0, 0, 1, 0},
   {&__pyx_kp_s_udp_tcp_payload_offset_d_d, __pyx_k_udp_tcp_payload_offset_d_d, sizeof(__pyx_k_udp_tcp_payload_offset_d_d), 0, 0, 1, 0},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
   {&__pyx_n_s_utc, __pyx_k_utc, sizeof(__pyx_k_utc), 0, 0, 1, 1},
@@ -7376,7 +7209,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(0, 224, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(2, 109, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -7387,14 +7219,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "steelscript/packets/query/pcap_query.pyx":21
+  /* "steelscript/packets/query/pcap_query.pyx":22
  * 
  * # Regex to determine if the field matches a payload offset pattern.
  * offset_re = re.compile(r'^(udp|tcp)\.payload\.offset\[(\d*):(\d*)\]$')             # <<<<<<<<<<<<<<
  * NOT_FOUND = -1
  * 
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_udp_tcp_payload_offset_d_d); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_udp_tcp_payload_offset_d_d); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
@@ -7473,14 +7305,14 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_11steelscript_7packets_5query_10pcap_query_PcapQuery.fields_supported = (unsigned char (*)(struct __pyx_obj_11steelscript_7packets_5query_10pcap_query_PcapQuery *, PyObject *, int __pyx_skip_dispatch))__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_fields_supported;
   __pyx_vtable_11steelscript_7packets_5query_10pcap_query_PcapQuery.show_fields = (PyObject *(*)(struct __pyx_obj_11steelscript_7packets_5query_10pcap_query_PcapQuery *, int __pyx_skip_dispatch))__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_show_fields;
   __pyx_vtable_11steelscript_7packets_5query_10pcap_query_PcapQuery.pcap_query = (PyObject *(*)(struct __pyx_obj_11steelscript_7packets_5query_10pcap_query_PcapQuery *, PyObject *, PyObject *, double, double, int __pyx_skip_dispatch, struct __pyx_opt_args_11steelscript_7packets_5query_10pcap_query_9PcapQuery_pcap_query *__pyx_optional_args))__pyx_f_11steelscript_7packets_5query_10pcap_query_9PcapQuery_pcap_query;
-  if (PyType_Ready(&__pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
   __pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery.tp_dictoffset && __pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #if CYTHON_COMPILING_IN_CPYTHON
   {
-    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery, "__init__"); if (unlikely(!wrapper)) __PYX_ERR(0, 25, __pyx_L1_error)
+    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery, "__init__"); if (unlikely(!wrapper)) __PYX_ERR(0, 26, __pyx_L1_error)
     if (Py_TYPE(wrapper) == &PyWrapperDescr_Type) {
       __pyx_wrapperbase_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init__ = *((PyWrapperDescrObject *)wrapper)->d_base;
       __pyx_wrapperbase_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init__.doc = __pyx_doc_11steelscript_7packets_5query_10pcap_query_9PcapQuery___init__;
@@ -7488,9 +7320,9 @@ static int __Pyx_modinit_type_init_code(void) {
     }
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery.tp_dict, __pyx_vtabptr_11steelscript_7packets_5query_10pcap_query_PcapQuery) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PcapQuery, (PyObject *)&__pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery.tp_dict, __pyx_vtabptr_11steelscript_7packets_5query_10pcap_query_PcapQuery) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PcapQuery, (PyObject *)&__pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
   __pyx_ptype_11steelscript_7packets_5query_10pcap_query_PcapQuery = &__pyx_type_11steelscript_7packets_5query_10pcap_query_PcapQuery;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -7900,72 +7732,93 @@ if (!__Pyx_RefNanny) {
   /* "steelscript/packets/query/pcap_query.pyx":10
  * 
  * from cpython.array cimport array
+ * from pandas import DataFrame             # <<<<<<<<<<<<<<
+ * import datetime
+ * import tzlocal
+ */
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_n_s_DataFrame);
+  __Pyx_GIVEREF(__pyx_n_s_DataFrame);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_DataFrame);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_pandas, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_DataFrame); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DataFrame, __pyx_t_1) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "steelscript/packets/query/pcap_query.pyx":11
+ * from cpython.array cimport array
+ * from pandas import DataFrame
  * import datetime             # <<<<<<<<<<<<<<
  * import tzlocal
  * import pytz
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_datetime, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_datetime, __pyx_t_1) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_datetime, 0, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_datetime, __pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":11
- * from cpython.array cimport array
+  /* "steelscript/packets/query/pcap_query.pyx":12
+ * from pandas import DataFrame
  * import datetime
  * import tzlocal             # <<<<<<<<<<<<<<
  * import pytz
  * import re
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_tzlocal, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_tzlocal, __pyx_t_1) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_tzlocal, 0, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_tzlocal, __pyx_t_2) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":12
+  /* "steelscript/packets/query/pcap_query.pyx":13
  * import datetime
  * import tzlocal
  * import pytz             # <<<<<<<<<<<<<<
  * import re
  * 
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_pytz, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pytz, __pyx_t_1) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_pytz, 0, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pytz, __pyx_t_2) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":13
+  /* "steelscript/packets/query/pcap_query.pyx":14
  * import tzlocal
  * import pytz
  * import re             # <<<<<<<<<<<<<<
  * 
  * from libc.stdint cimport uint16_t
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_re, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_re, __pyx_t_1) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_re, 0, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_re, __pyx_t_2) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":21
+  /* "steelscript/packets/query/pcap_query.pyx":22
  * 
  * # Regex to determine if the field matches a payload offset pattern.
  * offset_re = re.compile(r'^(udp|tcp)\.payload\.offset\[(\d*):(\d*)\]$')             # <<<<<<<<<<<<<<
  * NOT_FOUND = -1
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_re); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_compile); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_re); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_compile); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_XGOTREF(__pyx_v_11steelscript_7packets_5query_10pcap_query_offset_re);
-  __Pyx_DECREF_SET(__pyx_v_11steelscript_7packets_5query_10pcap_query_offset_re, __pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_1);
-  __pyx_t_1 = 0;
+  __Pyx_DECREF_SET(__pyx_v_11steelscript_7packets_5query_10pcap_query_offset_re, __pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_2);
+  __pyx_t_2 = 0;
 
-  /* "steelscript/packets/query/pcap_query.pyx":22
+  /* "steelscript/packets/query/pcap_query.pyx":23
  * # Regex to determine if the field matches a payload offset pattern.
  * offset_re = re.compile(r'^(udp|tcp)\.payload\.offset\[(\d*):(\d*)\]$')
  * NOT_FOUND = -1             # <<<<<<<<<<<<<<
@@ -7979,20 +7832,20 @@ if (!__Pyx_RefNanny) {
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_11steelscript_7packets_5query_10pcap_query_1__pyx_unpickle_PcapQuery, NULL, __pyx_n_s_steelscript_packets_query_pcap_q); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_PcapQuery, __pyx_t_1) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_11steelscript_7packets_5query_10pcap_query_1__pyx_unpickle_PcapQuery, NULL, __pyx_n_s_steelscript_packets_query_pcap_q); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pyx_unpickle_PcapQuery, __pyx_t_2) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "steelscript/packets/query/pcap_query.pyx":1
  * # cython: profile=False             # <<<<<<<<<<<<<<
  * 
  * # Copyright (c) 2017 Riverbed Technology, Inc.
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "cpython/array.pxd":161
  *     return extend_buffer(self, other.data.as_chars, Py_SIZE(other))
@@ -8044,34 +7897,6 @@ end:
     return (__Pyx_RefNannyAPIStruct *)r;
 }
 #endif
-
-/* PyObjectGetAttrStr */
-#if CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject* attr_name) {
-    PyTypeObject* tp = Py_TYPE(obj);
-    if (likely(tp->tp_getattro))
-        return tp->tp_getattro(obj, attr_name);
-#if PY_MAJOR_VERSION < 3
-    if (likely(tp->tp_getattr))
-        return tp->tp_getattr(obj, PyString_AS_STRING(attr_name));
-#endif
-    return PyObject_GetAttr(obj, attr_name);
-}
-#endif
-
-/* GetBuiltinName */
-static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
-    PyObject* result = __Pyx_PyObject_GetAttrStr(__pyx_b, name);
-    if (unlikely(!result)) {
-        PyErr_Format(PyExc_NameError,
-#if PY_MAJOR_VERSION >= 3
-            "name '%U' is not defined", name);
-#else
-            "name '%.200s' is not defined", PyString_AS_STRING(name));
-#endif
-    }
-    return result;
-}
 
 /* KeywordStringCheck */
 static int __Pyx_CheckKeywordStrings(
@@ -8134,6 +7959,20 @@ static PyObject *__Pyx_PyDict_GetItem(PyObject *d, PyObject* key) {
     }
     Py_INCREF(value);
     return value;
+}
+#endif
+
+/* PyObjectGetAttrStr */
+#if CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject* attr_name) {
+    PyTypeObject* tp = Py_TYPE(obj);
+    if (likely(tp->tp_getattro))
+        return tp->tp_getattro(obj, attr_name);
+#if PY_MAJOR_VERSION < 3
+    if (likely(tp->tp_getattr))
+        return tp->tp_getattr(obj, PyString_AS_STRING(attr_name));
+#endif
+    return PyObject_GetAttr(obj, attr_name);
 }
 #endif
 
@@ -8628,6 +8467,20 @@ done:
     return result;
 }
 
+/* GetBuiltinName */
+static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
+    PyObject* result = __Pyx_PyObject_GetAttrStr(__pyx_b, name);
+    if (unlikely(!result)) {
+        PyErr_Format(PyExc_NameError,
+#if PY_MAJOR_VERSION >= 3
+            "name '%U' is not defined", name);
+#else
+            "name '%.200s' is not defined", PyString_AS_STRING(name));
+#endif
+    }
+    return result;
+}
+
 /* GetModuleGlobalName */
 #if CYTHON_USE_DICT_VERSIONS
 static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_version, PyObject **dict_cached_value)
@@ -9073,6 +8926,201 @@ static CYTHON_INLINE int __Pyx_PyObject_Append(PyObject* L, PyObject* x) {
     return 0;
 }
 
+/* RaiseArgTupleInvalid */
+static void __Pyx_RaiseArgtupleInvalid(
+    const char* func_name,
+    int exact,
+    Py_ssize_t num_min,
+    Py_ssize_t num_max,
+    Py_ssize_t num_found)
+{
+    Py_ssize_t num_expected;
+    const char *more_or_less;
+    if (num_found < num_min) {
+        num_expected = num_min;
+        more_or_less = "at least";
+    } else {
+        num_expected = num_max;
+        more_or_less = "at most";
+    }
+    if (exact) {
+        more_or_less = "exactly";
+    }
+    PyErr_Format(PyExc_TypeError,
+                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
+                 func_name, more_or_less, num_expected,
+                 (num_expected == 1) ? "" : "s", num_found);
+}
+
+/* RaiseDoubleKeywords */
+static void __Pyx_RaiseDoubleKeywordsError(
+    const char* func_name,
+    PyObject* kw_name)
+{
+    PyErr_Format(PyExc_TypeError,
+        #if PY_MAJOR_VERSION >= 3
+        "%s() got multiple values for keyword argument '%U'", func_name, kw_name);
+        #else
+        "%s() got multiple values for keyword argument '%s'", func_name,
+        PyString_AsString(kw_name));
+        #endif
+}
+
+/* ParseKeywords */
+static int __Pyx_ParseOptionalKeywords(
+    PyObject *kwds,
+    PyObject **argnames[],
+    PyObject *kwds2,
+    PyObject *values[],
+    Py_ssize_t num_pos_args,
+    const char* function_name)
+{
+    PyObject *key = 0, *value = 0;
+    Py_ssize_t pos = 0;
+    PyObject*** name;
+    PyObject*** first_kw_arg = argnames + num_pos_args;
+    while (PyDict_Next(kwds, &pos, &key, &value)) {
+        name = first_kw_arg;
+        while (*name && (**name != key)) name++;
+        if (*name) {
+            values[name-argnames] = value;
+            continue;
+        }
+        name = first_kw_arg;
+        #if PY_MAJOR_VERSION < 3
+        if (likely(PyString_CheckExact(key)) || likely(PyString_Check(key))) {
+            while (*name) {
+                if ((CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**name) == PyString_GET_SIZE(key))
+                        && _PyString_Eq(**name, key)) {
+                    values[name-argnames] = value;
+                    break;
+                }
+                name++;
+            }
+            if (*name) continue;
+            else {
+                PyObject*** argname = argnames;
+                while (argname != first_kw_arg) {
+                    if ((**argname == key) || (
+                            (CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**argname) == PyString_GET_SIZE(key))
+                             && _PyString_Eq(**argname, key))) {
+                        goto arg_passed_twice;
+                    }
+                    argname++;
+                }
+            }
+        } else
+        #endif
+        if (likely(PyUnicode_Check(key))) {
+            while (*name) {
+                int cmp = (**name == key) ? 0 :
+                #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
+                    (PyUnicode_GET_SIZE(**name) != PyUnicode_GET_SIZE(key)) ? 1 :
+                #endif
+                    PyUnicode_Compare(**name, key);
+                if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
+                if (cmp == 0) {
+                    values[name-argnames] = value;
+                    break;
+                }
+                name++;
+            }
+            if (*name) continue;
+            else {
+                PyObject*** argname = argnames;
+                while (argname != first_kw_arg) {
+                    int cmp = (**argname == key) ? 0 :
+                    #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
+                        (PyUnicode_GET_SIZE(**argname) != PyUnicode_GET_SIZE(key)) ? 1 :
+                    #endif
+                        PyUnicode_Compare(**argname, key);
+                    if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
+                    if (cmp == 0) goto arg_passed_twice;
+                    argname++;
+                }
+            }
+        } else
+            goto invalid_keyword_type;
+        if (kwds2) {
+            if (unlikely(PyDict_SetItem(kwds2, key, value))) goto bad;
+        } else {
+            goto invalid_keyword;
+        }
+    }
+    return 0;
+arg_passed_twice:
+    __Pyx_RaiseDoubleKeywordsError(function_name, key);
+    goto bad;
+invalid_keyword_type:
+    PyErr_Format(PyExc_TypeError,
+        "%.200s() keywords must be strings", function_name);
+    goto bad;
+invalid_keyword:
+    PyErr_Format(PyExc_TypeError,
+    #if PY_MAJOR_VERSION < 3
+        "%.200s() got an unexpected keyword argument '%.200s'",
+        function_name, PyString_AsString(key));
+    #else
+        "%s() got an unexpected keyword argument '%U'",
+        function_name, key);
+    #endif
+bad:
+    return -1;
+}
+
+/* PyErrExceptionMatches */
+#if CYTHON_FAST_THREAD_STATE
+static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
+    Py_ssize_t i, n;
+    n = PyTuple_GET_SIZE(tuple);
+#if PY_MAJOR_VERSION >= 3
+    for (i=0; i<n; i++) {
+        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
+    }
+#endif
+    for (i=0; i<n; i++) {
+        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
+    }
+    return 0;
+}
+static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
+    PyObject *exc_type = tstate->curexc_type;
+    if (exc_type == err) return 1;
+    if (unlikely(!exc_type)) return 0;
+    if (unlikely(PyTuple_Check(err)))
+        return __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
+    return __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
+}
+#endif
+
+/* GetAttr */
+static CYTHON_INLINE PyObject *__Pyx_GetAttr(PyObject *o, PyObject *n) {
+#if CYTHON_USE_TYPE_SLOTS
+#if PY_MAJOR_VERSION >= 3
+    if (likely(PyUnicode_Check(n)))
+#else
+    if (likely(PyString_Check(n)))
+#endif
+        return __Pyx_PyObject_GetAttrStr(o, n);
+#endif
+    return PyObject_GetAttr(o, n);
+}
+
+/* GetAttr3 */
+static PyObject *__Pyx_GetAttr3Default(PyObject *d) {
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    if (unlikely(!__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
+        return NULL;
+    __Pyx_PyErr_Clear();
+    Py_INCREF(d);
+    return d;
+}
+static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *o, PyObject *n, PyObject *d) {
+    PyObject *r = __Pyx_GetAttr(o, n);
+    return (likely(r)) ? r : __Pyx_GetAttr3Default(d);
+}
+
 /* Import */
 static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level) {
     PyObject *empty_list = 0;
@@ -9138,159 +9186,18 @@ bad:
     return module;
 }
 
-/* GetTopmostException */
-#if CYTHON_USE_EXC_INFO_STACK
-static _PyErr_StackItem *
-__Pyx_PyErr_GetTopmostException(PyThreadState *tstate)
-{
-    _PyErr_StackItem *exc_info = tstate->exc_info;
-    while ((exc_info->exc_type == NULL || exc_info->exc_type == Py_None) &&
-           exc_info->previous_item != NULL)
-    {
-        exc_info = exc_info->previous_item;
+/* ImportFrom */
+static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
+    PyObject* value = __Pyx_PyObject_GetAttrStr(module, name);
+    if (unlikely(!value) && PyErr_ExceptionMatches(PyExc_AttributeError)) {
+        PyErr_Format(PyExc_ImportError,
+        #if PY_MAJOR_VERSION < 3
+            "cannot import name %.230s", PyString_AS_STRING(name));
+        #else
+            "cannot import name %S", name);
+        #endif
     }
-    return exc_info;
-}
-#endif
-
-/* SaveResetException */
-#if CYTHON_FAST_THREAD_STATE
-static CYTHON_INLINE void __Pyx__ExceptionSave(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
-    #if CYTHON_USE_EXC_INFO_STACK
-    _PyErr_StackItem *exc_info = __Pyx_PyErr_GetTopmostException(tstate);
-    *type = exc_info->exc_type;
-    *value = exc_info->exc_value;
-    *tb = exc_info->exc_traceback;
-    #else
-    *type = tstate->exc_type;
-    *value = tstate->exc_value;
-    *tb = tstate->exc_traceback;
-    #endif
-    Py_XINCREF(*type);
-    Py_XINCREF(*value);
-    Py_XINCREF(*tb);
-}
-static CYTHON_INLINE void __Pyx__ExceptionReset(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-    #if CYTHON_USE_EXC_INFO_STACK
-    _PyErr_StackItem *exc_info = tstate->exc_info;
-    tmp_type = exc_info->exc_type;
-    tmp_value = exc_info->exc_value;
-    tmp_tb = exc_info->exc_traceback;
-    exc_info->exc_type = type;
-    exc_info->exc_value = value;
-    exc_info->exc_traceback = tb;
-    #else
-    tmp_type = tstate->exc_type;
-    tmp_value = tstate->exc_value;
-    tmp_tb = tstate->exc_traceback;
-    tstate->exc_type = type;
-    tstate->exc_value = value;
-    tstate->exc_traceback = tb;
-    #endif
-    Py_XDECREF(tmp_type);
-    Py_XDECREF(tmp_value);
-    Py_XDECREF(tmp_tb);
-}
-#endif
-
-/* PyErrExceptionMatches */
-#if CYTHON_FAST_THREAD_STATE
-static int __Pyx_PyErr_ExceptionMatchesTuple(PyObject *exc_type, PyObject *tuple) {
-    Py_ssize_t i, n;
-    n = PyTuple_GET_SIZE(tuple);
-#if PY_MAJOR_VERSION >= 3
-    for (i=0; i<n; i++) {
-        if (exc_type == PyTuple_GET_ITEM(tuple, i)) return 1;
-    }
-#endif
-    for (i=0; i<n; i++) {
-        if (__Pyx_PyErr_GivenExceptionMatches(exc_type, PyTuple_GET_ITEM(tuple, i))) return 1;
-    }
-    return 0;
-}
-static CYTHON_INLINE int __Pyx_PyErr_ExceptionMatchesInState(PyThreadState* tstate, PyObject* err) {
-    PyObject *exc_type = tstate->curexc_type;
-    if (exc_type == err) return 1;
-    if (unlikely(!exc_type)) return 0;
-    if (unlikely(PyTuple_Check(err)))
-        return __Pyx_PyErr_ExceptionMatchesTuple(exc_type, err);
-    return __Pyx_PyErr_GivenExceptionMatches(exc_type, err);
-}
-#endif
-
-/* GetException */
-#if CYTHON_FAST_THREAD_STATE
-static int __Pyx__GetException(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb)
-#else
-static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb)
-#endif
-{
-    PyObject *local_type, *local_value, *local_tb;
-#if CYTHON_FAST_THREAD_STATE
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-    local_type = tstate->curexc_type;
-    local_value = tstate->curexc_value;
-    local_tb = tstate->curexc_traceback;
-    tstate->curexc_type = 0;
-    tstate->curexc_value = 0;
-    tstate->curexc_traceback = 0;
-#else
-    PyErr_Fetch(&local_type, &local_value, &local_tb);
-#endif
-    PyErr_NormalizeException(&local_type, &local_value, &local_tb);
-#if CYTHON_FAST_THREAD_STATE
-    if (unlikely(tstate->curexc_type))
-#else
-    if (unlikely(PyErr_Occurred()))
-#endif
-        goto bad;
-    #if PY_MAJOR_VERSION >= 3
-    if (local_tb) {
-        if (unlikely(PyException_SetTraceback(local_value, local_tb) < 0))
-            goto bad;
-    }
-    #endif
-    Py_XINCREF(local_tb);
-    Py_XINCREF(local_type);
-    Py_XINCREF(local_value);
-    *type = local_type;
-    *value = local_value;
-    *tb = local_tb;
-#if CYTHON_FAST_THREAD_STATE
-    #if CYTHON_USE_EXC_INFO_STACK
-    {
-        _PyErr_StackItem *exc_info = tstate->exc_info;
-        tmp_type = exc_info->exc_type;
-        tmp_value = exc_info->exc_value;
-        tmp_tb = exc_info->exc_traceback;
-        exc_info->exc_type = local_type;
-        exc_info->exc_value = local_value;
-        exc_info->exc_traceback = local_tb;
-    }
-    #else
-    tmp_type = tstate->exc_type;
-    tmp_value = tstate->exc_value;
-    tmp_tb = tstate->exc_traceback;
-    tstate->exc_type = local_type;
-    tstate->exc_value = local_value;
-    tstate->exc_traceback = local_tb;
-    #endif
-    Py_XDECREF(tmp_type);
-    Py_XDECREF(tmp_value);
-    Py_XDECREF(tmp_tb);
-#else
-    PyErr_SetExcInfo(local_type, local_value, local_tb);
-#endif
-    return 0;
-bad:
-    *type = 0;
-    *value = 0;
-    *tb = 0;
-    Py_XDECREF(local_type);
-    Py_XDECREF(local_value);
-    Py_XDECREF(local_tb);
-    return -1;
+    return value;
 }
 
 /* RaiseException */
@@ -9451,190 +9358,6 @@ bad:
     return;
 }
 #endif
-
-/* RaiseArgTupleInvalid */
-static void __Pyx_RaiseArgtupleInvalid(
-    const char* func_name,
-    int exact,
-    Py_ssize_t num_min,
-    Py_ssize_t num_max,
-    Py_ssize_t num_found)
-{
-    Py_ssize_t num_expected;
-    const char *more_or_less;
-    if (num_found < num_min) {
-        num_expected = num_min;
-        more_or_less = "at least";
-    } else {
-        num_expected = num_max;
-        more_or_less = "at most";
-    }
-    if (exact) {
-        more_or_less = "exactly";
-    }
-    PyErr_Format(PyExc_TypeError,
-                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
-                 func_name, more_or_less, num_expected,
-                 (num_expected == 1) ? "" : "s", num_found);
-}
-
-/* RaiseDoubleKeywords */
-static void __Pyx_RaiseDoubleKeywordsError(
-    const char* func_name,
-    PyObject* kw_name)
-{
-    PyErr_Format(PyExc_TypeError,
-        #if PY_MAJOR_VERSION >= 3
-        "%s() got multiple values for keyword argument '%U'", func_name, kw_name);
-        #else
-        "%s() got multiple values for keyword argument '%s'", func_name,
-        PyString_AsString(kw_name));
-        #endif
-}
-
-/* ParseKeywords */
-static int __Pyx_ParseOptionalKeywords(
-    PyObject *kwds,
-    PyObject **argnames[],
-    PyObject *kwds2,
-    PyObject *values[],
-    Py_ssize_t num_pos_args,
-    const char* function_name)
-{
-    PyObject *key = 0, *value = 0;
-    Py_ssize_t pos = 0;
-    PyObject*** name;
-    PyObject*** first_kw_arg = argnames + num_pos_args;
-    while (PyDict_Next(kwds, &pos, &key, &value)) {
-        name = first_kw_arg;
-        while (*name && (**name != key)) name++;
-        if (*name) {
-            values[name-argnames] = value;
-            continue;
-        }
-        name = first_kw_arg;
-        #if PY_MAJOR_VERSION < 3
-        if (likely(PyString_CheckExact(key)) || likely(PyString_Check(key))) {
-            while (*name) {
-                if ((CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**name) == PyString_GET_SIZE(key))
-                        && _PyString_Eq(**name, key)) {
-                    values[name-argnames] = value;
-                    break;
-                }
-                name++;
-            }
-            if (*name) continue;
-            else {
-                PyObject*** argname = argnames;
-                while (argname != first_kw_arg) {
-                    if ((**argname == key) || (
-                            (CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**argname) == PyString_GET_SIZE(key))
-                             && _PyString_Eq(**argname, key))) {
-                        goto arg_passed_twice;
-                    }
-                    argname++;
-                }
-            }
-        } else
-        #endif
-        if (likely(PyUnicode_Check(key))) {
-            while (*name) {
-                int cmp = (**name == key) ? 0 :
-                #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
-                    (PyUnicode_GET_SIZE(**name) != PyUnicode_GET_SIZE(key)) ? 1 :
-                #endif
-                    PyUnicode_Compare(**name, key);
-                if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
-                if (cmp == 0) {
-                    values[name-argnames] = value;
-                    break;
-                }
-                name++;
-            }
-            if (*name) continue;
-            else {
-                PyObject*** argname = argnames;
-                while (argname != first_kw_arg) {
-                    int cmp = (**argname == key) ? 0 :
-                    #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
-                        (PyUnicode_GET_SIZE(**argname) != PyUnicode_GET_SIZE(key)) ? 1 :
-                    #endif
-                        PyUnicode_Compare(**argname, key);
-                    if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
-                    if (cmp == 0) goto arg_passed_twice;
-                    argname++;
-                }
-            }
-        } else
-            goto invalid_keyword_type;
-        if (kwds2) {
-            if (unlikely(PyDict_SetItem(kwds2, key, value))) goto bad;
-        } else {
-            goto invalid_keyword;
-        }
-    }
-    return 0;
-arg_passed_twice:
-    __Pyx_RaiseDoubleKeywordsError(function_name, key);
-    goto bad;
-invalid_keyword_type:
-    PyErr_Format(PyExc_TypeError,
-        "%.200s() keywords must be strings", function_name);
-    goto bad;
-invalid_keyword:
-    PyErr_Format(PyExc_TypeError,
-    #if PY_MAJOR_VERSION < 3
-        "%.200s() got an unexpected keyword argument '%.200s'",
-        function_name, PyString_AsString(key));
-    #else
-        "%s() got an unexpected keyword argument '%U'",
-        function_name, key);
-    #endif
-bad:
-    return -1;
-}
-
-/* GetAttr */
-static CYTHON_INLINE PyObject *__Pyx_GetAttr(PyObject *o, PyObject *n) {
-#if CYTHON_USE_TYPE_SLOTS
-#if PY_MAJOR_VERSION >= 3
-    if (likely(PyUnicode_Check(n)))
-#else
-    if (likely(PyString_Check(n)))
-#endif
-        return __Pyx_PyObject_GetAttrStr(o, n);
-#endif
-    return PyObject_GetAttr(o, n);
-}
-
-/* GetAttr3 */
-static PyObject *__Pyx_GetAttr3Default(PyObject *d) {
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    if (unlikely(!__Pyx_PyErr_ExceptionMatches(PyExc_AttributeError)))
-        return NULL;
-    __Pyx_PyErr_Clear();
-    Py_INCREF(d);
-    return d;
-}
-static CYTHON_INLINE PyObject *__Pyx_GetAttr3(PyObject *o, PyObject *n, PyObject *d) {
-    PyObject *r = __Pyx_GetAttr(o, n);
-    return (likely(r)) ? r : __Pyx_GetAttr3Default(d);
-}
-
-/* ImportFrom */
-static PyObject* __Pyx_ImportFrom(PyObject* module, PyObject* name) {
-    PyObject* value = __Pyx_PyObject_GetAttrStr(module, name);
-    if (unlikely(!value) && PyErr_ExceptionMatches(PyExc_AttributeError)) {
-        PyErr_Format(PyExc_ImportError,
-        #if PY_MAJOR_VERSION < 3
-            "cannot import name %.230s", PyString_AS_STRING(name));
-        #else
-            "cannot import name %S", name);
-        #endif
-    }
-    return value;
-}
 
 /* HasAttr */
 static CYTHON_INLINE int __Pyx_HasAttr(PyObject *o, PyObject *n) {

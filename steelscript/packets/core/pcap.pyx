@@ -1,4 +1,4 @@
-# cython: profile=False
+# cython: language_level=3
 
 # Copyright (c) 2017 Riverbed Technology, Inc.
 #
@@ -140,15 +140,15 @@ cdef class PcapHeader:
                 raise ValueError("Valid tz_offset number values are "
                                  "{0}-{1}".format(-0x80000000, 0x7fffffff))
 
-    def __str__(self):
-        return bytes(pack(b'%bIHHIIII' % self.order,
-                          self.magic,
-                          self.major_version,
-                          self.minor_version,
-                          self.tz_offset,
-                          self.ts_accuracy,
-                          self.snap_len,
-                          self.net_layer))
+    def __bytes__(self):
+        return pack(b'%bIHHIIII' % self.order,
+                                   self.magic,
+                                   self.major_version,
+                                   self.minor_version,
+                                   self.tz_offset,
+                                   self.ts_accuracy,
+                                   self.snap_len,
+                                   self.net_layer)
 
 
 cdef class PktHeader:
@@ -193,12 +193,12 @@ cdef class PktHeader:
             self.incl_len = kwargs.get('incl_len', 0)
             self.orig_len = kwargs.get('orig_len', 0)
 
-    def __str__(self):
-        return bytes(pack(b'%bIIII' % self.order,
-                          self.ts_sec,
-                          self.ts_usec,
-                          self.incl_len,
-                          self.orig_len))
+    def __bytes__(self):
+        return pack(b'%bIIII' % self.order,
+                                self.ts_sec,
+                                self.ts_usec,
+                                self.incl_len,
+                                self.orig_len)
 
     property order:
         def __get__(self):
@@ -661,9 +661,9 @@ cdef class PCAPWriter:
         if pktlen > self._header.snap_len:
             writelen = self._header.snap_len
         pkt_header = PktHeader(ts_sec=int(time_stmp),
-                                ts_usec=int(round(time_stmp % 1, 6) * 10 ** 6),
-                                incl_len=writelen, orig_len=pktlen,
-                                order = self._header.order)
+                               ts_usec=int(round(time_stmp % 1, 6) * 10 ** 6),
+                               incl_len=writelen, orig_len=pktlen,
+                               order = self._header.order)
         self._f.write(bytes(pkt_header))
         self._f.write(pkt[:writelen])
 

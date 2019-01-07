@@ -1,4 +1,4 @@
-# cython: profile=False
+# cython: language_level=3
 
 # Copyright (c) 2017 Riverbed Technology, Inc.
 #

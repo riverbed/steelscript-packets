@@ -1,4 +1,4 @@
-# cython: profile=False
+# cython: language_level=3
 
 # Copyright (c) 2017 Riverbed Technology, Inc.
 #
@@ -222,12 +222,11 @@ cdef class PKT:
 
 cdef class ARP(PKT):
     cdef:
-        array _buffer
+        array _buffer, _sender_hw_addr, _target_hw_addr
         uint16_t _operation
         public uint16_t hardware_type, proto_type,
         public unsigned char hardware_len, proto_len
-        public str sender_hw_addr, sender_proto_addr, target_hw_addr, \
-            target_proto_addr
+        public str sender_proto_addr, target_proto_addr
 
     cpdef bytes pkt2net(self, dict kwargs)
 

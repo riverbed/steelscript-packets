@@ -1,4 +1,4 @@
-# cython: profile=False
+# cython: language_level=3
 
 # Copyright (c) 2017 Riverbed Technology, Inc.
 #
@@ -572,11 +572,9 @@ cdef class ARP(PKT):
             if(self.hardware_type == ARP_TYPE_ETH and
                        self.proto_type == ETH_TYPE_IPV4 and
                        self.proto_len == IPV4_LEN):
-                self.sender_hw_addr = ':'.join('%02x' % i for i in
-                                      unpack('!6B', self._buffer[8:14]))
+                self._sender_hw_addr = self._buffer[8:14]
                 self.sender_proto_addr = socket.inet_ntoa(self._buffer[14:18])
-                self.target_hw_addr = ':'.join('%02x' % i for i in
-                                      unpack('!6B', self._buffer[18:24]))
+                self._target_hw_addr = self._buffer[18:24]
                 self.target_proto_addr = socket.inet_ntoa(self._buffer[24:28])
             else:
                 s_proto_start = 8 + self.hardware_len
@@ -629,6 +627,22 @@ cdef class ARP(PKT):
                 tmpbuf = b'\x00' * (self.hardware_len * 2 + self.proto_len * 2)
                 self._buffer += array('B', tmpbuf)
 
+    property sender_hw_addr:
+        def __get__(self):
+            return "%02x:%02x:%02x:%02x:%02x:%02x" % unpack("BBBBBB",
+                                                        self._sender_hw_addr)
+        def __set__(self, str val):
+            self._sender_hw_addr = array('B',
+                                         (int(x, 16) for x in val.split(':')))
+
+    property target_hw_addr:
+        def __get__(self):
+            return "%02x:%02x:%02x:%02x:%02x:%02x" % unpack("BBBBBB",
+                                                        self._target_hw_addr)
+        def __set__(self, str val):
+            self._target_hw_addr = array('B',
+                                         (int(x, 16) for x in val.split(':')))
+
     @classmethod
     def query_info(cls):
         """classmethod - provides pcap_query with the query fields ARP
@@ -645,12 +659,12 @@ cdef class ARP(PKT):
                  'arp.dst.proto_ipv4'))
 
     cpdef object get_field_val(self, str field):
-        """Returns the value of the Wireshark format field name. Implemented as 
-        an if, elif, else set because Cython documentation shows that this 
+        """Returns the value of the Wireshark format field name. Implemented as
+        an if, elif, else set because Cython documentation shows that this
         form is turned that into an efficient case switch.
 
         Args:
-            :field (str): name of the desired field in Wireshark format. For 
+            :field (str): name of the desired field in Wireshark format. For
                 example: arp.proto.type or tcp.flags.urg
 
         Returns:
@@ -705,42 +719,34 @@ cdef class ARP(PKT):
                                  "values are 1 for request and 2 for reply.")
 
     cpdef bytes pkt2net(self, dict kwargs):
-        """Used to export a ARP packet class instance in network order for 
+        """Used to export a ARP packet class instance in network order for
         writing to a socket or into a pcap file. At present this function
-        only works Ethernet/IPv4 ARP packets OR if buffer was set. If this is 
-        not a self.hardware_type == ARP_CONST.hwt_ether, 
-        self.proto_type == ETHERTYPES.ipv4 packet BUT buffer is set then the 
-        packet in will simply be repeated from the buffer. Any changes are 
+        only works Ethernet/IPv4 ARP packets OR if buffer was set. If this is
+        not a self.hardware_type == ARP_CONST.hwt_ether,
+        self.proto_type == ETHERTYPES.ipv4 packet BUT buffer is set then the
+        packet in will simply be repeated from the buffer. Any changes are
         lost.
 
         Args:
             :kwargs (dict): list of arguments defined by PKT sub classes. ARP
-                does not support any key work arguments and does not have a 
+                does not support any key work arguments and does not have a
                 payload so any args passed will be ignored.
-        Returns: 
-            :bytes: network order byte string representation of the ARP 
+        Returns:
+            :bytes: network order byte string representation of the ARP
                 instance.
         """
-        cdef:
-            bytes sndr, trgt, pair
-        sndr = trgt = b''
-
         if(self.hardware_type == ARP_TYPE_ETH and
                self.proto_type == ETH_TYPE_IPV4 and
                self.proto_len == IPV4_LEN):
-            for pair in self.sender_hw_addr.split(':'):
-                sndr += binascii.unhexlify(pair)
-            for pair in self.target_hw_addr.split(':'):
-                trgt += binascii.unhexlify(pair)
             return b'%b%b%b%b%b' % (
                 pack(b'!HHBBH', self.hardware_type,
                                 self.proto_type,
                                 self.hardware_len,
                                 self.proto_len,
                                 self.operation),
-                sndr,
+                self._sender_hw_addr.tobytes(),
                 socket.inet_aton(self.sender_proto_addr),
-                trgt,
+                self._target_hw_addr.tobytes(),
                 socket.inet_aton(self.target_proto_addr)
             )
         else:
@@ -2316,9 +2322,9 @@ cdef class Ethernet(PKT):
                 bytes of an Ethernet packet
             :data (bytes): Optional keyword argument containing network order
                 bytes of an Ethernet packet
-            :src_mac (bytes): Layer 2 source address in colon notation. For 
+            :src_mac (str): Layer 2 source address in colon notation. For 
                 example the layer 2 broadcast MAC would be 'ff:ff:ff:ff:ff:ff'
-            :dst_mac (bytes): Layer 2 destination address in colon notation.
+            :dst_mac (str): Layer 2 destination address in colon notation.
             :type (uint16_t): EtherType of the payload. Common values are 
                 0x0800 for IPv4 and 0x0806 for ARP.
             :payload (PKT or bytes): The payload of this packet. Payload can be 
@@ -2405,14 +2411,14 @@ cdef class Ethernet(PKT):
         def __get__(self):
             return "%02x:%02x:%02x:%02x:%02x:%02x" % unpack("BBBBBB",
                                                             self._src_mac)
-        def __set__(self, bytes val):
+        def __set__(self, str val):
             self._src_mac = array('B', (int(x, 16) for x in val.split(':')))
 
     property dst_mac:
         def __get__(self):
             return "%02x:%02x:%02x:%02x:%02x:%02x" % unpack("BBBBBB",
                                                             self._dst_mac)
-        def __set__(self, bytes val):
+        def __set__(self, str val):
             self._dst_mac = array('B', (int(x, 16) for x in val.split(':')))
 
     property priority_code:

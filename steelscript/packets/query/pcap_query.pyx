@@ -1,4 +1,4 @@
-# cython: profile=False
+# cython: language_level=3
 
 # Copyright (c) 2017 Riverbed Technology, Inc.
 #
@@ -100,9 +100,9 @@ cdef class PcapQuery:
                     if int(groups.groups()[1]) < int(groups.groups()[2]):
                         found = 1
                     else:
-                        print "tcp|udp.payload.offset[x:y] x >= y!!"
-                        print "{0}:{1}".format(int(groups.groups()[1]),
-                                               int(groups.groups()[2]))
+                        print("tcp|udp.payload.offset[x:y] x >= y!!")
+                        print("{0}:{1}".format(int(groups.groups()[1]),
+                                               int(groups.groups()[2])))
             if not found:
                 field_failed = 1
 

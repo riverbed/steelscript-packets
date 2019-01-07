@@ -96,7 +96,7 @@ class PacketsTest(unittest.TestCase):
         """
         dfile = open('packets.devtest.ip_udp.pcap', 'rb')
         rdr = PCAPReader(dfile)
-        pkt_copy = Ethernet(rdr.next()[1])
+        pkt_copy = Ethernet(next(rdr)[1])
         rdr.close()
 
         a_IP = pkt.get_layer("IP")
@@ -124,7 +124,7 @@ class PacketsTest(unittest.TestCase):
                                      dport=80,
                                      sequence=200,
                                      flag_syn=1,
-                                     options='this is not a real option.'))
+                                     options=b'this is not a real option.'))
 
         """
         Write this packet out to a pcap file
@@ -139,7 +139,7 @@ class PacketsTest(unittest.TestCase):
         """
         dfile = open('packets.devtest.ip_tcp.pcap', 'rb')
         rdr = PCAPReader(dfile)
-        pkt_copy = Ethernet(rdr.next()[1])
+        pkt_copy = Ethernet(next(rdr)[1])
         rdr.close()
 
         a_IP = pkt.get_layer("IP")

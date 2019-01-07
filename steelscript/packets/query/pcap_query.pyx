@@ -15,7 +15,7 @@ import re
 
 from libc.stdint cimport uint16_t
 from steelscript.packets.core.inetpkt cimport PKT, Ethernet, IP, TCP, ICMP, \
-    UDP, ARP, MPLS, NullPkt, PQ_FRAME, PQ_TCP, PQ_UDP
+    IGMP, UDP, ARP, MPLS, NullPkt, PQ_FRAME, PQ_TCP, PQ_UDP
 from steelscript.packets.core.pcap cimport PCAPReader, pktypes
 
 # Regex to determine if the field matches a payload offset pattern.
@@ -49,7 +49,7 @@ cdef class PcapQuery:
 
         self.fields = dict()
         self.l7_ports = dict()
-        default_classes = [Ethernet, IP, ICMP, TCP, UDP, ARP, MPLS]
+        default_classes = [Ethernet, IP, ICMP, IGMP, TCP, UDP, ARP, MPLS]
         if ('pkt_classes' in kwargs and
                 isinstance(kwargs['pkt_classes'], list)):
             default_classes.extend(kwargs['pkt_classes'])

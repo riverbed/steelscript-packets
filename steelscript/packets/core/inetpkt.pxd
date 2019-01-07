@@ -73,7 +73,13 @@ cdef:
     unsigned char ICMP_PER_PROB_CODE_POINTER
     unsigned char ICMP_PER_PROB_CODE_OPTION_MISSING
     unsigned char ICMP_PER_PROB_CODE_LENGTH
+    # IGMP
+    unsigned char IGMP_MEMBER_QUERY
+    unsigned char IGMP_V1_MEMBER_REPORT
+    unsigned char IGMP_V2_MEMBER_REPORT
+    unsigned char IGMP_V2_LEAVE_GROUP
     # PROTO IDs
+    unsigned char PROTO_IGMP
     unsigned char PROTO_ICMP
     unsigned char PROTO_TCP
     unsigned char PROTO_UDP
@@ -184,13 +190,19 @@ cdef class IP_CONST:
         readonly unsigned char ICMP_PER_PROB_CODE_POINTER
         readonly unsigned char ICMP_PER_PROB_CODE_OPTION_MISSING
         readonly unsigned char ICMP_PER_PROB_CODE_LENGTH
+        readonly unsigned char IGMP_MEMBER_QUERY
+        readonly unsigned char IGMP_V1_MEMBER_REPORT
+        readonly unsigned char IGMP_V2_MEMBER_REPORT
+        readonly unsigned char IGMP_LEAVE_GROUP
         readonly unsigned char PROTO_ICMP
+        readonly unsigned char PROTO_IGMP
         readonly unsigned char PROTO_TCP
         readonly unsigned char PROTO_UDP
         readonly unsigned char PQ_PKT
         readonly unsigned char PQ_ETH
         readonly unsigned char PQ_FRAME
         readonly unsigned char PQ_ICMP
+        readonly unsigned char PQ_IGMP
         readonly uint16_t PQ_IP
         readonly unsigned char PQ_TCP
         readonly unsigned char PQ_UDP
@@ -291,6 +303,17 @@ cdef class TCP(PKT):
 
     cpdef object get_field_val(self, str field)
 
+
+cdef class IGMP(PKT):
+    cdef:
+        array _buffer
+        public unsigned char type, max_resp
+        public uint16_t checksum
+        bytes _maddr
+
+    cpdef object get_field_val(self, str field)
+
+    cpdef bytes pkt2net(self, dict kwargs)
 
 cdef class ICMP(PKT):
     cdef:

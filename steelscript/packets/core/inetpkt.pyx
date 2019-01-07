@@ -16,6 +16,7 @@ from libc.stdint cimport uint32_t, uint16_t
 
 offset_re = re.compile(r'^(udp|tcp)\.payload\.offset\[(\d*):(\d*)\]$')
 
+PTR_VAL = 0
 IPV4_LEN = 4
 IPV4_VER = 4
 IPV4_MIN_HDR_LEN = 5
@@ -75,13 +76,19 @@ ICMP_TIME_EX_CODE_FRAG_EXCEEDED = 1
 ICMP_PER_PROB_CODE_POINTER = 0
 ICMP_PER_PROB_CODE_OPTION_MISSING = 1
 ICMP_PER_PROB_CODE_LENGTH = 2
+IGMP_MEMBER_QUERY = 0x11
+IGMP_V1_MEMBER_REPORT = 0x12
+IGMP_V2_MEMBER_REPORT = 0x16
+IGMP_LEAVE_GROUP = 0x17
 PROTO_ICMP = 1
+PROTO_IGMP = 2
 PROTO_TCP = 6
 PROTO_UDP = 17
 PQ_PKT = 0
 PQ_ETH = 1
 PQ_FRAME = 2
 PQ_ICMP = 3
+PQ_IGMP = 4
 PQ_IP = 0x0800
 PQ_TCP = 6
 PQ_UDP = 17
@@ -89,7 +96,6 @@ PQ_ARP = 0x0806
 PQ_MPLS = 0x8847
 PQ_NETFLOW_SIMPLE = 2005
 PQ_NULLPKT = 0xffff
-PTR_VAL = 0
 NOT_FOUND = -1
 
 cdef class IP_CONST:
@@ -162,7 +168,12 @@ cdef class IP_CONST:
         self.ICMP_PER_PROB_CODE_OPTION_MISSING = \
             ICMP_PER_PROB_CODE_OPTION_MISSING
         self.ICMP_PER_PROB_CODE_LENGTH = ICMP_PER_PROB_CODE_LENGTH
+        self.IGMP_MEMBER_QUERY = IGMP_MEMBER_QUERY
+        self.IGMP_V1_MEMBER_REPORT = IGMP_V1_MEMBER_REPORT
+        self.IGMP_V2_MEMBER_REPORT = IGMP_V2_MEMBER_REPORT
+        self.IGMP_LEAVE_GROUP = IGMP_LEAVE_GROUP
         self.PROTO_ICMP = PROTO_ICMP
+        self.PROTO_IGMP = PROTO_IGMP
         self.PROTO_TCP = PROTO_TCP
         self.PROTO_UDP = PROTO_UDP
         self.PQ_PKT = PQ_PKT
@@ -1750,6 +1761,114 @@ cdef class ICMP(PKT):
                                  "IPv4 string. (1.1.1.1)")
 
 
+cdef class IGMP(PKT):
+    """
+    RFC 2236 IGMP version 1 and 2
+    """
+
+    def __init__(self, *args, **kwargs):
+        """Initialize a IGMP object.
+
+        Args:
+            :args (list): Optional one element list containing network order
+                bytes of an ARP packet
+            :data (bytes): Optional keyword argument containing network order
+                bytes of an IGMP packet
+            :type (unsigned char): 0x11 (query), 0x12 (v1 membership report),
+            0x16 (v2 membership report), 0x17 (leave group)
+            :max_resp (unsigned char): Meaningful only in Membership Query
+            messages, and specifies the maximum allowed time before sending a
+            responding report in units of 1/10 second.
+            :checksum (uint16_t): 16-bit one's complement of the one's
+            complement sum of the whole IGMP message (the entire IP payload).
+            :maddr (str): String containing the IPv4 dot notation multicast
+            address
+        """
+        super(self.__class__, self).__init__(*args, **kwargs)
+        self.pkt_name = 'IGMP'
+        self.pq_type, self.query_fields = IGMP.query_info()
+        cdef:
+            unsigned char use_buffer
+        use_buffer, self._buffer = self.from_buffer(args, kwargs)
+
+        if use_buffer:
+            (self.type,
+             self.max_resp,
+             self.checksum) = \
+                unpack(b'!BBH', self._buffer[:4])
+            self._maddr = self._buffer[4:8].tobytes()
+        else:
+            self.type = kwargs.get('type', 0)
+            self.max_resp = kwargs.get('max_resp', 0)
+            self.checksum = kwargs.get('checksum', 0)
+            self.maddr = kwargs.get('maddr', '0.0.0.0')
+
+
+    @classmethod
+    def query_info(cls):
+        """classmethod - provides pcap_query with the query fields
+        IGMP supports and IGMP's PKT type ID.
+
+        Returns:
+            :tuple: PQTYPES.PQ_IGMP and a tuple of the supported
+            field names.
+        """
+        return (PQ_IGMP,
+                ('igmp.type', 'igmp.max_resp', 'igmp.checksum',
+                 'igmp.maddr'))
+
+
+    cpdef object get_field_val(self, str field):
+        """Returns the value of the Wireshark format field name. Implemented as 
+        an if, elif, else set because Cython documentation shows that this 
+        form is turned that into an efficient case switch.
+
+        Args:
+            :field (str): name of the desired field in Wireshark format. For 
+                example: arp.proto.type or tcp.flags.urg
+
+        Returns:
+            :object: the value of the field.
+        """
+        if field == 'igmp.type':
+            return self.type
+        elif field == 'igmp.max_resp':
+            return self.max_resp
+        elif field == 'igmp.checksum':
+            return self.checksum
+        elif field == 'igmp.maddr':
+            return self.maddr
+        else:
+            return None
+
+    property maddr:
+        def __get__(self):
+            return socket.inet_ntoa(self._maddr)
+        def __set__(self, str value):
+            if is_ipv4(value):
+                self._maddr = socket.inet_aton(value)
+            else:
+                raise ValueError("maddr must be a dot notation "
+                                 "IPv4 string. (1.1.1.1)")
+
+    cpdef bytes pkt2net(self, dict kwargs):
+        """
+        """
+        cdef:
+            bint _csum
+
+        _csum = kwargs.get('csum', 0)
+
+        if _csum:
+            self.checksum = checksum(b'%b\000\000%b' % (
+                pack(b'!BB', self.type, self.max_resp),
+                self._maddr)
+            )
+        return b'%b%b' % (pack(b'!BBH', self.type,
+                                        self.max_resp,
+                                        self.checksum),
+                          self._maddr)
+
 cdef class IP(PKT):
     def __init__(self, *args, **kwargs):
         """
@@ -1820,6 +1939,8 @@ cdef class IP(PKT):
                                        l7_ports = self.l7_ports)
                 elif self.proto == PROTO_ICMP:
                     self.payload = ICMP(self._buffer[(self.iphl * 4):])
+                elif self.proto == PROTO_IGMP:
+                    self.payload = IGMP(self._buffer[(self.iphl * 4):])
                 else:
                     self.payload = NullPkt(self._buffer[(self.iphl * 4):],
                                            l7_ports = self.l7_ports)
@@ -1853,6 +1974,8 @@ cdef class IP(PKT):
                                        l7_ports = self.l7_ports)
                 elif self.proto == PROTO_ICMP:
                     self.payload = ICMP(kwargs['payload'])
+                elif self.proto == PROTO_IGMP:
+                    self.payload = IGMP(kwargs['payload'])
                 else:
                     self.payload = NullPkt(kwargs['payload'],
                                            l7_ports = self.l7_ports)

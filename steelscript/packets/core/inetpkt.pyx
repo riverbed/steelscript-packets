@@ -180,6 +180,7 @@ cdef class IP_CONST:
         self.PQ_ETH = PQ_ETH
         self.PQ_FRAME = PQ_FRAME
         self.PQ_ICMP = PQ_ICMP
+        self.PQ_IGMP = PQ_IGMP
         self.PQ_IP = PQ_IP
         self.PQ_TCP = PQ_TCP
         self.PQ_UDP = PQ_UDP
@@ -447,6 +448,11 @@ cdef class PKT:
             int fnd
 
         fnd = found
+        if self.pkt_name == name:
+            fnd += 1
+            if fnd == instance:
+                return self
+
         if hasattr(self, 'payload') and isinstance(self.payload, PKT):
             if self.payload.pkt_name == name:
                 fnd += 1
@@ -482,6 +488,12 @@ cdef class PKT:
             int fnd
 
         fnd = found
+
+        if self.pq_type == pq_type:
+            fnd += 1
+            if fnd == instance:
+                return self
+
         if hasattr(self, 'payload') and isinstance(self.payload, PKT):
             if self.payload.pq_type == pq_type:
                 fnd += 1

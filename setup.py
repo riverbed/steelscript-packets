@@ -25,9 +25,13 @@ except ImportError:
         'for further instructions.'
     )
 
+try:
+    from Cython.Build import cythonize
+except ImportError:
+    raise ImportError("Steelscript-Packets requires Cython.")
+
 install_requires = (
     'steelscript',
-    'pandas',
     'Cython',
 )
 
@@ -71,7 +75,9 @@ setup_args = {
         'Intended Audience :: Information Technology',
         'Intended Audience :: System Administrators',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: System :: Networking',
     ],
     'ext_modules': extensions,

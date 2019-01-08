@@ -7,7 +7,6 @@
 # as set forth in the License.
 
 from cpython.array cimport array
-from pandas import DataFrame
 import datetime
 import tzlocal
 import pytz
@@ -142,7 +141,7 @@ cdef class PcapQuery:
             dict id_index
             tuple i_n
             uint16_t pkt_id, link_type, layer_index
-            bytes fname, rep_fname
+            str fname, rep_fname
             double ts
             array pkt
             Ethernet e
@@ -220,7 +219,13 @@ cdef class PcapQuery:
                         )
 
         if rdf and return_vals:
-            return DataFrame(return_vals, columns=wshark_fields)
+            try:
+                import pandas
+            except ImportError as e:
+                raise ImportError("pcap_query's rdf option requires pandas. "
+                                  "Please pip install pandas. Error was: {0}"
+                                  "".format(e.message))
+            return pandas.DataFrame(return_vals, columns=wshark_fields)
         elif rdf and not return_vals:
             return None
         return return_vals

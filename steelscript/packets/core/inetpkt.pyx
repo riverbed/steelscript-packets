@@ -1604,7 +1604,7 @@ cdef class ICMP(PKT):
                 self.hdr_pkt = IP(self._buffer[8:])
             elif self.type == ICMP_TYPE_REDIR:
                 # redirect format
-                self._address = socket.inet_aton(self._buffer[4:8])
+                self._address = self._buffer[4:8].tobytes()
                 self.hdr_pkt = IP(self._buffer[8:])
             elif self.type == ICMP_TYPE_PER_PROB:
                 # Parameter Problem format

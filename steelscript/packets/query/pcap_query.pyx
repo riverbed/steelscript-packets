@@ -223,8 +223,7 @@ cdef class PcapQuery:
                 import pandas
             except ImportError as e:
                 raise ImportError("pcap_query's rdf option requires pandas. "
-                                  "Please pip install pandas. Error was: {0}"
-                                  "".format(e.message))
+                                  "Please pip install pandas.")
             return pandas.DataFrame(return_vals, columns=wshark_fields)
         elif rdf and not return_vals:
             return None

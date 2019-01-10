@@ -76,7 +76,7 @@ igmp_json = """
 
 igmp_file = 'igmp_v2.pcap'
 
-class PacketsTest(unittest.TestCase):
+class TestPackets(unittest.TestCase):
 
     def test_Ethernet_pkt(self):
         pkt = Ethernet(dst_mac='01:02:03:04:05:06')

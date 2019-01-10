@@ -74,7 +74,7 @@ igmp_json = """
               "16":"239.255.255.250","17":"225.1.1.5"}}
 """
 
-igmp_file = 'igmp_v2.pcap'
+igmp_file = './test/igmp_v2.pcap'
 
 class TestPackets(unittest.TestCase):
 

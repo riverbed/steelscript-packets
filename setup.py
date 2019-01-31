@@ -36,6 +36,8 @@ install_requires = (
 )
 
 extensions = [
+    Extension("steelscript.packets.core.filters",
+              ["steelscript/packets/core/filters.pyx"]),
     Extension("steelscript.packets.core.pcap",
               ["steelscript/packets/core/pcap.pyx"]),
     Extension("steelscript.packets.core.inetpkt",

@@ -196,6 +196,7 @@ cdef class IP_CONST:
         readonly unsigned char IGMP_MEMBER_QUERY
         readonly unsigned char IGMP_V1_MEMBER_REPORT
         readonly unsigned char IGMP_V2_MEMBER_REPORT
+        readonly unsigned char IGMP_V3_MEMBER_REPORT
         readonly unsigned char IGMP_LEAVE_GROUP
         readonly unsigned char PROTO_ICMP
         readonly unsigned char PROTO_IGMP

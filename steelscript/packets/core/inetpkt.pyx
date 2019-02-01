@@ -16,6 +16,8 @@ from libc.stdint cimport uint32_t, uint16_t
 
 offset_re = re.compile(r'^(udp|tcp)\.payload\.offset\[(\d*):(\d*)\]$')
 
+MIN_FRAME_SIZE = 60
+
 PTR_VAL = 0
 IPV4_LEN = 4
 IPV4_VER = 4
@@ -79,6 +81,7 @@ ICMP_PER_PROB_CODE_LENGTH = 2
 IGMP_MEMBER_QUERY = 0x11
 IGMP_V1_MEMBER_REPORT = 0x12
 IGMP_V2_MEMBER_REPORT = 0x16
+IGMP_V3_MEMBER_REPORT = 0x22
 IGMP_LEAVE_GROUP = 0x17
 PROTO_ICMP = 1
 PROTO_IGMP = 2
@@ -89,6 +92,7 @@ PQ_ETH = 1
 PQ_FRAME = 2
 PQ_ICMP = 3
 PQ_IGMP = 4
+PQ_IGMPv3GroupRecord = 5
 PQ_IP = 0x0800
 PQ_TCP = 6
 PQ_UDP = 17
@@ -171,6 +175,7 @@ cdef class IP_CONST:
         self.IGMP_MEMBER_QUERY = IGMP_MEMBER_QUERY
         self.IGMP_V1_MEMBER_REPORT = IGMP_V1_MEMBER_REPORT
         self.IGMP_V2_MEMBER_REPORT = IGMP_V2_MEMBER_REPORT
+        self.IGMP_V3_MEMBER_REPORT = IGMP_V3_MEMBER_REPORT
         self.IGMP_LEAVE_GROUP = IGMP_LEAVE_GROUP
         self.PROTO_ICMP = PROTO_ICMP
         self.PROTO_IGMP = PROTO_IGMP
@@ -181,6 +186,7 @@ cdef class IP_CONST:
         self.PQ_FRAME = PQ_FRAME
         self.PQ_ICMP = PQ_ICMP
         self.PQ_IGMP = PQ_IGMP
+        self.PQ_IGMPv3GroupRecord = PQ_IGMPv3GroupRecord
         self.PQ_IP = PQ_IP
         self.PQ_TCP = PQ_TCP
         self.PQ_UDP = PQ_UDP
@@ -1773,9 +1779,143 @@ cdef class ICMP(PKT):
                                  "IPv4 string. (1.1.1.1)")
 
 
+cdef class IGMPGroupRecord(PKT):
+
+    def __init__(self, *args, **kwargs):
+
+        super(self.__class__, self).__init__(*args, **kwargs)
+        self.pkt_name = 'IGMPGroupRecord'
+        self.pq_type, self.query_fields = IGMP.query_info()
+        self._source_addresses = self._group_address = self.aux_data = b''
+
+        cdef:
+            unsigned char use_buffer
+            uint16_t start
+        use_buffer, self._buffer = self.from_buffer(args, kwargs)
+
+        if use_buffer:
+            (self.type, self.aux_data_len, self.num_src) = \
+                        unpack(b'!BBH', self._buffer[:4])
+            self._group_address = self._buffer[4:8].tobytes()
+            if self.num_src:
+                start = 8 + (4 * self.num_src)
+                self._source_addresses = \
+                    self._buffer[8:8 + (4 * self.num_src)].tobytes()
+            if self.aux_data_len:
+                if not self.num_src:
+                    self.aux_data = \
+                        self._buffer[8:8+self.aux_data_len].tobytes()
+                else:
+                    self.aux_data = \
+                        self._buffer[start:start+self.aux_data_len].tobytes()
+
+        else:
+            self.type = kwargs.get('type', 0)
+            self.aux_data_len = kwargs.get('aux_data_len', 0)
+            self.num_src = kwargs.get('num_src', 0)
+            self.group_address = kwargs.get('group_address', '0.0.0.0')
+            self.source_addresses = kwargs.get('group_address', list())
+            self.aux_data = kwargs.get('aux_data', b'')
+
+    property byte_len:
+        def __get__(self):
+            return 8 + (self.num_src * 4) + self.aux_data_len
+
+    property group_address:
+        def __get__(self):
+            return socket.inet_ntoa(self._group_address)
+        def __set__(self, str value):
+            if is_ipv4(value):
+                self._group_address = socket.inet_aton(value)
+            else:
+                raise ValueError("group_address must be a dot notation "
+                                 "IPv4 string. (1.1.1.1)")
+    property source_addresses:
+        def __get__(self):
+            cdef:
+                uint16_t i
+                list r
+            if self._source_addresses:
+                r = list()
+                for i in range(self.num_src):
+                    r.append(
+                        socket.inet_ntoa(self._source_addresses[i*4:i*4+4])
+                    )
+                return r
+            else:
+                return list()
+        def __set__(self, list value):
+            cdef:
+                str ip
+                uint16_t count
+
+            self._source_addresses = b''
+            count = 0
+            for ip in value:
+                count += 1
+                if is_ipv4(ip):
+                    self._source_addresses += socket.inet_aton(ip)
+                else:
+                    raise ValueError("source_addresses must be a list of dot "
+                                     "notation IPv4 string. (1.1.1.1)")
+            self.num_src = count
+
+    @classmethod
+    def query_info(cls):
+        """classmethod - provides pcap_query with the query fields
+        IGMP supports and IGMP's PKT type ID.
+
+        Returns:
+            :tuple: PQTYPES.PQ_IGMP and a tuple of the supported
+            field names.
+        """
+        return (PQ_IGMPv3GroupRecord,
+                ('igmpv3grouprecord.type', 'igmpv3grouprecord.aux_data_len',
+                 'igmpv3grouprecord.num_src',
+                 'igmpv3grouprecord.group_address',
+                 'igmpv3grouprecord.source_addresses',
+                 'igmpv3grouprecord.aux_data'))
+
+    cpdef object get_field_val(self, str field):
+        """Returns the value of the Wireshark format field name. Implemented as 
+        an if, elif, else set because Cython documentation shows that this 
+        form is turned that into an efficient case switch.
+
+        Args:
+            :field (str): name of the desired field in Wireshark format. For 
+                example: arp.proto.type or tcp.flags.urg
+
+        Returns:
+            :object: the value of the field.
+        """
+        if field == 'igmpv3grouprecord.type':
+            return self.type
+        elif field == 'igmpv3grouprecord.aux_data_len':
+            return self.aux_data_len
+        elif field == 'igmpv3grouprecord.num_src':
+            return self.num_src
+        elif field == 'igmpv3grouprecord.group_address':
+            return self.group_address
+        elif field == 'igmpv3grouprecord.source_addresses':
+            return self.source_addresses
+        elif field == 'igmpv3grouprecord.aux_data':
+            return self.aux_data
+        else:
+            return None
+
+    cpdef bytes pkt2net(self, dict kwargs):
+
+        return b'%b%b%b%b' % (pack(b'!BBH', self.type,
+                                          self.aux_data_len,
+                                          self.num_src),
+                                self._group_address,
+                                self._source_addresses,
+                                self.aux_data)
+
+
 cdef class IGMP(PKT):
     """
-    RFC 2236 IGMP version 1 and 2
+    RFC 2236 IGMP version 1 and 2 + rfc3376 version 3
     """
 
     def __init__(self, *args, **kwargs):
@@ -1800,21 +1940,117 @@ cdef class IGMP(PKT):
         self.pkt_name = 'IGMP'
         self.pq_type, self.query_fields = IGMP.query_info()
         cdef:
-            unsigned char use_buffer
+            unsigned char use_buffer, operation, version
+            uint16_t _len, offset, i
         use_buffer, self._buffer = self.from_buffer(args, kwargs)
+        self._s_qrv = self.qqic = 0
+        self.group_records = list()
+        self._source_addresses = b''
 
         if use_buffer:
-            (self.type,
-             self.max_resp,
-             self.checksum) = \
-                unpack(b'!BBH', self._buffer[:4])
-            self._maddr = self._buffer[4:8].tobytes()
-        else:
-            self.type = kwargs.get('type', 0)
-            self.max_resp = kwargs.get('max_resp', 0)
-            self.checksum = kwargs.get('checksum', 0)
-            self.maddr = kwargs.get('maddr', '0.0.0.0')
+            # These are true for all versions and types
+            (self.type, self.max_resp, self.checksum) = \
+                        unpack(b'!BBH', self._buffer[:4])
+            if self.type != IGMP_V3_MEMBER_REPORT:
+                self._group_address = self._buffer[4:8].tobytes()
+            self._source_addresses = b''
+            self.version = version = 0
+            operation = self.type
+            _len = kwargs.get('length', 0)
 
+            # If we got a length from IP then this track will be fastest.
+            # Otherwise we will have to pre-parse a few more bytes of the
+            # packet to figure out what version it is. See 'else' case below.
+            if _len:
+                if _len > 8:
+                        version = 3
+                else:
+                    if operation == IGMP_MEMBER_QUERY:
+                        if self._buffer[1] == 0:
+                            version = 1
+                        else:
+                            version = 2
+                    elif operation == IGMP_V1_MEMBER_REPORT:
+                        version = 1
+                    else:
+                        version = 2
+            else:
+                # Looks like we have to parse our way through this:
+                if operation == IGMP_MEMBER_QUERY:
+                    # The buffer could be ethernet padding so make sure the
+                    # 10th byte is not zero. With IGMPv3 that byte is the QQIC
+                    # value and must be 125 or the last query interval used.
+                    # RFC 3376 section 8.2
+                    if len(self._buffer) >= 11 and self._buffer[9] != 0:
+                        self.version = 3
+                    elif self._buffer[1] == 0:
+                        version = 1
+                    else:
+                        version = 2
+                elif operation in (IGMP_V2_MEMBER_REPORT, IGMP_LEAVE_GROUP):
+                        self.version = 2
+                elif operation == IGMP_V3_MEMBER_REPORT:
+                    self.version = 3
+                else:
+                    version = 1
+
+            if version:
+                self.version = version
+                if version in (2, 1):
+                    if version == 1:
+                        self.max_resp = self.reserved1 = 0
+                else:
+                    if operation == IGMP_MEMBER_QUERY:
+                        (self._s_qrv, self.qqic, self.num_records) = \
+                            unpack(b'!BBH',self._buffer[8:12])
+                        if self.num_records:
+                            self._source_addresses = \
+                                self._buffer[8:8+4*self.num_records]
+                    else:
+                        self.max_resp = self.reserved1 = self.reserved2 = 0
+                        self.num_records = unpack(
+                            b'!H', self._buffer[6:8])[0]
+                        offset = 0
+                        for i in range(self.num_records):
+                            self.group_records.append(
+                                IGMPGroupRecord(self._buffer[8+offset:])
+                            )
+                            offset += self.group_records[-1].byte_len
+            else:
+                raise ValueError("Data passed into IGMP __init__ does not "
+                                 "look like an IGMP packet. Data was: {}"
+                                 "".format(self._buffer.tobytes().decode()))
+
+        else:
+            self.version = kwargs.get('version', 2)
+            if self.version == 1:
+                self.type = kwargs.get('type', 0)
+                self.reserved1 = kwargs.get('reserved1', 0)
+                self.checksum = kwargs.get('checksum', 0)
+                self.group_address = kwargs.get('group_address', '0.0.0.0')
+            elif self.version == 2:
+                self.type = kwargs.get('type', 0)
+                self.max_resp = kwargs.get('max_resp', 0)
+                self.checksum = kwargs.get('checksum', 0)
+                self.group_address = kwargs.get('group_address', '0.0.0.0')
+            elif self.version == 3:
+                self.type = kwargs.get('type', 0)
+                if self.type == IGMP_MEMBER_QUERY:
+                    self.max_resp = kwargs.get('max_resp', 0)
+                    self.checksum = kwargs.get('checksum', 0)
+                    self.group_address = kwargs.get('group_address', '0.0.0.0')
+                    self.s = kwargs.get('s', 0)
+                    self.qrv = kwargs.get('qrv', 0)
+                    self.num_records = kwargs.get('num_records', 0)
+                    self.source_addresses = kwargs.get('source_addresses',
+                                                       list())
+                else:
+                    self._s_qrv = 0
+                    self.max_resp = self.reserved1 = self.reserved2 = 0
+                    self.checksum = kwargs.get('checksum', 0)
+                    self.num_records = kwargs.get('num_records', 0)
+                    self.group_records = kwargs.get('group_records',
+                                                    list())
 
     @classmethod
     def query_info(cls):
@@ -1827,7 +2063,9 @@ cdef class IGMP(PKT):
         """
         return (PQ_IGMP,
                 ('igmp.type', 'igmp.max_resp', 'igmp.checksum',
-                 'igmp.maddr'))
+                 'igmp.group_address', 'igmp.s', 'igmp.qrv',
+                 'igmp.num_records', 'igmp.source_addresses',
+                 'igmp.group_records'))
 
 
     cpdef object get_field_val(self, str field):
@@ -1844,42 +2082,172 @@ cdef class IGMP(PKT):
         """
         if field == 'igmp.type':
             return self.type
-        elif field == 'igmp.max_resp':
+        elif (field == 'igmp.max_resp' and
+                self.type != IGMP_V3_MEMBER_REPORT and
+                self.version != 1):
             return self.max_resp
         elif field == 'igmp.checksum':
             return self.checksum
-        elif field == 'igmp.maddr':
-            return self.maddr
+        elif (field == 'igmp.group_address' and
+                self.type != IGMP_V3_MEMBER_REPORT):
+            return self.group_address
+        elif (field == 'igmp.s' and
+                self.version == 3 and
+                self.type == IGMP_MEMBER_QUERY):
+            return self.s
+        elif (field == 'igmp.qrv' and
+                self.version == 3 and
+                self.type == IGMP_MEMBER_QUERY):
+            return self.qrv
+        elif field == 'igmp.num_records' and self.version == 3:
+            return self.num_records
+        elif (field == 'igmp.source_addresses' and
+                self.version == 3 and
+                self.type == IGMP_MEMBER_QUERY):
+            return self.source_addresses
+        elif (field == 'igmp.group_records' and
+                self.version == 3 and
+                self.type == IGMP_V3_MEMBER_REPORT):
+            return self.source_addresses
         else:
             return None
 
-    property maddr:
+    property group_address:
         def __get__(self):
-            return socket.inet_ntoa(self._maddr)
+            return socket.inet_ntoa(self._group_address)
         def __set__(self, str value):
             if is_ipv4(value):
-                self._maddr = socket.inet_aton(value)
+                self._group_address = socket.inet_aton(value)
             else:
-                raise ValueError("maddr must be a dot notation "
+                raise ValueError("group_address must be a dot notation "
                                  "IPv4 string. (1.1.1.1)")
+
+    property s:
+        def __get__(self):
+            return (self._s_qrv >> 3) & 1
+        def __set__(self, unsigned char val):
+            if val == 1:
+                set_cbit(&self._s_qrv, 3)
+            elif val == 0:
+                unset_cbit(&self._s_qrv, 3)
+            else:
+                raise ValueError("IGMP v3 S bit must be 0 or 1 "
+                                 "got: {0}".format(val))
+
+    property qrv:
+        def __get__(self):
+            return self._s_qrv & 7
+        def __set__(self, unsigned char val):
+            if 0 <= val <= 7:
+                if (self._s_qrv >> 3) & 1:
+                    self._s_qrv = val + 8
+                else:
+                    self._s_qrv = val
+            else:
+                raise ValueError("IGMP v3 qrv bit must be 0 - 7 "
+                                 "got: {0}".format(val))
+
+    property source_addresses:
+        def __get__(self):
+            cdef:
+                uint16_t i
+                list r
+            if self._source_addresses:
+                r = list()
+                for i in range(self.num_records):
+                    r.append(socket.inet_ntoa(self._source_addresses[i*4:i*4+4]))
+                return r
+            else:
+                return list()
+        def __set__(self, list value):
+            cdef:
+                str ip
+                uint16_t count
+
+            self._source_addresses = b''
+            count = 0
+            for ip in value:
+                count += 1
+                if is_ipv4(ip):
+                    self._source_addresses += socket.inet_aton(ip)
+                else:
+                    raise ValueError("source_addresses must be a list of dot "
+                                     "notation IPv4 string. (1.1.1.1)")
+            self.num_records = count
 
     cpdef bytes pkt2net(self, dict kwargs):
         """
         """
         cdef:
-            bint _csum
+            bint csum, update
+            unsigned char value
+            bytes end_bytes, pload_bytes
+            IGMPGroupRecord record
 
-        _csum = kwargs.get('csum', 0)
+        end_bytes = pload_bytes = b''
 
-        if _csum:
-            self.checksum = checksum(b'%b\000\000%b' % (
-                pack(b'!BB', self.type, self.max_resp),
-                self._maddr)
-            )
-        return b'%b%b' % (pack(b'!BBH', self.type,
-                                        self.max_resp,
-                                        self.checksum),
-                          self._maddr)
+        csum = kwargs.get('csum', 0)
+        update = kwargs.get('update', 0)
+
+        if self.version == 2:
+            if csum:
+                self.checksum = checksum(b'%b\000\000%b' % (
+                    pack(b'!BB', self.type, self.max_resp),
+                    self._group_address)
+                )
+            return b'%b%b' % (pack(b'!BBH', self.type,
+                                            self.max_resp,
+                                            self.checksum),
+                              self._group_address)
+        elif self.version == 3:
+            if self.type == IGMP_MEMBER_QUERY:
+                if update:
+                    self.num_records = int(len(self._source_addresses) / 4)
+                end_bytes = b'%b%b%b' % (self._group_address,
+                                        pack(b'!BBH',
+                                             self._s_qrv,
+                                             self.qqic,
+                                             self.num_records),
+                                        self._source_addresses)
+                if csum:
+                    self.checksum = checksum(b'%b\000\000%b' % (
+                        pack(b'!BB', self.type, self.max_resp),
+                        end_bytes))
+
+                return b'%b%b' % (pack(b'!BBH', self.type,
+                                                self.max_resp,
+                                                self.checksum),
+                                  end_bytes)
+            else:
+                if update:
+                    self.num_records = int(len(self.group_records))
+                for record in self.group_records:
+                    pload_bytes += record.pkt2net({})
+                end_bytes = pack(b'!HH', self.reserved2,
+                                 self.num_records)
+                end_bytes += pload_bytes
+                if csum:
+                    self.checksum = checksum(b'%b\000\000%b' % (
+                        pack(b'!BB', self.type, self.reserved1),
+                        end_bytes))
+
+                return b'%b%b' % (pack(b'!BBH', self.type,
+                                                self.reserved1,
+                                                self.checksum),
+                                  end_bytes)
+
+
+        else:
+            if csum:
+                self.checksum = checksum(b'%b\000\000%b' % (
+                    pack(b'!BB', self.type, self.reserved1),
+                    self._group_address)
+                )
+            return b'%b%b' % (pack(b'!BBH', self.type,
+                                            self.max_resp,
+                                            self.checksum),
+                              self._group_address)
+
 
 cdef class IP(PKT):
     def __init__(self, *args, **kwargs):
@@ -1928,12 +2296,14 @@ cdef class IP(PKT):
         self.pkt_name = 'IP'
         self.pq_type, self.query_fields = IP.query_info()
         cdef:
-            unsigned char use_buffer
+            unsigned char use_buffer, hl_bytes, iphl
         self.ipv4_pheader = Ip4Ph()
+        self.options = b''
         use_buffer, self._buffer = self.from_buffer(args, kwargs)
 
         if use_buffer:
             self._version_iphl = self._buffer[0]
+            iphl = self.iphl
             self.tos = self._buffer[1]
             (self.total_len, self.ident, self._flags_offset) = \
                 unpack('!HHH', self._buffer[2:8])
@@ -1942,19 +2312,23 @@ cdef class IP(PKT):
             self.checksum = unpack('!H', self._buffer[10:12])[0]
             self.src_nochk = self._buffer[12:16]
             self.dst_nochk = self._buffer[16:20]
-            if len(self._buffer[(self.iphl * 4):]):
+            hl_bytes = iphl * 4
+            if iphl > 5:
+                self.options = self._buffer[20:hl_bytes].tobytes()
+            if len(self._buffer[hl_bytes:]):
                 if self.proto == PROTO_UDP:
-                    self.payload = UDP(self._buffer[(self.iphl * 4):],
+                    self.payload = UDP(self._buffer[hl_bytes:],
                                        l7_ports = self.l7_ports)
                 elif self.proto == PROTO_TCP:
-                    self.payload = TCP(self._buffer[(self.iphl * 4):],
+                    self.payload = TCP(self._buffer[hl_bytes:],
                                        l7_ports = self.l7_ports)
                 elif self.proto == PROTO_ICMP:
-                    self.payload = ICMP(self._buffer[(self.iphl * 4):])
+                    self.payload = ICMP(self._buffer[hl_bytes:])
                 elif self.proto == PROTO_IGMP:
-                    self.payload = IGMP(self._buffer[(self.iphl * 4):])
+                    self.payload = IGMP(self._buffer[hl_bytes:],
+                                        length=(self.total_len - hl_bytes))
                 else:
-                    self.payload = NullPkt(self._buffer[(self.iphl * 4):],
+                    self.payload = NullPkt(self._buffer[hl_bytes:],
                                            l7_ports = self.l7_ports)
             else:
                 self.payload = PKT()
@@ -1973,6 +2347,7 @@ cdef class IP(PKT):
             self.checksum = kwargs.get('checksum', 0)
             self.src = kwargs.get('src', '0.0.0.0')
             self.dst = kwargs.get('dst', '0.0.0.0')
+            self.options = kwargs.get('options', b'')
             if (kwargs.has_key('payload') and
                     isinstance(kwargs['payload'], PKT)):
                 self.payload = kwargs['payload']
@@ -1987,7 +2362,8 @@ cdef class IP(PKT):
                 elif self.proto == PROTO_ICMP:
                     self.payload = ICMP(kwargs['payload'])
                 elif self.proto == PROTO_IGMP:
-                    self.payload = IGMP(kwargs['payload'])
+                    self.payload = IGMP(kwargs['payload'],
+                                        length=len(kwargs['payload']))
                 else:
                     self.payload = NullPkt(kwargs['payload'],
                                            l7_ports = self.l7_ports)
@@ -2075,7 +2451,7 @@ cdef class IP(PKT):
                 instance.
         """
         cdef:
-            bint_csum, _update, _icmp
+            bint _csum, _update, _icmp
             bytes _pload_bytes, ip_ph
             Ip4Ph _ph
 
@@ -2112,15 +2488,17 @@ cdef class IP(PKT):
                                   self._proto)
 
         if _csum:
-            self.checksum = checksum(b'%b\000\000%b%b' % (
+            self.checksum = checksum(b'%b\000\000%b%b%b' % (
                 ip_ph,
                 self._src,
-                self._dst)
+                self._dst,
+                self.options)
             )
-        return b'%b%b%b%b%b' % (ip_ph,
+        return b'%b%b%b%b%b%b' % (ip_ph,
                                 pack('!H', self.checksum),
                                 self._src,
                                 self._dst,
+                                self.options,
                                 _pload_bytes)
 
     property version:
@@ -2608,20 +2986,32 @@ cdef class Ethernet(PKT):
                 instance.
         """
         cdef:
-            bytes _pload_bytes
+            bytes _pload_bytes, pkt_bytes
+            uint16_t length
         _pload_bytes = b''
 
         if isinstance(self.payload, PKT):
             _pload_bytes = self.payload.pkt2net(kwargs)
-        if self.tpid == ETH_TYPE_8021Q:
+        if self.tpid != ETH_TYPE_8021Q:
+            pkt_bytes = b'%b%b%b%b' % (self._dst_mac.tobytes(),
+                                       self._src_mac.tobytes(),
+                                       pack('!H', self.type),
+                                       _pload_bytes)
+            length = len(pkt_bytes)
+            if length < MIN_FRAME_SIZE:
+                # correct for minimum frame size. FCS (4 bytes) not included.
+                # This does not correct for the minimum 74 bytes ICMP frame
+                # size because that would be to expensive for our use cases.
+                # If you want to do that then just check if:
+                # self.type == ETH_TYPE_IPV4 and
+                # self.payload.proto = PROTO_ICMP
+                pkt_bytes += b'\x00' * (MIN_FRAME_SIZE - length)
+
+            return pkt_bytes
+        else:
             return b'%b%b%b%b' % (self._dst_mac.tobytes(),
                                   self._src_mac.tobytes(),
                                   pack('!HHH', self.tpid,
                                                self._tci,
                                                self.type),
-                                  _pload_bytes)
-        else:
-            return b'%b%b%b%b' % (self._dst_mac.tobytes(),
-                                  self._src_mac.tobytes(),
-                                  pack('!H', self.type),
                                   _pload_bytes)

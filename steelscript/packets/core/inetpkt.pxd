@@ -77,7 +77,8 @@ cdef:
     unsigned char IGMP_MEMBER_QUERY
     unsigned char IGMP_V1_MEMBER_REPORT
     unsigned char IGMP_V2_MEMBER_REPORT
-    unsigned char IGMP_V2_LEAVE_GROUP
+    unsigned char IGMP_V3_MEMBER_REPORT
+    unsigned char IGMP_LEAVE_GROUP
     # PROTO IDs
     unsigned char PROTO_IGMP
     unsigned char PROTO_ICMP
@@ -88,6 +89,8 @@ cdef:
     unsigned char PQ_ETH
     unsigned char PQ_FRAME
     unsigned char PQ_ICMP
+    unsigned char PQ_IGMP
+    unsigned char PQ_IGMPv3GroupRecord
     uint16_t PQ_IP
     unsigned char PQ_TCP
     unsigned char PQ_UDP
@@ -98,6 +101,7 @@ cdef:
     unsigned char PTR_VAL
     object offset_re
     char NOT_FOUND = -1
+    unsigned char MIN_FRAME_SIZE
 
 cdef uint16_t checksum(bytes pkt)
 
@@ -193,6 +197,7 @@ cdef class IP_CONST:
         readonly unsigned char IGMP_MEMBER_QUERY
         readonly unsigned char IGMP_V1_MEMBER_REPORT
         readonly unsigned char IGMP_V2_MEMBER_REPORT
+        readonly unsigned char IGMP_V3_MEMBER_REPORT
         readonly unsigned char IGMP_LEAVE_GROUP
         readonly unsigned char PROTO_ICMP
         readonly unsigned char PROTO_IGMP
@@ -203,6 +208,7 @@ cdef class IP_CONST:
         readonly unsigned char PQ_FRAME
         readonly unsigned char PQ_ICMP
         readonly unsigned char PQ_IGMP
+        readonly unsigned char PQ_IGMPv3GroupRecord
         readonly uint16_t PQ_IP
         readonly unsigned char PQ_TCP
         readonly unsigned char PQ_UDP
@@ -304,16 +310,33 @@ cdef class TCP(PKT):
     cpdef object get_field_val(self, str field)
 
 
-cdef class IGMP(PKT):
+cdef class IGMPGroupRecord(PKT):
     cdef:
         array _buffer
-        public unsigned char type, max_resp
-        public uint16_t checksum
-        bytes _maddr
+        public unsigned char type, aux_data_len
+        public bytes aux_data
+        public uint16_t num_src
+        bytes _group_address, _source_addresses
 
     cpdef object get_field_val(self, str field)
 
     cpdef bytes pkt2net(self, dict kwargs)
+
+
+cdef class IGMP(PKT):
+    cdef:
+        array _buffer
+        public unsigned char version, type, max_resp, qqic, reserved1
+        public uint16_t checksum, num_records
+        public list group_records
+        public uint16_t reserved2
+        unsigned char _s_qrv
+        bytes _group_address, _source_addresses
+
+    cpdef object get_field_val(self, str field)
+
+    cpdef bytes pkt2net(self, dict kwargs)
+
 
 cdef class ICMP(PKT):
     cdef:
@@ -343,6 +366,7 @@ cdef class IP(PKT):
         public unsigned char ttl, tos
         public uint16_t checksum, total_len, ident
         public PKT payload
+        public bytes options
 
 
     cpdef bytes pkt2net(self, dict kwargs)

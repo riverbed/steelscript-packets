@@ -66,7 +66,7 @@ igmp_json = """
 "igmp.max_resp":{"0":100,"1":0,"2":0,"3":0,"4":0,"5":10,"6":0,"7":0,"8":0,
                  "9":0,"10":10,"11":0,"12":0,"13":0,"14":100,"15":0,"16":0,
                  "17":0},
-"igmp.maddr":{"0":"0.0.0.0","1":"239.255.255.250","2":"225.10.10.10",
+"igmp.group_address":{"0":"0.0.0.0","1":"239.255.255.250","2":"225.10.10.10",
               "3":"225.1.1.3","4":"225.1.1.3","5":"225.1.1.3","6":"225.1.1.4",
               "7":"225.1.1.4","8":"225.1.1.4","9":"225.1.1.4",
               "10":"225.1.1.4","11":"225.1.1.5","12":"225.1.1.5",
@@ -75,6 +75,17 @@ igmp_json = """
 """
 
 igmp_file = './test/igmp_v2.pcap'
+
+igmpv3_member_report = (b'\x01\x00^\x00\x00\x16\x00%.Q\xc3\x81\x08\x00FX\x008'
+                        b'\x02F\x00\x00\x01\x02\x80!\xc0\xa8\x01B\xe0\x00\x00'
+                        b'\x16\x94\x04\x00\x00"\x00\x00\x19\x00\x00\x00\x03'
+                        b'\x02\x00\x00\x00\xef\xc3\x07\x02\x02\x00\x00\x00'
+                        b'\xef\xff\xff\xfa\x02\x00\x00\x00\xef\xc3\x01_')
+igmpv3_member_query = (b'\x01\x00^\x00\x00\x01\x00&Dl\x1e\xda\x08\x00F\xc0'
+                       b'\x00$\x18\x0f@\x00\x01\x02)]\xc0\xa8\x01\xfe\xe0'
+                       b'\x00\x00\x01\x94\x04\x00\x00\x11\x18\xec\xd3\x00'
+                       b'\x00\x00\x00\x02\x14\x00\x00\x00\x00\x00\x00\x00'
+                       b'\x00\x00\x00\x00\x00')
 
 class TestPackets(unittest.TestCase):
 
@@ -229,17 +240,41 @@ class TestPackets(unittest.TestCase):
     def test_IP_IGMP_pkt(self):
         pkt = Ethernet(igmp_pkt_data)
         igmp = pkt.get_layer_by_type(C.PQ_IGMP)
+        igmpv3_report = Ethernet(igmpv3_member_report)
+        igmpv3r = igmpv3_report.get_layer_by_type(C.PQ_IGMP)
+        igmpv3_query = Ethernet(igmpv3_member_query)
+        igmpv3q = igmpv3_query.get_layer_by_type(C.PQ_IGMP)
+
+        self.assertEqual(igmp.version, 2)
         self.assertEqual(igmp.type, C.IGMP_V2_MEMBER_REPORT)
         self.assertEqual(igmp.max_resp, 0)
         self.assertEqual(igmp.checksum, 0xfa04)
-        self.assertEqual(igmp.maddr, '239.255.255.250')
+        self.assertEqual(igmp.group_address, '239.255.255.250')
+        self.assertEqual(igmp.group_address, '239.255.255.250')
+        # IGMP v3
+        self.assertEqual(igmpv3r.version, 3)
+        self.assertEqual(igmpv3r.type, C.IGMP_V3_MEMBER_REPORT)
+        self.assertEqual(igmpv3r.num_records, 3)
+        self.assertEqual(igmpv3r.group_records[0].type, 2)
+        self.assertEqual(igmpv3r.group_records[0].group_address,
+                         '239.195.7.2')
+        self.assertEqual(igmpv3r.group_records[1].group_address,
+                         '239.255.255.250')
+        self.assertEqual(igmpv3r.group_records[2].group_address,
+                         '239.195.1.95')
+        self.assertEqual(igmpv3q.version, 3)
+        self.assertEqual(igmpv3q.type, C.IGMP_MEMBER_QUERY)
+        self.assertEqual(igmpv3q.max_resp, 0x18)
+        self.assertEqual(igmpv3q.qrv, 2)
+        self.assertEqual(igmpv3q.qqic, 20)
 
     def test_pcap_query(self):
         infile = open(igmp_file, 'rb')
         query = PcapQuery()
         df = query.pcap_query(infile,
                               ['eth.src', 'eth.dst', 'ip.src', 'ip.dst',
-                               'igmp.type', 'igmp.max_resp', 'igmp.maddr'],
+                               'igmp.type', 'igmp.max_resp',
+                               'igmp.group_address'],
                               0.0,
                               0.0,
                               rdf=1)

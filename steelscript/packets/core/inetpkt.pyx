@@ -1957,7 +1957,8 @@ cdef class IGMP(PKT):
             _len = kwargs.get('length', 0)
 
             # If we got a length from IP then this track will be fastest.
-            # The trade off is that decoding
+            # Otherwise we will have to pre-parse a few more bytes of the
+            # packet to figure out what version it is. See 'else' case below.
             if _len:
                 if _len > 8:
                         version = 3
@@ -1974,6 +1975,10 @@ cdef class IGMP(PKT):
             else:
                 # Looks like we have to parse our way through this:
                 if operation == IGMP_MEMBER_QUERY:
+                    # The buffer could be ethernet padding so make sure the
+                    # 10th byte is not zero. With IGMPv3 that byte is the QQIC
+                    # value and must be 125 or the last query interval used.
+                    # RFC 3376 section 8.2
                     if len(self._buffer) >= 11 and self._buffer[9] != 0:
                         self.version = 3
                     elif self._buffer[1] == 0:

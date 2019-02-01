@@ -16,6 +16,8 @@ from libc.stdint cimport uint32_t, uint16_t
 
 offset_re = re.compile(r'^(udp|tcp)\.payload\.offset\[(\d*):(\d*)\]$')
 
+MIN_FRAME_SIZE = 60
+
 PTR_VAL = 0
 IPV4_LEN = 4
 IPV4_VER = 4
@@ -2984,20 +2986,32 @@ cdef class Ethernet(PKT):
                 instance.
         """
         cdef:
-            bytes _pload_bytes
+            bytes _pload_bytes, pkt_bytes
+            uint16_t length
         _pload_bytes = b''
 
         if isinstance(self.payload, PKT):
             _pload_bytes = self.payload.pkt2net(kwargs)
-        if self.tpid == ETH_TYPE_8021Q:
+        if self.tpid != ETH_TYPE_8021Q:
+            pkt_bytes = b'%b%b%b%b' % (self._dst_mac.tobytes(),
+                                       self._src_mac.tobytes(),
+                                       pack('!H', self.type),
+                                       _pload_bytes)
+            length = len(pkt_bytes)
+            if length < MIN_FRAME_SIZE:
+                # correct for minimum frame size. FCS (4 bytes) not included.
+                # This does not correct for the minimum 74 bytes ICMP frame
+                # size because that would be to expensive for our use cases.
+                # If you want to do that then just check if:
+                # self.type == ETH_TYPE_IPV4 and
+                # self.payload.proto = PROTO_ICMP
+                pkt_bytes += b'\x00' * (MIN_FRAME_SIZE - length)
+
+            return pkt_bytes
+        else:
             return b'%b%b%b%b' % (self._dst_mac.tobytes(),
                                   self._src_mac.tobytes(),
                                   pack('!HHH', self.tpid,
                                                self._tci,
                                                self.type),
-                                  _pload_bytes)
-        else:
-            return b'%b%b%b%b' % (self._dst_mac.tobytes(),
-                                  self._src_mac.tobytes(),
-                                  pack('!H', self.type),
                                   _pload_bytes)

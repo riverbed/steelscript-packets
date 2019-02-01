@@ -101,6 +101,7 @@ cdef:
     unsigned char PTR_VAL
     object offset_re
     char NOT_FOUND = -1
+    unsigned char MIN_FRAME_SIZE
 
 cdef uint16_t checksum(bytes pkt)
 

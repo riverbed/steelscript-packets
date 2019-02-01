@@ -245,13 +245,15 @@ class TestPackets(unittest.TestCase):
         igmpv3_query = Ethernet(igmpv3_member_query)
         igmpv3q = igmpv3_query.get_layer_by_type(C.PQ_IGMP)
 
+        self.assertEqual(igmp.version, 2)
         self.assertEqual(igmp.type, C.IGMP_V2_MEMBER_REPORT)
         self.assertEqual(igmp.max_resp, 0)
         self.assertEqual(igmp.checksum, 0xfa04)
         self.assertEqual(igmp.group_address, '239.255.255.250')
         self.assertEqual(igmp.group_address, '239.255.255.250')
         # IGMP v3
-        self.assertEqual(igmpv3r.type, 0x22)
+        self.assertEqual(igmpv3r.version, 3)
+        self.assertEqual(igmpv3r.type, C.IGMP_V3_MEMBER_REPORT)
         self.assertEqual(igmpv3r.num_records, 3)
         self.assertEqual(igmpv3r.group_records[0].type, 2)
         self.assertEqual(igmpv3r.group_records[0].group_address,
@@ -260,7 +262,8 @@ class TestPackets(unittest.TestCase):
                          '239.255.255.250')
         self.assertEqual(igmpv3r.group_records[2].group_address,
                          '239.195.1.95')
-        self.assertEqual(igmpv3q.type, 0x11)
+        self.assertEqual(igmpv3q.version, 3)
+        self.assertEqual(igmpv3q.type, C.IGMP_MEMBER_QUERY)
         self.assertEqual(igmpv3q.max_resp, 0x18)
         self.assertEqual(igmpv3q.qrv, 2)
         self.assertEqual(igmpv3q.qqic, 20)

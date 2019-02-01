@@ -14,7 +14,6 @@ of SMB (at time of writing).
 """
 from setuptools import setup, Extension
 from gitpy_versioning import get_version
-from Cython.Build import cythonize
 
 try:
     from setuptools import find_packages
@@ -36,8 +35,6 @@ install_requires = (
 )
 
 extensions = [
-    Extension("steelscript.packets.core.filters",
-              ["steelscript/packets/core/filters.pyx"]),
     Extension("steelscript.packets.core.pcap",
               ["steelscript/packets/core/pcap.pyx"]),
     Extension("steelscript.packets.core.inetpkt",

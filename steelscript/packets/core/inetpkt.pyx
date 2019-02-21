@@ -3029,7 +3029,7 @@ cdef class Ethernet(PKT):
                                                      self._tci,
                                                      self.type),
                                         _pload_bytes)
-            if kwargs.get('udp_crc'):
+            if kwargs.get('eth_crc'):
                 check = binascii.crc32(pkt_bytes)
                 return b'%b%b' % (pkt_bytes, pack('!I', check))
             else:

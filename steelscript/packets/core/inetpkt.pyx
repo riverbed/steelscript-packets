@@ -824,6 +824,14 @@ cdef class NullPkt(PKT):
         def __set__(self, bytes value):
             self._buffer = array('B', value)
 
+    property fake_proto_id:
+        """
+        get the first two bytes of payload as an short
+        """
+        def __get__(self):
+            if len(self._buffer) >= 2:
+                return unpack("!H", self._buffer[:2])[0]
+
     def __repr__(self):
         return '{0}: {1}'.format(self.pkt_name,
                                  self._buffer.tobytes().decode())
@@ -1127,7 +1135,11 @@ cdef class UDP(PKT):
             bytes _pload_bytes, ip_ph
 
         _update = kwargs.get('update', 0)
-        _csum = kwargs.get('csum', 0)
+        if kwargs.get('udp_csum'):
+            _csum = kwargs.get('udp_csum')
+            self.checksum = 0
+        else:
+            _csum = kwargs.get('csum', 0)
         _ipv4_pheader = kwargs.get('ipv4_pheader', Ip4Ph())
 
         _pload_bytes = self.payload.pkt2net(kwargs)
@@ -1814,7 +1826,7 @@ cdef class IGMPGroupRecord(PKT):
             self.aux_data_len = kwargs.get('aux_data_len', 0)
             self.num_src = kwargs.get('num_src', 0)
             self.group_address = kwargs.get('group_address', '0.0.0.0')
-            self.source_addresses = kwargs.get('group_address', list())
+            self.source_addresses = kwargs.get('group_addresses', list())
             self.aux_data = kwargs.get('aux_data', b'')
 
     property byte_len:
@@ -2041,6 +2053,7 @@ cdef class IGMP(PKT):
                     self.group_address = kwargs.get('group_address', '0.0.0.0')
                     self.s = kwargs.get('s', 0)
                     self.qrv = kwargs.get('qrv', 0)
+                    self.qqic = kwargs.get('qqic', 0)
                     self.num_records = kwargs.get('num_records', 0)
                     self.source_addresses = kwargs.get('source_addresses',
                                                        list())
@@ -2988,6 +3001,7 @@ cdef class Ethernet(PKT):
         cdef:
             bytes _pload_bytes, pkt_bytes
             uint16_t length
+            uint32_t check
         _pload_bytes = b''
 
         if isinstance(self.payload, PKT):
@@ -3009,9 +3023,14 @@ cdef class Ethernet(PKT):
 
             return pkt_bytes
         else:
-            return b'%b%b%b%b' % (self._dst_mac.tobytes(),
-                                  self._src_mac.tobytes(),
-                                  pack('!HHH', self.tpid,
-                                               self._tci,
-                                               self.type),
-                                  _pload_bytes)
+            pkt_bytes =  b'%b%b%b%b' % (self._dst_mac.tobytes(),
+                                        self._src_mac.tobytes(),
+                                        pack('!HHH', self.tpid,
+                                                     self._tci,
+                                                     self.type),
+                                        _pload_bytes)
+            if kwargs.get('udp_crc'):
+                check = binascii.crc32(pkt_bytes)
+                return b'%b%b' % (pkt_bytes, pack('!I', check))
+            else:
+                return pkt_bytes

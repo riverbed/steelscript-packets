@@ -31,6 +31,7 @@ except ImportError:
 
 install_requires = (
     'steelscript',
+    'tzlocal',
     'Cython',
 )
 

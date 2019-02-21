@@ -6,7 +6,7 @@ import logging
 from array import array
 
 from steelscript.packets.core.inetpkt import IP_CONST, Ethernet, ARP, IP, \
-    UDP, TCP
+    UDP, TCP, NullPkt
 from steelscript.packets.core.pcap import PCAPWriter, PCAPReader
 from steelscript.packets.query.pcap_query import PcapQuery
 
@@ -145,7 +145,8 @@ class TestPackets(unittest.TestCase):
                          src='10.1.2.3',
                          dst='10.3.2.1',
                          payload=UDP(sport=34567,
-                                     dport=53))
+                                     dport=53,
+                                     payload=NullPkt()))
 
         """
         Write this packet out to a pcap file

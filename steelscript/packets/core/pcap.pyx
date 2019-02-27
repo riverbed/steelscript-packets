@@ -695,7 +695,7 @@ cpdef dict pcap_info(object f):
         dict rval
 
     rdr = PCAPReader(f, pk_format=pktypes.bytes_data)
-    first_ts, pkt , linktype = rdr.next()
+    first_ts, pkt , linktype = next(rdr)
     pkts = 1
     byte_count = len(pkt)
     for last_ts, pkt, linktype in rdr:

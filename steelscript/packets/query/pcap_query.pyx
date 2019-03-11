@@ -15,7 +15,7 @@ import re
 from libc.stdint cimport uint16_t
 from steelscript.packets.core.inetpkt cimport PKT, Ethernet, IP, TCP, ICMP, \
     IGMP, UDP, ARP, MPLS, NullPkt, PQ_FRAME, PQ_TCP, PQ_UDP
-from steelscript.packets.core.pcap cimport PCAPReader, pktypes
+from steelscript.packets.core.pcap cimport PCAPReader, pcap_pkthdr_t
 
 # Regex to determine if the field matches a payload offset pattern.
 offset_re = re.compile(r'^(udp|tcp)\.payload\.offset\[(\d*):(\d*)\]$')
@@ -111,7 +111,7 @@ cdef class PcapQuery:
             return 1
 
     cpdef pcap_query(self,
-                     object file_handle,
+                     str filename,
                      list wshark_fields,
                      double starttime,
                      double endtime,
@@ -143,7 +143,8 @@ cdef class PcapQuery:
             uint16_t pkt_id, link_type, layer_index
             str fname, rep_fname
             double ts
-            array pkt
+            pcap_pkthdr_t hdr
+            bytes pkt
             Ethernet e
             PCAPReader rdr
 
@@ -182,13 +183,13 @@ cdef class PcapQuery:
                 layer_ids.append(i_n[0])
                 layer_index += 1
 
-        rdr = PCAPReader(file_handle)
-        for ts, pkt, link_type in rdr:
-            if (link_type == 1 and
-                    ((starttime == 0.0 == endtime) or
-                     (starttime <= ts <= endtime) or
-                     (starttime == 0.0 and ts <= endtime) or
-                     (starttime <= ts and endtime == 0.0))):
+        rdr = PCAPReader(filename=filename)
+        # rdr.add_bpf_filter('ether')
+        for ts, hdr, pkt in rdr:
+            if ((starttime == 0.0 == endtime) or
+                    (starttime <= ts <= endtime) or
+                    (starttime == 0.0 and ts <= endtime) or
+                    (starttime <= ts and endtime == 0.0)):
                 e = Ethernet(pkt, l7_ports=self.l7_ports)
                 layer_index = 0
                 for pkt_id in layer_ids:

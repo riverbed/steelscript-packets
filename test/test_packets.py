@@ -7,7 +7,9 @@ from array import array
 
 from steelscript.packets.core.inetpkt import IP_CONST, Ethernet, ARP, IP, \
     UDP, TCP, NullPkt
-from steelscript.packets.core.pcap import PCAPWriter, PCAPReader
+from steelscript.packets.core.pcap import PCAPReader, PCAPWriter, \
+    get_pkts_header
+
 from steelscript.packets.query.pcap_query import PcapQuery
 
 logger = logging.getLogger(__name__)
@@ -151,17 +153,15 @@ class TestPackets(unittest.TestCase):
         """
         Write this packet out to a pcap file
         """
-        dfile = open('packets.devtest.ip_udp.pcap', 'wb+')
-        wrt = PCAPWriter(dfile)
-        wrt.writepkt(pkt.pkt2net({'csum': 1, 'update': 1}), 0)
+        wrt = PCAPWriter(filename='./test/packets.devtest.ip_udp.pcap')
+        wrt.dump_pkt(pkt.pkt2net({'csum': 1, 'update': 1}))
         wrt.close()
 
         """
         Read the copy packet in from the pcap file just created.
         """
-        dfile = open('packets.devtest.ip_udp.pcap', 'rb')
-        rdr = PCAPReader(dfile)
-        pkt_copy = Ethernet(next(rdr)[1])
+        rdr = PCAPReader(filename='./test/packets.devtest.ip_udp.pcap')
+        pkt_copy = Ethernet(next(rdr)[2])
         rdr.close()
 
         a_IP = pkt.get_layer("IP")
@@ -194,17 +194,15 @@ class TestPackets(unittest.TestCase):
         """
         Write this packet out to a pcap file
         """
-        dfile = open('packets.devtest.ip_tcp.pcap', 'wb+')
-        wrt = PCAPWriter(dfile)
-        wrt.writepkt(pkt.pkt2net({'csum': 1, 'update': 1}), 0)
+        wrt = PCAPWriter(filename='./test/packets.devtest.ip_tcp.pcap')
+        wrt.dump_pkt(pkt.pkt2net({'csum': 1, 'update': 1}))
         wrt.close()
 
         """
         Read the copy packet in from the pcap file just created.
         """
-        dfile = open('packets.devtest.ip_tcp.pcap', 'rb')
-        rdr = PCAPReader(dfile)
-        pkt_copy = Ethernet(next(rdr)[1])
+        rdr = PCAPReader(filename='./test/packets.devtest.ip_tcp.pcap')
+        pkt_copy = Ethernet(next(rdr)[2])
         rdr.close()
 
         a_IP = pkt.get_layer("IP")
@@ -270,9 +268,8 @@ class TestPackets(unittest.TestCase):
         self.assertEqual(igmpv3q.qqic, 20)
 
     def test_pcap_query(self):
-        infile = open(igmp_file, 'rb')
         query = PcapQuery()
-        df = query.pcap_query(infile,
+        df = query.pcap_query(igmp_file,
                               ['eth.src', 'eth.dst', 'ip.src', 'ip.dst',
                                'igmp.type', 'igmp.max_resp',
                                'igmp.group_address'],
@@ -282,7 +279,6 @@ class TestPackets(unittest.TestCase):
 
         json_out = df.to_json()
         self.assertEqual(json.loads(igmp_json), json.loads(json_out))
-        infile.close()
 
 
 if __name__ == '__main__':

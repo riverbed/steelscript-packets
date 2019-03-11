@@ -37,7 +37,8 @@ install_requires = (
 
 extensions = [
     Extension("steelscript.packets.core.pcap",
-              ["steelscript/packets/core/pcap.pyx"]),
+              ["steelscript/packets/core/pcap.pyx"],
+              libraries=["pcap"]),
     Extension("steelscript.packets.core.inetpkt",
               ["steelscript/packets/core/inetpkt.pyx"]),
     Extension("steelscript.packets.query.pcap_query",

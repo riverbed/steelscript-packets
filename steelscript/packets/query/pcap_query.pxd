@@ -25,7 +25,7 @@ cdef class PcapQuery:
     cpdef dict show_fields(self)
 
     cpdef pcap_query(self,
-                     object file_handle,
+                     str filename,
                      list wshark_fields,
                      double starttime,
                      double endtime,

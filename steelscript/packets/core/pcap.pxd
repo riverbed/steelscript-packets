@@ -126,22 +126,22 @@ ctypedef int bpf_int32
 ctypedef unsigned int u_int
 
 
-cdef extern from "sys/time.h":
+cdef extern from "<sys/time.h>":
     struct timeval:
         time_t tv_sec
         time_t tv_usec
 
-cdef extern from "signal.h":
+cdef extern from "<signal.h>":
     ctypedef int sig_atomic_t
 
-cdef extern from "sys/socket.h":
+cdef extern from "<sys/socket.h>":
     struct sockaddr:
         __uint8_t sa_len
         sa_family_t sa_family
         char sa_data[14]
 
 
-cdef extern from "pcap/bpf.h":
+cdef extern from "<pcap/bpf.h>":
     struct bpf_insn:
         u_short code
         u_char jt
@@ -152,7 +152,7 @@ cdef extern from "pcap/bpf.h":
         u_int bf_len
         bpf_insn *bf_insns
 
-cdef extern from "pcap.h":
+cdef extern from "<pcap.h>":
 
     ctypedef pcap pcap_t
     ctypedef pcap_dumper pcap_dumper_t

@@ -122,9 +122,8 @@ cpdef char *lookupdev(char *errtext):
         char * device
     try:
         device = pcap_lookupdev(errors)
-        errtext = errors
     finally:
-        free(errors)
+        errtext = errors
     if not device:
         return NULL
     else:
@@ -136,18 +135,13 @@ cpdef int findalldevs(list devices, char *errtext):
         pcap_if_t * ifaces
         pcap_if_t * current
         pcap_addr * cur_addr
-        char * errors = <char *> malloc(ERRBUF_SIZE * sizeof(char))
     rval = ERROR
-    try:
-        rval = pcap_findalldevs(&ifaces, errors)
-        if not rval:
-            current = ifaces
-            while current:
-                devices.append(current.name)
-                current = current.next
-        errtext = errors
-    finally:
-        free(errors)
+    rval = pcap_findalldevs(&ifaces, errtext)
+    if not rval:
+        current = ifaces
+        while current:
+            devices.append(current.name)
+            current = current.next
     return rval
 
 cdef int lookupnet(const char *device,
@@ -155,13 +149,8 @@ cdef int lookupnet(const char *device,
                    bpf_u_int32 * mask,
                    char *errtext):
     cdef:
-        char * errors = <char *> malloc(ERRBUF_SIZE * sizeof(char))
         int status
-    try:
-        status = pcap_lookupnet(device, net, mask, errors)
-        errtext = errors
-    finally:
-        free(errors)
+    status = pcap_lookupnet(device, net, mask, errtext)
     if status:
         net[0] = 0
         mask[0] = 0
@@ -173,16 +162,11 @@ cdef pcap_t *open_live(const char * device,
                        int to_ms,
                        char *errtext):
     cdef:
-        char * errors = <char *> malloc(ERRBUF_SIZE * sizeof(char))
         bpf_u_int32 net, mask
         int status
         pcap_t * pcap_live
 
-    try:
-        pcap_live = pcap_open_live(device, snaplen, promisc, to_ms, errors)
-        errtext = errors
-    finally:
-        free(errors)
+    pcap_live = pcap_open_live(device, snaplen, promisc, to_ms, errtext)
     if not pcap_live:
         return NULL
     else:
@@ -191,13 +175,9 @@ cdef pcap_t *open_live(const char * device,
 cdef pcap_t *open_offline(const char * filename,
                           char *errtext):
     cdef:
-        char * errors = <char *> malloc(ERRBUF_SIZE * sizeof(char))
         pcap_t * pcap_offline
-    try:
-        pcap_offline = pcap_open_offline(filename, errors)
-        errtext = errors
-    finally:
-        free(errors)
+
+    pcap_offline = pcap_open_offline(filename, errtext)
     if not pcap_offline:
         return NULL
     else:
@@ -224,9 +204,95 @@ cpdef pcap_pkthdr_t get_pkts_header(double ts, bytes data):
     return hdr
 
 
-cdef class PCAPSocket:
+cdef class PCAPBase:
     def __cinit__(self, *args, **kwargs):
         self.dumper = NULL
+        self.have_dumper = 0
+        self.start_ts = 0
+        self.end_ts = 0
+
+    cdef int _open_pcap_dumper(self, str file_name, pcap_t * sock):
+        cdef:
+            char * filename = b''
+            bytes encoded
+
+        encoded = file_name.encode()
+        filename = encoded
+        self.dumper = pcap_dump_open(sock, filename)
+        if self.dumper is NULL:
+            return ERROR
+        else:
+            self.have_dumper = 1
+            return 0
+
+    cpdef void close_pcap_dumper(self):
+        if self.dumper is not NULL:
+            pcap_dump_close(self.dumper)
+        self.dumper = NULL
+        self.have_dumper = 0
+
+    cpdef void dump_hdr_pkt(self,
+                            pcap_pkthdr_t hdr,
+                            bytes data,
+                            uint32_t tv_sec=0,
+                            uint32_t tv_usec=0):
+        cdef:
+            const pcap_pkthdr * pcap_hdr
+            unsigned char * buff
+
+        if tv_sec:
+            hdr.p_hdr.ts.tv_sec = tv_sec
+            hdr.p_hdr.ts.tv_usec = tv_usec
+        buff = data
+        pcap_hdr = &hdr
+        if self.dumper is not NULL:
+            pcap_dump(<u_char *>self.dumper ,pcap_hdr , buff)
+
+    cpdef void dump_pkt(self,
+                        bytes data,
+                        uint32_t tv_sec=0,
+                        uint32_t tv_usec=0):
+        cdef:
+            const pcap_pkthdr * pcap_hdr
+            pcap_pkthdr_t hdr
+            unsigned char * buff
+
+        hdr = get_pkts_header(time.time(), data)
+        if tv_sec:
+            hdr.ts.tv_sec = tv_sec
+            hdr.ts.tv_usec = tv_usec
+        buff = data
+        pcap_hdr = &hdr
+        if self.dumper is not NULL:
+            pcap_dump(<u_char *>self.dumper ,pcap_hdr , buff)
+
+    cdef int _add_bpf_filter(self,
+                             str bpf_filter,
+                             pcap_t * sock,
+                             bpf_u_int32 mask):
+        cdef:
+            bpf_program bpfprog
+            int rval
+            bytes encoded
+            char* fltr = b''
+
+        encoded = bpf_filter.encode()
+        fltr = encoded
+        rval = pcap_compile(sock, &bpfprog, fltr, 1, mask)
+
+        if rval == ERROR:
+            raise Exception("Failed to compile BPF filter")
+        else:
+            rval = pcap_setfilter(sock, &bpfprog)
+        return rval
+
+    cpdef int add_bpf_filter(self, str bpf_filter):
+        return 0
+
+cdef class PCAPSocket(PCAPBase):
+    def __cinit__(self, *args, **kwargs):
+        self.dumper = NULL
+        self.have_dumper = 0
 
     def __init__(self, *args, **kwargs):
         cdef:
@@ -239,10 +305,9 @@ cdef class PCAPSocket:
         dn = kwargs.get('devicename', '').encode()
         dev = dn
         self.devicename = dev
-        self.have_dumper = 0
         snaplen = kwargs.get('snaplen', 0)
         promisc = kwargs.get('promisc', 1)
-        to_ms = kwargs.get('to_ms', 1000)
+        to_ms = kwargs.get('to_ms', 100)
         self.sock = open_live(self.devicename,
                               snaplen,
                               promisc,
@@ -339,77 +404,11 @@ cdef class PCAPSocket:
         else:
             return _len
 
-    cpdef int add_bpf_filter(self, str bpf_filter):
-        cdef:
-            bpf_program bpfprog
-            int rval
-            bytes encoded
-            char* fltr = b''
-
-        encoded = bpf_filter.encode()
-        fltr = encoded
-        rval = pcap_compile(self.sock, &bpfprog, fltr, 1, self.mask)
-
-        if rval == ERROR:
-            raise Exception("Failed to compile BPF filter")
-        else:
-            rval = pcap_setfilter(self.sock, &bpfprog)
-        return rval
-
     cpdef int open_pcap_dumper(self, str file_name):
-        cdef:
-            char * filename = b''
-            bytes encoded
+        return self._open_pcap_dumper(file_name, self.sock)
 
-        encoded = file_name.encode()
-        filename = encoded
-        self.dumper = pcap_dump_open(self.sock, filename)
-        if self.dumper is NULL:
-            return ERROR
-        else:
-            self.have_dumper = 1
-            return 0
-
-    cpdef close_pcap_dumper(self):
-        if self.dumper is not NULL:
-            pcap_dump_close(self.dumper)
-        self.dumper = NULL
-        self.have_dumper = 0
-
-    cpdef void dump_hdr_pkt(self,
-                            pcap_pkthdr_t hdr,
-                            bytes data,
-                            uint32_t tv_sec=0,
-                            uint32_t tv_usec=0):
-        cdef:
-            const pcap_pkthdr * pcap_hdr
-            unsigned char * buff
-
-        if tv_sec:
-            hdr.p_hdr.ts.tv_sec = tv_sec
-            hdr.p_hdr.ts.tv_usec = tv_usec
-        buff = data
-        pcap_hdr = &hdr
-        if self.dumper is not NULL:
-            pcap_dump(<u_char *>self.dumper ,pcap_hdr , buff)
-
-    cpdef void dump_pkt(self,
-                        bytes data,
-                        uint32_t tv_sec=0,
-                        uint32_t tv_usec=0):
-        cdef:
-            const pcap_pkthdr * pcap_hdr
-            pcap_pkthdr_t hdr
-            unsigned char * buff
-
-        hdr = get_pkts_header(time.time(), data)
-        if tv_sec:
-            hdr.ts.tv_sec = tv_sec
-            hdr.ts.tv_usec = tv_usec
-        buff = data
-        pcap_hdr = &hdr
-        if self.dumper is not NULL:
-            pcap_dump(<u_char *>self.dumper ,pcap_hdr , buff)
+    cpdef int add_bpf_filter(self, str bpf_filter):
+        return self._add_bpf_filter(bpf_filter, self.sock, self.mask)
 
     def __iter__(self):
         return self
@@ -446,7 +445,7 @@ cdef class PCAPSocket:
             pcap_close(self.sock)
         self.sock = NULL
 
-cdef class PCAPReader:
+cdef class PCAPReader(PCAPBase):
     def __cinit__(self, *args, **kwargs):
         self.dumper = NULL
 
@@ -475,76 +474,10 @@ cdef class PCAPReader:
             free(errors)
 
     cpdef int open_pcap_dumper(self, str file_name):
-        cdef:
-            char * filename = b''
-            bytes encoded
-
-        encoded = file_name.encode()
-        filename = encoded
-        self.dumper = pcap_dump_open(self.reader, filename)
-        if self.dumper is NULL:
-            return ERROR
-        else:
-            self.have_dumper = 1
-            return 0
-
-    cpdef close_pcap_dumper(self):
-        if self.dumper is not NULL:
-            pcap_dump_close(self.dumper)
-        self.dumper = NULL
-        self.have_dumper = 0
-
-    cpdef void dump_hdr_pkt(self,
-                            pcap_pkthdr_t hdr,
-                            bytes data,
-                            uint32_t tv_sec=0,
-                            uint32_t tv_usec=0):
-        cdef:
-            const pcap_pkthdr * pcap_hdr
-            unsigned char * buff
-
-        if tv_sec:
-            hdr.p_hdr.ts.tv_sec = tv_sec
-            hdr.p_hdr.ts.tv_usec = tv_usec
-        buff = data
-        pcap_hdr = &hdr
-        if self.dumper is not NULL:
-            pcap_dump(<u_char *>self.dumper ,pcap_hdr , buff)
-
-    cpdef void dump_pkt(self,
-                        bytes data,
-                        uint32_t tv_sec=0,
-                        uint32_t tv_usec=0):
-        cdef:
-            const pcap_pkthdr * pcap_hdr
-            pcap_pkthdr_t hdr
-            unsigned char * buff
-
-        hdr = get_pkts_header(time.time(), data)
-        if tv_sec:
-            hdr.ts.tv_sec = tv_sec
-            hdr.ts.tv_usec = tv_usec
-        buff = data
-        pcap_hdr = &hdr
-        if self.dumper is not NULL:
-            pcap_dump(<u_char *>self.dumper ,pcap_hdr , buff)
+        return self._open_pcap_dumper(file_name, self.reader)
 
     cpdef int add_bpf_filter(self, str bpf_filter):
-        cdef:
-            bpf_program bpfprog
-            int rval
-            bytes encoded
-            char* fltr = b''
-
-        encoded = bpf_filter.encode()
-        fltr = encoded
-        rval = pcap_compile(self.reader, &bpfprog, fltr, 1, NETMASK_UNKNOWN)
-
-        if rval == ERROR:
-            raise Exception("Failed to compile BPF filter")
-        else:
-            rval = pcap_setfilter(self.reader, &bpfprog)
-        return rval
+        return self._add_bpf_filter(bpf_filter, self.reader, NETMASK_UNKNOWN)
 
     def __iter__(self):
         return self
@@ -582,7 +515,7 @@ cdef class PCAPReader:
             self.reader = NULL
 
 
-cdef class PCAPWriter:
+cdef class PCAPWriter(PCAPBase):
     def __cinit__(self, *args, **kwargs):
         self.dumper = NULL
 
@@ -608,60 +541,7 @@ cdef class PCAPWriter:
                 raise v_err
 
     cpdef int open_pcap_dumper(self, str file_name):
-        cdef:
-            char * filename = b''
-            bytes encoded
-
-        encoded = file_name.encode()
-        filename = encoded
-        self.dumper = pcap_dump_open(self.pcap_dead, filename)
-        if self.dumper is NULL:
-            return ERROR
-        else:
-            self.have_dumper = 1
-            return 0
-
-    cpdef close_pcap_dumper(self):
-        if self.dumper is not NULL:
-            pcap_dump_close(self.dumper)
-        self.dumper = NULL
-        self.have_dumper = 0
-
-
-    cpdef void dump_hdr_pkt(self,
-                            pcap_pkthdr_t hdr,
-                            bytes data,
-                            uint32_t tv_sec=0,
-                            uint32_t tv_usec=0):
-        cdef:
-            const pcap_pkthdr * pcap_hdr
-            unsigned char * buff
-
-        if tv_sec:
-            hdr.ts.tv_sec = tv_sec
-            hdr.ts.tv_usec = tv_usec
-        buff = data
-        pcap_hdr = &hdr
-        if self.dumper is not NULL:
-            pcap_dump(<u_char *>self.dumper ,pcap_hdr , buff)
-
-    cpdef void dump_pkt(self,
-                        bytes data,
-                        uint32_t tv_sec=0,
-                        uint32_t tv_usec=0):
-        cdef:
-            const pcap_pkthdr * pcap_hdr
-            pcap_pkthdr_t hdr
-            unsigned char * buff
-
-        hdr = get_pkts_header(time.time(), data)
-        if tv_sec:
-            hdr.ts.tv_sec = tv_sec
-            hdr.ts.tv_usec = tv_usec
-        buff = data
-        pcap_hdr = &hdr
-        if self.dumper is not NULL:
-            pcap_dump(<u_char *>self.dumper ,pcap_hdr , buff)
+        return self._open_pcap_dumper(file_name, self.pcap_dead)
 
     cpdef void close(self):
         if self.dumper is not NULL:

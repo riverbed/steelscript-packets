@@ -3,6 +3,7 @@
 import json
 import unittest
 import logging
+import pandas
 from array import array
 
 from steelscript.packets.core.inetpkt import IP_CONST, Ethernet, ARP, IP, \
@@ -268,16 +269,25 @@ class TestPackets(unittest.TestCase):
         self.assertEqual(igmpv3q.qqic, 20)
 
     def test_pcap_query(self):
-        query = PcapQuery()
-        df = query.pcap_query(igmp_file,
-                              ['eth.src', 'eth.dst', 'ip.src', 'ip.dst',
-                               'igmp.type', 'igmp.max_resp',
-                               'igmp.group_address'],
-                              0.0,
-                              0.0,
-                              rdf=1)
+        w_fields = ['eth.src', 'eth.dst', 'ip.src', 'ip.dst',
+                    'igmp.type', 'igmp.max_resp', 'igmp.group_address']
+        pcap_query = PcapQuery(filename=igmp_file,
+                               wshark_fields=w_fields)
+        # Use PcapQuery object to do a manual query
+        # Specifying that we want a dataframe back
+        df1 = pcap_query.query(dataframe=True)
+        json_out = df1.to_json()
 
-        json_out = df.to_json()
+        # Create it again against the same file with the same fields
+        pcap_query = PcapQuery(filename=igmp_file,
+                               wshark_fields=w_fields)
+
+        # use a PcapQuery object in iterator context
+        data = list(pcap_query)
+        df2 = pandas.DataFrame(data, columns=w_fields)
+
+        # both methods return the same data and it is as expected
+        self.assertTrue(df1.equals(df2))
         self.assertEqual(json.loads(igmp_json), json.loads(json_out))
 
 

@@ -126,22 +126,22 @@ ctypedef int bpf_int32
 ctypedef unsigned int u_int
 
 
-cdef extern from "<sys/time.h>":
+cdef extern from "<sys/time.h>" nogil:
     struct timeval:
         time_t tv_sec
         time_t tv_usec
 
-cdef extern from "<signal.h>":
+cdef extern from "<signal.h>" nogil:
     ctypedef int sig_atomic_t
 
-cdef extern from "<sys/socket.h>":
+cdef extern from "<sys/socket.h>" nogil:
     struct sockaddr:
         __uint8_t sa_len
         sa_family_t sa_family
         char sa_data[14]
 
 
-cdef extern from "<pcap/bpf.h>":
+cdef extern from "<pcap/bpf.h>" nogil:
     struct bpf_insn:
         u_short code
         u_char jt
@@ -152,7 +152,7 @@ cdef extern from "<pcap/bpf.h>":
         u_int bf_len
         bpf_insn *bf_insns
 
-cdef extern from "<pcap.h>":
+cdef extern from "<pcap.h>" nogil:
 
     ctypedef pcap pcap_t
     ctypedef pcap_dumper pcap_dumper_t
@@ -411,15 +411,38 @@ cdef pcap_t *open_offline(const char * filename,
 cdef pcap_t *open_dead(int linktype,
                        int snaplen)
 
-cdef class PCAPSocket:
+
+cdef class PCAPBase:
+    cdef:
+        pcap_dumper_t * dumper
+        bint have_dumper
+        double start_ts, end_ts
+
+    cdef int _open_pcap_dumper(self, str file_name, pcap_t * sock)
+    cpdef void close_pcap_dumper(self)
+    cpdef void dump_hdr_pkt(self,
+                            pcap_pkthdr_t hdr,
+                            bytes data,
+                            uint32_t tv_sec=*,
+                            uint32_t tv_usec=*)
+    cpdef void dump_pkt(self,
+                        bytes data,
+                        uint32_t tv_sec=*,
+                        uint32_t tv_usec=*)
+    cdef int _add_bpf_filter(self,
+                             str bpf_filter,
+                             pcap_t * sock,
+                             bpf_u_int32 mask)
+    cpdef int add_bpf_filter(self, str bpf_filter)
+
+
+cdef class PCAPSocket(PCAPBase):
     cdef:
         public object stop_event
         const char * devicename
         pcap_t * sock
-        pcap_dumper_t * dumper
         bpf_u_int32 net
         bpf_u_int32 mask
-        bint have_dumper
 
     cpdef int set_snaplen(self, int snaplen)
     cpdef int set_promisc(self, int promisc)
@@ -428,69 +451,30 @@ cdef class PCAPSocket:
     cpdef int setnonblock(self, int nonblock)
     cpdef int sendpacket(self, bytes pktdata)
     cpdef int add_bpf_filter(self, str bpf_filter)
-
     cpdef int open_pcap_dumper(self, str file_name)
-    cpdef close_pcap_dumper(self)
-    cpdef void dump_hdr_pkt(self,
-                            pcap_pkthdr_t hdr,
-                            bytes data,
-                            uint32_t tv_sec=*,
-                            uint32_t tv_usec=*)
-    cpdef void dump_pkt(self,
-                        bytes data,
-                        uint32_t tv_sec=*,
-                        uint32_t tv_usec=*)
-
     cpdef void close(self)
 
 
-cdef class PCAPReader:
+cdef class PCAPReader(PCAPBase):
     cdef:
         const char * filename
         pcap_t * reader
-        pcap_dumper_t * dumper
-        bint have_dumper
 
 
     cpdef list pkts(self)
-
     cpdef void close(self)
-
     cpdef int open_pcap_dumper(self, str file_name)
-    cpdef close_pcap_dumper(self)
-    cpdef void dump_hdr_pkt(self,
-                            pcap_pkthdr_t hdr,
-                            bytes data,
-                            uint32_t tv_sec=*,
-                            uint32_t tv_usec=*)
-    cpdef void dump_pkt(self,
-                        bytes data,
-                        uint32_t tv_sec=*,
-                        uint32_t tv_usec=*)
-
     cpdef int add_bpf_filter(self, str bpf_filter)
 
 
-cdef class PCAPWriter:
+cdef class PCAPWriter(PCAPBase):
     cdef:
         pcap_t * pcap_dead
-        pcap_dumper_t * dumper
         uint16_t snaplen
-        bint have_dumper
+
 
     cpdef void close(self)
-
     cpdef int open_pcap_dumper(self, str file_name)
-    cpdef close_pcap_dumper(self)
-    cpdef void dump_hdr_pkt(self,
-                            pcap_pkthdr_t hdr,
-                            bytes data,
-                            uint32_t tv_sec=*,
-                            uint32_t tv_usec=*)
-    cpdef void dump_pkt(self,
-                        bytes data,
-                        uint32_t tv_sec=*,
-                        uint32_t tv_usec=*)
 
 
 cpdef pcap_pkthdr_t get_pkts_header(double ts, bytes data)

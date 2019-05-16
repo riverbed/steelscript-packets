@@ -58,6 +58,7 @@ ETH_IEEE802_11 = 105
 ETH_LOOP = 108
 ETH_LINUX_SLL = 113
 ETH_LTALK = 114
+PCAP_NETMASK_UNKNOWN = 0xffffffff
 
 cdef class PCAP_CONST:
     def __cinit__(self):
@@ -326,14 +327,7 @@ cdef class PCAPSocket(PCAPBase):
                                &self.net, &self.mask,
                                errors)
             if status == ERROR:
-                v_err = ValueError("PCAPSocket failed to get network info for "
-                                   "{0}. Error was: {1}".format(
-                                                             self.devicename,
-                                                             errors))
-                free(errors)
-                raise v_err
-            else:
-                free(errors)
+                self.mask = PCAP_NETMASK_UNKNOWN
         self.stop_event = Event()
 
     property network:

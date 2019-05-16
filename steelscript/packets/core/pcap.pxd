@@ -20,6 +20,7 @@ from libc.stdint cimport uint16_t, uint32_t
 from threading import Event
 
 DEF BUFFSIZE = 256
+DEF PCAP_NETMASK_UNKNOWN = 0xffffffff
 
 cdef:
     char VERSION_MAJOR
@@ -64,6 +65,7 @@ cdef:
     char ETH_LOOP
     char ETH_LINUX_SLL
     char ETH_LTALK
+    uint32_t PCAP_NETMASK_UNKNOWN
 
 cdef class PCAP_CONST:
     cdef:

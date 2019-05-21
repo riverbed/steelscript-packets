@@ -482,3 +482,11 @@ cdef class PCAPWriter(PCAPBase):
 cpdef pcap_pkthdr_t get_pkts_header(double ts, bytes data)
 
 cpdef dict pcap_info(str filename)
+
+cpdef int netflow_replay(str device,
+                         str pcap_file,
+                         uint16_t pcap_dst_port,
+                         str dest_ip,
+                         str dest_mac,
+                         uint16_t dest_port,
+                         unsigned char blast_mode=*)

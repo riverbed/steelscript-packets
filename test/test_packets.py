@@ -69,7 +69,7 @@ igmp_json = """
 "igmp.max_resp":{"0":100,"1":0,"2":0,"3":0,"4":0,"5":10,"6":0,"7":0,"8":0,
                  "9":0,"10":10,"11":0,"12":0,"13":0,"14":100,"15":0,"16":0,
                  "17":0},
-"igmp.group_address":{"0":"0.0.0.0","1":"239.255.255.250","2":"225.10.10.10",
+"igmp.maddr":{"0":"0.0.0.0","1":"239.255.255.250","2":"225.10.10.10",
               "3":"225.1.1.3","4":"225.1.1.3","5":"225.1.1.3","6":"225.1.1.4",
               "7":"225.1.1.4","8":"225.1.1.4","9":"225.1.1.4",
               "10":"225.1.1.4","11":"225.1.1.5","12":"225.1.1.5",
@@ -270,7 +270,7 @@ class TestPackets(unittest.TestCase):
 
     def test_pcap_query(self):
         w_fields = ['eth.src', 'eth.dst', 'ip.src', 'ip.dst',
-                    'igmp.type', 'igmp.max_resp', 'igmp.group_address']
+                    'igmp.type', 'igmp.max_resp', 'igmp.maddr']
         pcap_query = PcapQuery(filename=igmp_file,
                                wshark_fields=w_fields)
         # Use PcapQuery object to do a manual query

@@ -7,12 +7,14 @@
 # as set forth in the License.
 
 from libc.stdlib cimport malloc, free
-from libc.stdint cimport uint32_t, uint64_t
+from libc.stdint cimport uint32_t, uint64_t, uint16_t
 
 import time
 import socket
 import struct
 from threading import Event
+
+from steelscript.packets.core.inetpkt cimport Ethernet, NetflowSimple
 
 DEF USECCONST = 1000000.00
 
@@ -58,6 +60,7 @@ ETH_IEEE802_11 = 105
 ETH_LOOP = 108
 ETH_LINUX_SLL = 113
 ETH_LTALK = 114
+PCAP_NETMASK_UNKNOWN = 0xffffffff
 
 cdef class PCAP_CONST:
     def __cinit__(self):
@@ -326,14 +329,7 @@ cdef class PCAPSocket(PCAPBase):
                                &self.net, &self.mask,
                                errors)
             if status == ERROR:
-                v_err = ValueError("PCAPSocket failed to get network info for "
-                                   "{0}. Error was: {1}".format(
-                                                             self.devicename,
-                                                             errors))
-                free(errors)
-                raise v_err
-            else:
-                free(errors)
+                self.mask = PCAP_NETMASK_UNKNOWN
         self.stop_event = Event()
 
     property network:
@@ -586,3 +582,69 @@ cpdef dict pcap_info(str filename):
             'total_packets': pkts,
             'total_bytes': byte_count}
     return rval
+
+cpdef int netflow_replay(str device,
+                           str pcap_file,
+                           uint16_t pcap_dst_port,
+                           str dest_ip,
+                           str dest_mac,
+                           uint16_t dest_port,
+                           unsigned char blast_mode=0):
+    """
+    Function to replay pcap files containing netflow versions 1-9.
+    :param device: Device to bind our outgoing socket to.
+    :param pcap_file: The file containing the packets we want to replay.
+    :param pcap_dst_port: The UDP src port of the netflow packets we are 
+           interested in.
+    :param dest_ip: The IP address we want to send these packets to.
+    :param dest_mac: The MAC address of the destination IP.
+    :param dest_port: The port that the recipient device will be listening on.
+    :param blast_mode: bool value. 0 == play at the same pace as in the pcap or
+           at the speed defined by speedup. 1 means blast as fast as possible.
+           Overrides speedup if set.
+    :param speedup: divide the inter-packet gap by this number.
+    :return: std unix 0 or 1 for all is well and something went wrong.
+    """
+
+    cdef:
+        PCAPSocket sender
+        PCAPReader reader
+        double now, ts, offset, add
+        pcap_pkthdr_t hdr
+        bytes pkt
+        Ethernet eth
+
+    sender = PCAPSocket(devicename=device)
+    sender.setnonblock(1)
+
+    reader = PCAPReader(filename=pcap_file)
+    reader.add_bpf_filter('udp dst port {0}'.format(pcap_dst_port))
+
+    ts, hdr, pkt = next(reader)
+    now = time.time()
+    eth = Ethernet(pkt, l7_ports={pcap_dst_port: NetflowSimple})
+    offset = now - ts
+    eth.dst_mac = dest_mac
+    eth.payload.dst = dest_ip
+    eth.payload.payload.dport = dest_port
+    eth.payload.payload.payload.unix_secs = int(now)
+    if eth.payload.payload.payload != 9:
+        eth.payload.payload.payload.unix_nano_seconds = int((now % 1) *
+                                                            1000000)
+    sender.sendpacket(eth.pkt2net({'csum': 1, 'update': 1}))
+    for ts, hdr, pkt in reader:
+        eth = Ethernet(pkt, l7_ports={pcap_dst_port: NetflowSimple})
+        now = time.time()
+        if not blast_mode and ts + offset >= now:
+            add = (ts + offset) - now
+            time.sleep(add)
+            now += add
+        eth.dst_mac = dest_mac
+        eth.payload.dst = dest_ip
+        eth.payload.payload.dport = dest_port
+        eth.payload.payload.payload.unix_secs = int(now)
+        if eth.payload.payload.payload != 9:
+            eth.payload.payload.payload.unix_nano_seconds = int((now % 1) *
+                                                                1000000)
+        sender.sendpacket(eth.pkt2net({'csum': 1, 'update': 1}))
+    return 0

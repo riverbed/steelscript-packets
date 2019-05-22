@@ -20,6 +20,7 @@ from libc.stdint cimport uint16_t, uint32_t
 from threading import Event
 
 DEF BUFFSIZE = 256
+DEF PCAP_NETMASK_UNKNOWN = 0xffffffff
 
 cdef:
     char VERSION_MAJOR
@@ -64,6 +65,7 @@ cdef:
     char ETH_LOOP
     char ETH_LINUX_SLL
     char ETH_LTALK
+    uint32_t PCAP_NETMASK_UNKNOWN
 
 cdef class PCAP_CONST:
     cdef:
@@ -480,3 +482,11 @@ cdef class PCAPWriter(PCAPBase):
 cpdef pcap_pkthdr_t get_pkts_header(double ts, bytes data)
 
 cpdef dict pcap_info(str filename)
+
+cpdef int netflow_replay(str device,
+                         str pcap_file,
+                         uint16_t pcap_dst_port,
+                         str dest_ip,
+                         str dest_mac,
+                         uint16_t dest_port,
+                         unsigned char blast_mode=*)

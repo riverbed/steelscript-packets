@@ -2034,22 +2034,18 @@ cdef class IGMP(PKT):
                                  "".format(self._buffer.tobytes().decode()))
 
         else:
+            self.type = kwargs.get('type', 0)
             self.version = kwargs.get('version', 2)
+            self.checksum = kwargs.get('checksum', 0)
             if self.version == 1:
-                self.type = kwargs.get('type', 0)
                 self.reserved1 = kwargs.get('reserved1', 0)
-                self.checksum = kwargs.get('checksum', 0)
                 self.group_address = kwargs.get('group_address', '0.0.0.0')
             elif self.version == 2:
-                self.type = kwargs.get('type', 0)
                 self.max_resp = kwargs.get('max_resp', 0)
-                self.checksum = kwargs.get('checksum', 0)
                 self.group_address = kwargs.get('group_address', '0.0.0.0')
             elif self.version == 3:
-                self.type = kwargs.get('type', 0)
                 if self.type == IGMP_MEMBER_QUERY:
                     self.max_resp = kwargs.get('max_resp', 0)
-                    self.checksum = kwargs.get('checksum', 0)
                     self.group_address = kwargs.get('group_address', '0.0.0.0')
                     self.s = kwargs.get('s', 0)
                     self.qrv = kwargs.get('qrv', 0)
@@ -2060,7 +2056,6 @@ cdef class IGMP(PKT):
                 else:
                     self._s_qrv = 0
                     self.max_resp = self.reserved1 = self.reserved2 = 0
-                    self.checksum = kwargs.get('checksum', 0)
                     self.num_records = kwargs.get('num_records', 0)
                     self.group_records = kwargs.get('group_records',
                                                     list())
@@ -2075,10 +2070,10 @@ cdef class IGMP(PKT):
             field names.
         """
         return (PQ_IGMP,
-                ('igmp.type', 'igmp.max_resp', 'igmp.checksum',
-                 'igmp.group_address', 'igmp.s', 'igmp.qrv',
-                 'igmp.num_records', 'igmp.source_addresses',
-                 'igmp.group_records'))
+                ('igmp.version', 'igmp.type', 'igmp.saddr', 'igmp.s',
+                 'igmp.qrv', 'igmp.num_src', 'igmp.num_grp_recs',
+                 'igmp.max_resp', 'igmp.maddr', 'igmp.checksum',
+                 'igmp.obj.saddr', 'igmp.obj.grecs'))
 
 
     cpdef object get_field_val(self, str field):
@@ -2093,17 +2088,24 @@ cdef class IGMP(PKT):
         Returns:
             :object: the value of the field.
         """
-        if field == 'igmp.type':
+
+        cdef:
+            str b_out_vals
+            list out_vals
+            IGMPGroupRecord rec
+
+        if field == 'igmp.version':
+            return self.version
+        elif field == 'igmp.type':
             return self.type
-        elif (field == 'igmp.max_resp' and
-                self.type != IGMP_V3_MEMBER_REPORT and
-                self.version != 1):
-            return self.max_resp
-        elif field == 'igmp.checksum':
-            return self.checksum
-        elif (field == 'igmp.group_address' and
-                self.type != IGMP_V3_MEMBER_REPORT):
-            return self.group_address
+        elif field == 'igmp.saddr' and self.version == 3:
+            if self.type == IGMP_MEMBER_QUERY:
+                return ','.join(self.source_addresses)
+            else:
+                b_out_vals = ''
+                for rec in self.group_records:
+                    b_out_vals += ','.join(rec.source_addresses)
+                return b_out_vals
         elif (field == 'igmp.s' and
                 self.version == 3 and
                 self.type == IGMP_MEMBER_QUERY):
@@ -2112,16 +2114,36 @@ cdef class IGMP(PKT):
                 self.version == 3 and
                 self.type == IGMP_MEMBER_QUERY):
             return self.qrv
-        elif field == 'igmp.num_records' and self.version == 3:
+        elif (field == 'igmp.num_src' and
+                self.type == IGMP_MEMBER_QUERY and
+                self.version == 3):
             return self.num_records
-        elif (field == 'igmp.source_addresses' and
+        elif (field == 'igmp.num_grp_recs' and
+                self.type != IGMP_MEMBER_QUERY and
+                self.version == 3):
+            return self.num_records
+        elif (field == 'igmp.max_resp' and
+                self.type != IGMP_V3_MEMBER_REPORT and
+                self.version != 1):
+            return self.max_resp
+        elif field == 'igmp.maddr':
+            if self.type != IGMP_V3_MEMBER_REPORT:
+                return self.group_address
+            else:
+                out_vals = list()
+                for rec in self.group_records:
+                    out_vals.append(rec.group_address)
+                return ','.join(rec.group_address)
+        elif field == 'igmp.checksum':
+            return self.checksum
+        elif (field == 'igmp.obj.saddr' and
                 self.version == 3 and
                 self.type == IGMP_MEMBER_QUERY):
             return self.source_addresses
-        elif (field == 'igmp.group_records' and
+        elif (field == 'igmp.obj.grecs' and
                 self.version == 3 and
-                self.type == IGMP_V3_MEMBER_REPORT):
-            return self.source_addresses
+                self.type != IGMP_MEMBER_QUERY):
+            return self.group_records
         else:
             return None
 
@@ -2876,8 +2898,7 @@ cdef class Ethernet(PKT):
             self._src_mac = self._buffer[6:12]
             self.type = unpack(b'!H', self._buffer[12:14])[0]
             if self.type == ETH_TYPE_8021Q:
-                self.tpid = ETH_TYPE_8021Q
-                self._tci, self.type = unpack(b'!HH', self._buffer[14:18])
+                self._tci, self.tpid = unpack(b'!HH', self._buffer[14:18])
                 vlan_hdr_add = 4
             if self.type == ETH_TYPE_IPV4:
                 self.payload = IP(self._buffer[14 + vlan_hdr_add:],
@@ -2893,8 +2914,8 @@ cdef class Ethernet(PKT):
             self.src_mac = kwargs.get('src_mac', '00:00:00:00:00:00')
             self.dst_mac = kwargs.get('dst_mac', '00:00:00:00:00:00')
             self.type = kwargs.get('type', ETH_TYPE_IPV4)
-            self.tpid = kwargs.get('tpid', 0)
-            if self.tpid == ETH_TYPE_8021Q:
+            if self.type == ETH_TYPE_8021Q:
+                self.tpid = kwargs.get('tpid', 0)
                 self.priority_code = kwargs.get('priority_code', 0)
                 self.drop_eligible = kwargs.get('drop_eligible', 0)
                 self.vlan_id = kwargs.get('vlan_id', 0)
@@ -2910,7 +2931,8 @@ cdef class Ethernet(PKT):
                 field names.
         """
         return (PQ_ETH,
-                ('eth.type', 'eth.src', 'eth.dst'))
+                ('eth.type', 'eth.src', 'eth.dst', 'eth.vlan.cfi',
+                 'eth.vlan.id', 'eth.vlan.pri', 'eth.vlan.tpid'))
 
     cpdef object get_field_val(self, str field):
         """Returns the value of the Wireshark format field name. Implemented as 
@@ -2930,6 +2952,14 @@ cdef class Ethernet(PKT):
             return self.src_mac
         elif field == 'eth.dst':
             return self.dst_mac
+        elif field == 'eth.vlan.cfi':
+            return self.drop_eligible
+        elif field == 'eth.vlan.id':
+            return self.vlan_id
+        elif field == 'eth.vlan.pri':
+            return self.priority_code
+        elif field == 'eth.vlan.tpid':
+            return self.tpid
         else:
             return None
 
@@ -3000,28 +3030,21 @@ cdef class Ethernet(PKT):
         """
         cdef:
             bytes _pload_bytes, pkt_bytes
+            bint csum
             uint16_t length
             uint32_t check
-        _pload_bytes = b''
+        _pload_bytes = pkt_bytes = b''
+
+        csum = kwargs.get('eth_crc', 0)
 
         if isinstance(self.payload, PKT):
             _pload_bytes = self.payload.pkt2net(kwargs)
-        if self.tpid != ETH_TYPE_8021Q:
+        if self.type != ETH_TYPE_8021Q:
             pkt_bytes = b'%b%b%b%b' % (self._dst_mac.tobytes(),
                                        self._src_mac.tobytes(),
                                        pack('!H', self.type),
                                        _pload_bytes)
-            length = len(pkt_bytes)
-            if length < MIN_FRAME_SIZE:
-                # correct for minimum frame size. FCS (4 bytes) not included.
-                # This does not correct for the minimum 74 bytes ICMP frame
-                # size because that would be to expensive for our use cases.
-                # If you want to do that then just check if:
-                # self.type == ETH_TYPE_IPV4 and
-                # self.payload.proto = PROTO_ICMP
-                pkt_bytes += b'\x00' * (MIN_FRAME_SIZE - length)
 
-            return pkt_bytes
         else:
             pkt_bytes =  b'%b%b%b%b' % (self._dst_mac.tobytes(),
                                         self._src_mac.tobytes(),
@@ -3029,8 +3052,15 @@ cdef class Ethernet(PKT):
                                                      self._tci,
                                                      self.type),
                                         _pload_bytes)
-            if kwargs.get('eth_crc'):
-                check = binascii.crc32(pkt_bytes)
-                return b'%b%b' % (pkt_bytes, pack('!I', check))
-            else:
-                return pkt_bytes
+
+        length = len(pkt_bytes)
+        if csum and length < (MIN_FRAME_SIZE - 4):
+                pkt_bytes += b'\x00' * ((MIN_FRAME_SIZE - 4) - length)
+        elif not csum and length < MIN_FRAME_SIZE:
+                pkt_bytes += b'\x00' * (MIN_FRAME_SIZE - length)
+
+        if csum:
+            check = binascii.crc32(pkt_bytes)
+            return b'%b%b' % (pkt_bytes, pack('!I', check))
+        else:
+            return pkt_bytes

@@ -12,9 +12,7 @@ Ethernet, IP, TCP, and UDP. Plus other packet data like MPLS, ARP and a subset
 of SMB (at time of writing).
 
 """
-from setuptools import setup, Extension, Command
-# from distutils.core import setup
-# from distutils.extension import Extension
+from setuptools import setup, Extension
 from gitpy_versioning import get_version
 
 try:
@@ -28,34 +26,30 @@ except ImportError:
 
 try:
     from Cython.Build import cythonize
-    USE_CYTHON = True
-    ext = '.pyx'
 except ImportError:
-    USE_CYTHON = False
-    ext = '.c'
+    raise ImportError("Steelscript-Packets requires Cython.")
 
 install_requires = (
     'steelscript',
+    'tzlocal',
     'Cython',
 )
 
 extensions = [
     Extension("steelscript.packets.core.pcap",
-              ["steelscript/packets/core/pcap{0}".format(ext)]),
+              ["steelscript/packets/core/pcap.pyx"],
+              libraries=["pcap"]),
     Extension("steelscript.packets.core.inetpkt",
-              ["steelscript/packets/core/inetpkt{0}".format(ext)]),
+              ["steelscript/packets/core/inetpkt.pyx"]),
     Extension("steelscript.packets.query.pcap_query",
-              ["steelscript/packets/query/pcap_query{0}".format(ext)]),
+              ["steelscript/packets/query/pcap_query.pyx"]),
     Extension("steelscript.packets.protos.dns",
-              ["steelscript/packets/protos/dns{0}".format(ext)]),
+              ["steelscript/packets/protos/dns.pyx"]),
 ]
-
-if USE_CYTHON:
-    for e in extensions:
-        e.cython_directives = {"embedsignature": True,
-                               "binding": True}
-
-    extensions = cythonize(extensions)
+for e in extensions:
+    e.cython_directives = {"embedsignature": True,
+                           "binding": True}
+extensions = cythonize(extensions)
 
 setup_args = {
     'name':                'steelscript.packets',
@@ -82,7 +76,9 @@ setup_args = {
         'Intended Audience :: Information Technology',
         'Intended Audience :: System Administrators',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: System :: Networking',
     ],
     'ext_modules': extensions,

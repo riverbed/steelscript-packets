@@ -1,4 +1,6 @@
-# Copyright (c) 2017 Riverbed Technology, Inc.
+# cython: language_level=3
+
+# Copyright (c) 2018 Riverbed Technology, Inc.
 #
 # This software is licensed under the terms and conditions of the MIT License
 # accompanying the software ("License").  This software is distributed "AS IS"
@@ -14,12 +16,12 @@ from steelscript.packets.core.inetpkt cimport PKT, set_bit, unset_bit, \
     set_short_nibble, get_short_nibble
 
 # Regex to see if data is a valid domain name
-hostname_re = re.compile(r"^(?:(?!-|[^.]+_)[A-Za-z0-9-_]{1,63}(?<!-)"
-                          "(?:\.|$))$")
-domainname_re = re.compile(r"^(?=.{1,253}\.?$)(?:(?!-|[^.]+_)[A-Za-z0-9-_]"
-                            "{1,63}(?<!-)(?:\.|$)){2,}$")
+hostname_re = re.compile("^(?:(?!-|[^.]+_)[A-Za-z0-9-_]{1,63}(?<!-)"
+                         "(?:\.|$))$")
+domainname_re = re.compile("^(?=.{1,253}\.?$)(?:(?!-|[^.]+_)[A-Za-z0-9-_]"
+                           "{1,63}(?<!-)(?:\.|$)){2,}$")
 
-email_re = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
+email_re = re.compile("(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
 
 
 cdef array hostname_to_label_array(bytes hostname):
@@ -50,14 +52,14 @@ cdef array hostname_to_label_array(bytes hostname):
                          "argument must be valid RFC 1123 FQDN. Argument "
                          "was: {0}".format(hostname))
 
-cdef bytes write_dns_name_bytes(bytes dns_name,
+cdef bytes write_dns_name_bytes(str dns_name,
                                 uint16_t* offset,
                                 dict labels,
                                 bint compress=1):
     """ Used to write DNS name into packet data. See read_dns_name_bytes for 
         a description of the name formats.
         Args:
-            :byte_array (array): packet data as array('B').
+            :dns_name (str): dns name for this record.
             :offset (uint16_t*): pointer to location in the packet where this 
                 name starts
             :label_store (dict): A per packet store of previously seen labels 
@@ -72,18 +74,18 @@ cdef bytes write_dns_name_bytes(bytes dns_name,
         list parts
         array out_array
 
-    if dns_name == b'':
+    if dns_name == '':
         offset[PNTR] += 1
         out_array = array('B', [0])
     else:
-        parts = dns_name.encode('UTF-8').split('.')
+        parts = dns_name.encode().split(b'.')
         parts.append(b'')
         if compress:
             # see if this label is present already. Write it an update bytes.
             if dns_name in labels:
                 offset[PNTR] += 2
                 out_array = array('B',
-                                  struct.pack("!H",
+                                  struct.pack(b'!H',
                                               LABEL + labels[dns_name]))
             else:
                 labels[dns_name] = offset[PNTR]
@@ -103,11 +105,11 @@ cdef bytes write_dns_name_bytes(bytes dns_name,
                 out_array.extend(array('B', part))
             offset[PNTR] += len(out_array)
 
-    return out_array.tostring()
+    return out_array.tobytes()
 
-cdef bytes read_dns_name_bytes(array byte_array,
-                               uint16_t* offset,
-                               dict label_store):
+cdef str read_dns_name_bytes(array byte_array,
+                             uint16_t* offset,
+                             dict label_store):
     """ Used to read DNS name labels out of DNS packets. These labels can be in
         two formats. Uncompressed as '3www8riverbed3com0'. This would have a
         decimal representation of:
@@ -130,11 +132,11 @@ cdef bytes read_dns_name_bytes(array byte_array,
                 with their offsets in the packet data.
 
         Returns: 
-            :bytes: human readable name.
+            :str: human readable name.
     """
     cdef:
         uint16_t location, index
-        bytes c_label, cur_label
+        str c_label, cur_label
         unsigned char b1
         bint read_on
         list labels
@@ -150,7 +152,9 @@ cdef bytes read_dns_name_bytes(array byte_array,
             # This is the first time we have seen this label OR this packet
             # is not using compression.
             c_label = \
-                byte_array[offset[PNTR] + 1: offset[PNTR] + 1 + b1].tostring()
+                byte_array[
+                    offset[PNTR] + 1: offset[PNTR] + 1 + b1
+                ].tostring().decode()
             labels.append((offset[PNTR], c_label, ))
             return_parts.append(c_label)
             offset[PNTR] += b1 + 1
@@ -160,7 +164,7 @@ cdef bytes read_dns_name_bytes(array byte_array,
             offset[PNTR] += 1
         else:
             location = struct.unpack(
-                "!H",
+                '!H',
                 byte_array[offset[PNTR]: offset[PNTR] + 2])[0]
             offset[PNTR] += 2
             # Strip off the top two bits
@@ -172,11 +176,13 @@ cdef bytes read_dns_name_bytes(array byte_array,
                 raise ValueError("read_dns_name_bytes encountered unexpected "
                                  "compressed data in byte_array. Array bytes "
                                  "are: {0}"
-                                 "".format(byte_array[offset[PNTR] - 2:]))
+                                 "".format(
+                    byte_array[offset[PNTR] - 2:].tostring().decode())
+                )
             # Compressed labels come at the end. We break now
             read_on = 0
     for index in range(len(labels)):
-        cur_label = b'.'.join((x[1] for x in labels[index:]))
+        cur_label = '.'.join((x[1] for x in labels[index:]))
         if cur_label not in label_store:
             label_store[cur_label] = labels[index][0]
             label_store[labels[index][0]] = cur_label
@@ -184,7 +190,7 @@ cdef bytes read_dns_name_bytes(array byte_array,
             # Suppose this packet is not using compression? But this
             # is not the first time we have seen this label so move on.
             pass
-    return b'.'.join(return_parts)
+    return '.'.join(return_parts)
 
 
 cdef tuple parse_resource(array byte_array,
@@ -207,11 +213,11 @@ cdef tuple parse_resource(array byte_array,
     cdef:
         uint16_t r_type, r_class, r_d_len
         uint32_t r_ttl
-        bytes d_name, r_data
+        str d_name, r_data
 
     d_name = read_dns_name_bytes(byte_array, offset, label_store)
     r_type, r_class, r_ttl, r_d_len = struct.unpack(
-        "!HHIH",
+        b'!HHIH',
         byte_array[offset[PNTR]:offset[PNTR] + 10])
     offset[PNTR] += 10
     if r_type in (DNSTYPE_NS, DNSTYPE_CNAME, DNSTYPE_PTR):
@@ -229,12 +235,14 @@ cdef tuple parse_resource(array byte_array,
     elif r_type == DNSTYPE_SOA:
         r_data = parse_soa(byte_array, offset, &r_d_len, label_store)
     else:
-        r_data = byte_array[offset[PNTR]:offset[PNTR] + r_d_len].tostring()
+        r_data = byte_array[
+                    offset[PNTR]:offset[PNTR] + r_d_len
+                 ].tostring().decode()
         offset[PNTR] += r_d_len
     return d_name, r_type, r_class, r_ttl, r_d_len, r_data
 
 
-cdef bytes parse_soa(array data, uint16_t* offset, uint16_t* rlen,
+cdef str parse_soa(array data, uint16_t* offset, uint16_t* rlen,
                      dict label_store):
     """Used to parse the human readable value for a SOA type 
        DNSResource.res_data string from an array of bytes. 
@@ -256,35 +264,35 @@ cdef bytes parse_soa(array data, uint16_t* offset, uint16_t* rlen,
     """
     cdef:
         uint16_t count, original_offset, index
-        bytes mname, rname
+        str mname, rname
         uint32_t serial, refresh, retry, expire, minimum
 
     original_offset = offset[PNTR]
-    count = data[offset[PNTR]:offset[PNTR] + rlen[PNTR]].count(ord(b' '))
+    count = data[offset[PNTR]:offset[PNTR] + rlen[PNTR]].count(ord(' '))
 
     if (count <= 7 and
             len(data[offset[PNTR]:offset[PNTR] + rlen[PNTR]]) == rlen[PNTR]):
         # its in binary format
         mname = read_dns_name_bytes(data, offset, label_store)
         rname = read_dns_name_bytes(data, offset, label_store)
-        rname = rname.replace(b'.', b'@', 1)
+        rname = rname.replace('.', '@', 1)
         serial, refresh, retry, expire, minimum = struct.unpack('!IIIII',
                                           data[offset[PNTR]:offset[PNTR] + 20])
         offset[PNTR] += 20
-        return (b'SOA mname: {0}, rname: {1}, serial: {2}, refresh: {3}, '
-                b'retry: {4}, expire: {5}, minimum: {6}'
-                b''.format(mname, rname, serial, refresh, retry, expire,
-                           minimum))
+        return ('SOA mname: {0}, rname: {1}, serial: {2}, refresh: {3}, '
+                'retry: {4}, expire: {5}, minimum: {6}'.format(
+            mname, rname, serial, refresh, retry, expire, minimum))
     elif count == 15:
         # its already in printable format and being manually added. No need to
         # alter the offset values.
         return data.tostring()
     else:
-        raise ValueError(b'parse_soa called on invalid soa data. Count was:{1}'
-                         b', Data was: {0}'.format(data, count))
+        raise ValueError('parse_soa called on invalid soa data. Count was:{0}'
+                         ', Data was: {1}'.format(count,
+                                                  data.tostring().decode()))
 
 
-cdef bytes pack_soa(bytes res_data, uint16_t* offset, dict labels,
+cdef bytes pack_soa(str res_data, uint16_t* offset, dict labels,
                     bint compress=1):
     """ Function that packs the parts of a human readable SOA record (as
         created by parse_soa()).
@@ -307,26 +315,25 @@ cdef bytes pack_soa(bytes res_data, uint16_t* offset, dict labels,
     if len(parts) == 15:
         p_bytes += write_dns_name_bytes(parts[SOA_MNAME][:-1], offset, labels,
                                         compress)
-        parts[SOA_RNAME] = parts[SOA_RNAME].replace(b'@', b'.')
+        parts[SOA_RNAME] = parts[SOA_RNAME].replace('@', '.')
         p_bytes += write_dns_name_bytes(parts[SOA_RNAME][:-1], offset, labels,
                                         compress)
         offset[PNTR] += 20
 
-        return b'{0}{1}'.format(p_bytes,
-                                struct.pack("!IIIII",
-                                            int(parts[SOA_SER][:-1]),
-                                            int(parts[SOA_REF][:-1]),
-                                            int(parts[SOA_RET][:-1]),
-                                            int(parts[SOA_EXP][:-1]),
-                                            int(parts[SOA_MIN])))
+        return b'%b%b' % (p_bytes,
+                          struct.pack(b'!IIIII', int(parts[SOA_SER][:-1]),
+                                                 int(parts[SOA_REF][:-1]),
+                                                 int(parts[SOA_RET][:-1]),
+                                                 int(parts[SOA_EXP][:-1]),
+                                                 int(parts[SOA_MIN])))
     else:
-        raise ValueError(b'pack_soa called on invalid soa data. Data was: {0}'
-                         b''.format(res_data))
+        raise ValueError('pack_soa called on invalid soa data. '
+                         'Data was: {0}' % res_data.tostring().decode())
 
 cdef class DNSQuery:
 
     def __init__(self,
-                 bytes query_name,
+                 str query_name,
                  uint16_t query_type,
                  uint16_t query_class):
         """ Simple class to wrap DNS queries
@@ -352,7 +359,7 @@ cdef class DNSQuery:
         return self._query_name
 
     @query_name.setter
-    def query_name(self, val):
+    def query_name(self, str val):
         if (domainname_re.match(val) or
                 hostname_re.match(val) or
                 self.query_type in (DNSTYPE_TXT,
@@ -387,12 +394,12 @@ cdef class DNSResource:
     """
 
     def __init__(self,
-                 bytes domain_name,
+                 str domain_name,
                  uint16_t res_type,
                  uint16_t res_class,
                  uint32_t res_ttl,
                  uint16_t res_len,
-                 bytes res_data):
+                 str res_data):
         self.res_type = res_type
         self.res_class = res_class
         self.res_ttl = res_ttl
@@ -414,10 +421,10 @@ cdef class DNSResource:
         def __get__(self):
             return self._domain_name
 
-        def __set__(self, bytes val):
+        def __set__(self, str val):
             if (domainname_re.match(val) or
                     hostname_re.match(val) or
-                    val == b'' or
+                    val == '' or
                     self.res_type in (DNSTYPE_TXT,
                                       DNSTYPE_OPT)):
                 self._domain_name = val
@@ -448,17 +455,17 @@ cdef class DNSResource:
         elif self.res_type == DNSTYPE_SOA:
             r_data = pack_soa(self.res_data, offset, labels, compress)
         else:
-            r_data = self.res_data
+            r_data = self.res_data.encode()
             offset[PNTR] += len(r_data)
         if update:
             self.res_len = len(r_data)
-        return b'{0}{1}{2}'.format(name,
-                                   struct.pack("!HHIH",
-                                               self.res_type,
-                                               self.res_class,
-                                               self.res_ttl,
-                                               self.res_len),
-                                   r_data)
+        return b'%b%b%b' % (name,
+                            struct.pack(b'!HHIH',
+                                        self.res_type,
+                                        self.res_class,
+                                        self.res_ttl,
+                                        self.res_len),
+                            r_data)
 
 
 cdef class DNS(PKT):
@@ -467,13 +474,13 @@ cdef class DNS(PKT):
     """
     def __init__(self, *args, **kwargs):
         super(DNS, self).__init__(*args, **kwargs)
-        self.pkt_name = b'DNS'
+        self.pkt_name = 'DNS'
         self.pq_type, self.query_fields = DNS.query_info()
         cdef:
             bint use_buffer
             uint32_t i
             uint16_t offset
-            bytes query_name
+            str query_name
             uint16_t query_type, query_class
             tuple resource_args
 
@@ -494,7 +501,7 @@ cdef class DNS(PKT):
              self.query_count,
              self.answer_count,
              self.auth_count,
-             self.ad_count) = struct.unpack('!6H', self._buffer[:12])
+             self.ad_count) = struct.unpack(b'!6H', self._buffer[:12])
             # add those 12 bytes to the offset index.
             offset = 12
             # for each query and or resource record we have parse the data.
@@ -507,7 +514,7 @@ cdef class DNS(PKT):
                     )
                     # unpack the remainder of the query.
                     query_type, query_class = struct.unpack(
-                        '!HH',
+                        b'!HH',
                         self._buffer[offset:offset + 4]
                     )
                     self.queries.append(DNSQuery(query_name,
@@ -563,14 +570,14 @@ cdef class DNS(PKT):
         get_field_val(<field_name>) function as well.
         return: uint16_t pq_type, tuple_of_string query_fields"""
         return (DNS_PACKET_TYPE,
-                (b'dns.ident', b'dns.query_resp', b'dns.op_code',
-                 b'dns.authoritative',
-                 b'dns.truncated', b'dns.recursion_requested',
-                 b'dns.recursion_available',
-                 b'dns.authentic_data', b'dns.check_disabled',
-                 b'dns.resp_code',
-                 b'dns.query_count', b'dns.answer_count', b'dns.auth_count',
-                 b'dns.ad_count'))
+                ('dns.ident', 'dns.query_resp', 'dns.op_code',
+                 'dns.authoritative',
+                 'dns.truncated', 'dns.recursion_requested',
+                 'dns.recursion_available',
+                 'dns.authentic_data', 'dns.check_disabled',
+                 'dns.resp_code',
+                 'dns.query_count', 'dns.answer_count', 'dns.auth_count',
+                 'dns.ad_count'))
 
 
     @classmethod
@@ -581,41 +588,41 @@ cdef class DNS(PKT):
         return [DNS_PACKET_PORT]
 
 
-    cpdef object get_field_val(self, bytes field):
+    cpdef object get_field_val(self, str field):
         """ Used to fetch field data values for DNS packets. Does not yet have
             support for retrieving query and resource record values.
             Args:
-                :field (bytes): name of the field
+                :field (str): name of the field
             Returns:
                 :object: the value of the field in this packet.
         """
-        if field == b'dns.ident':
+        if field == 'dns.ident':
             return self.ident
-        elif field == b'dns.query_resp':
+        elif field == 'dns.query_resp':
             return self.query_resp
-        elif field == b'dns.op_code':
+        elif field == 'dns.op_code':
             return self.op_code
-        elif field == b'dns.authoritative':
+        elif field == 'dns.authoritative':
             return self.authoritative
-        elif field == b'dns.truncated':
+        elif field == 'dns.truncated':
             return self.truncated
-        elif field == b'dns.recursion_requested':
+        elif field == 'dns.recursion_requested':
             return self.recursion_requested
-        elif field == b'dns.recursion_available':
+        elif field == 'dns.recursion_available':
             return self.recursion_available
-        elif field == b'dns.authentic_data':
+        elif field == 'dns.authentic_data':
             return self.authentic_data
-        elif field == b'dns.check_disabled':
+        elif field == 'dns.check_disabled':
             return self.check_disabled
-        elif field == b'dns.resp_code':
+        elif field == 'dns.resp_code':
             return self.resp_code
-        elif field == b'dns.query_count':
+        elif field == 'dns.query_count':
             return self.query_count
-        elif field == b'dns.answer_count':
+        elif field == 'dns.answer_count':
             return self.answer_count
-        elif field == b'dns.auth_count':
+        elif field == 'dns.auth_count':
             return self.auth_count
-        elif field == b'dns.ad_count':
+        elif field == 'dns.ad_count':
             return self.ad_count
         else:
             return None
@@ -758,12 +765,12 @@ cdef class DNS(PKT):
             self.auth_count = len(self.authority)
             self.ad_count = len(self.ad)
 
-        p_bytes = struct.pack('!HHHHHH', self.ident,
-                                         self._flags,
-                                         self.query_count,
-                                         self.answer_count,
-                                         self.auth_count,
-                                         self.ad_count)
+        p_bytes = struct.pack(b'!HHHHHH', self.ident,
+                                          self._flags,
+                                          self.query_count,
+                                          self.answer_count,
+                                          self.auth_count,
+                                          self.ad_count)
 
         for query in self.queries:
             p_bytes += query.pack(&offset, pack_labels, compress)

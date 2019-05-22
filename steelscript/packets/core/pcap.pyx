@@ -1,711 +1,650 @@
-# cython: profile=False
+# cython: language_level=3
 
-# Copyright (c) 2017 Riverbed Technology, Inc.
+# Copyright (c) 2018 Riverbed Technology, Inc.
 #
 # This software is licensed under the terms and conditions of the MIT License
 # accompanying the software ("License").  This software is distributed "AS IS"
 # as set forth in the License.
 
-import sys
+from libc.stdlib cimport malloc, free
+from libc.stdint cimport uint32_t, uint64_t, uint16_t
+
 import time
+import socket
 import struct
-from struct import pack
-from cpython.array cimport array
-from libc.stdint cimport int32_t, int64_t, uint16_t, uint32_t, uint64_t
+from threading import Event
 
-from steelscript.packets.core.inetpkt cimport Ethernet
+from steelscript.packets.core.inetpkt cimport Ethernet, NetflowSimple
 
-# Defined Static Vars
-SHB_MIN_SIZE = 24
-SECTION_LEN_UNDEFINED = -1
-SEEK_FROM_CUR_POS = 1
-OPT_CODE_TSRES = 9
-OPT_CODE_TSLEN = 1
-INVALID_IFACE = 255
+DEF USECCONST = 1000000.00
 
-cdef class PcapHeader:
-    """
-    Implments the file header for a legacy PCAP (libpcap). Details from
-    https://wiki.wireshark.org/Development/LibpcapFileFormat
-    This type is equivalent to pcap_hdr_s in libpcap code.
-    """
-    def __init__(self, *args, **kwargs):
-        """
-        Creates a PCAP File Header.
-        :param args: Optional one element list containing bytes of a pcap
-               file.
-        :param data: Optional keyword argument containing bytes of a pcap
-               file.
-        :param magic: used to detect the file format itself and the byte
-               ordering.
-        :param major_version: the major version number of this file format
-              (current major version is 2)
-        :param minor_version: the minor version number of this file format
-              (current minor version is 4)
-        :param tz_offset: the correction time in seconds between GMT (UTC)
-               and the local timezone of the following packet header
-               timestamps.
-        :param ts_accuracy: unused parameter. Was intended to determine
-               the accuracy of timestamps. Set to 0 by wireshark and tshark.
-        :param snap_len: Length of each packet to capture in bytes. Set to
-               65535 by tcpdump when -s0 is used. Can be larger in some tools.
-        :param net_layer: link-layer header type. 1 is the value for Ethernet.
-               For other supported values see:
-               http://www.tcpdump.org/linktypes.html
-        """
-        self.use_buffer = 0
-        self._buffer = b''
-        if (args and len(args) == 1 and isinstance(args[0], (str, bytes))):
-            self._buffer = args[0]
-            self.use_buffer = 1
-        elif (kwargs and kwargs.has_key('data') and
-                  isinstance(kwargs['data'], bytes)):
-            self._buffer = kwargs['data']
-            self.use_buffer = 1
+VERSION_MAJOR = 2
+VERSION_MINOR = 4
+ERRBUF_SIZE = 256
+ERROR = -1
+ERROR_BREAK = -2
+ERROR_NOT_ACTIVATED = -3
+ERROR_ACTIVATED = -4
+ERROR_NO_SUCH_DEVICE = -5
+ERROR_RFMON_NOTSUP = -6
+ERROR_NOT_RFMON = -7
+ERROR_PERM_DENIED = -8
+ERROR_IFACE_NOT_UP = -9
+ERROR_CANTSET_TSTAMP_TYPE = -10
+ERROR_PROMISC_PERM_DENIED = -11
+ERROR_TSTAMP_PRECISION_NOTSUP = -12
+WARNING = 1
+WARNING_PROMISC_NOTSUP = 2
+WARNING_TSTAMP_TYPE_NOTSUP = 3
+NETMASK_UNKNOWN = 0xffffffff
+TSTAMP_HOST = 0
+TSTAMP_HOST_LOWPREC = 1
+TSTAMP_HOST_HIPREC = 2
+TSTAMP_ADAPTER = 3
+TSTAMP_ADAPTER_UNSYNCED = 4
+TSTAMP_PRECISION_MICRO = 0
+TSTAMP_PRECISION_NANO = 1
+ETH_NULL = 0
+ETH_EN10MB = 1
+ETH_IEEE802 = 6
+ETH_ARCNET = 7
+ETH_SLIP = 8
+ETH_PPP = 9
+ETH_FDDI = 10
+ETH_ATM_RFC1483 = 11
+ETH_RAW = 12
+ETH_PPP_SERIAL = 50
+ETH_PPP_ETHER = 51
+ETH_C_HDLC = 104
+ETH_IEEE802_11 = 105
+ETH_LOOP = 108
+ETH_LINUX_SLL = 113
+ETH_LTALK = 114
+PCAP_NETMASK_UNKNOWN = 0xffffffff
 
-        if self.use_buffer:
-            self.magic = struct.unpack('I', self._buffer[:4])[0]
-            if self.magic == MAGIC.ident:
-                self.order = '<'
-                self.nano = 0
-            elif self.magic == MAGIC.ident_nano:
-                self.order = '<'
-                self.nano = 1
-            elif self.magic == MAGIC.swapped:
-                self.order = '>'
-                self.nano = 0
-            elif self.magic == MAGIC.swapped_nano:
-                self.order = '>'
-                self.nano = 1
-            else:
-                raise ValueError('PCAP header magic number is invalid. Was '
-                                 '{0} vs once of {1}.'
-                                 ''.format(self.magic,
-                                           ','.join([MAGIC.ident,
-                                                     MAGIC.ident_nano,
-                                                     MAGIC.swapped,
-                                                     MAGIC.swapped_nano])))
-            (self.major_version,
-             self.minor_version,
-             self.tz_offset,
-             self.ts_accuracy,
-             self.snap_len,
-             self.net_layer) = struct.unpack('{0}HHiIII'.format(self.order),
-                                             self._buffer[4:])
+cdef class PCAP_CONST:
+    def __cinit__(self):
+        # Values taken from pcap.h. Names have leading PCAP_ removed in order
+        # to avoid collisions with #define macros
+        self.VERSION_MAJOR = VERSION_MAJOR
+        self.VERSION_MINOR = VERSION_MINOR
+        self.ERRBUF_SIZE = ERRBUF_SIZE
+        self.ERROR = ERROR
+        self.ERROR_BREAK = ERROR_BREAK
+        self.ERROR_NOT_ACTIVATED = ERROR_NOT_ACTIVATED
+        self.ERROR_ACTIVATED = ERROR_ACTIVATED
+        self.ERROR_NO_SUCH_DEVICE = ERROR_NO_SUCH_DEVICE
+        self.ERROR_RFMON_NOTSUP = ERROR_RFMON_NOTSUP
+        self.ERROR_NOT_RFMON = ERROR_NOT_RFMON
+        self.ERROR_PERM_DENIED = ERROR_PERM_DENIED
+        self.ERROR_IFACE_NOT_UP = ERROR_IFACE_NOT_UP
+        self.ERROR_CANTSET_TSTAMP_TYPE = ERROR_CANTSET_TSTAMP_TYPE
+        self.ERROR_PROMISC_PERM_DENIED = ERROR_PROMISC_PERM_DENIED
+        self.ERROR_TSTAMP_PRECISION_NOTSUP = ERROR_TSTAMP_PRECISION_NOTSUP
+        self.WARNING = WARNING
+        self.WARNING_PROMISC_NOTSUP = WARNING_PROMISC_NOTSUP
+        self.WARNING_TSTAMP_TYPE_NOTSUP = WARNING_TSTAMP_TYPE_NOTSUP
+        self.NETMASK_UNKNOWN = NETMASK_UNKNOWN
+        self.TSTAMP_HOST = TSTAMP_HOST
+        self.TSTAMP_HOST_LOWPREC = TSTAMP_HOST_LOWPREC
+        self.TSTAMP_HOST_HIPREC = TSTAMP_HOST_HIPREC
+        self.TSTAMP_ADAPTER = TSTAMP_ADAPTER
+        self.TSTAMP_ADAPTER_UNSYNCED = TSTAMP_ADAPTER_UNSYNCED
+        self.TSTAMP_PRECISION_MICRO = TSTAMP_PRECISION_MICRO
+        self.TSTAMP_PRECISION_NANO = TSTAMP_PRECISION_NANO
+        self.ETH_NULL = ETH_NULL
+        self.ETH_EN10MB = ETH_EN10MB
+        self.ETH_IEEE802 = ETH_IEEE802
+        self.ETH_ARCNET = ETH_ARCNET
+        self.ETH_SLIP = ETH_SLIP
+        self.ETH_PPP = ETH_PPP
+        self.ETH_FDDI = ETH_FDDI
+        self.ETH_ATM_RFC1483 = ETH_ATM_RFC1483
+        self.ETH_RAW = ETH_RAW
+        self.ETH_PPP_SERIAL = ETH_PPP_SERIAL
+        self.ETH_PPP_ETHER = ETH_PPP_ETHER
+        self.ETH_C_HDLC = ETH_C_HDLC
+        self.ETH_IEEE802_11 = ETH_IEEE802_11
+        self.ETH_LOOP = ETH_LOOP
+        self.ETH_LINUX_SLL = ETH_LINUX_SLL
+        self.ETH_LTALK = ETH_LTALK
+
+cpdef uint32_t ip2int(str addr):
+    cdef:
+        uint32_t ip
+    uint32_t = struct.unpack("!I", socket.inet_aton(addr))[0]
+
+
+cpdef str int2ip(uint32_t addr):
+    return socket.inet_ntoa(struct.pack("!I", addr))
+
+
+cpdef char *lookupdev(char *errtext):
+    cdef:
+        char * errors = <char *> malloc(ERRBUF_SIZE * sizeof(char))
+        char * device
+    try:
+        device = pcap_lookupdev(errors)
+    finally:
+        errtext = errors
+    if not device:
+        return NULL
+    else:
+        return device
+
+cpdef int findalldevs(list devices, char *errtext):
+    cdef:
+        int rval
+        pcap_if_t * ifaces
+        pcap_if_t * current
+        pcap_addr * cur_addr
+    rval = ERROR
+    rval = pcap_findalldevs(&ifaces, errtext)
+    if not rval:
+        current = ifaces
+        while current:
+            devices.append(current.name)
+            current = current.next
+    return rval
+
+cdef int lookupnet(const char *device,
+                   bpf_u_int32 * net,
+                   bpf_u_int32 * mask,
+                   char *errtext):
+    cdef:
+        int status
+    status = pcap_lookupnet(device, net, mask, errtext)
+    if status:
+        net[0] = 0
+        mask[0] = 0
+    return status
+
+cdef pcap_t *open_live(const char * device,
+                       int snaplen,
+                       int promisc,
+                       int to_ms,
+                       char *errtext):
+    cdef:
+        bpf_u_int32 net, mask
+        int status
+        pcap_t * pcap_live
+
+    pcap_live = pcap_open_live(device, snaplen, promisc, to_ms, errtext)
+    if not pcap_live:
+        return NULL
+    else:
+        return pcap_live
+
+cdef pcap_t *open_offline(const char * filename,
+                          char *errtext):
+    cdef:
+        pcap_t * pcap_offline
+
+    pcap_offline = pcap_open_offline(filename, errtext)
+    if not pcap_offline:
+        return NULL
+    else:
+        return pcap_offline
+
+cdef pcap_t *open_dead(int linktype,
+                       int snaplen):
+    cdef:
+        pcap_t * pcap_dead
+
+    pcap_dead = pcap_open_dead(linktype, snaplen)
+    return pcap_dead
+
+cpdef pcap_pkthdr_t get_pkts_header(double ts, bytes data):
+    cdef:
+        pcap_pkthdr_t hdr
+        uint32_t pkt_len = len(data)
+        uint32_t t_sec = int(ts)
+        uint32_t t_usec = int(str(ts).split('.')[1])
+
+    hdr.ts.tv_sec = t_sec
+    hdr.ts.tv_usec = t_usec
+    hdr.caplen = hdr.len = pkt_len
+    return hdr
+
+
+cdef class PCAPBase:
+    def __cinit__(self, *args, **kwargs):
+        self.dumper = NULL
+        self.have_dumper = 0
+        self.start_ts = 0
+        self.end_ts = 0
+
+    cdef int _open_pcap_dumper(self, str file_name, pcap_t * sock):
+        cdef:
+            char * filename = b''
+            bytes encoded
+
+        encoded = file_name.encode()
+        filename = encoded
+        self.dumper = pcap_dump_open(sock, filename)
+        if self.dumper is NULL:
+            return ERROR
         else:
-            self.magic = kwargs.get('magic', MAGIC.ident)
-            if self.magic == MAGIC.ident:
-                self.order = '<'
-                self.nano = 0
-            elif self.magic == MAGIC.ident_nano:
-                self.order = '<'
-                self.nano = 1
-            elif self.magic == MAGIC.swapped:
-                self.order = '>'
-                self.nano = 0
-            elif self.magic == MAGIC.swapped_nano:
-                self.order = '>'
-                self.nano = 1
-            else:
-                raise ValueError('PCAP header magic number is invalid. Was '
-                                 '{0} vs once of {1}.'
-                                 ''.format(self.magic,
-                                           ','.join([MAGIC.ident,
-                                                     MAGIC.ident_nano,
-                                                     MAGIC.swapped,
-                                                     MAGIC.swapped_nano])))
-            self.major_version = kwargs.get('major_version', 2)
-            self.minor_version = kwargs.get('minor_version', 4)
-            self.tz_offset = kwargs.get('tz_offset', 0)
-            self.ts_accuracy = kwargs.get('ts_accuracy', 0)
-            self.snap_len = kwargs.get('snap_len', 1500)
-            self.net_layer = kwargs.get('net_layer', 1)
+            self.have_dumper = 1
+            return 0
 
-    property order:
-        def __get__(self):
-            return self._order
-        def __set__(self, bytes val):
-            if val in ['<', '>']:
-                self._order = val
-            else:
-                raise ValueError("order must '>' or '<'")
+    cpdef void close_pcap_dumper(self):
+        if self.dumper is not NULL:
+            pcap_dump_close(self.dumper)
+        self.dumper = NULL
+        self.have_dumper = 0
 
-    property tz_offset:
-        def __get__(self):
-            return self._tz_offset
-        def __set__(self, int val):
-            if -0x80000000 <= val <= 0x7fffffff:
-                self._tz_offset = val
-            else:
-                raise ValueError("Valid tz_offset number values are "
-                                 "{0}-{1}".format(-0x80000000, 0x7fffffff))
+    cpdef void dump_hdr_pkt(self,
+                            pcap_pkthdr_t hdr,
+                            bytes data,
+                            uint32_t tv_sec=0,
+                            uint32_t tv_usec=0):
+        cdef:
+            const pcap_pkthdr * pcap_hdr
+            unsigned char * buff
 
-    def __str__(self):
-        return bytes(pack('{0}IHHIIII'.format(self.order),
-                          self.magic,
-                          self.major_version,
-                          self.minor_version,
-                          self.tz_offset,
-                          self.ts_accuracy,
-                          self.snap_len,
-                          self.net_layer))
+        if tv_sec:
+            hdr.p_hdr.ts.tv_sec = tv_sec
+            hdr.p_hdr.ts.tv_usec = tv_usec
+        buff = data
+        pcap_hdr = &hdr
+        if self.dumper is not NULL:
+            pcap_dump(<u_char *>self.dumper ,pcap_hdr , buff)
 
+    cpdef void dump_pkt(self,
+                        bytes data,
+                        uint32_t tv_sec=0,
+                        uint32_t tv_usec=0):
+        cdef:
+            const pcap_pkthdr * pcap_hdr
+            pcap_pkthdr_t hdr
+            unsigned char * buff
 
-cdef class PktHeader:
-    """
-    Implments the Record (Packet) Header for a legacy PCAP (libpcap).
-    Details from https://wiki.wireshark.org/Development/LibpcapFileFormat
-    This type is equivalent to pcaprec_hdr_s in libpcap code.
-    """
-    def __init__(self, *args, **kwargs):
-        """
-        Creates a PCAP record header.
-        :param args: Optional one element list containing bytes of a pcap
-               record header.
-        :param data: Optional keyword argument containing bytes of a pcap
-               record header.
-        :param ts_sec: packet timestamp seconds
-        :param ts_usec: packet timestamp useconds
-        :param incl_len: number of bytes of packet data actually captured and
-               saved.
-        :param orig_len: length of the packet as it appeared on the network.
-        """
-        self.order = kwargs.get('order', b'<')
-        self.use_buffer = 0
-        self._buffer = b''
-        if (args and len(args) == 1 and isinstance(args[0], (str, bytes))):
-            self._buffer = args[0]
-            self.use_buffer = 1
-        elif (kwargs and kwargs.has_key('data') and
-                  isinstance(kwargs['data'], bytes)):
-            self._buffer = kwargs['data']
-            self.use_buffer = 1
+        hdr = get_pkts_header(time.time(), data)
+        if tv_sec:
+            hdr.ts.tv_sec = tv_sec
+            hdr.ts.tv_usec = tv_usec
+        buff = data
+        pcap_hdr = &hdr
+        if self.dumper is not NULL:
+            pcap_dump(<u_char *>self.dumper ,pcap_hdr , buff)
 
-        if self.use_buffer:
-            (self.ts_sec,
-             self.ts_usec,
-             self.incl_len,
-             self.orig_len) = struct.unpack('{0}IIII'.format(self.order),
-                                            self._buffer)
+    cdef int _add_bpf_filter(self,
+                             str bpf_filter,
+                             pcap_t * sock,
+                             bpf_u_int32 mask):
+        cdef:
+            bpf_program bpfprog
+            int rval
+            bytes encoded
+            char* fltr = b''
+
+        encoded = bpf_filter.encode()
+        fltr = encoded
+        rval = pcap_compile(sock, &bpfprog, fltr, 1, mask)
+
+        if rval == ERROR:
+            raise Exception("Failed to compile BPF filter")
         else:
-            self.ts_sec = kwargs.get('ts_sec', 0)
-            self.ts_usec = kwargs.get('ts_usec', 0)
-            self.incl_len = kwargs.get('incl_len', 0)
-            self.orig_len = kwargs.get('orig_len', 0)
-
-    def __str__(self):
-        return bytes(pack('{0}IIII'.format(self.order),
-                          self.ts_sec,
-                          self.ts_usec,
-                          self.incl_len,
-                          self.orig_len))
-
-    property order:
-        def __get__(self):
-            return self._order
-        def __set__(self, bytes val):
-            if val in ['<', '>']:
-                self._order = val
-            else:
-                raise ValueError("order must '>' or '<'")
-
-    cpdef double get_timestamp(self, uint16_t file_header_nano):
-        cdef double rval
-        if file_header_nano:
-            rval = self.ts_sec + (self.ts_usec / 1000000000.0)
-        else:
-            rval = self.ts_sec + (self.ts_usec / 1000000.0)
+            rval = pcap_setfilter(sock, &bpfprog)
         return rval
 
+    cpdef int add_bpf_filter(self, str bpf_filter):
+        return 0
 
-cdef class Decode:
-
-    def close(self):
-        self.fh.close()
-
-
-cdef class PCAPDecode(Decode):
-    """
-    Decoder class for libpcap format pcap files.
-    """
-
-    def __cinit__(self):
-        self.PCAP_HDR_LEN = 24
-        self.PKT_HDR_LEN = 16
-
-    def __init__(self, file_handle, pk_format=pktypes.array_data):
-        """
-        Create a PCAPDecode instance
-        :param file_handle: file handle instance of the pcap file.
-        :param pk_format: return data format. array.array of bytes (2) or
-               bytes string (1). Default is array.array of bytes.
-        """
-        self.fh = file_handle
-        self.pk_format = pk_format
-        self.header =  PcapHeader(self.fh.read(self.PCAP_HDR_LEN))
-
-    def __iter__(self):
-        return self
-
-    # no next function defined on purpose. Its a cython thing
-    # See: http://cython.readthedocs.io/en/latest/src/userguide/special_methods.html#the-next-method
-    def __next__(self):
-        """
-        Implements the iterator behavior of this class according to Cython
-        rules.
-        :return: Each packet of the file as bytes or array.array of
-                 bytes depending on the pk_format.
-        """
-        cdef:
-            bytes data
-            PktHeader hdr
-        while 1:
-            data = self.fh.read(self.PKT_HDR_LEN)
-            if not len(data):
-                raise StopIteration()
-            else:
-                hdr = PktHeader(data, order=self.header.order)
-                if self.pk_format == pktypes.array_data:
-                    return (hdr.get_timestamp(self.header.nano),
-                            array('B', self.fh.read(hdr.incl_len)),
-                            self.header.net_layer)
-                else:
-                    return (hdr.get_timestamp(self.header.nano),
-                            self.fh.read(hdr.incl_len),
-                            self.header.net_layer)
-
-    cpdef int tz_offset(self):
-        """
-        Get the timezone offset from the pcap header object.
-        :return: self.header.tz_offset
-        """
-        return self.header.tz_offset
-
-    cpdef list pkts(self):
-        """
-        Generates a list object containing all the packets in a pcap file.
-        Should only be used for very small pcap files.
-        :return: list of byte strings or array.array of bytes depending on the
-                 value of pk_format.
-        """
-        return list(self)
-
-
-cdef class SectionHeaderBlock:
+cdef class PCAPSocket(PCAPBase):
+    def __cinit__(self, *args, **kwargs):
+        self.dumper = NULL
+        self.have_dumper = 0
 
     def __init__(self, *args, **kwargs):
-        """
-        Builds instance of PCAPNG Section Header Block. This PCAPNG Section
-        Header Block implementation does not support Options. They are skipped.
-        :param args: Optional one element list containing file handle of PCAPNG
-               file.
-        :param file_handle: Optional file handle of PCAPNG file.
-        :param block_len: total size of this block, in bytes.
-        :param order: '<' for little endian, '>' for big endian.
-        :param magic: Should be 0x1a2b3c4d for little endian or 0x4d3c2b1a for
-               big endian systems.
-        :param major: Major PCAPNG version number. This code supports 1
-        :param minor: Minor PCAPNG version number. This code supports 0
-        :param section_len: 64-bit value specifying the length in bytes of
-               the following section, excluding the Section Header Block
-               itself. Used to allow tools to skip sections. -1 means the
-               section length is undefined.
-        """
-        # Setting this because these 4 bytes were this value if
-        # any of the pcap code is creating this type.
-        self.block_type = NGMAGIC.sec_hdr
-        self.use_buffer = 0
-        if (args and len(args) == 1 and isinstance(args[0], object)):
-            self.fh = args[0]
-            self.use_buffer = 1
-        elif (kwargs and kwargs.has_key('file_handle') and
-              isinstance(kwargs['file_handle'], object)):
-            self.fh = kwargs['file_handle']
-            self.use_buffer = 1
+        cdef:
+            char * errors = <char *> malloc(ERRBUF_SIZE * sizeof(char))
+            const char * dev
+            object v_err
+            bytes dn
+            int snaplen, promisc, to_ms, status
 
-        if self.use_buffer:
-            b_len_data = self.fh.read(4)
-            self.magic = struct.unpack('I', self.fh.read(4))[0]
-            if self.magic == NGMAGIC.little:
-                self.order = b'<'
-            else:
-                self.order = b'>'
-            (self.major,
-             self.minor,
-             self.section_len) = struct.unpack('{0}HHq'.format(self.order),
-                                               self.fh.read(12))
-            self.block_len = struct.unpack('{0}I'.format(self.order),
-                                           b_len_data)[0]
-            self.fh.seek(self.block_len - 24, SEEK_FROM_CUR_POS)
+        dn = kwargs.get('devicename', '').encode()
+        dev = dn
+        self.devicename = dev
+        snaplen = kwargs.get('snaplen', 0)
+        promisc = kwargs.get('promisc', 1)
+        to_ms = kwargs.get('to_ms', 100)
+        self.sock = open_live(self.devicename,
+                              snaplen,
+                              promisc,
+                              to_ms,
+                              errors)
+
+        if self.sock is NULL:
+            v_err = ValueError("PCAPSocket failed to open device {0}. "
+                               "Error was: {1}".format(self.devicename,
+                                                       errors))
+            free(errors)
+            raise v_err
         else:
-            self.block_len = kwargs.get('block_len', SHB_MIN_SIZE)
-            self.order = kwargs.get('byte_order', b'<')
-            self.magic = kwargs.get('magic', NGMAGIC.little)
-            self.major = kwargs.get('major', 1)
-            self.minor = kwargs.get('minor', 0)
-            self.section_len = kwargs.get('section_len', SECTION_LEN_UNDEFINED)
+            self.net = self.mask = 0
+            status = lookupnet(self.devicename,
+                               &self.net, &self.mask,
+                               errors)
+            if status == ERROR:
+                self.mask = PCAP_NETMASK_UNKNOWN
+        self.stop_event = Event()
 
-    property order:
+    property network:
         """
-        Property limiting the values for order to < or >.
+        get and set payload bytes
         """
         def __get__(self):
-            return self._order
-        def __set__(self, bytes val):
-            if val in ['<', '>']:
-                self._order = val
-            else:
-                raise ValueError("order must '>' or '<'")
+            cdef:
+                uint32_t net
+            net = socket.ntohl(self.net)
+            return int2ip(net)
 
-cdef tuple parse_epb(object fh,
-                     bytes order,
-                     list ifaces,
-                     unsigned char ptype):
-    """
-    Parser function for PCAPNG Enhanced Packet Block
-    :param fh: PCAPNG file handle object
-    :param order: Detected order < or >
-    :param ifaces: List of interfaces parsed from the Interface Description 
-           Block
-    :param ptype: Type of packet data to return. bytes string or array.array. 
-    :return: Tuple containing the packets capture timestamp, the packet data,
-             and the link type. Link types are standardized in Appendix C
-             of the PCAP-DumpFileFormat documents hosted on winpcap.org.
-             A value of 1 specifies 802.3 Ethernet.
-    """
-    cdef:
-        uint32_t block_len, iface_id, ts_low
-        uint32_t cap_len, pkt_len
-        unsigned long long ts, ts_high
-        double ret_ts, tsdiv
-        uint16_t linktype_index, tsres_index
-        tuple rtuple
-
-    (block_len,
-     iface_id,
-     ts_high,
-     ts_low,
-     cap_len,
-     pkt_len) = struct.unpack('{order}IIIIII'.format(order=order),
-                              fh.read(6 * 4))
-
-    linktype_index = 0
-    tsres_index = 1
-    ts = ts_low | (ts_high<<32)
-    if len(ifaces) > iface_id:
-        # true if we have decoded a Interface Description Block for this
-        # interface.
-        if ifaces[iface_id][tsres_index] <= 127:
-            tsdiv = 10**ifaces[iface_id][tsres_index]
-        elif 128 <= ifaces[iface_id] <= 254:
-            tsdiv = 2**(ifaces[iface_id][tsres_index] & 0b01111111)
-        else:
-            # Should really never happen but just for safety.
-            return (-1, -1, -1)
-        # calculate the return timestamp.
-        ret_ts = ts / tsdiv
-        if ptype == pktypes.array_data:
-            rtuple =  (ret_ts,
-                       array('B', fh.read(cap_len)),
-                       ifaces[iface_id][linktype_index])
-        elif ptype == pktypes.bytes_data:
-            rtuple =  (ret_ts,
-                       fh.read(cap_len),
-                       ifaces[iface_id][linktype_index])
-        else:
-            raise ValueError("Invalid pktype. Must be array.array of bytes "
-                             "({0}) or bytestring ({1})".format(
-                pktypes.array_data,
-                pktypes.bytes_data
-            ))
-        # seek past the rest of the packet
-        fh.seek((block_len - (28 + cap_len)), SEEK_FROM_CUR_POS)
-        return rtuple
-    else:
-        # We don't have this interface so return all null values.
-        return (-1, -1, -1)
-
-
-
-cdef tuple parse_iface_descr(object fh, bytes order):
-    """
-    Parse an Interface Description Block to determine the timestamp resolution
-    and link type.
-    :param fh: File handler object to read
-    :param order: Byte order determined from the Section Header Block
-    :return: tuple of link type and timestamp resolution.
-    """
-    cdef:
-        unsigned char tsres
-        uint32_t block_len
-        uint16_t link, opt_code, opt_len, opt_bytes_remain
-
-    # from PCAP-DumpFileFormat.html on winpcap.org if the if_tsresol option
-    # is not present, a resolution of 10^-6 is assumed (i.e. timestamps have
-    # the same resolution of the standard 'libpcap' timestamps).
-    tsres = 6
-    (block_len, link) = struct.unpack('{order}IH'.format(order=order),
-                                      fh.read(6))
-    # Seek 6 bytes to bypass reserved and SnapLen
-    fh.seek(6, SEEK_FROM_CUR_POS)
-    # rule out a block with no options
-    if block_len <= 20:
-        # We are 16 bytes into the block now. Seek past the rest and return
-        fh.seek(block_len - 16, SEEK_FROM_CUR_POS)
-        return (link, tsres)
-    else:
-        opt_bytes_remain = 1
-        while opt_bytes_remain:
-            (opt_code, opt_len) = \
-                struct.unpack('{order}HH'.format(order=order),
-                                                 fh.read(4))
-            if opt_code == OPT_CODE_TSRES and opt_len == OPT_CODE_TSLEN:
-                # order does not matter for a byte
-                tsres = struct.unpack('B', fh.read(OPT_CODE_TSLEN))[0]
-                # seek past padding
-                fh.seek(3, SEEK_FROM_CUR_POS)
-            elif opt_code == 0 and opt_len == 0:
-                opt_bytes_remain = 0
-            else:
-                # seek past code we don't care about
-                # all values are 32 bit aligned
-                if opt_len%4:
-                    fh.seek(opt_len + (4 - (opt_len%4)), SEEK_FROM_CUR_POS)
-                else:
-                    fh.seek(opt_len, SEEK_FROM_CUR_POS)
-    # seek past the block total len and return
-    fh.seek(4, SEEK_FROM_CUR_POS)
-    return (link, tsres)
-
-
-cdef class PCAPNGDecode(Decode):
-    """
-    PCAPNG format decoder
-    """
-
-    def __init__(self, file_handle, pk_format=pktypes.array_data):
+    property netmask:
         """
-        Builds a PCAPNG decoder
-        :param file_handle: file handle instance of the pcap file.
-        :param pk_format: return data format. array.array of bytes (2) or
-               bytes string (1). Default is array.array of bytes.
+        get and set payload bytes
         """
-        self.fh = file_handle
-        self.pk_format = pk_format
-        self.order = b'@'
-        self.int_unpack = b'{en}I'.format(en=self.order)
-        self.iface_descrs = list()
-        self.pkt_count = 0
-        self.sec_hdr = SectionHeaderBlock()
+        def __get__(self):
+            cdef:
+                uint32_t mask
+            mask = socket.ntohl(self.mask)
+            return int2ip(mask)
+
+    cpdef int set_snaplen(self, int snaplen):
+        return pcap_set_snaplen(self.sock, snaplen)
+
+    cpdef int set_promisc(self, int promisc):
+        return pcap_set_promisc(self.sock, promisc)
+
+    cpdef int set_timeout(self, int timeout):
+        return pcap_set_timeout(self.sock, timeout)
+
+
+    cpdef int getnonblock(self):
+        cdef:
+            char * errors = <char *> malloc(ERRBUF_SIZE * sizeof(char))
+            int rval
+        rval =  pcap_getnonblock(self.sock, errors)
+        free(errors)
+        return rval
+
+    cpdef int setnonblock(self, int nonblock):
+        cdef:
+            char * errors = <char *> malloc(ERRBUF_SIZE * sizeof(char))
+            int rval
+            object err
+
+        rval =  pcap_setnonblock(self.sock, nonblock, errors)
+        free(errors)
+        return rval
+
+    cpdef int sendpacket(self, bytes pktdata):
+        cdef:
+            char * errors = <char *> malloc(ERRBUF_SIZE * sizeof(char))
+            const unsigned char * buff = b''
+            bytes error_out
+            object err
+            int rval, _len
+
+        buff = pktdata
+        _len = len(pktdata)
+        rval = pcap_sendpacket(self.sock, buff, _len)
+
+        if rval == ERROR:
+            error_out = errors[0]
+            err = Exception(error_out.decode())
+            free(errors)
+            raise err
+        else:
+            return _len
+
+    cpdef int open_pcap_dumper(self, str file_name):
+        return self._open_pcap_dumper(file_name, self.sock)
+
+    cpdef int add_bpf_filter(self, str bpf_filter):
+        return self._add_bpf_filter(bpf_filter, self.sock, self.mask)
 
     def __iter__(self):
         return self
 
-    # no next function defined on purpose. Its a cython thing
-    # See: http://cython.readthedocs.io/en/latest/src/userguide/special_methods.html#the-next-method
     def __next__(self):
-        """
-        Implements the iterator behavior of this class according to Cython
-        rules.
-        :return: Each packet of the file as bytes or array.array of
-                 bytes depending on the pk_format.
-        """
         cdef:
-            uint32_t bt, readpast
-            bytes data
-            tuple parsed_pkt
+            pcap_pkthdr * hdr = NULL
+            const unsigned char * buff
+            int err = 1
+            double ts
+            bytes pkt = b''
 
-        while 1:
-            data = self.fh.read(4)
-            if not data:
-                raise StopIteration()
-            else:
-                bt = struct.unpack(self.int_unpack, data)[0]
-                if bt == NGMAGIC.epb:
-                    parsed_pkt = parse_epb(self.fh,
-                                           self.order,
-                                           self.iface_descrs,
-                                           self.pk_format)
-                    if parsed_pkt[0] != -1:
-                        self.pkt_count += 1
-                        return parsed_pkt
-                elif bt == NGMAGIC.sec_hdr:
-                    # likely once per file
-                    self.sec_hdr = SectionHeaderBlock(self.fh)
-                    self.order = self.sec_hdr.order
-                    self.iface_descrs = list()
-                    self.int_unpack = b'{en}I'.format(en=self.order)
-                elif bt == NGMAGIC.iface_descr:
-                    # once per file
-                    self.iface_descrs.append(parse_iface_descr(self.fh,
-                                                               self.order))
-                else:
-                    readpast = struct.unpack(self.int_unpack,
-                                             self.fh.read(4))[0]
-                    self.fh.seek(readpast-8, SEEK_FROM_CUR_POS)
-
-    cpdef list pkts(self):
-        """
-        Generates a list object containing all the packets in a pcap file.
-        Should only be used for very small pcap files.
-        :return: list of byte strings or array.array of bytes depending on the
-                 value of pk_format.
-        """
-        return list(self)
-
-
-cdef class PCAPReader:
-
-    def __init__(self, file_handle, pk_format=pktypes.array_data):
-        """Create a PCAPReader instance. PCAPReader is a pcap and pcapng
-        reader object. From the file data it will determine what type of
-        PCAP file is being read and initialize a decoder instance to handle
-        that format.
-
-        Notes about use:
-
-        Each call to next() will return a tuple of 3 elements
-        if data is still present in the file. The three elements are the
-        timestamp of the packet, the packet data, and the Network Layer of the
-        packet. Network Layer 1 is Ethernet.
-
-        PCAPReader is implemented as an iterator. So packets can be proceeded
-        by calling 'for timestamp, pkt, net_layer in pcap_reader:'
-
-        Args:
-            :file_handle (object): file handle object of the pcap file. Open
-                for read.
-            :pk_format (1 or 2): This determines what type of data is returned
-                for every call to next(). Default (2) is to return the packet
-                data as an array.array of bytes. If 1 is specified then the
-                packet data will be returned as a bytes string.
-        """
-        cdef uint32_t firstbytes
-        firstbytes = struct.unpack('I', file_handle.read(4))[0]
-        # print binascii.hexlify(self.fh.read(4))
-        file_handle.seek(0)
-        if firstbytes == NGMAGIC.sec_hdr:
-            self.decoder = PCAPNGDecode(file_handle, pk_format=pk_format)
-        elif firstbytes in (MAGIC.ident, MAGIC.ident_nano,
-                            MAGIC.swapped, MAGIC.swapped_nano):
-            self.decoder = PCAPDecode(file_handle, pk_format=pk_format)
+        err = pcap_next_ex(self.sock, &hdr, &buff)
+        if err in (ERROR, ERROR_BREAK) or self.stop_event.is_set():
+            self.close()
+            if self.have_dumper:
+                self.close_pcap_dumper()
+            raise StopIteration
+        elif err == 0:
+            return 0, None, None
         else:
-            raise ValueError("Invalid PCAP file.")
+            if hdr[0].ts.tv_usec > 0:
+                ts = (hdr[0].ts.tv_sec + (hdr[0].ts.tv_usec / USECCONST))
+            else:
+                ts = hdr[0].ts.tv_sec
+            pkt = <bytes> buff[:hdr[0].caplen]
+            return ts, hdr[0], pkt
+
+    cpdef void close(self):
+        if self.dumper is not NULL:
+            self.close_pcap_dumper()
+        self.stop_event.set()
+        if self.sock is not NULL:
+            pcap_close(self.sock)
+        self.sock = NULL
+
+cdef class PCAPReader(PCAPBase):
+    def __cinit__(self, *args, **kwargs):
+        self.dumper = NULL
+
+    def __init__(self, *args, **kwargs):
+        cdef:
+            char * errors = <char *> malloc(ERRBUF_SIZE * sizeof(char))
+            const char * fname_p
+            bytes fname_bytes
+            str fname_srt
+            object v_err
+            str src_file
+
+        fname_srt = kwargs.get('filename', '')
+        fname_bytes = fname_srt.encode()
+        fname_p = fname_bytes
+        self.filename = fname_p
+        self.have_dumper = 0
+        self.reader = open_offline(self.filename, errors)
+
+        if self.reader is NULL:
+            v_err = ValueError("PCAPReader failed to open {0} for reading. "
+                               "Error was: {1}".format(self.filename, errors))
+            free(errors)
+            raise v_err
+        else:
+            free(errors)
+
+    cpdef int open_pcap_dumper(self, str file_name):
+        return self._open_pcap_dumper(file_name, self.reader)
+
+    cpdef int add_bpf_filter(self, str bpf_filter):
+        return self._add_bpf_filter(bpf_filter, self.reader, NETMASK_UNKNOWN)
 
     def __iter__(self):
-        return self.decoder
+        return self
 
     def __next__(self):
-        return self.decoder.__next__()
+        cdef:
+            pcap_pkthdr * hdr = NULL
+            const unsigned char * buff
+            int err = 1
+            double ts
+            bytes pkt = b''
 
-    def close(self):
-        """Close the underlying file object. Better done by using a PCAPReader
-        in a context manager.
-        """
-        self.decoder.close()
+        err = pcap_next_ex(self.reader, &hdr, &buff)
+        if err != 1:
+            self.close()
+            if self.have_dumper:
+                self.close_pcap_dumper()
+            raise StopIteration
+        else:
+            if hdr[0].ts.tv_usec > 0:
+                ts = (hdr[0].ts.tv_sec + (hdr[0].ts.tv_usec / USECCONST))
+            else:
+                ts = hdr[0].ts.tv_sec
+            pkt = <bytes> buff[:hdr[0].caplen]
+            return ts, hdr[0], pkt
 
     cpdef list pkts(self):
-        """
-        Generates a list object containing all the packets in a pcap file.
-        Should only be used for very small pcap files.
+        return list(self)
 
-        Returns: 
-            :list: containing byte strings or array.array of bytes depending on 
-                the value of pk_format.
-        """
-        return self.decoder.pkts()
+    cpdef void close(self):
+        if self.dumper is not NULL:
+            self.close_pcap_dumper()
+        if self.reader is not NULL:
+            pcap_close(self.reader)
+            self.reader = NULL
 
 
-cdef class PCAPWriter:
-    """
-    Object for writing PCAP (libpcap format) files.
-    """
-    def __init__(self, file_handle, snap_len=1500, net_layer=1):
-        """Creates a pcap writer. Requires a file opened for write.
+cdef class PCAPWriter(PCAPBase):
+    def __cinit__(self, *args, **kwargs):
+        self.dumper = NULL
 
-        Args:
-            :file_handle (object): File handle opened for write.
-            :snap_len (uint16_t): Length of each packet to capture in bytes.
-                Set to 65535 by tcpdump when -s0 is used.
-            :net_layer(uint16_t): link-layer header type. 1 is the value for
-                Ethernet.For other supported values see:
-                    http://www.tcpdump.org/linktypes.html
-        """
-        self._magic = MAGIC.ident
-        if sys.byteorder == 'big':
-            self._magic = MAGIC.swapped
-        self._f = file_handle
-        self._header = PcapHeader(magic=self._magic, snap_len=snap_len,
-                                  net_layer=net_layer)
-        self._f.write(str(self._header))
-
-    cpdef writepkt(self, bytes pkt, double ts):
-        """Write the bytes of a single packet to an open pcap file.
-
-        Args:
-            :pkt (bytes): Packet data in network order byte string
-            :ts (double): Timestamp to mark this packet header with. If the 
-                value 0.00 is used then writepkt() will fill in the current 
-                time.
-        """
+    def __init__(self, *args, **kwargs):
         cdef:
-            double time_stmp
-            long pktlen, writelen
-            PktHeader pkt_header
+            object v_err
+            int rval
+            str fn
 
-        if ts == 0.00:
-            time_stmp = time.time()
-        else:
-            time_stmp = ts
-        pktlen = writelen = len(pkt)
+        self.snaplen = kwargs.get('snaplen', 0)
+        fn = kwargs.get('filename', '')
 
-        # Don't write any more than the headers snap len. That could mess with
-        # tools that don't expect it.
-        if pktlen > self._header.snap_len:
-            writelen = self._header.snap_len
-        pkt_header = PktHeader(ts_sec=int(time_stmp),
-                                ts_usec=int(round(time_stmp % 1, 6) * 10 ** 6),
-                                incl_len=writelen, orig_len=pktlen,
-                                order = self._header.order)
-        self._f.write(str(pkt_header))
-        self._f.write(pkt[:writelen])
+        self.have_dumper = 1
+        self.pcap_dead = open_dead(ETH_EN10MB, self.snaplen)
 
-    def close(self):
-        """Close the underlying file object.
-        """
-        self._f.close()
+        if self.pcap_dead is NULL:
+            v_err = ValueError("PCAPWriter failed to open a dead pcap_t *")
+            raise v_err
+        if fn:
+            rval = self.open_pcap_dumper(fn)
+            if rval:
+                v_err = ValueError("PCAPWriter could not open a pcap_dumper_t")
+                raise v_err
+
+    cpdef int open_pcap_dumper(self, str file_name):
+        return self._open_pcap_dumper(file_name, self.pcap_dead)
+
+    cpdef void close(self):
+        if self.dumper is not NULL:
+            self.close_pcap_dumper()
+        if self.pcap_dead is not NULL:
+            pcap_close(self.pcap_dead)
+            self.pcap_dead = NULL
 
 
-cpdef dict pcap_info(object f):
+cpdef dict pcap_info(str filename):
     """Helper function used by steelscript.wireshark and steelscript.appfwk
     PCAP manager to obtain information about pcap files.
 
     Args:
-        :f (object): File handler open for read.
+        :filename (str)
 
-    Returns: 
-        :dict: Keys are first_timestamp, last_timestamp, total_packets, 
+    Returns:
+        :dict: Keys are first_timestamp, last_timestamp, total_packets,
             and total_bytes and will contain those metrics from the PCAP file
             opened as f.
     """
     cdef:
         PCAPReader rdr
-        uint16_t linktype
+        pcap_pkthdr_t hdr
+        bytes pkt
         uint32_t pkts
         uint64_t byte_count
-        double first_ts, last_ts
-        bytes pkt
+        double ts
+        double first_ts
         dict rval
 
-    rdr = PCAPReader(f, pk_format=pktypes.bytes_data)
-    first_ts, pkt , linktype = rdr.next()
+    rdr = PCAPReader(file_name=filename)
+    ts, hdr, pkt = next(rdr)
+    first_ts = ts
     pkts = 1
-    byte_count = len(pkt)
-    for last_ts, pkt, linktype in rdr:
+    byte_count = hdr.caplen
+    for ts, hdr, pkt in rdr:
         pkts += 1
-        byte_count += len(pkt)
+        byte_count += hdr.caplen
     rval = {'first_timestamp': first_ts,
-            'last_timestamp': last_ts,
+            'last_timestamp': ts,
             'total_packets': pkts,
             'total_bytes': byte_count}
     return rval
+
+cpdef int netflow_replay(str device,
+                           str pcap_file,
+                           uint16_t pcap_dst_port,
+                           str dest_ip,
+                           str dest_mac,
+                           uint16_t dest_port,
+                           unsigned char blast_mode=0):
+    """
+    Function to replay pcap files containing netflow versions 1-9.
+    :param device: Device to bind our outgoing socket to.
+    :param pcap_file: The file containing the packets we want to replay.
+    :param pcap_dst_port: The UDP src port of the netflow packets we are 
+           interested in.
+    :param dest_ip: The IP address we want to send these packets to.
+    :param dest_mac: The MAC address of the destination IP.
+    :param dest_port: The port that the recipient device will be listening on.
+    :param blast_mode: bool value. 0 == play at the same pace as in the pcap or
+           at the speed defined by speedup. 1 means blast as fast as possible.
+           Overrides speedup if set.
+    :param speedup: divide the inter-packet gap by this number.
+    :return: std unix 0 or 1 for all is well and something went wrong.
+    """
+
+    cdef:
+        PCAPSocket sender
+        PCAPReader reader
+        double now, ts, offset, add
+        pcap_pkthdr_t hdr
+        bytes pkt
+        Ethernet eth
+
+    sender = PCAPSocket(devicename=device)
+    sender.setnonblock(1)
+
+    reader = PCAPReader(filename=pcap_file)
+    reader.add_bpf_filter('udp dst port {0}'.format(pcap_dst_port))
+
+    ts, hdr, pkt = next(reader)
+    now = time.time()
+    eth = Ethernet(pkt, l7_ports={pcap_dst_port: NetflowSimple})
+    offset = now - ts
+    eth.dst_mac = dest_mac
+    eth.payload.dst = dest_ip
+    eth.payload.payload.dport = dest_port
+    eth.payload.payload.payload.unix_secs = int(now)
+    if eth.payload.payload.payload != 9:
+        eth.payload.payload.payload.unix_nano_seconds = int((now % 1) *
+                                                            1000000)
+    sender.sendpacket(eth.pkt2net({'csum': 1, 'update': 1}))
+    for ts, hdr, pkt in reader:
+        eth = Ethernet(pkt, l7_ports={pcap_dst_port: NetflowSimple})
+        now = time.time()
+        if not blast_mode and ts + offset >= now:
+            add = (ts + offset) - now
+            time.sleep(add)
+            now += add
+        eth.dst_mac = dest_mac
+        eth.payload.dst = dest_ip
+        eth.payload.payload.dport = dest_port
+        eth.payload.payload.payload.unix_secs = int(now)
+        if eth.payload.payload.payload != 9:
+            eth.payload.payload.payload.unix_nano_seconds = int((now % 1) *
+                                                                1000000)
+        sender.sendpacket(eth.pkt2net({'csum': 1, 'update': 1}))
+    return 0

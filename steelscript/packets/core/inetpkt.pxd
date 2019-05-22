@@ -1,6 +1,6 @@
-# cython: profile=False
+# cython: language_level=3
 
-# Copyright (c) 2017 Riverbed Technology, Inc.
+# Copyright (c) 2018 Riverbed Technology, Inc.
 #
 # This software is licensed under the terms and conditions of the MIT License
 # accompanying the software ("License").  This software is distributed "AS IS"
@@ -73,7 +73,14 @@ cdef:
     unsigned char ICMP_PER_PROB_CODE_POINTER
     unsigned char ICMP_PER_PROB_CODE_OPTION_MISSING
     unsigned char ICMP_PER_PROB_CODE_LENGTH
+    # IGMP
+    unsigned char IGMP_MEMBER_QUERY
+    unsigned char IGMP_V1_MEMBER_REPORT
+    unsigned char IGMP_V2_MEMBER_REPORT
+    unsigned char IGMP_V3_MEMBER_REPORT
+    unsigned char IGMP_LEAVE_GROUP
     # PROTO IDs
+    unsigned char PROTO_IGMP
     unsigned char PROTO_ICMP
     unsigned char PROTO_TCP
     unsigned char PROTO_UDP
@@ -82,6 +89,8 @@ cdef:
     unsigned char PQ_ETH
     unsigned char PQ_FRAME
     unsigned char PQ_ICMP
+    unsigned char PQ_IGMP
+    unsigned char PQ_IGMPv3GroupRecord
     uint16_t PQ_IP
     unsigned char PQ_TCP
     unsigned char PQ_UDP
@@ -92,10 +101,11 @@ cdef:
     unsigned char PTR_VAL
     object offset_re
     char NOT_FOUND = -1
+    unsigned char MIN_FRAME_SIZE
 
 cdef uint16_t checksum(bytes pkt)
 
-cdef unsigned char is_ipv4(bytes ip)
+cdef unsigned char is_ipv4(str ip)
 
 cdef void set_short_nibble(uint16_t* short_word,
                            unsigned char nibble,
@@ -184,13 +194,21 @@ cdef class IP_CONST:
         readonly unsigned char ICMP_PER_PROB_CODE_POINTER
         readonly unsigned char ICMP_PER_PROB_CODE_OPTION_MISSING
         readonly unsigned char ICMP_PER_PROB_CODE_LENGTH
+        readonly unsigned char IGMP_MEMBER_QUERY
+        readonly unsigned char IGMP_V1_MEMBER_REPORT
+        readonly unsigned char IGMP_V2_MEMBER_REPORT
+        readonly unsigned char IGMP_V3_MEMBER_REPORT
+        readonly unsigned char IGMP_LEAVE_GROUP
         readonly unsigned char PROTO_ICMP
+        readonly unsigned char PROTO_IGMP
         readonly unsigned char PROTO_TCP
         readonly unsigned char PROTO_UDP
         readonly unsigned char PQ_PKT
         readonly unsigned char PQ_ETH
         readonly unsigned char PQ_FRAME
         readonly unsigned char PQ_ICMP
+        readonly unsigned char PQ_IGMP
+        readonly unsigned char PQ_IGMPv3GroupRecord
         readonly uint16_t PQ_IP
         readonly unsigned char PQ_TCP
         readonly unsigned char PQ_UDP
@@ -202,11 +220,11 @@ cdef class IP_CONST:
 cdef class PKT:
     cdef:
         public dict l7_ports, query_field_map
-        public bytes pkt_name
+        public str pkt_name
         public uint16_t pq_type
         public tuple query_fields
 
-    cpdef PKT get_layer(self, bytes name, int instance=*, int found=*)
+    cpdef PKT get_layer(self, str name, int instance=*, int found=*)
 
     cpdef PKT get_layer_by_type(self,
                                 uint16_t pq_type,
@@ -217,31 +235,29 @@ cdef class PKT:
 
     cpdef tuple from_buffer(self, tuple args, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class ARP(PKT):
     cdef:
-        array _buffer
+        array _buffer, _sender_hw_addr, _target_hw_addr
         uint16_t _operation
         public uint16_t hardware_type, proto_type,
         public unsigned char hardware_len, proto_len
-        public bytes sender_hw_addr, sender_proto_addr, target_hw_addr, \
-            target_proto_addr
+        public str sender_proto_addr, target_proto_addr
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class NullPkt(PKT):
     cdef:
         array _buffer
-        public bytes payload
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class Ip4Ph:
@@ -260,7 +276,7 @@ cdef class NetflowSimple(PKT):
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class UDP(PKT):
@@ -272,9 +288,9 @@ cdef class UDP(PKT):
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cdef app_layer(self, array plbuffer)
+    cdef app_layer(self)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class TCP(PKT):
@@ -289,9 +305,37 @@ cdef class TCP(PKT):
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cdef app_layer(self, array plbuffer)
+    cdef app_layer(self)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
+
+
+cdef class IGMPGroupRecord(PKT):
+    cdef:
+        array _buffer
+        public unsigned char type, aux_data_len
+        public bytes aux_data
+        public uint16_t num_src
+        bytes _group_address, _source_addresses
+
+    cpdef object get_field_val(self, str field)
+
+    cpdef bytes pkt2net(self, dict kwargs)
+
+
+cdef class IGMP(PKT):
+    cdef:
+        array _buffer
+        public unsigned char version, type, max_resp, qqic, reserved1
+        public uint16_t checksum, num_records
+        public list group_records
+        public uint16_t reserved2
+        unsigned char _s_qrv
+        bytes _group_address, _source_addresses
+
+    cpdef object get_field_val(self, str field)
+
+    cpdef bytes pkt2net(self, dict kwargs)
 
 
 cdef class ICMP(PKT):
@@ -304,16 +348,17 @@ cdef class ICMP(PKT):
         public uint32_t orig_ts, rec_ts, trans_ts
         public PKT hdr_pkt
         public bytes echo_data
-        array _address
+        bytes _address
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
     cpdef bytes pkt2net(self, dict kwargs)
 
 cdef class IP(PKT):
 
     cdef:
-        array _src, _dst, _buffer, _pad
+        bytes _src, _dst
+        array _buffer, _pad
         uint16_t _flags_offset
         unsigned char _version_iphl, _proto
         Ip4Ph ipv4_pheader
@@ -321,11 +366,12 @@ cdef class IP(PKT):
         public unsigned char ttl, tos
         public uint16_t checksum, total_len, ident
         public PKT payload
+        public bytes options
 
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class MPLS(PKT):
@@ -336,7 +382,7 @@ cdef class MPLS(PKT):
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)
 
 
 cdef class Ethernet(PKT):
@@ -349,4 +395,4 @@ cdef class Ethernet(PKT):
 
     cpdef bytes pkt2net(self, dict kwargs)
 
-    cpdef object get_field_val(self, bytes field)
+    cpdef object get_field_val(self, str field)

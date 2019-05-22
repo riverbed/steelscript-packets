@@ -1,5 +1,6 @@
 build
 dist
+.tmpdata
 *.egg-info
 RELEASE-VERSION
 steel_bootstrap.*
@@ -11,5 +12,8 @@ steel_bootstrap.*
 .idea/
 .tox/
 *.so
+*.c
 setup-inplace.py
-*.pcap
+packets.devtest.ip*.pcap
+dns*pcap
+http.pcap

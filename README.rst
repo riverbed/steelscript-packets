@@ -65,6 +65,8 @@ Notes on installing development tools and libpcap on MacOS and Linux:
 
 :Linux (RedHat based):
 
+::
+
   The meta package name (group name) on RedHat based systems is usually
   ‘Development Tools” The following commands should get everything you need
   installed.

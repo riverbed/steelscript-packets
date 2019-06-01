@@ -14,7 +14,8 @@ import socket
 import struct
 from threading import Event
 
-from steelscript.packets.core.inetpkt cimport Ethernet, NetflowSimple
+from steelscript.packets.core.inetpkt cimport Ethernet, PKT, NetflowSimple, \
+    PQ_NETFLOW_SIMPLE
 
 DEF USECCONST = 1000000.00
 
@@ -583,22 +584,27 @@ cpdef dict pcap_info(str filename):
             'total_bytes': byte_count}
     return rval
 
-cpdef int netflow_replay(str device,
-                           str pcap_file,
-                           uint16_t pcap_dst_port,
-                           str dest_ip,
-                           str dest_mac,
-                           uint16_t dest_port,
-                           unsigned char blast_mode=0):
+cpdef int netflow_replay_raw_sock(str device,
+                                  str pcap_file,
+                                  uint16_t pcap_dst_port,
+                                  str dest_ip,
+                                  str dest_mac,
+                                  uint16_t dest_port,
+                                  str src_ip='',
+                                  str src_mac='',
+                                  unsigned char blast_mode=0):
     """
     Function to replay pcap files containing netflow versions 1-9.
     :param device: Device to bind our outgoing socket to.
     :param pcap_file: The file containing the packets we want to replay.
     :param pcap_dst_port: The UDP src port of the netflow packets we are 
            interested in.
+
     :param dest_ip: The IP address we want to send these packets to.
     :param dest_mac: The MAC address of the destination IP.
     :param dest_port: The port that the recipient device will be listening on.
+    :param src_ip: The IP address we want to send these packets from.
+    :param src_mac: The MAC address we want to send these packets from.
     :param blast_mode: bool value. 0 == play at the same pace as in the pcap or
            at the speed defined by speedup. 1 means blast as fast as possible.
            Overrides speedup if set.
@@ -609,6 +615,7 @@ cpdef int netflow_replay(str device,
     cdef:
         PCAPSocket sender
         PCAPReader reader
+        unsigned char do_src, do_mac
         double now, ts, offset, add
         pcap_pkthdr_t hdr
         bytes pkt
@@ -620,6 +627,14 @@ cpdef int netflow_replay(str device,
     reader = PCAPReader(filename=pcap_file)
     reader.add_bpf_filter('udp dst port {0}'.format(pcap_dst_port))
 
+    if src_ip == '':
+        do_src = 0
+    else:
+        do_src = 1
+    if src_mac == '':
+        do_mac = 0
+    else:
+        do_mac = 1
     ts, hdr, pkt = next(reader)
     now = time.time()
     eth = Ethernet(pkt, l7_ports={pcap_dst_port: NetflowSimple})
@@ -639,7 +654,11 @@ cpdef int netflow_replay(str device,
             add = (ts + offset) - now
             time.sleep(add)
             now += add
+        if do_mac:
+            eth.src_mac = src_mac
         eth.dst_mac = dest_mac
+        if do_src:
+            eth.payload.src = src_ip
         eth.payload.dst = dest_ip
         eth.payload.payload.dport = dest_port
         eth.payload.payload.payload.unix_secs = int(now)
@@ -647,4 +666,60 @@ cpdef int netflow_replay(str device,
             eth.payload.payload.payload.unix_nano_seconds = int((now % 1) *
                                                                 1000000)
         sender.sendpacket(eth.pkt2net({'csum': 1, 'update': 1}))
+    return 0
+
+
+cpdef int netflow_replay_system_sock(str pcap_file,
+                                    uint16_t pcap_dst_port,
+                                    str dest_ip,
+                                    uint16_t dest_port,
+                                    unsigned char blast_mode=0):
+    """
+    Function to replay pcap files containing netflow versions 1-9.
+    :param pcap_file: The file containing the packets we want to replay.
+    :param pcap_dst_port: The UDP src port of the netflow packets we are 
+           interested in.
+    :param dest_ip: The IP address we want to send these packets to.
+    :param dest_port: The port that the recipient device will be listening on.
+    :param blast_mode: bool value. 0 == play at the same pace as in the pcap or
+           at the speed defined by speedup. 1 means blast as fast as possible.
+           Overrides speedup if set.
+    :return: std unix 0 or 1 for all is well and something went wrong.
+    """
+
+    cdef:
+        object sender
+        PCAPReader reader
+        double now, ts, offset, add
+        pcap_pkthdr_t hdr
+        bytes pkt
+        Ethernet eth
+        PKT nf
+
+    sender = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+    reader = PCAPReader(filename=pcap_file)
+    reader.add_bpf_filter('udp dst port {0}'.format(pcap_dst_port))
+
+    ts, hdr, pkt = next(reader)
+    now = time.time()
+    eth = Ethernet(pkt, l7_ports={pcap_dst_port: NetflowSimple})
+    offset = now - ts
+    nf = eth.get_layer_by_type(PQ_NETFLOW_SIMPLE)
+    nf.unix_secs = int(now)
+    if nf.version != 9:
+        nf.unix_nano_seconds = int((now % 1) * 1000000)
+    sender.sendto(nf.pkt2net({}), (dest_ip, dest_port))
+    for ts, hdr, pkt in reader:
+        eth = Ethernet(pkt, l7_ports={pcap_dst_port: NetflowSimple})
+        nf = eth.get_layer_by_type(PQ_NETFLOW_SIMPLE)
+        now = time.time()
+        if not blast_mode and ts + offset >= now:
+            add = (ts + offset) - now
+            time.sleep(add)
+            now += add
+        nf.unix_secs = int(now)
+        if nf.version != 9:
+            nf.unix_nano_seconds = int((now % 1) * 1000000)
+        sender.sendto(nf.pkt2net({}), (dest_ip, dest_port))
     return 0

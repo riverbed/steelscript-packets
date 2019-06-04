@@ -670,10 +670,10 @@ cpdef int netflow_replay_raw_sock(str device,
 
 
 cpdef int netflow_replay_system_sock(str pcap_file,
-                                    uint16_t pcap_dst_port,
-                                    str dest_ip,
-                                    uint16_t dest_port,
-                                    unsigned char blast_mode=0):
+                                     uint16_t pcap_dst_port,
+                                     str dest_ip,
+                                     uint16_t dest_port,
+                                     unsigned char blast_mode=0):
     """
     Function to replay pcap files containing netflow versions 1-9.
     :param pcap_file: The file containing the packets we want to replay.

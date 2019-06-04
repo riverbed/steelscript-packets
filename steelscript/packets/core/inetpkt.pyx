@@ -2898,7 +2898,8 @@ cdef class Ethernet(PKT):
             self._src_mac = self._buffer[6:12]
             self.type = unpack(b'!H', self._buffer[12:14])[0]
             if self.type == ETH_TYPE_8021Q:
-                self._tci, self.tpid = unpack(b'!HH', self._buffer[14:18])
+                self.tpid = ETH_TYPE_8021Q
+                self._tci, self.type = unpack(b'!HH', self._buffer[14:18])
                 vlan_hdr_add = 4
             if self.type == ETH_TYPE_IPV4:
                 self.payload = IP(self._buffer[14 + vlan_hdr_add:],
@@ -2914,11 +2915,10 @@ cdef class Ethernet(PKT):
             self.src_mac = kwargs.get('src_mac', '00:00:00:00:00:00')
             self.dst_mac = kwargs.get('dst_mac', '00:00:00:00:00:00')
             self.type = kwargs.get('type', ETH_TYPE_IPV4)
-            if self.type == ETH_TYPE_8021Q:
-                self.tpid = kwargs.get('tpid', 0)
-                self.priority_code = kwargs.get('priority_code', 0)
-                self.drop_eligible = kwargs.get('drop_eligible', 0)
-                self.vlan_id = kwargs.get('vlan_id', 0)
+            self.tpid = kwargs.get('tpid', 0)
+            self.priority_code = kwargs.get('priority_code', 0)
+            self.drop_eligible = kwargs.get('drop_eligible', 0)
+            self.vlan_id = kwargs.get('vlan_id', 0)
             self.payload = kwargs.get('payload', PKT())
 
     @classmethod
@@ -3039,7 +3039,7 @@ cdef class Ethernet(PKT):
 
         if isinstance(self.payload, PKT):
             _pload_bytes = self.payload.pkt2net(kwargs)
-        if self.type != ETH_TYPE_8021Q:
+        if self.tpid != ETH_TYPE_8021Q:
             pkt_bytes = b'%b%b%b%b' % (self._dst_mac.tobytes(),
                                        self._src_mac.tobytes(),
                                        pack('!H', self.type),

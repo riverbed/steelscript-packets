@@ -51,6 +51,11 @@ for e in extensions:
                            "binding": True}
 extensions = cythonize(extensions)
 
+# Build scripts automatically
+scripts={'console_scripts': [
+    'netflow-player = steelscript.packets.commands.netflow_player:main']
+}
+
 setup_args = {
     'name':                'steelscript.packets',
     'namespace_packages':  ['steelscript'],
@@ -82,6 +87,7 @@ setup_args = {
         'Topic :: System :: Networking',
     ],
     'ext_modules': extensions,
+    'entry_points': scripts
 }
 
 setup(**setup_args)

@@ -17,8 +17,6 @@ from libc.stdio cimport FILE
 from libc.time cimport time_t
 from libc.stdint cimport uint16_t, uint32_t
 
-from threading import Event
-
 DEF BUFFSIZE = 256
 DEF PCAP_NETMASK_UNKNOWN = 0xffffffff
 

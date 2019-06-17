@@ -30,7 +30,7 @@ except ImportError:
     raise ImportError("Steelscript-Packets requires Cython.")
 
 install_requires = (
-    'steelscript',
+    'steelscript>=2.0',
     'tzlocal',
     'Cython',
 )

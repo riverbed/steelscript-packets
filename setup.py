@@ -24,37 +24,16 @@ except ImportError:
         'for further instructions.'
     )
 
-try:
-    from Cython.Build import cythonize
-except ImportError:
-    raise ImportError("Steelscript-Packets requires Cython.")
-
 install_requires = (
     'steelscript>=2.0',
     'tzlocal',
-    'Cython',
 )
 
-extensions = [
-    Extension("steelscript.packets.core.pcap",
-              ["steelscript/packets/core/pcap.pyx"],
-              libraries=["pcap"]),
-    Extension("steelscript.packets.core.inetpkt",
-              ["steelscript/packets/core/inetpkt.pyx"]),
-    Extension("steelscript.packets.query.pcap_query",
-              ["steelscript/packets/query/pcap_query.pyx"]),
-    Extension("steelscript.packets.protos.dns",
-              ["steelscript/packets/protos/dns.pyx"]),
-]
-for e in extensions:
-    e.cython_directives = {"embedsignature": True,
-                           "binding": True}
-extensions = cythonize(extensions)
 
 # Build scripts automatically
-scripts={'console_scripts': [
-    'netflow-player = steelscript.packets.commands.netflow_player:main']
-}
+scripts = {'console_scripts': [
+    'netflow-player = steelscript.packets.commands.netflow_player:main'
+]}
 
 setup_args = {
     'name':                'steelscript.packets',
@@ -86,7 +65,29 @@ setup_args = {
         'Programming Language :: Python :: 3.7',
         'Topic :: System :: Networking',
     ],
-    'ext_modules': extensions,
+    'setup_requires': [
+        'cython',
+        'setuptools>=18.0'
+    ],
+    'ext_modules': [
+        Extension("steelscript.packets.core.pcap",
+                  sources=["steelscript/packets/core/pcap.pyx"],
+                  libraries=["pcap"],
+                  cython_directives={"embedsignature": True,
+                                     "binding": True}),
+        Extension("steelscript.packets.core.inetpkt",
+                  sources=["steelscript/packets/core/inetpkt.pyx"],
+                  cython_directives={"embedsignature": True,
+                                     "binding": True}),
+        Extension("steelscript.packets.query.pcap_query",
+                  sources=["steelscript/packets/query/pcap_query.pyx"],
+                  cython_directives={"embedsignature": True,
+                                     "binding": True}),
+        Extension("steelscript.packets.protos.dns",
+                  sources=["steelscript/packets/protos/dns.pyx"],
+                  cython_directives={"embedsignature": True,
+                                     "binding": True}),
+    ],
     'entry_points': scripts
 }
 

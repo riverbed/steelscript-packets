@@ -13,7 +13,6 @@ of SMB (at time of writing).
 
 """
 from setuptools import setup, Extension
-from gitpy_versioning import get_version
 
 try:
     from setuptools import find_packages
@@ -25,7 +24,7 @@ except ImportError:
     )
 
 install_requires = (
-    'steelscript>=2.0',
+    'steelscript>=24.2.0',
     'tzlocal',
 )
 
@@ -38,7 +37,7 @@ scripts = {'console_scripts': [
 setup_args = {
     'name':                'steelscript.packets',
     'namespace_packages':  ['steelscript'],
-    'version':             get_version(),
+    'version':             '24.2.1',
 
     # Update the following as needed
     'author':              'Riverbed Technology',
@@ -60,9 +59,7 @@ setup_args = {
         'Intended Audience :: Information Technology',
         'Intended Audience :: System Administrators',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.12',
         'Topic :: System :: Networking',
     ],
     'setup_requires': [

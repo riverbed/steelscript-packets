@@ -4,6 +4,7 @@ dist
 *.egg-info
 RELEASE-VERSION
 steel_bootstrap.*
+.eggs
 
 *~
 *.pyc

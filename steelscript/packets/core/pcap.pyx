@@ -463,7 +463,7 @@ cdef class PCAPReader(PCAPBase):
         # Convert bytes object to char *
         fname_p = PyBytes_AsString(fname_bytes)
 
-        # self.filename = fname_srt
+        # Store the bytes object
         self.filename = fname_bytes
 
         self.have_dumper = 0

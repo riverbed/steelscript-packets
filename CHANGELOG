@@ -1,6 +1,9 @@
 CHANGELOG
 ---------
 
+[24.10.1]
+* add python dependency in setup.py (Cython)
+
 [1.1.1]
  * Minor fixes for doc updates
 
@@ -14,4 +17,3 @@ CHANGELOG
 [1.0]
 
  * Initial commit
-

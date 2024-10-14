@@ -459,8 +459,12 @@ cdef class PCAPReader(PCAPBase):
 
         fname_srt = kwargs.get('filename', '')
         fname_bytes = fname_srt.encode()
+
+        # Convert bytes object to char *
         fname_p = PyBytes_AsString(fname_bytes)
-        self.filename = fname_srt
+
+        # self.filename = fname_srt
+        self.filename = fname_bytes
 
         self.have_dumper = 0
         self.reader = open_offline(fname_p, errors)

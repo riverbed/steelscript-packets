@@ -9,6 +9,8 @@
 from libc.stdlib cimport malloc, free
 from libc.stdint cimport uint32_t, uint64_t, uint16_t
 
+from cpython.bytes cimport PyBytes_AsString
+
 import time
 import socket
 import struct
@@ -457,7 +459,7 @@ cdef class PCAPReader(PCAPBase):
 
         fname_srt = kwargs.get('filename', '')
         fname_bytes = fname_srt.encode()
-        fname_p = fname_bytes
+        fname_p = PyBytes_AsString(input_bytes)fname_bytes)
         self.filename = fname_p
         self.have_dumper = 0
         self.reader = open_offline(self.filename, errors)

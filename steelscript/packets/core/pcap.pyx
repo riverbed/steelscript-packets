@@ -457,7 +457,7 @@ cdef class PCAPReader(PCAPBase):
             object v_err
             str src_file
 
-        # fname_srt = kwargs.get('filename', '')
+        fname_srt = kwargs.get('filename', '')
         # fname_bytes = fname_srt.encode()
         # fname_p = fname_bytes      
         # self.filename = fname_p

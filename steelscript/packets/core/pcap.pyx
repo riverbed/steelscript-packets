@@ -577,7 +577,7 @@ cpdef dict pcap_info(str filename):
         double first_ts
         dict rval
 
-    rdr = PCAPReader(file_name=filename)
+    rdr = PCAPReader(filename=filename)
     ts, hdr, pkt = next(rdr)
     first_ts = ts
     pkts = 1

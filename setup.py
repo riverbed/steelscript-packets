@@ -26,6 +26,7 @@ except ImportError:
 install_requires = (
     'steelscript>=24.2.0',
     'tzlocal',
+    'Cython'
 )
 
 
@@ -36,7 +37,7 @@ scripts = {'console_scripts': [
 
 setup_args = {
     'name':                'steelscript.packets',
-    'version':             '24.2.1',
+    'version':             '24.10.1',
     'author':              'Riverbed Technology',
     'author_email':        'eng-github@riverbed.com',
     'url':                 'http://pythonhosted.org/steelscript',

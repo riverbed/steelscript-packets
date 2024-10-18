@@ -1,6 +1,10 @@
 CHANGELOG
 ---------
 
+[24.10.1]
+* Add python dependency in setup.py (Cython)
+* Bugfix in pcap.py (pcap_info, PCAPREADER)
+
 [1.1.1]
  * Minor fixes for doc updates
 
@@ -14,4 +18,3 @@ CHANGELOG
 [1.0]
 
  * Initial commit
-

@@ -9,6 +9,8 @@
 from libc.stdlib cimport malloc, free
 from libc.stdint cimport uint32_t, uint64_t, uint16_t
 
+from cpython.bytes cimport PyBytes_AsString
+
 import time
 import socket
 import struct
@@ -457,10 +459,15 @@ cdef class PCAPReader(PCAPBase):
 
         fname_srt = kwargs.get('filename', '')
         fname_bytes = fname_srt.encode()
-        fname_p = fname_bytes
-        self.filename = fname_p
+
+        # Convert bytes object to char *
+        fname_p = PyBytes_AsString(fname_bytes)
+
+        # Store the bytes object
+        self.filename = fname_bytes
+
         self.have_dumper = 0
-        self.reader = open_offline(self.filename, errors)
+        self.reader = open_offline(fname_p, errors)
 
         if self.reader is NULL:
             v_err = ValueError("PCAPReader failed to open {0} for reading. "
@@ -570,7 +577,7 @@ cpdef dict pcap_info(str filename):
         double first_ts
         dict rval
 
-    rdr = PCAPReader(file_name=filename)
+    rdr = PCAPReader(filename=filename)
     ts, hdr, pkt = next(rdr)
     first_ts = ts
     pkts = 1
